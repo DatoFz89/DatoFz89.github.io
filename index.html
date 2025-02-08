@@ -16,6 +16,8 @@
         body {
             background-color: #1a1a1a;
             color: white;
+            text-align: center;
+            padding: 50px;
         }
 
         .cta-button {
@@ -91,10 +93,10 @@
 
     <div class="popup-form" id="formulario">
         <h2>Inscrição</h2>
-        <input type="text" placeholder="Nome" required>
-        <input type="email" placeholder="Email" required>
-        <input type="tel" placeholder="Telefone" required>
-        <button type="submit">Enviar</button>
+        <input type="text" id="nome" placeholder="Nome" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="tel" id="telefone" placeholder="Telefone" required>
+        <button type="button" onclick="enviarFormulario()">Enviar</button>
         <button onclick="fecharFormulario()">Fechar</button>
     </div>
 
@@ -108,7 +110,21 @@
             document.getElementById('formulario').style.display = 'none';
             document.getElementById('overlay').style.display = 'none';
         }
+
+        function enviarFormulario() {
+            let nome = document.getElementById('nome').value;
+            let email = document.getElementById('email').value;
+            let telefone = document.getElementById('telefone').value;
+
+            if (nome && email && telefone) {
+                alert("Inscrição enviada com sucesso!");
+                fecharFormulario();
+            } else {
+                alert("Por favor, preencha todos os campos.");
+            }
+        }
     </script>
 </body>
 </html>
+
 
