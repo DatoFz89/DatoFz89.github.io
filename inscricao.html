@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscrição - NER - Nova Escola Rock</title>
-    <style>
+   <style>
         @font-face {
             font-family: 'Rock Steady';
             src: url('fonts/ROCK STEADY-Hollow.otf') format('opentype');
@@ -130,15 +130,28 @@
             </ul>
         </nav>
     </header>
+
     <div class="form-container">
         <h2>Inscreve-te Aqui</h2>
-        <form action="enviar.php" method="post">
+        <form action="https://formsubmit.co/aprenderguitarra2018@gmail.com" method="POST">
+            <!-- Campo oculto para redirecionar após envio -->
+            <input type="hidden" name="_next" value="https://datofz89.github.io/DatoFz89/thanks.html">
+            
+            <!-- Campo oculto para personalizar assunto do email -->
+            <input type="hidden" name="_subject" value="Nova Inscrição - Escola Rock">
+            
+            <!-- Campos do formulário -->
             <input type="text" id="nome" name="nome" placeholder="Nome completo" required>
+            
             <label for="data_nascimento">Data de Nascimento</label>
             <input type="date" id="data_nascimento" name="data_nascimento" required>
+            
             <textarea id="endereco" name="endereco" rows="3" placeholder="Endereço"></textarea>
+            
             <input type="tel" id="telefone" name="telefone" placeholder="Telefone" required>
+            
             <input type="email" id="email" name="email" placeholder="E-mail" required>
+            
             <select id="curso" name="curso" required>
                 <option value="">Selecione um curso</option>
                 <option value="guitarra">Guitarra</option>
@@ -148,6 +161,7 @@
                 <option value="teclado">Teclado/Piano</option>
                 <option value="outros">Outros</option>
             </select>
+            
             <button type="submit">Enviar Inscrição</button>
         </form>
     </div>
