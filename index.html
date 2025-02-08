@@ -13,11 +13,74 @@
             font-family: Arial, sans-serif;
         }
 
-        body {
-            background-color: #1a1a1a;
+        .rockstar-text {
+            font-family: 'Rock Salt', cursive;
+        }
+
+        /* Header */
+        header {
+            background: #1a1a1a;
             color: white;
+            padding: 1rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: normal;
+            color: #ff3366;
+            font-family: 'Rock Salt', cursive;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff3366;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 50px;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-family: 'Rock Salt', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;  
+        }
+
+        .hero-content p {
+            font-size: 2rem;
+            margin-bottom: 2rem;
         }
 
         .cta-button {
@@ -34,97 +97,33 @@
         .cta-button:hover {
             background: #e62e5c;
         }
-
-        .popup-form {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            color: black;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            width: 300px;
-            z-index: 1000;
-        }
-
-        .popup-form h2 {
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        .popup-form input, .popup-form button {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .popup-form button {
-            background: #ff3366;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .popup-form button:hover {
-            background: #e62e5c;
-        }
-
-        .popup-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 999;
-        }
     </style>
 </head>
 <body>
-    <button class="cta-button" onclick="abrirFormulario()">Inscreve-te Aqui</button>
+    <header>
+        <nav>
+            <div class="logo">NER - Nova Escola Rock</div>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#cursos">Cursos</a></li>
+                <li><a href="#professores">Professores</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="popup-overlay" id="overlay" onclick="fecharFormulario()"></div>
-
-    <div class="popup-form" id="formulario">
-        <h2>Inscrição</h2>
-        <input type="text" id="nome" placeholder="Nome" required>
-        <input type="email" id="email" placeholder="Email" required>
-        <input type="tel" id="telefone" placeholder="Telefone" required>
-        <button type="button" onclick="enviarFormulario()">Enviar</button>
-        <button onclick="fecharFormulario()">Fechar</button>
-    </div>
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Onde o Rock Ganha Vida!!!</h1>
+            <p class="rockstar-text">Desperta o rockstar que há em ti!</p>
+            <button class="cta-button" onclick="abrirFormulario()">Inscreve-te Aqui</button>
+        </div>
+    </section>
 
     <script>
         function abrirFormulario() {
-            document.getElementById('formulario').style.display = 'block';
-            document.getElementById('overlay').style.display = 'block';
-        }
-
-        function fecharFormulario() {
-            document.getElementById('formulario').style.display = 'none';
-            document.getElementById('overlay').style.display = 'none';
-        }
-
-        function enviarFormulario() {
-            let nome = document.getElementById('nome').value;
-            let email = document.getElementById('email').value;
-            let telefone = document.getElementById('telefone').value;
-
-            if (nome && email && telefone) {
-                alert("Inscrição enviada com sucesso!");
-                fecharFormulario();
-            } else {
-                alert("Por favor, preencha todos os campos.");
-            }
+            window.open('formulario.html', '_blank');
         }
     </script>
 </body>
 </html>
-
-
