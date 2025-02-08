@@ -17,6 +17,7 @@
             font-family: 'Rock Salt', cursive;
         }
 
+        /* Header */
         header {
             background: #1a1a1a;
             color: white;
@@ -57,70 +58,207 @@
             color: #ff3366;
         }
 
-        .form-container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 30px;
-            background-color: rgba(26, 26, 26, 0.9);
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(255, 51, 102, 0.2);
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #ff3366;
-            font-family: 'Rock Salt', cursive;
-            font-size: 2rem;
-        }
-
-        form {
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
             display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        input, textarea, select {
-            padding: 12px;
-            border: 1px solid #444;
-            border-radius: 5px;
-            background-color: #2a2a2a;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
             color: white;
-            font-size: 1rem;
         }
 
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: #ff3366;
+        .hero-content h1 {
+            font-family: 'Rock Salt', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;  
         }
 
-        input::placeholder, textarea::placeholder {
-            color: #888;
+        .hero-content p {
+            font-size: 2rem;
+            margin-bottom: 2rem;
         }
 
-        label {
-            margin-top: 10px;
-            color: #ff3366;
-        }
-
-        button {
+        .cta-button {
             background: #ff3366;
             color: white;
-            padding: 15px;
+            padding: 1rem 2rem;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
             font-size: 1.1rem;
+            cursor: pointer;
             transition: background 0.3s;
-            text-transform: uppercase;
-            font-weight: bold;
-            letter-spacing: 1px;
         }
 
-        button:hover {
+        .cta-button:hover {
             background: #e62e5c;
         }
 
+        /* Cursos Section */
+        .cursos {
+            padding: 80px 20px;
+            background-color: #1a1a1a;
+        }
+
+        .cursos h2 {
+            text-align: center;
+            color: #ff3366;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            font-family: 'Rock Salt', cursive;
+        }
+
+        .cursos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .curso-card {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            color: white;
+        }
+
+        .curso-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
+        }
+
+        .curso-card h3 {
+            color: #ff3366;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-family: 'Rock Salt', cursive;
+        }
+
+        .curso-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Professores Section */
+        .professores {
+            padding: 80px 20px;
+            background-color: #1a1a1a;
+        }
+
+        .professores h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+            font-family: 'Rock Salt', cursive;
+            font-size: 2.5rem;
+        }
+
+        .professores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .professor-card {
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .professor-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .professor-imagem {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            background-color: #ddd;
+        }
+
+        .professor-info {
+            padding: 1.5rem;
+        }
+
+        .professor-info h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .professor-info p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .professor-especialidade {
+            color: #ff3366;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+
+        footer .footer-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer .footer-content ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        footer .footer-content ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer .footer-content ul li a:hover {
+            color: #ff3366;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -128,40 +266,91 @@
         <nav>
             <div class="logo">NER - Nova Escola Rock</div>
             <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="index.html#cursos">Cursos</a></li>
-                <li><a href="index.html#professores">Professores</a></li>
-                <li><a href="index.html#contato">Contato</a></li>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#cursos">Cursos</a></li>
+                <li><a href="#professores">Professores</a></li>
+                <li><a href="#contato">Contato</a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="form-container">
-        <h2>Inscreve-te Aqui</h2>
-        <form action="enviar.php" method="post">
-            <input type="text" id="nome" name="nome" placeholder="Nome completo" required>
-            
-            <label for="data_nascimento">Data de Nascimento</label>
-            <input type="date" id="data_nascimento" name="data_nascimento" required>
-            
-            <textarea id="endereco" name="endereco" rows="3" placeholder="Endereço"></textarea>
-            
-            <input type="tel" id="telefone" name="telefone" placeholder="Telefone" required>
-            
-            <input type="email" id="email" name="email" placeholder="E-mail" required>
-            
-            <select id="curso" name="curso" required>
-                <option value="">Selecione um curso</option>
-                <option value="guitarra">Guitarra</option>
-                <option value="baixo">Baixo</option>
-                <option value="bateria">Bateria</option>
-                <option value="canto">Canto</option>
-                <option value="teclado">Teclado/Piano</option>
-                <option value="outros">Outros</option>
-            </select>
-            
-            <button type="submit">Enviar Inscrição</button>
-        </form>
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Onde o Rock Ganha Vida!!!</h1>
+            <p class="rockstar-text">Desperta o rockstar que há em ti!</p>
+            <button class="cta-button" onclick="mostrarContacto()">Agenda uma Aula Experimental</button>
+            <button class="cta-button" style="margin-left: 20px;">Inscreve-te Aqui</button>
+        </div>
+    </section>
+
+    <section class="cursos" id="cursos">
+        <h2>Nossos Cursos</h2>
+        <div class="cursos-grid">
+            <div class="curso-card">
+                <h3>Guitarra</h3>
+                <p>Do básico ao avançado, aprende todos os estilos do rock.</p>
+            </div>
+            <div class="curso-card">
+                <h3>Baixo</h3>
+                <p>Desenvolve o teu groove e cria a base perfeita.</p>
+            </div>
+            <div class="curso-card">
+                <h3>Bateria</h3>
+                <p>Domina as técnicas e ritmos essenciais do rock.</p>
+            </div>
+            <div class="curso-card">
+                <h3>Canto</h3>
+                <p>Aprende a projetar a tua voz como um verdadeiro rockstar.</p>
+            </div>
+            <div class="curso-card">
+                <h3>Teclado/Piano</h3>
+                <p>Deixa os teus dedos darem voz à alma.</p>
+            </div>    
+        </div>
+    </section>
+
+    <section class="professores" id="professores">
+    <h2>Nossos Professores</h2>
+    <div class="professores-grid">
+        <div class="professor-card">
+            <img src="galeria-de-imagens/deodato.jpg" alt="Professor Deodato" class="professor-imagem">
+            <div class="professor-info">
+                <h3>Deodato Barbosa</h3>
+                <div class="professor-especialidade">Guitarra Clássica/Elétrica & Formação Musical</div>
+                <p>30 anos de experiência em guitarra. Especializado em rock clássico e heavy metal.</p>
+            </div>
+        </div>
+
+        <div class="professor-card">
+            <img src="galeria-de-imagens/manuela.jpg" alt="Professora Manu" class="professor-imagem">
+            <div class="professor-info">
+                <h3>Manuela Pereira</h3>
+                <div class="professor-especialidade">Canto</div>
+                <p>Formada em música com especialização em técnica vocal. Expert em rock e blues.</p>
+            </div>
+        </div>
+
+        <div class="professor-card">
+            <img src="galeria-de-imagens/renato.jpg" alt="Professor Renato" class="professor-imagem">
+            <div class="professor-info">
+                <h3>Renato Barbosa</h3>
+                <div class="professor-especialidade">Guitarra Elétrica/Produtor</div>
+                <p>O mestre das cordas e da produção, onde o talento encontra a perfeição.</p>
+            </div>
+        </div>
     </div>
+</section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 NER - Nova Escola Rock. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function mostrarContacto() {
+            alert("Para agendar sua aula experimental, entre em contacto: +351 938066695");
+        }
+    </script>
 </body>
 </html>
