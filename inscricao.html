@@ -5,7 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscrição - NER - Nova Escola Rock</title>
     <style>
-        /* Seu CSS atual permanece igual */
+        @font-face {
+            font-family: 'Rock Steady';
+            src: url('fonts/ROCK STEADY-Hollow.otf') format('opentype');
+        }
+        @font-face {
+            font-family: "NewRocker-Regular";
+            src: url("fonts/NewRocker-Regular.ttf") format("truetype");
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url("galeria-de-imagens/fundoner.jpeg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            min-height: 100vh;
+        }
+        header {
+            background: #1a1a1a;
+            color: white;
+            padding: 1rem;
+            margin-bottom: 30px;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: normal;
+            color: #ff3366;
+            font-family: 'Hard Rock', sans-serif;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin-left: 2rem;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ff3366;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: rgba(26, 26, 26, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 51, 102, 0.2);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #ff3366;
+            font-family: "NewRocker-Regular", sans-serif;
+            font-size: 2rem;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        input, textarea, select {
+            padding: 12px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #2a2a2a;
+            color: white;
+            font-size: 1rem;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #ff3366;
+        }
+        input::placeholder, textarea::placeholder {
+            color: #888;
+        }
+        label {
+            margin-top: 10px;
+            color: #ff3366;
+        }
+        button {
+            background: #ff3366;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        button:hover {
+            background: #e62e5c;
+        }
     </style>
 </head>
 <body>
@@ -20,28 +130,15 @@
             </ul>
         </nav>
     </header>
-
     <div class="form-container">
         <h2>Inscreve-te Aqui</h2>
-        <form action="https://formsubmit.co/aprenderguitarra2018@gmail.com" method="POST">
-            <!-- Campo oculto para redirecionar após envio -->
-            <input type="hidden" name="_next" value="https://datofz89.github.io/DatoFz89/thanks.html">
-            
-            <!-- Campo oculto para personalizar assunto do email -->
-            <input type="hidden" name="_subject" value="Nova Inscrição - Escola Rock">
-            
-            <!-- Campos do formulário -->
+        <form action="enviar.php" method="post">
             <input type="text" id="nome" name="nome" placeholder="Nome completo" required>
-            
             <label for="data_nascimento">Data de Nascimento</label>
             <input type="date" id="data_nascimento" name="data_nascimento" required>
-            
             <textarea id="endereco" name="endereco" rows="3" placeholder="Endereço"></textarea>
-            
             <input type="tel" id="telefone" name="telefone" placeholder="Telefone" required>
-            
             <input type="email" id="email" name="email" placeholder="E-mail" required>
-            
             <select id="curso" name="curso" required>
                 <option value="">Selecione um curso</option>
                 <option value="guitarra">Guitarra</option>
@@ -51,9 +148,9 @@
                 <option value="teclado">Teclado/Piano</option>
                 <option value="outros">Outros</option>
             </select>
-            
             <button type="submit">Enviar Inscrição</button>
         </form>
     </div>
 </body>
 </html>
+
