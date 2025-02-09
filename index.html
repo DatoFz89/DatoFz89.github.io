@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NER - Nova Escola Rock</title>
     <style>
-
         @font-face {
             font-family: 'Rock Steady';
             src: url('fonts/ROCK STEADY-Hollow.otf') format('opentype');
@@ -33,8 +32,6 @@
             color: white;
             padding: 1rem;
         }
-
-      
 
         nav {
             display: flex;
@@ -183,9 +180,9 @@
         .professores h2 {
             text-align: center;
             margin-bottom: 3rem;
-            color: white; /* Adiciona esta linha para mudar a cor */
+            color: white;
             font-family: 'Rock Steady', sans-serif;
-            font-size: 2.5rem; /* Adiciona ou ajusta esta linha */
+            font-size: 2.5rem;
         }
 
         .professores-grid {
@@ -208,7 +205,7 @@
 
         .professor-imagem {
             width: 100%;
-            height: 300px;
+            height: auto; /* Alterado para auto para manter a proporção */
             object-fit: cover;
         }
 
@@ -234,39 +231,88 @@
         }
 
         footer {
-    background-color: #1a1a1a;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    font-size: 1rem;
-    margin-top: 5px; /* Margem superior */
-}
+            background-color: #1a1a1a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1rem;
+        }
 
-footer .footer-content ul {
-    list-style: none;
-    padding: 0;
-}
+        footer .footer-content ul {
+            list-style: none;
+            padding: 0;
+        }
 
-footer .footer-content ul li {
-    display: inline;
-    margin-right: 20px;
-}
+        footer .footer-content ul li {
+            display: inline;
+            margin-right: 20px;
+        }
 
-footer .footer-content ul li a {
-    color: white;
-    text-decoration: none;
-}
+        footer .footer-content ul li a {
+            color: white;
+            text-decoration: none;
+        }
 
-footer .footer-content ul li a:hover {
-    color: #ff3366;
-}
+        footer .footer-content ul li a:hover {
+            color: #ff3366;
+        }
 
+        /* Media Queries para Responsividade */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background: #1a1a1a;
+                width: 100%;
+                text-align: center;
+            }
+
+            nav ul li {
+                margin: 0;
+                padding: 10px;
+            }
+
+            nav ul li a {
+                display: block;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+                text-align: center;
+                display: block;
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            /* Estilos para o botão do menu */
+            .menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+        }
+
+        /* Esconde o botão do menu por padrão em telas maiores */
+        .menu-toggle {
+            display: none;
+        }
     </style>
 </head>
 <body>
     <header>
         <nav>
             <div class="logo">NER - Nova Escola Rock</div>
+            <button class="menu-toggle">☰ Menu</button>
             <ul>
                 <li><a href="#inicio">Início</a></li>
                 <li><a href="#cursos">Cursos</a></li>
@@ -304,7 +350,6 @@ footer .footer-content ul li a:hover {
                 <h3>Canto</h3>
                 <p>Aprende a projetar a tua voz como um verdadeiro rockstar.</p>
             </div>
-
             <div class="curso-card">
                 <h3>Teclado/Piano</h3>
                 <p>Deixa os teus dedos darem voz à alma.</p>
@@ -312,53 +357,51 @@ footer .footer-content ul li a:hover {
         </div>
     </section>
 
-    
+    <section class="professores" id="professores">
+        <h2>Nossos Professores</h2>
+        <div class="professores-grid">
+            <div class="professor-card">
+                <img src="galeria-de-imagens/deodato.jpg" alt="Professor Deodato" class="professor-imagem">
+                <div class="professor-info">
+                    <h3>Deodato Barbosa</h3>
+                    <div class="professor-especialidade">Guitarra Clássica/Elétrica/Formação Musical</div>
+                    <p>30 anos de experiência em guitarra. Especializado em rock clássico e heavy metal.</p>
+                </div>
+            </div>
+            <div class="professor-card">
+                <img src="galeria-de-imagens/manuela.jpg" alt="Professora Manu" class="professor-imagem">
+                <div class="professor-info">
+                    <h3>Manuela Pereira</h3>
+                    <div class="professor-especialidade">Canto</div>
+                    <p>Formada em música com especialização em técnica vocal. Expert em rock e blues.</p>
+                </div>
+            </div>
+            <div class="professor-card">
+                <img src="galeria-de-imagens/renato.jpg" alt="Professor Renato" class="professor-imagem">
+                <div class="professor-info">
+                    <h3>Renato Barbosa</h3>
+                    <div class="professor-especialidade">Guitarra Elétrica/Produtor</div>
+                    <p>O mestre das cordas e da produção, onde o talento encontra a perfeição.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 NER - Nova Escola Rock. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 
     <script>
         function mostrarContacto() {
             alert("Para agendar sua aula experimental, entre em contacto: +351 938066695");
         }
+
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
     </script>
-
-        <section class="professores" id="professores">
-            <h2>Nossos Professores</h2>
-            <div class="professores-grid">
-                <div class="professor-card">
-                    <img src="galeria-de-imagens/deodato.jpg" alt="Professor Deodato" class="professor-imagem">
-                    <div class="professor-info">
-                        <h3>Deodato Barbosa</h3>
-                        <div class="professor-especialidade">Guitarra Clássica/Elétrica/Formação Musical</div>
-                        <p>30 anos de experiência em guitarra. Especializado em rock clássico e heavy metal.</p>
-                    </div>
-                </div>
-
-                <div class="professor-card">
-                    <img src="galeria-de-imagens/manuela.jpg" alt="Professora Manu" class="professor-imagem">
-                    <div class="professor-info">
-                        <h3>Manuela Pereira</h3>
-                        <div class="professor-especialidade">Canto</div>
-                        <p>Formada em música com especialização em técnica vocal. Expert em rock e blues.</p>
-                    </div>
-                </div>
-
-                <div class="professor-card">
-                    <img src="galeria-de-imagens/renato.jpg" alt="Professor Renato" class="professor-imagem">
-                    <div class="professor-info">
-                        <h3>Renato Barbosa</h3>
-                        <div class="professor-especialidade">Guitarra Elétrica/Produtor</div>
-                        <p>O mestre das cordas e da produção, onde o talento encontra a perfeição.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <div class="footer-content">
-                <p>&copy; 2025 NER - Nova Escola Rock. Todos os direitos reservados.</p>
-                
-            </div>
-        </footer>
-
 </body>
 </html>
 
