@@ -236,7 +236,7 @@
             padding: 20px;
             text-align: center;
             font-size: 1rem;
-            margin-top: 5px; /* Margem superior */
+            margin-top: 5px;
         }
 
         footer .footer-content ul {
@@ -258,7 +258,7 @@
             color: #ff3366;
         }
 
-        /* Media Queries para Responsividade */
+        /* Estilos para o menu responsivo */
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
@@ -269,15 +269,17 @@
                 margin-bottom: 10px;
             }
 
+            /* Esconde a lista de links por padrão */
             nav ul {
-                display: none; /* Esconde o menu por padrão */
+                display: none;
                 flex-direction: column;
                 width: 100%;
                 text-align: center;
                 position: absolute;
-                top: 60px; /* Ajusta conforme a altura do teu cabeçalho */
+                top: 60px; /* Ajusta conforme a altura do cabeçalho */
                 left: 0;
                 background: #1a1a1a;
+                z-index: 10; /* Garante que o menu aparece sobre outros elementos */
             }
 
             nav ul li {
@@ -289,6 +291,7 @@
                 display: block;
             }
 
+            /* Estilos para o botão do menu */
             .menu-toggle {
                 display: block;
                 background: none;
@@ -300,8 +303,9 @@
                 margin-top: -40px;
             }
 
+            /* Mostra a lista de links quando a classe 'show' é adicionada */
             nav ul.show {
-                display: flex; /* Exibe o menu quando a classe 'show' é adicionada */
+                display: flex;
             }
         }
 
