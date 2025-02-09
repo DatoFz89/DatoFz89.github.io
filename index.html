@@ -26,6 +26,7 @@
             font-family: Arial, sans-serif;
         }
 
+        /* Header */
         header {
             background: #1a1a1a;
             color: white;
@@ -65,6 +66,57 @@
         nav ul li a:hover {
             color: #ff3366;
         }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("galeria-de-imagens/fundoner.jpeg");
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-family: 'Rock Steady', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;  
+        }
+
+        .hero-content p {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: #ff3366;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #e62e5c;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-content .cta-button {
+            margin: 10px;
+        }
+
     </style>
 </head>
 <body>
@@ -79,6 +131,26 @@
             </ul>
         </nav>
     </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Onde o Rock Ganha Vida!!!</h1>
+            <p class="rockstar-text">Desperta o rockstar que há em ti!</p>
+            <button class="cta-button" onclick="mostrarContacto()">Agenda uma Aula Experimental</button>
+            <button class="cta-button" onclick="window.open('inscricao.html', '_blank')" style="margin-left: 20px;">Inscreve-te Aqui</button>
+        </div>
+    </section>
+
+    <script>
+        function mostrarContacto() {
+            alert("Para agendar sua aula experimental, entre em contacto: +351 938066695");
+        }
+    </script>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 NER - Nova Escola Rock. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 </body>
 </html>
-
