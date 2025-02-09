@@ -5,357 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NER - Nova Escola Rock</title>
     <style>
-        @font-face {
-            font-family: 'Rock Steady';
-            src: url('fonts/ROCK STEADY-Hollow.otf') format('opentype');
-        }
-
-        @font-face {
-            font-family: "NewRocker-Regular";
-            src: url("fonts/NewRocker-Regular.ttf") format("truetype");
-        }
-
-        .rockstar-text {
-            font-family: "NewRocker-Regular", sans-serif;
-        }
-
-        * {
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
         }
-
-        /* Header */
-        header {
-            background: #1a1a1a;
-            color: white;
-            padding: 1rem;
-        }
-
-        nav {
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
+            background-color: #333;
+            padding: 10px 20px;
+            position: relative;
         }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: normal;
-            color: #ff3366;
-            font-family: 'Hard Rock', sans-serif;
-        }
-
-        nav ul {
+        .nav-links {
             display: flex;
             list-style: none;
+            padding: 0;
         }
-
-        nav ul li {
-            margin-left: 2rem;
+        .nav-links li {
+            margin: 0 10px;
         }
-
-        nav ul li a {
+        .nav-links a {
             color: white;
             text-decoration: none;
-            transition: color 0.3s;
+            padding: 8px 12px;
         }
-
-        nav ul li a:hover {
-            color: #ff3366;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("galeria-de-imagens/fundoner.jpeg");
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-        }
-
-        .hero-content h1 {
-            font-family: 'Rock Steady', sans-serif;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: white;  
-        }
-
-        .hero-content p {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .cta-button {
-            background: #ff3366;
-            color: white;
-            padding: 1rem 2rem;
+        .menu-toggle {
+            display: none;
+            background: none;
             border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .cta-button:hover {
-            background: #e62e5c;
-        }
-
-        .hero-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .hero-content .cta-button {
-            margin: 10px;
-        }
-
-        /* Seção Cursos */
-        .cursos {
-            padding: 80px 20px;
-            background-color: #1a1a1a;
-        }
-
-        .cursos h2 {
-            text-align: center;
-            color: #ff3366;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            font-family: 'Rock Steady', sans-serif;
-        }
-
-        .cursos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .curso-card {
-            background: #2a2a2a;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.3s;
             color: white;
+            font-size: 24px;
+            cursor: pointer;
         }
-
-        .curso-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
-        }
-
-        .curso-card h3 {
-            color: #ff3366;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            font-family: "NewRocker-Regular", sans-serif;
-        }
-
-        .curso-card p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        @media (min-width: 768px) {
-            .hero-content .cta-button {
-                display: inline-block;
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: #333;
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links li {
+                margin: 10px 0;
             }
         }
-
-        /* Seção Professores */
-        .professores {
-            padding: 80px 20px;
-            background-color: #1a1a1a;
-        }
-
-        .professores h2 {
-            text-align: center;
-            margin-bottom: 3rem;
-            color: white; /* Adiciona esta linha para mudar a cor */
-            font-family: 'Rock Steady', sans-serif;
-            font-size: 2.5rem; /* Adiciona ou ajusta esta linha */
-        }
-
-        .professores-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .professor-card {
-            background: #ffffff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .professor-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .professor-imagem {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-
-        .professor-info {
-            padding: 1.5rem;
-        }
-
-        .professor-info h3 {
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        .professor-info p {
-            color: #666;
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        .professor-especialidade {
-            color: #ff3366;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        footer {
-    background-color: #1a1a1a;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    font-size: 1rem;
-    margin-top: 5px; /* Margem superior */
-}
-
-footer .footer-content ul {
-    list-style: none;
-    padding: 0;
-}
-
-footer .footer-content ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-footer .footer-content ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-footer .footer-content ul li a:hover {
-    color: #ff3366;
-}
-
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">NER - Nova Escola Rock</div>
-            <ul>
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#cursos">Cursos</a></li>
-                <li><a href="#professores">Professores</a></li>
-                <li><a href="https://aprender-guitarra-2018.webnode.pt/contacto/" target="_blank">Contato</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section class="hero" id="inicio">
-        <div class="hero-content">
-            <h1>Onde o Rock Ganha Vida!!!</h1>
-            <p class="rockstar-text">Desperta o rockstar que há em ti!</p>
-            <button class="cta-button" onclick="mostrarContacto()">Agenda uma Aula Experimental</button>
-            <button class="cta-button" onclick="window.open('inscricao.html', '_blank')" style="margin-left: 20px;">Inscreve-te Aqui</button>
-        </div>
-    </section>
-
-    <section class="cursos" id="cursos">
-        <h2>Nossos Cursos</h2>
-        <div class="cursos-grid">
-            <div class="curso-card">
-                <h3>Guitarra</h3>
-                <p>Do básico ao avançado, aprende todos os estilos do rock.</p>
-            </div>
-            <div class="curso-card">
-                <h3>Baixo</h3>
-                <p>Desenvolve o teu groove e cria a base perfeita.</p>
-            </div>
-            <div class="curso-card">
-                <h3>Bateria</h3>
-                <p>Domina as técnicas e ritmos essenciais do rock.</p>
-            </div>
-            <div class="curso-card">
-                <h3>Canto</h3>
-                <p>Aprende a projetar a tua voz como um verdadeiro rockstar.</p>
-            </div>
-
-            <div class="curso-card">
-                <h3>Teclado/Piano</h3>
-                <p>Deixa os teus dedos darem voz à alma.</p>
-            </div>    
-        </div>
-    </section>
-
-    
+    <nav class="navbar">
+        <div class="logo">NER</div>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Cursos</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </nav>
 
     <script>
-        function mostrarContacto() {
-            alert("Para agendar sua aula experimental, entre em contacto: +351 938066695");
+        function toggleMenu() {
+            var navLinks = document.getElementById("navLinks");
+            if (navLinks.style.display === "flex") {
+                navLinks.style.display = "none";
+            } else {
+                navLinks.style.display = "flex";
+            }
         }
     </script>
-
-        <section class="professores" id="professores">
-            <h2>Nossos Professores</h2>
-            <div class="professores-grid">
-                <div class="professor-card">
-                    <img src="galeria-de-imagens/deodato.jpg" alt="Professor Deodato" class="professor-imagem">
-                    <div class="professor-info">
-                        <h3>Deodato Barbosa</h3>
-                        <div class="professor-especialidade">Guitarra Clássica/Elétrica/Formação Musical</div>
-                        <p>30 anos de experiência em guitarra. Especializado em rock clássico e heavy metal.</p>
-                    </div>
-                </div>
-
-                <div class="professor-card">
-                    <img src="galeria-de-imagens/manuela.jpg" alt="Professora Manu" class="professor-imagem">
-                    <div class="professor-info">
-                        <h3>Manuela Pereira</h3>
-                        <div class="professor-especialidade">Canto</div>
-                        <p>Formada em música com especialização em técnica vocal. Expert em rock e blues.</p>
-                    </div>
-                </div>
-
-                <div class="professor-card">
-                    <img src="galeria-de-imagens/renato.jpg" alt="Professor Renato" class="professor-imagem">
-                    <div class="professor-info">
-                        <h3>Renato Barbosa</h3>
-                        <div class="professor-especialidade">Guitarra Elétrica/Produtor</div>
-                        <p>O mestre das cordas e da produção, onde o talento encontra a perfeição.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <div class="footer-content">
-                <p>&copy; 2025 NER - Nova Escola Rock. Todos os direitos reservados.</p>
-                
-            </div>
-        </footer>
-
 </body>
 </html>
+
 
