@@ -117,6 +117,147 @@
             margin: 10px;
         }
 
+        /* Seção Cursos */
+        .cursos {
+            padding: 80px 20px;
+            background-color: #1a1a1a;
+        }
+
+        .cursos h2 {
+            text-align: center;
+            color: #ff3366;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            font-family: 'Rock Steady', sans-serif;
+        }
+
+        .cursos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .curso-card {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            color: white;
+        }
+
+        .curso-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
+        }
+
+        .curso-card h3 {
+            color: #ff3366;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-family: "NewRocker-Regular", sans-serif;
+        }
+
+        .curso-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        @media (min-width: 768px) {
+            .hero-content .cta-button {
+                display: inline-block;
+            }
+        }
+
+        /* Seção Professores */
+        .professores {
+            padding: 80px 20px;
+            background-color: #1a1a1a;
+        }
+
+        .professores h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white; /* Adiciona esta linha para mudar a cor */
+            font-family: 'Rock Steady', sans-serif;
+            font-size: 2.5rem; /* Adiciona ou ajusta esta linha */
+        }
+
+        .professores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .professor-card {
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .professor-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .professor-imagem {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .professor-info {
+            padding: 1.5rem;
+        }
+
+        .professor-info h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .professor-info p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .professor-especialidade {
+            color: #ff3366;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 5px; /* Margem superior */
+}
+
+footer .footer-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer .footer-content ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+footer .footer-content ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+footer .footer-content ul li a:hover {
+    color: #ff3366;
+}
+
     </style>
 </head>
 <body>
@@ -127,7 +268,7 @@
                 <li><a href="#inicio">Início</a></li>
                 <li><a href="#cursos">Cursos</a></li>
                 <li><a href="#professores">Professores</a></li>
-                <li><a href="https://aprender-guitarra-2018.webnode.pt/contacto/" target="_blank">Contato</a></li>
+                <li><a href="#contato">Contato</a></li>
             </ul>
         </nav>
     </header>
@@ -141,16 +282,80 @@
         </div>
     </section>
 
+    <section class="cursos" id="cursos">
+        <h2>Nossos Cursos</h2>
+        <div class="cursos-grid">
+            <div class="curso-card">
+                <h3>Guitarra</h3>
+                <p>Do básico ao avançado, aprende todos os estilos do rock.</p>
+            </div>
+            <div class="curso-card">
+                <h3>Baixo</h3>
+                <p>Desenvolve o teu groove e cria a base perfeita.</p>
+            </div>
+            <div class="curso-card">
+                <h3>Bateria</h3>
+                <p>Domina as técnicas e ritmos essenciais do rock.</p>
+            </div>
+            <div class="curso-card">
+                <h3>Canto</h3>
+                <p>Aprende a projetar a tua voz como um verdadeiro rockstar.</p>
+            </div>
+
+            <div class="curso-card">
+                <h3>Teclado/Piano</h3>
+                <p>Deixa os teus dedos darem voz à alma.</p>
+            </div>    
+        </div>
+    </section>
+
+    
+
     <script>
         function mostrarContacto() {
             alert("Para agendar sua aula experimental, entre em contacto: +351 938066695");
         }
     </script>
 
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 NER - Nova Escola Rock. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+        <section class="professores" id="professores">
+            <h2>Nossos Professores</h2>
+            <div class="professores-grid">
+                <div class="professor-card">
+                    <img src="galeria-de-imagens/deodato.jpg" alt="Professor Deodato" class="professor-imagem">
+                    <div class="professor-info">
+                        <h3>Deodato Barbosa</h3>
+                        <div class="professor-especialidade">Guitarra Clássica/Elétrica [&] Formação Musical</div>
+                        <p>30 anos de experiência em guitarra. Especializado em rock clássico e heavy metal.</p>
+                    </div>
+                </div>
+
+                <div class="professor-card">
+                    <img src="galeria-de-imagens/manuela.jpg" alt="Professora Manu" class="professor-imagem">
+                    <div class="professor-info">
+                        <h3>Manuela Pereira</h3>
+                        <div class="professor-especialidade">Canto</div>
+                        <p>Formada em música com especialização em técnica vocal. Expert em rock e blues.</p>
+                    </div>
+                </div>
+
+                <div class="professor-card">
+                    <img src="galeria-de-imagens/renato.jpg" alt="Professor Renato" class="professor-imagem">
+                    <div class="professor-info">
+                        <h3>Renato Barbosa</h3>
+                        <div class="professor-especialidade">Guitarra Elétrica/Produtor</div>
+                        <p>O mestre das cordas e da produção, onde o talento encontra a perfeição.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2025 NER - Nova Escola Rock. Todos os direitos reservados.</p>
+                
+            </div>
+        </footer>
+
 </body>
 </html>
+
