@@ -5,13 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscrição - NER - Nova Escola Rock</title>
     <style>
-        /* Seu CSS atual permanece igual */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('/galeria-de-imagens/fundoner.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff3366;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        .form-container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            margin: 50px auto;
+            width: 50%;
+            border-radius: 10px;
+        }
+        h2 {
+            color: #ff3366;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        button {
+            background: #ff3366;
+            color: white;
+            padding: 15px;
+            width: 100%;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #e62e5c;
+        }
     </style>
 </head>
 <body>
     <header>
+        <div class="logo">NER - Nova Escola Rock</div>
         <nav>
-            <div class="logo">NER - Nova Escola Rock</div>
             <ul>
                 <li><a href="index.html">Início</a></li>
                 <li><a href="index.html#cursos">Cursos</a></li>
@@ -24,25 +86,15 @@
     <div class="form-container">
         <h2>Inscreve-te Aqui</h2>
         <form action="https://formsubmit.co/aprenderguitarra2018@gmail.com" method="POST">
-            <!-- Campo oculto para redirecionar após envio -->
             <input type="hidden" name="_next" value="https://datofz89.github.io/thanks.html">
-            
-            <!-- Campo oculto para personalizar assunto do email -->
             <input type="hidden" name="_subject" value="Nova Inscrição - Escola Rock">
-            
-            <!-- Campos do formulário -->
-            <input type="text" id="nome" name="nome" placeholder="Nome completo" required>
-            
-            <label for="data_nascimento">Data de Nascimento</label>
-            <input type="date" id="data_nascimento" name="data_nascimento" required>
-            
-            <textarea id="endereco" name="endereco" rows="3" placeholder="Endereço"></textarea>
-            
-            <input type="tel" id="telefone" name="telefone" placeholder="Telefone" required>
-            
-            <input type="email" id="email" name="email" placeholder="E-mail" required>
-            
-            <select id="curso" name="curso" required>
+            <input type="text" name="nome" placeholder="Nome completo" required>
+            <label>Data de Nascimento</label>
+            <input type="date" name="data_nascimento" required>
+            <textarea name="endereco" rows="3" placeholder="Endereço"></textarea>
+            <input type="tel" name="telefone" placeholder="Telefone" required>
+            <input type="email" name="email" placeholder="E-mail" required>
+            <select name="curso" required>
                 <option value="">Selecione um curso</option>
                 <option value="guitarra">Guitarra</option>
                 <option value="baixo">Baixo</option>
@@ -51,7 +103,6 @@
                 <option value="teclado">Teclado/Piano</option>
                 <option value="outros">Outros</option>
             </select>
-            
             <button type="submit">Enviar Inscrição</button>
         </form>
     </div>
