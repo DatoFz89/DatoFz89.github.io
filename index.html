@@ -50,22 +50,20 @@
     font-style: normal;
         }
 
-       .logo {
+    .logo {
     font-size: 2rem;
     font-weight: normal;
     color: #ff3366;
     font-family: 'Hard Rock', sans-serif;
-    text-align: center;
-    white-space: nowrap; /* Mantém em uma linha */
-    width: 100%;
-    padding: 0 10px; /* Espaço nas laterais */
 }
 
-/* Para telas de celular */
+/* Apenas para telas de celular */
 @media screen and (max-width: 768px) {
     .logo {
-        font-size: 1.2rem; /* Reduz o tamanho para caber em uma linha */
-        overflow: visible; /* Garante que o texto seja visível */
+        text-align: center;
+        white-space: nowrap;
+        width: 100%;
+        font-size: 1.2rem;
     }
 }
 
