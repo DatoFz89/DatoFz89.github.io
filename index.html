@@ -50,12 +50,24 @@
     font-style: normal;
         }
 
-        .logo {
-            font-size: 2rem;
-            font-weight: normal;
-            color: #ff3366;
-            font-family: 'Hard Rock', sans-serif;
-        }
+       .logo {
+    font-size: 2rem;
+    font-weight: normal;
+    color: #ff3366;
+    font-family: 'Hard Rock', sans-serif;
+    text-align: center;
+    white-space: nowrap; /* Mantém em uma linha */
+    width: 100%;
+    padding: 0 10px; /* Espaço nas laterais */
+}
+
+/* Para telas de celular */
+@media screen and (max-width: 768px) {
+    .logo {
+        font-size: 1.2rem; /* Reduz o tamanho para caber em uma linha */
+        overflow: visible; /* Garante que o texto seja visível */
+    }
+}
 
         /* Menu */
         nav ul {
