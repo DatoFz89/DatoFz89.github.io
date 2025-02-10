@@ -35,6 +35,18 @@
             padding: 1rem;
         }
 
+
+        <nav>
+        <div class="logo">NER - Nova Escola Rock</div>
+        <button class="menu-toggle">☰</button> <!-- Adicionado o botão aqui -->
+        <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#cursos">Cursos</a></li>
+            <li><a href="#professores">Professores</a></li>
+            <li><a href="https://aprender-guitarra-2018.webnode.pt/contacto/" target="_blank">Contato</a></li>
+        </ul>
+    </nav>
+        
         nav {
             display: flex;
             justify-content: space-between;
@@ -453,6 +465,13 @@
             document.querySelector('nav ul').classList.toggle('show');
         });
     </script>
+
+    <script>
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('nav ul').classList.toggle('show');
+    });
+</script>
+
 
 </body>
 
