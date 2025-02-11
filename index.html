@@ -65,6 +65,12 @@
         width: 100%;
     }
 
+    /* Mostra o botão hamburguer para telas pequenas */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
     nav ul {
         display: none; /* Esconde o menu */
         width: 100%;
@@ -92,7 +98,7 @@
     }
 
     .menu-toggle {
-        display: block;
+        display: none;
         background: none;
         border: none;
         color: white;
