@@ -503,8 +503,14 @@ F
         </div>
     </section>
 
+   
+
     <script>
-    // Seleciona o botão hamburguer e a lista do menu
+        function mostrarContacto() {
+            alert("Para agendar sua aula experimental, entre em contacto: +351 938066695");
+        }
+
+         // Seleciona o botão hamburguer e a lista do menu
     const menuToggle = document.querySelector('.menu-toggle');
     const navList = document.querySelector('nav ul');
 
@@ -512,12 +518,6 @@ F
     menuToggle.addEventListener('click', () => {
         navList.classList.toggle('show'); // Adiciona ou remove a classe 'show'
     });
-</script>
-
-    <script>
-        function mostrarContacto() {
-            alert("Para agendar sua aula experimental, entre em contacto: +351 938066695");
-        }
     </script>
 
     <section class="professores" id="professores">
@@ -559,11 +559,7 @@ F
         </div>
     </footer>
 
-    <script>
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('show');
-        });
-    </script>
+
 
 </body>
 
