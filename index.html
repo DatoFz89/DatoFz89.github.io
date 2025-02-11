@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NER - Nova Escola Rock</title>
     <style>
-        /* Estilos gerais */
-        @font-face {
+       @font-face {
             font-family: 'Rock Steady';
             src: url('fonts/ROCK STEADY-Hollow.otf') format('opentype');
         }
@@ -43,68 +42,91 @@
             margin: 0 auto;
         }
 
-      @font-face {
-    font-family: 'Hard Rock';
-    src: url('fonts/HARD_ROCK.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+        @font-face {
+            font-family: 'Hard Rock';
+            src: url('fonts/HARD_ROCK.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
         }
 
-    .logo {
-    font-size: 2rem;
-    font-weight: normal;
-    color: #ff3366;
-    font-family: 'Hard Rock', sans-serif;
-}
+        .logo {
+            font-size: 2rem;
+            font-weight: normal;
+            color: #ff3366;
+            font-family: 'Hard Rock', sans-serif;
+        }
 
-/* Menu responsivo para telas pequenas */
-@media (max-width: 768px) { /* Para telas de celulares e tablets */
-    .logo {
-        font-size: 1.5rem;
-        text-align: center;
-        width: 100%;
-    }
+        /* Menu responsivo para telas pequenas */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 1.5rem;
+            }
 
-    nav ul {
-        display: none; /* Esconde o menu */
-        width: 100%;
-        flex-direction: column;
-        background: #1a1a1a;
-        text-align: center;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        z-index: 10;
-    }
+            nav {
+                position: relative;
+            }
 
-    nav ul.show {
-        display: flex; /* Exibe o menu quando a classe show for adicionada */
-    }
+            nav ul {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                background: #1a1a1a;
+                text-align: center;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                z-index: 10;
+            }
 
-    nav ul li {
-        margin: 0;
-        padding: 10px;
-    }
+            nav ul.show {
+                display: flex;
+            }
 
-    nav ul li a {
-        color: white;
-        font-size: 1.2rem;
-    }
+            nav ul li {
+                margin: 0;
+                padding: 10px;
+            }
 
-    .menu-toggle {
-        display: block;
-        background: none;
-        border: none;
-        color: white;
-        font-size: 2rem;
-        cursor: pointer;
-    }
+            nav ul li a {
+                color: white;
+                font-size: 1.2rem;
+            }
 
-    /* Ajuste para os cursos e professores */
-    .cursos-grid, .professores-grid {
-        grid-template-columns: 1fr; /* Exibe as informações em uma coluna */
-    }
-}
+            .menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 2rem;
+                cursor: pointer;
+                padding: 5px;
+            }
+        }
+
+        /* Menu */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff3366;
+        }
+
+        /* Esconde o botão do menu por padrão em telas maiores */
+        .menu-toggle {
+            display: none;
+        }
 
 /* Ajuste para tablets e telas médias */
 @media (max-width: 1024px) { /* Para tablets e telas médias */
