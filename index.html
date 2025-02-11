@@ -445,7 +445,7 @@ F
         <nav>
             <div class="logo">Nova Escola Rock</div>
             <button class="menu-toggle">☰</button>
-            <ul style="display: none">
+            <ul id="menuPrincipal" style="display: none">
                 <li><a href="https://aprender-guitarra-2018.webnode.pt/contacto/" target="_blank">Contato</a></li>
                 <li><a href="#cursos">Cursos</a></li>
                 <li><a href="#professores">Professores</a></li>
@@ -512,11 +512,14 @@ F
 
          // Seleciona o botão hamburguer e a lista do menu
     const menuToggle = document.querySelector('.menu-toggle');
-    const navList = document.querySelector('nav ul');
+    const navList = document.getElementById('menuPrincipal');
 
     // Adiciona um evento de clique no botão
     menuToggle.addEventListener('click', () => {
-        navList.classList.toggle('show'); // Adiciona ou remove a classe 'show'
+        if(navList.style.display=='none')
+            navList.style.display = 'block';
+        else
+            navList.style.display = 'none';
     });
     </script>
 
