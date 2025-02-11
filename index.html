@@ -488,6 +488,17 @@
     </section>
 
     <script>
+    // Seleciona o botão hamburguer e a lista do menu
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navList = document.querySelector('nav ul');
+
+    // Adiciona um evento de clique no botão
+    menuToggle.addEventListener('click', () => {
+        navList.classList.toggle('show'); // Adiciona ou remove a classe 'show'
+    });
+</script>
+
+    <script>
         function mostrarContacto() {
             alert("Para agendar sua aula experimental, entre em contacto: +351 938066695");
         }
