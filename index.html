@@ -510,17 +510,25 @@ F
             alert("Para agendar sua aula experimental, entre em contacto: +351 938066695");
         }
 
-         // Seleciona o botão hamburguer e a lista do menu
+   function initMobileMenu() {
     const menuToggle = document.querySelector('.menu-toggle');
-    const navList = document.getElementById('menuPrincipal');
+    const navList = document.querySelector('nav ul');
+    
+    if (window.innerWidth <= 768) { // 768px é o breakpoint para dispositivos móveis
+        menuToggle.addEventListener('click', () => {
+            if(navList.style.display == 'none')
+                navList.style.display = 'block';
+            else
+                navList.style.display = 'none';
+        });
+    }
+}
 
-    // Adiciona um evento de clique no botão
-    menuToggle.addEventListener('click', () => {
-        if(navList.style.display=='none')
-            navList.style.display = 'block';
-        else
-            navList.style.display = 'none';
-    });
+// Executa quando a página carrega
+window.addEventListener('load', initMobileMenu);
+
+// Executa quando a janela é redimensionada
+window.addEventListener('resize', initMobileMenu);
     </script>
 
     <section class="professores" id="professores">
