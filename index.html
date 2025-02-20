@@ -7,6 +7,24 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>NER - Nova Escola Rock</title>
     <style>
+
+	   .scrolling-text {
+      font-size: 30px;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      animation: scroll-left-to-right 10s linear infinite;
+    }
+
+    @keyframes scroll-left-to-right {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(100%);
+      }
+    }
+	    
        /*@font-face {
             font-family: 'Rock Steady';
             src: url('fonts/ROCK STEADY-Hollow.otf') format('opentype');
@@ -377,7 +395,7 @@
             <br>
             <br>
             <h1 style="font-size: 40px;"><br>Ξ NER Ξ<br>Onde o Rock Ganha Vida</h1>
-            <h4 style="font-size: 30px;">Ξ Inscrições Abertas Ξ</h4>
+            <h4 class="scrolling-text">Ξ Inscrições Abertas Ξ</h4>
            
             <br>
             <br>
