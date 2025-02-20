@@ -100,7 +100,16 @@
 }
 
 @media screen and (max-width: 600px) {
-    .topnav {
+    .topnav a:not(:last-child) {
+        display: none;
+    }
+    .topnav a.icon {
+        float: right;
+        display: block;
+    }
+    
+    .topnav.responsive {
+        position: relative;
         float: none;
         width: 100%;
         position: absolute;
@@ -110,29 +119,13 @@
         z-index: 1000;
     }
     
-    .topnav a {
-        display: none;
+    .topnav.responsive a {
         float: none;
+        display: block;
         width: 100%;
         text-align: left;
         padding: 15px;
         border-bottom: 1px solid #333;
-    }
-    
-    .topnav a.icon {
-        float: right;
-        display: block;
-        position: absolute;
-        right: 0;
-        top: -50px;
-    }
-    
-    .topnav.responsive {
-        display: block;
-    }
-    
-    .topnav.responsive a {
-        display: block;
     }
 }
    
