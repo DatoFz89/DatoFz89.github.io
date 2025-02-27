@@ -19,8 +19,12 @@
             animation: scroll-left-to-right 10s linear infinite; 
         } 
         @keyframes scroll-left-to-right { 
-            0% { transform: translateX(-100%); } 
-            100% { transform: translateX(100%); } 
+            0% { 
+                transform: translateX(-100%); 
+            } 
+            100% { 
+                transform: translateX(100%); 
+            } 
         } 
         @font-face { 
             font-family: "ROCK STEADY-Hollow"; 
@@ -43,7 +47,7 @@
             /* Adicionando padding-top para compensar o header fixo */ 
             padding-top: 50px; 
         } 
-        /* Header - Modificado para ficar fixo */
+        /* Header - Modificado para ficar fixo */ 
         header { 
             background: black; 
             color: white; 
@@ -474,12 +478,19 @@
         .close:hover { 
             color: #ff3366; 
         } 
-        /* Estilos para a seção da Loja */ 
+        /* Estilos para a seção da Loja */
         .loja { 
             padding: 80px 20px; 
             background-color: #222; 
             color: white; 
             text-align: center; 
+        } 
+        .loja h2 { 
+            text-align: center; 
+            color: #ff3366; 
+            font-size: 2.5rem; 
+            margin-bottom: 50px; 
+            font-family: 'ROCK STEADY-Hollow', sans-serif; 
         } 
         .loja .produtos { 
             display: flex; 
@@ -493,6 +504,12 @@
             padding: 20px; 
             border-radius: 10px; 
             width: 300px; 
+        } 
+        .loja .produto h3 { 
+            color: #ff3366; 
+            font-size: 1.5rem; 
+            margin-bottom: 15px; 
+            font-family: "NewRocker-Regular", sans-serif; 
         } 
         .loja button { 
             background: #ff3366; 
@@ -803,4 +820,5 @@
     </footer> 
 </body> 
 </html>
+
 
