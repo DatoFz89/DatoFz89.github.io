@@ -636,6 +636,23 @@
                 }); 
             }); 
         }); 
+
+        // Função para adicionar itens ao carrinho
+        function adicionarAoCarrinho(produto, preco) {
+            var carrinho = document.getElementById('carrinho');
+            var item = document.createElement('p');
+            item.textContent = produto + " - " + preco + "€";
+            carrinho.appendChild(item);
+        }
+        
+        // Função para finalizar a compra
+        function finalizarCompra() {
+            if(document.getElementById('carrinho').childElementCount === 0) {
+                alert("O carrinho está vazio!");
+            } else {
+                alert("Compra finalizada! Obrigado pela sua compra.");
+            }
+        }
     </script> 
 
     <section class="professores" id="professores"> 
@@ -800,18 +817,11 @@
         </div>
         <h2>Carrinho de Compras</h2>
         <div id="carrinho"></div>
-        <h4>Métodos de Pagamento</h4>
+        <h2>Métodos de Pagamento</h2>
         <p>Podes pagar através de: Cartão de Crédito, PayPal, ou Multibanco.</p>
+        <br>
+        <button onclick="finalizarCompra()">Finalizar Compra</button>
     </section>
-
-    <script>
-        function adicionarAoCarrinho(produto, preco) {
-            var carrinho = document.getElementById('carrinho');
-            var item = document.createElement('p');
-            item.textContent = produto + " - " + preco + "€";
-            carrinho.appendChild(item);
-        }
-    </script>
 
     <footer> 
         <div class="footer-content"> 
