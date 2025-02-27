@@ -1,881 +1,806 @@
-<!DOCTYPE html>
-<html lang="pt">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>NER - Nova Escola Rock</title>
-    <style>
-
-    
-	    
-	html, body {
-	    overflow-x: hidden;
-		width: 100%;
-	}
-   .scrolling-text {
-      font-size: 30px;
-      white-space: nowrap;
-      overflow: hidden;
-      display: inline-block;
-      animation: scroll-left-to-right 10s linear infinite;
-    }
-
-    @keyframes scroll-left-to-right {
-      0% {
-        transform: translateX(-100%);
-      }
-      100% {
-        transform: translateX(100%);
-      }
-    }
-	    
-      @font-face {
-	    font-family: "ROCK STEADY-Hollow";
-	    src: url("https://db.onlinewebfonts.com/t/7b126ca9fc9ae059a9a0a08f6314a661.eot");
-	    src: url("https://db.onlinewebfonts.com/t/7b126ca9fc9ae059a9a0a08f6314a661.eot?#iefix")format("embedded-opentype"),
-	    url("https://db.onlinewebfonts.com/t/7b126ca9fc9ae059a9a0a08f6314a661.woff2")format("woff2"),
-	    url("https://db.onlinewebfonts.com/t/7b126ca9fc9ae059a9a0a08f6314a661.woff")format("woff"),
-	    url("https://db.onlinewebfonts.com/t/7b126ca9fc9ae059a9a0a08f6314a661.ttf")format("truetype"),
-	   
-	}
-
-        @font-face {
-            font-family: "NewRocker-Regular";
-            src: url("fonts/NewRocker-Regular.ttf") format("truetype");
-        }
-
-        .rockstar-text {
-            font-family: "NewRocker-Regular", sans-serif;
-        }*/
-
-       body {
-		 
-		 font-family: Arial, Helvetica, sans-serif;
-	          background-color: black !important;
-              /* Adicionando padding-top para compensar o header fixo */
-              padding-top: 50px;
-		}
+<!DOCTYPE html> 
+<html lang="pt"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <title>NER - Nova Escola Rock</title> 
+    <style> 
+        /* Estilos existentes */
+        html, body { 
+            overflow-x: hidden; 
+            width: 100%; 
+        } 
+        .scrolling-text { 
+            font-size: 30px; 
+            white-space: nowrap; 
+            overflow: hidden; 
+            display: inline-block; 
+            animation: scroll-left-to-right 10s linear infinite; 
+        } 
+        @keyframes scroll-left-to-right { 
+            0% { transform: translateX(-100%); } 
+            100% { transform: translateX(100%); } 
+        } 
+        @font-face { 
+            font-family: "ROCK STEADY-Hollow"; 
+            src: url("https://db.onlinewebfonts.com/t/7b126ca9fc9ae059a9a0a08f6314a661.eot"); 
+            src: url("https://db.onlinewebfonts.com/t/7b126ca9fc9ae059a9a0a08f6314a661.eot?#iefix") format("embedded-opentype"), 
+                 url("https://db.onlinewebfonts.com/t/7b126ca9fc9ae059a9a0a08f6314a661.woff2") format("woff2"), 
+                 url("https://db.onlinewebfonts.com/t/7b126ca9fc9ae059a9a0a08f6314a661.woff") format("woff"), 
+                 url("https://db.onlinewebfonts.com/t/7b126ca9fc9ae059a9a0a08f6314a661.ttf") format("truetype"); 
+        } 
+        @font-face { 
+            font-family: "NewRocker-Regular"; 
+            src: url("fonts/NewRocker-Regular.ttf") format("truetype"); 
+        } 
+        .rockstar-text { 
+            font-family: "NewRocker-Regular", sans-serif; 
+        } 
+        body { 
+            font-family: Arial, Helvetica, sans-serif; 
+            background-color: black !important; 
+            /* Adicionando padding-top para compensar o header fixo */ 
+            padding-top: 50px; 
+        } 
         /* Header - Modificado para ficar fixo */
-        header {
-            background: black;
-            color: white;
-            padding: 1rem;
-	        height: 50px;
-	        position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        
-
-        @font-face {
-            font-family: 'Hard Rock';
-            src: url('fonts/HARD_ROCK.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: normal;
-            color: #ff3366;
-            font-family: 'Hard Rock', sans-serif;
-			float: left;
-        }
-		
-.topnav {
-    overflow: hidden;
-    float: right;
-    background-color: transparent;
-    margin-right: 20px; /* Adicionado margem à direita para mover os botões para a esquerda */
-}
-
-.topnav a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-
-.topnav a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-.topnav a.active {
-    background-color: #04AA6D;
-    color: white;
-}
-
-.topnav .icon {
-    display: none;
-}
-
-@media screen and (max-width: 600px) {
-    .topnav a:not(:last-child) {
-        display: none;
-    }
-    .topnav a.icon {
-        float: right;
-        display: block;
-    }
-    
-    .topnav.responsive {
-        position: relative;
-        float: none;
-        width: 100%;
-        position: absolute;
-        top: 50px;
-        left: 0;
-        background-color: black !important;
-        z-index: 1000;
-    }
-    
-    .topnav.responsive a {
-        float: none;
-        display: block;
-        width: 100%;
-        text-align: left;
-        padding: 15px;
-        border-bottom: 1px solid #333;
-    }
-
-    .hero-content h1 {
-        font-size: 2rem;
-	font-family: 'ROCK STEADY-Hollow';
-    }
-
-}
-   
-    
-
-       
-
-@media (max-width: 1024px) { /* Para tablets e telas médias */
-    .hero-content h1 {
-        font-size: 2rem;
-	font-family: 'ROCK STEADY-Hollow';
-    }
-
-    .cta-button {
-        font-size: 1rem;
-    }
-
-    .cursos-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 colunas para dispositivos maiores */
-    }
-
-    .professores-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 colunas para dispositivos maiores */
-    }
-}
-
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("galeria-de-imagens/fundoner.jpeg");
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
-		width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-        }
-
-        .hero-content h1 {
-            font-family: 'ROCK STEADY-Hollow', sans-serif;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        .hero-content p {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        /* Botões */
-        .cta-button {
-            background: #ff3366;
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background 0.3s;
-            text-decoration: none;
-        }
-
-        .cta-button:hover {
-            background: #e62e5c;
-        }
-
-        .hero-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .hero-content .cta-button {
-            margin: 10px;
-        }
-
-        /* Seção Cursos */
-        .cursos {
-            padding: 80px 20px;
-            background-color: #1a1a1a;
-        }
-
-        .cursos h2 {
-            text-align: center;
-            color: #ff3366;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            font-family: 'ROCK STEADY-Hollow', sans-serif;
-        }
-
-        .cursos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .curso-card {
-            background: #2a2a2a;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.3s;
-            color: white;
-        }
-
-        .curso-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
-        }
-
-        .curso-card h3 {
-            color: #ff3366;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            font-family: "NewRocker-Regular", sans-serif;
-        }
-
-        .curso-card p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        @media (min-width: 768px) {
-            .hero-content .cta-button {
-                display: inline-block;
-            }
-        }
-
-        /* Seção Professores */
-        .professores {
-            padding: 80px 20px;
-            background-color: #1a1a1a;
-        }
-
-        .professores h2 {
-            text-align: center;
-            margin-bottom: 3rem;
-            color: white;
-            /* Adiciona esta linha para mudar a cor */
-            font-family: 'ROCK STEADY-Hollow', sans-serif;
-            font-size: 2.5rem;
-            /* Adiciona ou ajusta esta linha */
-        }
-
-        .professores-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .professor-card {
-            background: #ffffff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .professor-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .professor-imagem {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
-
-        .professor-info {
-            padding: 1.5rem;
-        }
-
-        .professor-info h3 {
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        .professor-info p {
-            color: #666;
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        .professor-especialidade {
-            color: #ff3366;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        footer {
-            background-color: #1a1a1a;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            font-size: 1rem;
-            margin-top: 5px;
-            /* Margem superior */
-        }
-
-        footer .footer-content ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        footer .footer-content ul li {
-            display: inline;
-            margin-right: 20px;
-        }
-
-        footer .footer-content ul li a {
-            color: white;
-            text-decoration: none;
-        }
-
-        footer .footer-content ul li a:hover {
-            color: #ff3366;
-        }
-
-     
-
-       
-
-        /* Estilos para o botão de contato */
-        .contact-button {
-            display: block;
-            margin: 20px auto;
-            /* Centraliza o botão horizontalmente */
-            text-align: center;
-            /* Garante que o texto do botão esteja centralizado */
-            width: fit-content;
-            /* Ajusta a largura ao conteúdo */
-            padding: 1rem 2rem;
-            background: #ff3366;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background 0.3s;
-            text-decoration: none;
-            /* Remove sublinhado do link */
-        }
-
-        .contact-button:hover {
-            background: #e62e5c;
-        }
-
-        /* Seção de Vídeos */
-        .videos {
-            padding: 80px 20px;
-            background-color: #1a1a1a;
-        }
-
-        .videos h2 {
-            text-align: center;
-            color: #ff3366;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            font-family: 'ROCK STEADY-Hollow', sans-serif;
-        }
-
-        .videos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .video-card {
-            background: #2a2a2a;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.3s;
-        }
-
-        .video-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        .video-info {
-            padding: 1.5rem;
-            color: white;
-        }
-
-        .video-info h3 {
-            color: #ff3366;
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            font-family: "NewRocker-Regular", sans-serif;
-        }
-
-        .video-info p {
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        /* Seção de Fotos */
-        .fotos {
-            padding: 80px 20px;
-            background-color: #1a1a1a;
-        }
-
-        .fotos h2 {
-            text-align: center;
-            color: #ff3366;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            font-family: 'ROCK STEADY-Hollow', sans-serif;
-        }
-
-        .fotos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .foto-card {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            height: 250px;
-            transition: transform 0.3s;
-        }
-
-        .foto-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
-        }
-
-        .foto-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .foto-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 10px;
-            transform: translateY(100%);
-            transition: transform 0.3s;
-        }
-
-        .foto-card:hover .foto-overlay {
-            transform: translateY(0);
-        }
-
-        .foto-overlay h3 {
-            color: #ff3366;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-            font-family: "NewRocker-Regular", sans-serif;
-        }
-
-        .foto-overlay p {
-            font-size: 0.8rem;
-            line-height: 1.4;
-        }
-
-        /* Lightbox para as fotos */
-        .lightbox {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            text-align: center;
-        }
-
-        .lightbox-content {
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-            margin: auto;
-            display: block;
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-
-        .close:hover {
-            color: #ff3366;
-        }
-
-
-    </style>
-</head>
-
-<body>
-    <header>
-		<div class="logo">Nova Escola Rock</div>
-        <div class="topnav" id="myTopnav">
-          <a href="#inicio">Início</a>
-          <a href="https://aprender-guitarra-2018.webnode.pt/contacto/" target="_blank" class="active">Contato</a>
-          <a href="#cursos">Cursos</a>
-          <a href="#professores">Professores</a>
-          <a href="#videos">Videos</a>
+        header { 
+            background: black; 
+            color: white; 
+            padding: 1rem; 
+            height: 50px; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            z-index: 1000; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); 
+        } 
+        @font-face { 
+            font-family: 'Hard Rock'; 
+            src: url('fonts/HARD_ROCK.ttf') format('truetype'); 
+            font-weight: normal; 
+            font-style: normal; 
+        } 
+        .logo { 
+            font-size: 2rem; 
+            font-weight: normal; 
+            color: #ff3366; 
+            font-family: 'Hard Rock', sans-serif; 
+            float: left; 
+        } 
+        .topnav { 
+            overflow: hidden; 
+            float: right; 
+            background-color: transparent; 
+            margin-right: 20px; /* Adicionado margem à direita para mover os botões para a esquerda */ 
+        } 
+        .topnav a { 
+            float: left; 
+            display: block; 
+            color: #f2f2f2; 
+            text-align: center; 
+            padding: 14px 16px; 
+            text-decoration: none; 
+            font-size: 17px; 
+        } 
+        .topnav a:hover { 
+            background-color: #ddd; 
+            color: black; 
+        } 
+        .topnav a.active { 
+            background-color: #04AA6D; 
+            color: white; 
+        } 
+        .topnav .icon { 
+            display: none; 
+        } 
+        @media screen and (max-width: 600px) { 
+            .topnav a:not(:last-child) { 
+                display: none; 
+            } 
+            .topnav a.icon { 
+                float: right; 
+                display: block; 
+            } 
+            .topnav.responsive { 
+                position: relative; 
+                float: none; 
+                width: 100%; 
+                position: absolute; 
+                top: 50px; 
+                left: 0; 
+                background-color: black !important; 
+                z-index: 1000; 
+            } 
+            .topnav.responsive a { 
+                float: none; 
+                display: block; 
+                width: 100%; 
+                text-align: left; 
+                padding: 15px; 
+                border-bottom: 1px solid #333; 
+            } 
+            .hero-content h1 { 
+                font-size: 2rem; 
+                font-family: 'ROCK STEADY-Hollow'; 
+            } 
+        } 
+        @media (max-width: 1024px) { /* Para tablets e telas médias */ 
+            .hero-content h1 { 
+                font-size: 2rem; 
+                font-family: 'ROCK STEADY-Hollow'; 
+            } 
+            .cta-button { 
+                font-size: 1rem; 
+            } 
+            .cursos-grid { 
+                grid-template-columns: repeat(2, 1fr); /* 2 colunas para dispositivos maiores */ 
+            } 
+            .professores-grid { 
+                grid-template-columns: repeat(2, 1fr); /* 2 colunas para dispositivos maiores */ 
+            } 
+        } 
+        /* Hero Section */ 
+        .hero { 
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("galeria-de-imagens/fundoner.jpeg"); 
+            background-size: cover; 
+            background-position: center; 
+            height: 80vh; 
+            width: 100%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            color: white; 
+        } 
+        .hero-content h1 { 
+            font-family: 'ROCK STEADY-Hollow', sans-serif; 
+            font-size: 2.5rem; 
+            margin-bottom: 1rem; 
+            color: white; 
+        } 
+        .hero-content p { 
+            font-size: 2rem; 
+            margin-bottom: 2rem; 
+        } 
+        /* Botões */ 
+        .cta-button { 
+            background: #ff3366; 
+            color: white; 
+            padding: 1rem 2rem; 
+            border: none; 
+            border-radius: 5px; 
+            font-size: 1.1rem; 
+            cursor: pointer; 
+            transition: background 0.3s; 
+            text-decoration: none; 
+        } 
+        .cta-button:hover { 
+            background: #e62e5c; 
+        } 
+        .hero-content { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        } 
+        .hero-content .cta-button { 
+            margin: 10px; 
+        } 
+        /* Seção Cursos */ 
+        .cursos { 
+            padding: 80px 20px; 
+            background-color: #1a1a1a; 
+        } 
+        .cursos h2 { 
+            text-align: center; 
+            color: #ff3366; 
+            font-size: 2.5rem; 
+            margin-bottom: 50px; 
+            font-family: 'ROCK STEADY-Hollow', sans-serif; 
+        } 
+        .cursos-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 30px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        } 
+        .curso-card { 
+            background: #2a2a2a; 
+            padding: 30px; 
+            border-radius: 10px; 
+            text-align: center; 
+            transition: transform 0.3s; 
+            color: white; 
+        } 
+        .curso-card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3); 
+        } 
+        .curso-card h3 { 
+            color: #ff3366; 
+            font-size: 1.5rem; 
+            margin-bottom: 15px; 
+            font-family: "NewRocker-Regular", sans-serif; 
+        } 
+        .curso-card p { 
+            font-size: 1.1rem; 
+            line-height: 1.6; 
+        } 
+        @media (min-width: 768px) { 
+            .hero-content .cta-button { 
+                display: inline-block; 
+            } 
+        } 
+        /* Seção Professores */ 
+        .professores { 
+            padding: 80px 20px; 
+            background-color: #1a1a1a; 
+        } 
+        .professores h2 { 
+            text-align: center; 
+            margin-bottom: 3rem; 
+            color: white; 
+            font-family: 'ROCK STEADY-Hollow', sans-serif; 
+            font-size: 2.5rem; 
+        } 
+        .professores-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 2rem; 
+        } 
+        .professor-card { 
+            background: #ffffff; 
+            border-radius: 10px; 
+            overflow: hidden; 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+            transition: transform 0.3s; 
+        } 
+        .professor-card:hover { 
+            transform: translateY(-5px); 
+        } 
+        .professor-imagem { 
+            width: 100%; 
+            height: auto; 
+            object-fit: cover; 
+        } 
+        .professor-info { 
+            padding: 1.5rem; 
+        } 
+        .professor-info h3 { 
+            color: #333; 
+            margin-bottom: 0.5rem; 
+        } 
+        .professor-info p { 
+            color: #666; 
+            font-size: 0.9rem; 
+            line-height: 1.6; 
+        } 
+        .professor-especialidade { 
+            color: #ff3366; 
+            font-weight: bold; 
+            margin-bottom: 0.5rem; 
+        } 
+        footer { 
+            background-color: #1a1a1a; 
+            color: white; 
+            padding: 20px; 
+            text-align: center; 
+            font-size: 1rem; 
+            margin-top: 5px; 
+        } 
+        footer .footer-content ul { 
+            list-style: none; 
+            padding: 0; 
+        } 
+        footer .footer-content ul li { 
+            display: inline; 
+            margin-right: 20px; 
+        } 
+        footer .footer-content ul li a { 
+            color: white; 
+            text-decoration: none; 
+        } 
+        footer .footer-content ul li a:hover { 
+            color: #ff3366; 
+        } 
+        /* Estilos para o botão de contato */ 
+        .contact-button { 
+            display: block; 
+            margin: 20px auto; 
+            text-align: center; 
+            width: fit-content; 
+            padding: 1rem 2rem; 
+            background: #ff3366; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            font-size: 1.1rem; 
+            cursor: pointer; 
+            transition: background 0.3s; 
+            text-decoration: none; 
+        } 
+        .contact-button:hover { 
+            background: #e62e5c; 
+        } 
+        /* Seção de Vídeos */ 
+        .videos { 
+            padding: 80px 20px; 
+            background-color: #1a1a1a; 
+        } 
+        .videos h2 { 
+            text-align: center; 
+            color: #ff3366; 
+            font-size: 2.5rem; 
+            margin-bottom: 50px; 
+            font-family: 'ROCK STEADY-Hollow', sans-serif; 
+        } 
+        .videos-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        } 
+        .video-card { 
+            background: #2a2a2a; 
+            border-radius: 10px; 
+            overflow: hidden; 
+            transition: transform 0.3s; 
+        } 
+        .video-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3); 
+        } 
+        .video-container { 
+            position: relative; 
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */ 
+            height: 0; 
+            overflow: hidden; 
+        } 
+        .video-container iframe { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            border: 0; 
+        } 
+        .video-info { 
+            padding: 1.5rem; 
+            color: white; 
+        } 
+        .video-info h3 { 
+            color: #ff3366; 
+            font-size: 1.3rem; 
+            margin-bottom: 10px; 
+            font-family: "NewRocker-Regular", sans-serif; 
+        } 
+        .video-info p { 
+            font-size: 0.9rem; 
+            line-height: 1.6; 
+        } 
+        /* Seção de Fotos */ 
+        .fotos { 
+            padding: 80px 20px; 
+            background-color: #1a1a1a; 
+        } 
+        .fotos h2 { 
+            text-align: center; 
+            color: #ff3366; 
+            font-size: 2.5rem; 
+            margin-bottom: 50px; 
+            font-family: 'ROCK STEADY-Hollow', sans-serif; 
+        } 
+        .fotos-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 20px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        } 
+        .foto-card { 
+            position: relative; 
+            border-radius: 10px; 
+            overflow: hidden; 
+            height: 250px; 
+            transition: transform 0.3s; 
+        } 
+        .foto-card:hover { 
+            transform: scale(1.03); 
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3); 
+        } 
+        .foto-card img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+        } 
+        .foto-overlay { 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            right: 0; 
+            background: rgba(0, 0, 0, 0.7); 
+            color: white; 
+            padding: 10px; 
+            transform: translateY(100%); 
+            transition: transform 0.3s; 
+        } 
+        .foto-card:hover .foto-overlay { 
+            transform: translateY(0); 
+        } 
+        .foto-overlay h3 { 
+            color: #ff3366; 
+            font-size: 1.1rem; 
+            margin-bottom: 5px; 
+            font-family: "NewRocker-Regular", sans-serif; 
+        } 
+        .foto-overlay p { 
+            font-size: 0.8rem; 
+            line-height: 1.4; 
+        } 
+        /* Lightbox para as fotos */ 
+        .lightbox { 
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0, 0, 0, 0.9); 
+            text-align: center; 
+        } 
+        .lightbox-content { 
+            position: relative; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            margin: auto; 
+            display: block; 
+            max-width: 90%; 
+            max-height: 90%; 
+        } 
+        .close { 
+            position: absolute; 
+            top: 20px; 
+            right: 30px; 
+            color: white; 
+            font-size: 40px; 
+            font-weight: bold; 
+            transition: 0.3s; 
+            cursor: pointer; 
+        } 
+        .close:hover { 
+            color: #ff3366; 
+        } 
+        /* Estilos para a seção da Loja */ 
+        .loja { 
+            padding: 80px 20px; 
+            background-color: #222; 
+            color: white; 
+            text-align: center; 
+        } 
+        .loja .produtos { 
+            display: flex; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+            gap: 20px; 
+            margin-bottom: 40px; 
+        } 
+        .loja .produto { 
+            background: #333; 
+            padding: 20px; 
+            border-radius: 10px; 
+            width: 300px; 
+        } 
+        .loja button { 
+            background: #ff3366; 
+            color: white; 
+            padding: 10px 15px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+        } 
+        .loja button:hover { 
+            background: #e62e5c; 
+        } 
+    </style> 
+</head> 
+<body> 
+    <header> 
+        <div class="logo">Nova Escola Rock</div> 
+        <div class="topnav" id="myTopnav"> 
+          <a href="#inicio">Início</a> 
+          <a href="https://aprender-guitarra-2018.webnode.pt/contacto/" target="_blank" class="active">Contato</a> 
+          <a href="#cursos">Cursos</a> 
+          <a href="#professores">Professores</a> 
+          <a href="#videos">Videos</a> 
           <a href="#fotos">Fotos</a>
-          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
-          </a>
+          <a href="#loja">Loja</a> 
+          <a href="javascript:void(0);" class="icon" onclick="myFunction()"> 
+            <i class="fa fa-bars"></i> 
+          </a> 
+        </div> 
+    </header> 
+
+    <section class="hero" id="inicio"> 
+        <div class="hero-content"> 
+            <br> 
+            <br> 
+            <br> 
+            <br> 
+            <h1 style="font-size: 40px;"><br>Ξ NER Ξ<br>Onde o Rock Ganha Vida</h1> 
+            <h4 class="scrolling-text">Ξ Inscrições Abertas Ξ</h4> 
+            <br> 
+            <br> 
+            <br> 
+            <br> 
+            <button class="cta-button" onclick="mostrarContacto()">Agenda uma Aula Experimental</button> 
+            <button class="cta-button" onclick="window.open('inscricao.html', '_blank')" style="margin-left: 20px;">Inscreve-te Aqui</button> 
+            <a href="https://aprender-guitarra-2018.webnode.pt/" target="_blank" class="cta-button contact-button">Mais Info</a> 
+        </div> 
+    </section> 
+
+    <section class="cursos" id="cursos"> 
+        <h2>Nossos Cursos</h2> 
+        <div class="cursos-grid"> 
+            <div class="curso-card"> 
+                <h3>Guitarra Clássica/Elétrica</h3> 
+                <p>Do básico ao avançado, aprende todos os estilos do rock & muito mais...</p> 
+            </div> 
+            <div class="curso-card"> 
+                <h3>Baixo</h3> 
+                <p>Desenvolve o teu groove e cria a base perfeita.</p> 
+            </div> 
+            <div class="curso-card"> 
+                <h3>Bateria</h3> 
+                <p>Domina as técnicas e ritmos essenciais do rock.</p> 
+            </div> 
+            <div class="curso-card"> 
+                <h3>Canto</h3> 
+                <p>Aprende a projetar a tua voz como um verdadeiro rockstar.</p> 
+            </div> 
+            <div class="curso-card"> 
+                <h3>Teclado/Piano</h3> 
+                <p>Deixa os teus dedos darem voz à alma.</p> 
+            </div> 
+            <div class="curso-card"> 
+                <h3>Acordeão</h3> 
+                <p>A magia do acordeão começa aqui!</p> 
+            </div> 
+            <div class="curso-card"> 
+                <h3>Cavaquinho</h3> 
+                <p>Começa no cavaquinho e toca o mundo!<br>Cavaquinho, a simplicidade que encanta, som que contagia!</p> 
+            </div> 
+        </div> 
+    </section> 
+
+    <script> 
+        function mostrarContacto() { 
+            alert("Para agendar sua aula experimental, entre em contacto: +351 938066695"); 
+        } 
+        function myFunction() { 
+            var x = document.getElementById("myTopnav"); 
+            if (x.className === "topnav") { 
+                x.className += " responsive"; 
+            } else { 
+                x.className = "topnav"; 
+            } 
+        } 
+        // Função para abrir o lightbox 
+        function openLightbox(imgSrc) { 
+            document.getElementById('lightbox').style.display = 'block'; 
+            document.getElementById('lightbox-img').src = imgSrc; 
+        } 
+        // Função para fechar o lightbox 
+        function closeLightbox() { 
+            document.getElementById('lightbox').style.display = 'none'; 
+        } 
+        // Função para rolagem suave ao clicar nos links de navegação 
+        document.addEventListener('DOMContentLoaded', function() { 
+            // Seleciona todos os links com âncora 
+            document.querySelectorAll('a[href^=\"#\"]').forEach(anchor => { 
+                anchor.addEventListener('click', function (e) { 
+                    e.preventDefault(); 
+                    const targetId = this.getAttribute('href'); 
+                    if(targetId === "#" || targetId === "") return; 
+                    const targetElement = document.querySelector(targetId); 
+                    if(!targetElement) return; 
+                    window.scrollTo({ 
+                        top: targetElement.offsetTop - 50, // 50px de compensação para o header fixo 
+                        behavior: 'smooth' 
+                    }); 
+                    // Fecha o menu responsivo se estiver aberto 
+                    var x = document.getElementById("myTopnav"); 
+                    if (x.className.includes("responsive")) { 
+                        x.className = "topnav"; 
+                    } 
+                }); 
+            }); 
+        }); 
+    </script> 
+
+    <section class="professores" id="professores"> 
+        <h2>Nossos Professores</h2> 
+        <div class="professores-grid"> 
+            <div class="professor-card"> 
+                <img src="galeria-de-imagens/deodato.jpg" alt="Professor Deodato" class="professor-imagem"> 
+                <div class="professor-info"> 
+                    <h3>Deodato Barbosa</h3> 
+                    <div class="professor-especialidade">Guitarra Clássica/Elétrica/Formação Musical</div> 
+                    <p>30 anos de experiência em guitarra. Especializado em rock clássico e heavy metal.</p> 
+                </div> 
+            </div> 
+            <div class="professor-card"> 
+                <img src="galeria-de-imagens/manuela.jpg" alt="Professora Agnes" class="professor-imagem"> 
+                <div class="professor-info"> 
+                    <h3>Agnes Montgomery</h3> 
+                    <div class="professor-especialidade">Canto</div> 
+                    <p>Formada em música com especialização em técnica vocal. Expert em rock e blues.</p> 
+                </div> 
+            </div> 
+            <div class="professor-card"> 
+                <img src="galeria-de-imagens/renato.jpg" alt="Professor Renato" class="professor-imagem"> 
+                <div class="professor-info"> 
+                    <h3>Renato Barbosa</h3> 
+                    <div class="professor-especialidade">Guitarra Elétrica/Produtor</div> 
+                    <p>O mestre das cordas e da produção, onde o talento encontra a perfeição.</p> 
+                </div> 
+            </div> 
+            <div class="professor-card"> 
+                <img src="galeria-de-imagens/filbass.jpg" alt="Professor Filipe" class="professor-imagem"> 
+                <div class="professor-info"> 
+                    <h3>Filipe Nunes</h3> 
+                    <div class="professor-especialidade">Baixo</div> 
+                    <p>O baixo não é apenas um instrumento, é a força invisível que move a música — e um grande professor ensina a dominá-lo com alma e precisão.</p> 
+                </div> 
+            </div> 
+            <div class="professor-card"> 
+                <img src="galeria-de-imagens/filipe_carvalho.jpg" alt="Professor Filipe" class="professor-imagem"> 
+                <div class="professor-info"> 
+                    <h3>Filipe Carvalho</h3> 
+                    <div class="professor-especialidade">Piano/Teclado</div> 
+                    <p>Mais do que ensinar notas, um professor de piano guia mãos e corações para a verdadeira magia da música.</p> 
+                </div> 
+            </div> 
+            <div class="professor-card"> 
+                <img src="galeria-de-imagens/Sidónio Nunes.png" alt="Professor Sidónio" class="professor-imagem"> 
+                <div class="professor-info"> 
+                    <h3>Sidónio Nunes</h3> 
+                    <div class="professor-especialidade">Bateria</div> 
+                    <p>Com cada batida, ele transforma o som em arte e a arte em emoção. O mestre da bateria que faz o ritmo pulsar na alma.</p> 
+                </div> 
+            </div> 
+        </div> 
+    </section> 
+
+    <!-- Seção de Vídeos --> 
+    <section class="videos" id="videos"> 
+        <h2>Videos</h2> 
+        <div class="videos-grid"> 
+            <div class="video-card"> 
+                <div class="video-container"> 
+                    <iframe src="/videos/NER - Nova Escola Rock - Descrição.mp4" frameborder="0" allowfullscreen></iframe> 
+                </div> 
+                <div class="video-info"> 
+                    <h3>Apresentação da Escola</h3> 
+                    <p>Conheça as nossas instalações e a equipe de professores da Nova Escola Rock.</p> 
+                </div> 
+            </div> 
+            <div class="video-card"> 
+                <div class="video-container"> 
+                    <iframe src="/videos/NER  Nova Escola Rock.mp4" frameborder="0" allowfullscreen></iframe> 
+                </div> 
+                <div class="video-info"> 
+                    <h3>Recital dos Alunos</h3> 
+                    <p>Veja as performances dos nossos alunos no último recital da escola.</p> 
+                </div> 
+            </div> 
+            <div class="video-card"> 
+                <div class="video-container"> 
+                    <iframe src="/videos/EnterSandMan  By RenatoBarbosa Solo Improviso_ WorkShop 30 OUT2021.mp4" frameborder="0" allowfullscreen></iframe> 
+                </div> 
+                <div class="video-info"> 
+                    <h3>Workshop de Guitarra</h3> 
+                    <p>Destaques do nosso workshop de técnicas avançadas de guitarra.</p> 
+                </div> 
+            </div>  
+        </div> 
+    </section> 
+
+    <!-- Seção de Fotos --> 
+    <section class="fotos" id="fotos"> 
+        <h2>Fotos</h2> 
+        <div class="fotos-grid"> 
+            <div class="foto-card" onclick="openLightbox('/api/placeholder/800/500')"> 
+                <img src="/api/placeholder/400/250" alt="Concerto NER"> 
+                <div class="foto-overlay"> 
+                    <h3>Concerto Anual</h3> 
+                    <p>Nossos alunos brilhando no palco durante o concerto anual.</p> 
+                </div> 
+            </div> 
+            <div class="foto-card" onclick="openLightbox('/api/placeholder/800/500')"> 
+                <img src="/api/placeholder/400/250" alt="Aula de Guitarra"> 
+                <div class="foto-overlay"> 
+                    <h3>Aulas de Guitarra</h3> 
+                    <p>Aulas personalizadas com os melhores professores.</p> 
+                </div> 
+            </div> 
+            <div class="foto-card" onclick="openLightbox('/api/placeholder/800/500')"> 
+                <img src="/api/placeholder/400/250" alt="Workshop de Bateria"> 
+                <div class="foto-overlay"> 
+                    <h3>Workshop de Bateria</h3> 
+                    <p>Aprendendo técnicas avançadas de bateria.</p> 
+                </div> 
+            </div> 
+            <div class="foto-card" onclick="openLightbox('/api/placeholder/800/500')"> 
+                <img src="/api/placeholder/400/250" alt="Estúdio de Gravação"> 
+                <div class="foto-overlay"> 
+                    <h3>Estúdio de Gravação</h3> 
+                    <p>Nosso estúdio profissional para gravações dos alunos.</p> 
+                </div> 
+            </div> 
+            <div class="foto-card" onclick="openLightbox('/api/placeholder/800/500')"> 
+                <img src="/api/placeholder/400/250" alt="Aula de Canto"> 
+                <div class="foto-overlay"> 
+                    <h3>Aulas de Canto</h3> 
+                    <p>Desenvolvendo a voz e a presença de palco.</p> 
+                </div> 
+            </div> 
+            <div class="foto-card" onclick="openLightbox('/api/placeholder/800/500')"> 
+                <img src="/api/placeholder/400/250" alt="Instalações NER"> 
+                <div class="foto-overlay"> 
+                    <h3>Nossas Instalações</h3> 
+                    <p>Conheça o espaço onde a magia acontece.</p> 
+                </div> 
+            </div> 
+        </div> 
+    </section> 
+
+    <!-- Lightbox para as fotos --> 
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()"> 
+        <span class="close">&times;</span> 
+        <img class="lightbox-content" id="lightbox-img"> 
+    </div> 
+
+    <!-- NOVA SEÇÃO: Loja (integração na mesma página) -->
+    <section class="loja" id="loja">
+        <h2>Loja</h2>
+        <div class="produtos">
+            <div class="produto">
+                <h3>Produto Exemplo 1</h3>
+                <p>Descrição: Produto Exemplo 1</p>
+                <p>Preço: 100€</p>
+                <button onclick="adicionarAoCarrinho('Produto Exemplo 1', 100)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <h3>Produto Exemplo 2</h3>
+                <p>Descrição: Produto Exemplo 2</p>
+                <p>Preço: 50€</p>
+                <button onclick="adicionarAoCarrinho('Produto Exemplo 2', 50)">Adicionar ao Carrinho</button>
+            </div>
         </div>
-
-	   
-       
-    </header>
-
-    <section class="hero" id="inicio">
-        <div class="hero-content">
-            <br>
-            <br>
-            <br>
-            <br>
-            <h1 style="font-size: 40px;"><br>Ξ NER Ξ<br>Onde o Rock Ganha Vida</h1>
-            <h4 class="scrolling-text">Ξ Inscrições Abertas Ξ</h4>
-           
-            <br>
-            <br>
-            <br>
-            <br>
-            <button class="cta-button" onclick="mostrarContacto()">Agenda uma Aula Experimental</button>
-            <button class="cta-button" onclick="window.open('inscricao.html', '_blank')"
-                style="margin-left: 20px;">Inscreve-te Aqui</button>
-
-            <a href="https://aprender-guitarra-2018.webnode.pt/" target="_blank"
-                class="cta-button contact-button">Mais Info</a>
-        </div>
+        <h2>Carrinho de Compras</h2>
+        <div id="carrinho"></div>
+        <h2>Métodos de Pagamento</h2>
+        <p>Podes pagar através de: Cartão de Crédito, PayPal, ou Multibanco.</p>
     </section>
-
-    <section class="cursos" id="cursos">
-        <h2>Nossos Cursos</h2>
-	<div class="cursos-grid">
-            <div class="curso-card">
-                <h3>Guitarra Clássica/Elétrica</h3>
-                <p>Do básico ao avançado, aprende todos os estilos do rock & muito mais...</p>
-            </div>
-            <div class="curso-card">
-                <h3>Baixo</h3>
-                <p>Desenvolve o teu groove e cria a base perfeita.</p>
-            </div>
-            <div class="curso-card">
-                <h3>Bateria</h3>
-                <p>Domina as técnicas e ritmos essenciais do rock.</p>
-            </div>
-            <div class="curso-card">
-                <h3>Canto</h3>
-                <p>Aprende a projetar a tua voz como um verdadeiro rockstar.</p>
-            </div>
-
-            <div class="curso-card">
-                <h3>Teclado/Piano</h3>
-                <p>Deixa os teus dedos darem voz à alma.</p>
-            </div>
-
-		<div class="curso-card">
-                <h3>Acordeão</h3>
-                <p>A magia do acordeão começa aqui!</p>
-            </div>
-
-		<div class="curso-card">
-                <h3>Cavaquinho</h3>
-                <p>Começa no cavaquinho e toca o mundo!<br>Cavaquinho, a simplicidade que encanta, som que contagia!</p>
-            </div>
-		
-        </div>
-    </section>
-
-   
 
     <script>
-        function mostrarContacto() {
-            alert("Para agendar sua aula experimental, entre em contacto: +351 938066695");
+        function adicionarAoCarrinho(produto, preco) {
+            var carrinho = document.getElementById('carrinho');
+            var item = document.createElement('p');
+            item.textContent = produto + " - " + preco + "€";
+            carrinho.appendChild(item);
         }
-
-        function myFunction() {
-            var x = document.getElementById("myTopnav");
-            if (x.className === "topnav") {
-                x.className += " responsive";
-            } else {
-                x.className = "topnav";
-            }
-        }
-
-        // Função para abrir o lightbox
-        function openLightbox(imgSrc) {
-            document.getElementById('lightbox').style.display = 'block';
-            document.getElementById('lightbox-img').src = imgSrc;
-        }
-
-        // Função para fechar o lightbox
-        function closeLightbox() {
-            document.getElementById('lightbox').style.display = 'none';
-        }
-
-        // Função para rolagem suave ao clicar nos links de navegação
-        document.addEventListener('DOMContentLoaded', function() {
-            // Seleciona todos os links com âncora
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if(targetId === "#" || targetId === "") return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if(!targetElement) return;
-                    
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 50, // 50px de compensação para o header fixo
-                        behavior: 'smooth'
-                    });
-                    
-                    // Fecha o menu responsivo se estiver aberto
-                    var x = document.getElementById("myTopnav");
-                    if (x.className.includes("responsive")) {
-                        x.className = "topnav";
-                    }
-                });
-            });
-        });
     </script>
-	<section class="professores" id="professores">
-        <h2>Nossos Professores</h2>
-        <div class="professores-grid">
-            <div class="professor-card">
-                <img src="galeria-de-imagens/deodato.jpg" alt="Professor Deodato" class="professor-imagem">
-                <div class="professor-info">
-                    <h3>Deodato Barbosa</h3>
-                    <div class="professor-especialidade">Guitarra Clássica/Elétrica/Formação Musical</div>
-                    <p>30 anos de experiência em guitarra. Especializado em rock clássico e heavy metal.</p>
-                </div>
-            </div>
 
-            <div class="professor-card">
-                <img src="galeria-de-imagens/manuela.jpg" alt="Professora Agnes" class="professor-imagem">
-                <div class="professor-info">
-                    <h3>Agnes Montgomery</h3>
-                    <div class="professor-especialidade">Canto</div>
-                    <p>Formada em música com especialização em técnica vocal. Expert em rock e blues.</p>
-                </div>
-            </div>
-
-            <div class="professor-card">
-                <img src="galeria-de-imagens/renato.jpg" alt="Professor Renato" class="professor-imagem">
-                <div class="professor-info">
-                    <h3>Renato Barbosa</h3>
-                    <div class="professor-especialidade">Guitarra Elétrica/Produtor</div>
-                    <p>O mestre das cordas e da produção, onde o talento encontra a perfeição.</p>
-                </div>
-            </div>
-
-	     <div class="professor-card">
-                <img src="galeria-de-imagens/filbass.jpg" alt="Professor Filipe" class="professor-imagem">
-                <div class="professor-info">
-                    <h3>Filipe Nunes</h3>
-                    <div class="professor-especialidade">Baixo</div>
-                    <p>O baixo não é apenas um instrumento, é a força invisível que move a música — e um grande professor ensina a dominá-lo com alma e precisão.</p>
-                </div>
-            </div>
-
-	   <div class="professor-card">
-                <img src="galeria-de-imagens/filipe_carvalho.jpg" alt="Professor Filipe" class="professor-imagem">
-                <div class="professor-info">
-                    <h3>Filipe Carvalho</h3>
-                    <div class="professor-especialidade">Piano/Teclado</div>
-                    <p>Mais do que ensinar notas, um professor de piano guia mãos e corações para a verdadeira magia da música.</p>
-                </div>
-            </div>
-
-	   <div class="professor-card">
-                <img src="galeria-de-imagens/Sidónio Nunes.png" alt="Professor Sidónio" class="professor-imagem">
-                <div class="professor-info">
-                    <h3>Sidónio Nunes</h3>
-                    <div class="professor-especialidade">Bateria</div>
-                    <p>Com cada batida, ele transforma o som em arte e a arte em emoção. O mestre da bateria que faz o ritmo pulsar na alma.</p>
-                </div>
-            </div>
-		
-        </div>
-    </section>
-
-    <!-- Seção de Vídeos -->
-    <section class="videos" id="videos">
-        <h2>Videos</h2>
-        <div class="videos-grid">
-            <div class="video-card">
-                <div class="video-container">
-                    <iframe src="/videos/NER - Nova Escola Rock - Descrição.mp4" frameborder="0" allowfullscreen></iframe>
-                </div>
-                <div class="video-info">
-                    <h3>Apresentação da Escola</h3>
-                    <p>Conheça as nossas instalações e a equipe de professores da Nova Escola Rock.</p>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="video-container">
-                    <iframe src="/videos/NER  Nova Escola Rock.mp4" frameborder="0" allowfullscreen></iframe>
-                </div>
-                <div class="video-info">
-                    <h3>Recital dos Alunos</h3>
-                    <p>Veja as performances dos nossos alunos no último recital da escola.</p>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="video-container">
-                    <iframe src="/videos/EnterSandMan  By RenatoBarbosa Solo Improviso_ WorkShop 30 OUT2021.mp4" frameborder="0" allowfullscreen></iframe>
-                </div>
-                <div class="video-info">
-                    <h3>Workshop de Guitarra</h3>
-                    <p>Destaques do nosso workshop de técnicas avançadas de guitarra.</p>
-                </div>
-            </div>	
-        </div>
-
-	
-     
-	    
-    </section>
-
-    <!-- Nova Seção de Fotos -->
-    <section class="fotos" id="fotos">
-        <h2>Fotos</h2>
-        <div class="fotos-grid">
-            <div class="foto-card" onclick="openLightbox('/api/placeholder/800/500')">
-                <img src="/api/placeholder/400/250" alt="Concerto NER">
-                <div class="foto-overlay">
-                    <h3>Concerto Anual</h3>
-                    <p>Nossos alunos brilhando no palco durante o concerto anual.</p>
-                </div>
-            </div>
-            <div class="foto-card" onclick="openLightbox('/api/placeholder/800/500')">
-                <img src="/api/placeholder/400/250" alt="Aula de Guitarra">
-                <div class="foto-overlay">
-                    <h3>Aulas de Guitarra</h3>
-                    <p>Aulas personalizadas com os melhores professores.</p>
-                </div>
-            </div>
-            <div class="foto-card" onclick="openLightbox('/api/placeholder/800/500')">
-                <img src="/api/placeholder/400/250" alt="Workshop de Bateria">
-                <div class="foto-overlay">
-                    <h3>Workshop de Bateria</h3>
-                    <p>Aprendendo técnicas avançadas de bateria.</p>
-                </div>
-            </div>
-            <div class="foto-card" onclick="openLightbox('/api/placeholder/800/500')">
-                <img src="/api/placeholder/400/250" alt="Estúdio de Gravação">
-                <div class="foto-overlay">
-                    <h3>Estúdio de Gravação</h3>
-                    <p>Nosso estúdio profissional para gravações dos alunos.</p>
-                </div>
-            </div>
-            <div class="foto-card" onclick="openLightbox('/api/placeholder/800/500')">
-                <img src="/api/placeholder/400/250" alt="Aula de Canto">
-                <div class="foto-overlay">
-                    <h3>Aulas de Canto</h3>
-                    <p>Desenvolvendo a voz e a presença de palco.</p>
-                </div>
-            </div>
-            <div class="foto-card" onclick="openLightbox('/api/placeholder/800/500')">
-                <img src="/api/placeholder/400/250" alt="Instalações NER">
-                <div class="foto-overlay">
-                    <h3>Nossas Instalações</h3>
-                    <p>Conheça o espaço onde a magia acontece.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Lightbox para as fotos -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <span class="close">&times;</span>
-        <img class="lightbox-content" id="lightbox-img">
-    </div>
-
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 NER - Nova Escola Rock. Todos os direitos reservados.</p>
-
-        </div>
-    </footer>
-
-</body>
-
+    <footer> 
+        <div class="footer-content"> 
+            <p>&copy; 2025 NER - Nova Escola Rock. Todos os direitos reservados.</p> 
+        </div> 
+    </footer> 
+</body> 
 </html>
+
