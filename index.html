@@ -54,14 +54,21 @@
 		 
 		 font-family: Arial, Helvetica, sans-serif;
 	          background-color: black !important;
+              /* Adicionando padding-top para compensar o header fixo */
+              padding-top: 50px;
 		}
-        /* Header */
+        /* Header - Modificado para ficar fixo */
         header {
             background: black;
             color: white;
             padding: 1rem;
-	    height: 50px;
-	    position: relative;
+	        height: 50px;
+	        position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         
@@ -579,6 +586,7 @@
     <header>
 		<div class="logo">Nova Escola Rock</div>
         <div class="topnav" id="myTopnav">
+          <a href="#inicio">Início</a>
           <a href="https://aprender-guitarra-2018.webnode.pt/contacto/" target="_blank" class="active">Contato</a>
           <a href="#cursos">Cursos</a>
           <a href="#professores">Professores</a>
@@ -679,6 +687,33 @@
         function closeLightbox() {
             document.getElementById('lightbox').style.display = 'none';
         }
+
+        // Função para rolagem suave ao clicar nos links de navegação
+        document.addEventListener('DOMContentLoaded', function() {
+            // Seleciona todos os links com âncora
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === "#" || targetId === "") return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(!targetElement) return;
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 50, // 50px de compensação para o header fixo
+                        behavior: 'smooth'
+                    });
+                    
+                    // Fecha o menu responsivo se estiver aberto
+                    var x = document.getElementById("myTopnav");
+                    if (x.className.includes("responsive")) {
+                        x.className = "topnav";
+                    }
+                });
+            });
+        });
     </script>
 	<section class="professores" id="professores">
         <h2>Nossos Professores</h2>
