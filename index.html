@@ -1,7 +1,3 @@
-Site NER com Seção de Vídeos
-Preview
-Code
-
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -468,6 +464,113 @@ Code
             line-height: 1.6;
         }
 
+        /* Seção de Fotos */
+        .fotos {
+            padding: 80px 20px;
+            background-color: #1a1a1a;
+        }
+
+        .fotos h2 {
+            text-align: center;
+            color: #ff3366;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            font-family: 'ROCK STEADY-Hollow', sans-serif;
+        }
+
+        .fotos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .foto-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+            transition: transform 0.3s;
+        }
+
+        .foto-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
+        }
+
+        .foto-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .foto-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .foto-card:hover .foto-overlay {
+            transform: translateY(0);
+        }
+
+        .foto-overlay h3 {
+            color: #ff3366;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            font-family: "NewRocker-Regular", sans-serif;
+        }
+
+        .foto-overlay p {
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        /* Lightbox para as fotos */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            text-align: center;
+        }
+
+        .lightbox-content {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #ff3366;
+        }
+
 
     </style>
 </head>
@@ -480,6 +583,7 @@ Code
           <a href="#cursos">Cursos</a>
           <a href="#professores">Professores</a>
           <a href="#videos">Videos</a>
+          <a href="#fotos">Fotos</a>
           <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i>
           </a>
@@ -556,14 +660,25 @@ Code
             alert("Para agendar sua aula experimental, entre em contacto: +351 938066695");
         }
 
-   function myFunction() {
-      var x = document.getElementById("myTopnav");
-      if (x.className === "topnav") {
-        x.className += " responsive";
-      } else {
-        x.className = "topnav";
-      }
-    }
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+
+        // Função para abrir o lightbox
+        function openLightbox(imgSrc) {
+            document.getElementById('lightbox').style.display = 'block';
+            document.getElementById('lightbox-img').src = imgSrc;
+        }
+
+        // Função para fechar o lightbox
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
     </script>
 	<section class="professores" id="professores">
         <h2>Nossos Professores</h2>
@@ -616,7 +731,7 @@ Code
         </div>
     </section>
 
-    <!-- Nova Seção de Vídeos -->
+    <!-- Seção de Vídeos -->
     <section class="videos" id="videos">
         <h2>Videos</h2>
         <div class="videos-grid">
@@ -650,14 +765,67 @@ Code
         </div>
     </section>
 
+    <!-- Nova Seção de Fotos -->
+    <section class="fotos" id="fotos">
+        <h2>Fotos</h2>
+        <div class="fotos-grid">
+            <div class="foto-card" onclick="openLightbox('/api/placeholder/800/500')">
+                <img src="/api/placeholder/400/250" alt="Concerto NER">
+                <div class="foto-overlay">
+                    <h3>Concerto Anual</h3>
+                    <p>Nossos alunos brilhando no palco durante o concerto anual.</p>
+                </div>
+            </div>
+            <div class="foto-card" onclick="openLightbox('/api/placeholder/800/500')">
+                <img src="/api/placeholder/400/250" alt="Aula de Guitarra">
+                <div class="foto-overlay">
+                    <h3>Aulas de Guitarra</h3>
+                    <p>Aulas personalizadas com os melhores professores.</p>
+                </div>
+            </div>
+            <div class="foto-card" onclick="openLightbox('/api/placeholder/800/500')">
+                <img src="/api/placeholder/400/250" alt="Workshop de Bateria">
+                <div class="foto-overlay">
+                    <h3>Workshop de Bateria</h3>
+                    <p>Aprendendo técnicas avançadas de bateria.</p>
+                </div>
+            </div>
+            <div class="foto-card" onclick="openLightbox('/api/placeholder/800/500')">
+                <img src="/api/placeholder/400/250" alt="Estúdio de Gravação">
+                <div class="foto-overlay">
+                    <h3>Estúdio de Gravação</h3>
+                    <p>Nosso estúdio profissional para gravações dos alunos.</p>
+                </div>
+            </div>
+            <div class="foto-card" onclick="openLightbox('/api/placeholder/800/500')">
+                <img src="/api/placeholder/400/250" alt="Aula de Canto">
+                <div class="foto-overlay">
+                    <h3>Aulas de Canto</h3>
+                    <p>Desenvolvendo a voz e a presença de palco.</p>
+                </div>
+            </div>
+            <div class="foto-card" onclick="openLightbox('/api/placeholder/800/500')">
+                <img src="/api/placeholder/400/250" alt="Instalações NER">
+                <div class="foto-overlay">
+                    <h3>Nossas Instalações</h3>
+                    <p>Conheça o espaço onde a magia acontece.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox para as fotos -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
     <footer>
         <div class="footer-content">
             <p>&copy; 2025 NER - Nova Escola Rock. Todos os direitos reservados.</p>
 
         </div>
     </footer>
-
-
 
 </body>
 
