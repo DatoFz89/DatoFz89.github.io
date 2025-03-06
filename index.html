@@ -892,6 +892,24 @@
             <p>&copy; 2025 NER - Nova Escola Rock. Todos os direitos reservados.</p>  
         </div>  
     </footer>  
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const videos = document.querySelectorAll(".video-container video");
+
+        videos.forEach(video => {
+            video.addEventListener("play", function () {
+                videos.forEach(otherVideo => {
+                    if (otherVideo !== video) {
+                        otherVideo.pause();
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+    
 </body>  
 </html>
 
