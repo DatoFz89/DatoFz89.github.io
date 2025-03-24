@@ -88,27 +88,36 @@
     <div class="form-container">
         <h2>Inscreve-te Aqui</h2>
         <form action="https://formsubmit.co/aprenderguitarra2018@gmail.com" method="POST">
-            <input type="hidden" name="_next" value="https://datofz89.github.io/thanks.html">
-            <input type="hidden" name="_subject" value="Nova Inscrição - Escola Rock">
-            <input type="text" name="nome" placeholder="Nome completo" required>
-            <label>Data de Nascimento</label>
-            <input type="date" name="data_nascimento" required>
-            <textarea name="endereco" rows="3" placeholder="Endereço"></textarea>
-            <input type="tel" name="telefone" placeholder="Telefone" required>
-            <input type="email" name="email" placeholder="E-mail" required>
-            <select name="curso" required>
-                <option value="">Selecione um curso</option>
-                <option value="guitarra">Guitarra</option>
-                <option value="baixo">Baixo</option>
-                <option value="bateria">Bateria</option>
-                <option value="canto">Canto</option>
-                <option value="teclado">Teclado/Piano</option>
-                <option value="acordeao">Acordeão</option>
-                <option value="cavaquinho">Cavaquinho</option>
-                <option value="outros">Outros</option>
-            </select>
-            <button type="submit">Enviar Inscrição</button>
-        </form>
+    <!-- Desativar CAPTCHA para evitar bloqueios -->
+    <input type="hidden" name="_captcha" value="false">
+
+    <!-- Redirecionamento após envio bem-sucedido -->
+    <input type="hidden" name="_next" value="https://datofz89.github.io/thanks.html">
+
+    <!-- Assunto do email enviado -->
+    <input type="hidden" name="_subject" value="Nova Inscrição - Escola Rock">
+
+    <input type="text" name="nome" placeholder="Nome completo" required>
+    <label>Data de Nascimento</label>
+    <input type="date" name="data_nascimento" required>
+    <textarea name="endereco" rows="3" placeholder="Endereço"></textarea>
+    <input type="tel" name="telefone" placeholder="Telefone" required>
+    <input type="email" name="email" placeholder="E-mail" required>
+    
+    <select name="curso" required>
+        <option value="">Selecione um curso</option>
+        <option value="guitarra">Guitarra</option>
+        <option value="baixo">Baixo</option>
+        <option value="bateria">Bateria</option>
+        <option value="canto">Canto</option>
+        <option value="teclado">Teclado/Piano</option>
+        <option value="acordeao">Acordeão</option>
+        <option value="cavaquinho">Cavaquinho</option>
+        <option value="outros">Outros</option>
+    </select>
+
+    <button type="submit">Enviar Inscrição</button>
+</form>
     </div>
 </body>
 </html>
