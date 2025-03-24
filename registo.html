@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registo de Utilizador - NER</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #121212;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .form-container {
+            background: rgba(255, 51, 102, 0.9);
+            padding: 30px;
+            margin: 50px auto;
+            width: 50%;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 51, 102, 0.2);
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        button {
+            background: black;
+            color: white;
+            padding: 15px;
+            width: 100%;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Registo de Utilizador</h2>
+        <form action="registo.php" method="POST">
+            <label for="nome">Nome Completo:</label>
+            <input type="text" name="nome_completo" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" name="email" required>
+
+            <label for="password">Palavra-passe:</label>
+            <input type="password" name="palavra_passe" required minlength="6">
+
+            <label for="confirmar_palavra_passe">Confirmar Palavra-passe:</label>
+            <input type="password" id="confirmar_palavra_passe" name="confirmar_palavra_passe" required>
+
+            <label for="morada">Morada:</label>
+            <input type="text" id="morada" name="morada" required>
+
+            <label for="codigo_postal">Código Postal:</label>
+            <input type="text" id="codigo_postal" name="codigo_postal" pattern="\d{4}-\d{3}" title="Formato válido: 1234-567" required>
+
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" name="cidade" required>
+
+            <label for="pais">País:</label>
+            <input type="text" id="pais" name="pais" required>
+
+            <label for="nif">NIF:</label>
+            <input type="text" id="nif" name="nif" pattern="\d{9}" title="O NIF deve ter 9 dígitos" required>
+
+            <label for="telefone">Telefone (Opcional):</label>
+            <input type="text" id="telefone" name="telefone">
+
+            <label for="termos">
+                <input type="checkbox" id="termos" name="termos" required> Aceito os Termos e Condições
+            </label>
+
+            <button type="submit">Registar</button>
+        </form>
+    </div>
+</body>
+</html>
