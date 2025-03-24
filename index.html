@@ -478,50 +478,6 @@
         .close:hover {  
             color: #ff3366;  
         }  
-        /* Estilos para a seção da Loja */ 
-        .loja {  
-            padding: 80px 20px;  
-            background-color: #222;  
-            color: white;  
-            text-align: center;  
-        }  
-        .loja h2 {  
-            text-align: center;  
-            color: #ff3366;  
-            font-size: 2.5rem;  
-            margin-bottom: 50px;  
-            font-family: 'ROCK STEADY-Hollow', sans-serif;  
-        }  
-        .loja .produtos {  
-            display: flex;  
-            justify-content: center;  
-            flex-wrap: wrap;  
-            gap: 20px;  
-            margin-bottom: 40px;  
-        }  
-        .loja .produto {  
-            background: #333;  
-            padding: 20px;  
-            border-radius: 10px;  
-            width: 300px;  
-        }  
-        .loja .produto h3 {  
-            color: #ff3366;  
-            font-size: 1.5rem;  
-            margin-bottom: 15px;  
-            font-family: "NewRocker-Regular", sans-serif;  
-        }  
-        .loja button {  
-            background: #ff3366;  
-            color: white;  
-            padding: 10px 15px;  
-            border: none;  
-            border-radius: 5px;  
-            cursor: pointer;  
-        }  
-        .loja button:hover {  
-            background: #e62e5c;  
-        }  
     </style>  
 </head>  
 <body>  
@@ -639,23 +595,7 @@
                 });  
             });  
         });  
- 
-        // Função para adicionar itens ao carrinho 
-        function adicionarAoCarrinho(produto, preco) { 
-            var carrinho = document.getElementById('carrinho'); 
-            var item = document.createElement('p'); 
-            item.textContent = produto + " - " + preco + "€"; 
-            carrinho.appendChild(item); 
-        } 
-         
-        // Função para finalizar a compra 
-        function finalizarCompra() { 
-            if(document.getElementById('carrinho').childElementCount === 0) { 
-                alert("O carrinho está vazio!"); 
-            } else { 
-                alert("Compra finalizada! Obrigado pela sua compra."); 
-            } 
-        } 
+  
     </script>  
  
     <section class="professores" id="professores">  
