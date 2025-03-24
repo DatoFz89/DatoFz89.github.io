@@ -6,7 +6,6 @@
     <title>Inscrição - NER - Nova Escola Rock</title>
 
     <style>
-        
         body {
             font-family: 'Arial', sans-serif;
             background: url('/galeria-de-imagens/fundoner.jpeg') no-repeat center center fixed;
@@ -16,28 +15,34 @@
             margin: 0;
             padding: 0;
         }
+
         header {
             background: rgba(0, 0, 0, 0.8);
             padding: 20px;
         }
+
         .logo {
             font-size: 2rem;
             font-weight: bold;
             color: #ff3366;
         }
+
         nav ul {
             list-style: none;
             padding: 0;
         }
+
         nav ul li {
             display: inline;
             margin: 0 15px;
         }
+
         nav ul li a {
             color: white;
             text-decoration: none;
             font-size: 1.2rem;
         }
+
         .form-container {
             background: rgba(0, 0, 0, 0.8);
             padding: 40px;
@@ -45,9 +50,11 @@
             width: 50%;
             border-radius: 10px;
         }
+
         h2 {
             color: #ff3366;
         }
+
         input, textarea, select {
             width: 100%;
             padding: 10px;
@@ -56,6 +63,7 @@
             border-radius: 5px;
             font-size: 1rem;
         }
+
         button {
             background: #ff3366;
             color: white;
@@ -67,12 +75,14 @@
             cursor: pointer;
             transition: 0.3s;
         }
+
         button:hover {
             background: #e62e5c;
         }
     </style>
 </head>
 <body>
+
     <header>
         <div class="logo">NER - Nova Escola Rock</div>
         <nav>
@@ -87,37 +97,42 @@
 
     <div class="form-container">
         <h2>Inscreve-te Aqui</h2>
-        <form action="https://formsubmit.co/aprenderguitarra2018@gmail.com" method="POST">
-    <!-- Desativar CAPTCHA para evitar bloqueios -->
-    <input type="hidden" name="_captcha" value="false">
+        <form action="https://formsubmit.co/aprenderguitarra2018@gmail.com" method="POST" accept-charset="UTF-8">
+            
+            <!-- Desativar CAPTCHA para evitar bloqueios -->
+            <input type="hidden" name="_captcha" value="false">
+            
+            <!-- Melhorando o redirecionamento -->
+            <input type="hidden" name="_next" value="https://datofz89.github.io/index.html">
 
-    <!-- Redirecionamento após envio bem-sucedido -->
-    <input type="hidden" name="_next" value="https://datofz89.github.io/thanks.html">
+            <!-- Evitar bloqueios no FormSubmit -->
+            <input type="hidden" name="_template" value="basic">
+            
+            <!-- Assunto do email enviado -->
+            <input type="hidden" name="_subject" value="Nova Inscrição - Escola Rock">
 
-    <!-- Assunto do email enviado -->
-    <input type="hidden" name="_subject" value="Nova Inscrição - Escola Rock">
+            <input type="text" name="nome" placeholder="Nome completo" required>
+            <label>Data de Nascimento</label>
+            <input type="date" name="data_nascimento" required>
+            <textarea name="endereco" rows="3" placeholder="Endereço"></textarea>
+            <input type="tel" name="telefone" placeholder="Telefone" required>
+            <input type="email" name="email" placeholder="E-mail" required>
 
-    <input type="text" name="nome" placeholder="Nome completo" required>
-    <label>Data de Nascimento</label>
-    <input type="date" name="data_nascimento" required>
-    <textarea name="endereco" rows="3" placeholder="Endereço"></textarea>
-    <input type="tel" name="telefone" placeholder="Telefone" required>
-    <input type="email" name="email" placeholder="E-mail" required>
-    
-    <select name="curso" required>
-        <option value="">Selecione um curso</option>
-        <option value="guitarra">Guitarra</option>
-        <option value="baixo">Baixo</option>
-        <option value="bateria">Bateria</option>
-        <option value="canto">Canto</option>
-        <option value="teclado">Teclado/Piano</option>
-        <option value="acordeao">Acordeão</option>
-        <option value="cavaquinho">Cavaquinho</option>
-        <option value="outros">Outros</option>
-    </select>
+            <select name="curso" required>
+                <option value="">Selecione um curso</option>
+                <option value="guitarra">Guitarra</option>
+                <option value="baixo">Baixo</option>
+                <option value="bateria">Bateria</option>
+                <option value="canto">Canto</option>
+                <option value="teclado">Teclado/Piano</option>
+                <option value="acordeao">Acordeão</option>
+                <option value="cavaquinho">Cavaquinho</option>
+                <option value="outros">Outros</option>
+            </select>
 
-    <button type="submit">Enviar Inscrição</button>
-</form>
+            <button type="submit">Enviar Inscrição</button>
+        </form>
     </div>
+
 </body>
 </html>
