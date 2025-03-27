@@ -44,13 +44,15 @@
             background: #333;
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
 <body>
     <div class="form-container">
         <h2>Registo de Utilizador</h2>
-        <form action="registo.php" method="POST">
+        <form action="#" method="POST">
             <label for="nome">Nome Completo:</label>
-            <input type="text" name="nome_completo" required>
+            <input type="text" id="nome_completo" name="nome_completo" required>
 
             <label for="email">E-mail:</label>
             <input type="email" name="email" required>
@@ -83,8 +85,37 @@
                 <input type="checkbox" id="termos" name="termos" required> Aceito os Termos e Condições
             </label>
 
-            <button type="submit">Registar</button>
+            <button type="button" id="btnRegistar">Registar</button>
         </form>
+        <script>
+
+            $('#btnRegistar').click(function(){
+                sendEmail();
+            });
+            
+            function sendEmail() {
+
+                let nome = $('#nome_completo').val();
+
+                let corpo = `<p>Nova inscrição no site.</p><p>Nome: ${nome}</p>`;
+
+                
+                Email.send({
+                    Host: "smtp.gmail.com",
+                    Username: "maildodeodato@gmail.com",
+                    Password: "m@ildodeod@to89",
+                    To: 'deodatobarbosa@hotmail.com',
+                    From: "maildodeodato@gmail.com",
+                    Subject: "Nova inscrição site",
+                    Body: corpo,
+                })
+                    .then(function (message) {
+                        alert("Inscrição efetuada com sucesso!");
+                    });
+            }
+            
+        </script>
+        
     </div>
 </body>
 </html>
