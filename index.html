@@ -830,13 +830,44 @@
     </div>
     -->
     
-    <!-- Mensagem para quando nenhuma categoria está selecionada inicialmente -->
-    <div id="mensagem-selecao" class="mensagem-selecao">
-      <p>Selecione uma categoria para visualizar as fotos</p>
-    </div>
-  </div>
-</section>
+   <!-- Mensagem para quando nenhuma categoria está selecionada inicialmente -->
+<div id="mensagem-selecao" class="mensagem-selecao">
+  <p>Selecione uma categoria para visualizar as fotos</p>
+</div>
 
+<style>
+/* Estilo rockeiro para a mensagem de instrução */
+.mensagem-selecao {
+  display: inline-block;
+  width: auto;
+  max-width: 80%;
+  margin: 30px auto;
+  padding: 15px 30px;
+  text-align: center;
+  background-color: #1a1a1a;
+  border: 2px solid #ff3366;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(255, 51, 102, 0.6);
+}
+
+.mensagem-selecao p {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 0 0 5px #ff3366;
+  font-family: 'Arial', sans-serif;
+  letter-spacing: 1px;
+}
+
+/* Centralizar a mensagem na grid */
+.fotos-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+</style>
 <!-- Lightbox para as fotos -->
 <div id="lightbox" class="lightbox" onclick="closeLightbox()">
   <span class="close">&times;</span>
