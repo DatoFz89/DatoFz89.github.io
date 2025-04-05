@@ -1038,37 +1038,79 @@
  
 <!-- Seção de Fotos -->
 <section class="fotos" id="fotos">
-  <h2>Fotos</h2>
-  <!-- Navegação das categorias -->
-  <div class="fotos-categorias">
-    <button class="categoria-btn" onclick="filtrarFotos('escola')">Fotos da Escola</button>
-    <button class="categoria-btn" onclick="filtrarFotos('alunos')">Fotos dos Alunos</button>
-    <button class="categoria-btn" onclick="filtrarFotos('concertos')">Concertos dos alunos e Professores</button>
-    <button class="categoria-btn" onclick="filtrarFotos('outras')">Outras</button>
-  </div>
-
-  <div class="fotos-container">
-    <!-- Mensagem para quando nenhuma categoria está selecionada inicialmente -->
-    <div id="mensagem-selecao" class="mensagem-selecao">
-      <p>Selecione uma categoria para visualizar as fotos</p>
+  <div class="fotos-background"></div>
+  <div class="fotos-content">
+    <h2>Fotos</h2>
+    <!-- Navegação das categorias -->
+    <div class="fotos-categorias">
+      <button class="categoria-btn" onclick="filtrarFotos('escola')">Fotos da Escola</button>
+      <button class="categoria-btn" onclick="filtrarFotos('alunos')">Fotos dos Alunos</button>
+      <button class="categoria-btn" onclick="filtrarFotos('concertos')">Concertos dos alunos e Professores</button>
+      <button class="categoria-btn" onclick="filtrarFotos('outras')">Outras</button>
     </div>
-    
-    <!-- Container da grade de fotos -->
-    <div class="fotos-grid">
-      <!-- Fotos da Escola - todas ocultas inicialmente -->
-      <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')" style="display: none;">
-        <img src="/galeria-de-imagens/NER - Logo 1.png" alt="Logo NER">
-        <div class="foto-overlay">
-          <h3>Logo NER</h3>
-          <p>Um dos nossos logotipos.</p>
-        </div>
+
+    <div class="fotos-container">
+      <!-- Mensagem para quando nenhuma categoria está selecionada inicialmente -->
+      <div id="mensagem-selecao" class="mensagem-selecao">
+        <p>Selecione uma categoria para visualizar as fotos</p>
       </div>
-      <!-- Outras fotos aqui... -->
+      
+      <!-- Container da grade de fotos -->
+      <div class="fotos-grid">
+        <!-- Fotos da Escola - todas ocultas inicialmente -->
+        <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')" style="display: none;">
+          <img src="/galeria-de-imagens/NER - Logo 1.png" alt="Logo NER">
+          <div class="foto-overlay">
+            <h3>Logo NER</h3>
+            <p>Um dos nossos logotipos.</p>
+          </div>
+        </div>
+        <!-- Outras fotos aqui... -->
+      </div>
     </div>
   </div>
 </section>
 
 <style>
+/* Estilos para a seção de fotos com imagem de fundo */
+.fotos {
+  position: relative;
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+/* Estilo para a imagem de fundo */
+.fotos-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('3d-music-related-scene.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0.25; /* Opacidade reduzida para não interferir no conteúdo */
+  z-index: 1;
+}
+
+/* Conteúdo da seção de fotos */
+.fotos-content {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Estilo para o título */
+.fotos h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 51, 102, 0.8);
+}
+
 /* Estilos para o container de fotos */
 .fotos-container {
   display: flex;
@@ -1093,7 +1135,7 @@
   margin: 40px auto;
   padding: 15px 30px;
   text-align: center;
-  background-color: #1a1a1a;
+  background-color: rgba(26, 26, 26, 0.8);
   border: 2px solid #ff3366;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(255, 51, 102, 0.6);
@@ -1118,9 +1160,9 @@
 }
 
 .categoria-btn {
-  background-color: #2a2a2a;
+  background-color: rgba(42, 42, 42, 0.8);
   color: white;
-  border: none;
+  border: 2px solid transparent;
   padding: 10px 20px;
   margin: 0 5px 10px;
   border-radius: 5px;
@@ -1130,12 +1172,58 @@
 }
 
 .categoria-btn:hover {
-  background-color: #444;
+  background-color: rgba(68, 68, 68, 0.9);
+  border-color: #ff3366;
+  transform: translateY(-2px);
 }
 
 .categoria-btn.active {
-  background-color: #ff3366;
+  background-color: rgba(255, 51, 102, 0.8);
   color: white;
+  border-color: #fff;
+  box-shadow: 0 0 10px rgba(255, 51, 102, 0.6);
+}
+
+/* Estilo para os cards de foto */
+.foto-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.foto-card:hover {
+  transform: translateY(-5px);
+}
+
+.foto-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.foto-card:hover img {
+  transform: scale(1.05);
+}
+
+.foto-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  color: white;
+  padding: 15px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.foto-card:hover .foto-overlay {
+  transform: translateY(0);
 }
 
 @media (max-width: 768px) {
