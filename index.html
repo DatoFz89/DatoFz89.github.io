@@ -720,21 +720,20 @@
         </div>  
     </section>  
  
-   <!-- Seção de Fotos -->
+  <!-- Seção de Fotos -->
 <section class="fotos" id="fotos">
 <h2>Fotos</h2>
 
 <!-- Navegação das categorias -->
 <div class="fotos-categorias">
-    <button class="categoria-btn active" onclick="filtrarFotos('todas')">Todas</button>
-    <button class="categoria-btn" onclick="filtrarFotos('escola')">Fotos da Escola</button>
+    <button class="categoria-btn active" onclick="filtrarFotos('escola')">Fotos da Escola</button>
     <button class="categoria-btn" onclick="filtrarFotos('alunos')">Fotos dos Alunos</button>
     <button class="categoria-btn" onclick="filtrarFotos('concertos')">Concertos dos alunos e Professores</button>
     <button class="categoria-btn" onclick="filtrarFotos('outras')">Outras</button>
 </div>
 
 <div class="fotos-grid">
-    <!-- Fotos da Escola -->
+    <!-- Fotos da Escola - mantendo todas as fotos originais aqui -->
     <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')">
         <img src="/galeria-de-imagens/NER - Logo 1.png" alt="Logo NER">
         <div class="foto-overlay">
@@ -771,6 +770,20 @@
         </div>
     </div>
     <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')">
+        <img src="/galeria-de-imagens/Aulas de guitarra2.png" alt="Aulas de Guitarra">
+        <div class="foto-overlay">
+            <h3>Aulas de Guitarra</h3>
+            <p>Inscreve-te.</p>
+        </div>
+    </div>
+    <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')">
+        <img src="/galeria-de-imagens/Cocerto com aluna da Escola2.png" alt="Audições">
+        <div class="foto-overlay">
+            <h3>Audições</h3>
+            <p>Onde os alunos mostram a sua técnica.</p>
+        </div>
+    </div>
+    <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')">
         <img src="/galeria-de-imagens/ARC_Sobrão2.png" alt="Instalações NER">
         <div class="foto-overlay">
             <h3>Nossas Instalações</h3>
@@ -785,39 +798,38 @@
         </div>
     </div>
 
-    <!-- Fotos dos Alunos -->
+    <!-- Fotos dos Alunos - deixando vazio para inserção posterior -->
+    <!-- Modelo para adicionar mais fotos na categoria "Fotos dos Alunos"
     <div class="foto-card categoria-alunos" onclick="openLightbox('/api/placeholder/800/500')">
-        <img src="/galeria-de-imagens/Aulas de guitarra2.png" alt="Aulas de Guitarra">
+        <img src="/galeria-de-imagens/NOME_DA_IMAGEM.jpg" alt="Descrição da Imagem">
         <div class="foto-overlay">
-            <h3>Aulas de Guitarra</h3>
-            <p>Inscreve-te.</p>
+            <h3>Título da Foto</h3>
+            <p>Descrição da foto.</p>
         </div>
     </div>
-    <div class="foto-card categoria-alunos" onclick="openLightbox('/api/placeholder/800/500')">
-        <img src="/galeria-de-imagens/Cocerto com aluna da Escola2.png" alt="Audições">
-        <div class="foto-overlay">
-            <h3>Audições</h3>
-            <p>Onde os alunos mostram a sua técnica.</p>
-        </div>
-    </div>
+    -->
 
-    <!-- Concertos dos alunos e Professores (exemplo de mais fotos) -->
+    <!-- Concertos dos alunos e Professores - deixando vazio para inserção posterior -->
+    <!-- Modelo para adicionar mais fotos na categoria "Concertos dos alunos e Professores"
     <div class="foto-card categoria-concertos" onclick="openLightbox('/api/placeholder/800/500')">
-        <img src="/galeria-de-imagens/Performance1.jpg" alt="Concerto da Banda">
+        <img src="/galeria-de-imagens/NOME_DA_IMAGEM.jpg" alt="Descrição da Imagem">
         <div class="foto-overlay">
-            <h3>Concerto da Banda</h3>
-            <p>Apresentação dos nossos alunos no palco.</p>
+            <h3>Título da Foto</h3>
+            <p>Descrição da foto.</p>
         </div>
     </div>
+    -->
 
-    <!-- Outras fotos (exemplo) -->
+    <!-- Outras fotos - deixando vazio para inserção posterior -->
+    <!-- Modelo para adicionar mais fotos na categoria "Outras"
     <div class="foto-card categoria-outras" onclick="openLightbox('/api/placeholder/800/500')">
-        <img src="/galeria-de-imagens/mensagem.jpg" alt="Eventos">
+        <img src="/galeria-de-imagens/NOME_DA_IMAGEM.jpg" alt="Descrição da Imagem">
         <div class="foto-overlay">
-            <h3>Eventos</h3>
-            <p>Participação em eventos especiais.</p>
+            <h3>Título da Foto</h3>
+            <p>Descrição da foto.</p>
         </div>
     </div>
+    -->
 </div>
 </section>
 
@@ -887,9 +899,7 @@ function filtrarFotos(categoria) {
     const fotoCards = document.querySelectorAll('.foto-card');
     
     fotoCards.forEach(card => {
-        if (categoria === 'todas') {
-            card.style.display = 'block';
-        } else if (categoria === 'escola' && card.classList.contains('categoria-escola')) {
+        if (categoria === 'escola' && card.classList.contains('categoria-escola')) {
             card.style.display = 'block';
         } else if (categoria === 'alunos' && card.classList.contains('categoria-alunos')) {
             card.style.display = 'block';
@@ -903,12 +913,11 @@ function filtrarFotos(categoria) {
     });
 }
 
-// Inicializar mostrando todas as fotos
+// Inicializar mostrando a categoria Fotos da Escola
 document.addEventListener('DOMContentLoaded', function() {
-    filtrarFotos('todas');
+    filtrarFotos('escola');
 });
 </script>
-
     <!-- Seção de Serviços -->
 <section class="servicos" id="servicos">
 <h2>Nossos Servicos</h2>
