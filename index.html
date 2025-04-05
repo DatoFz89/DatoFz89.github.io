@@ -245,54 +245,84 @@
             }  
         }  
         /* Seção Professores */  
-        .professores {  
-            padding: 80px 20px;  
-            background-color: #1a1a1a;  
-        }  
-       .professores h2 {  
-            text-align: center;  
-            color: #ff3366;  
-            font-size: 2.5rem;  
-            margin-bottom: 50px;  ;  
-            font-family: 'ROCK STEADY-Hollow', sans-serif;  
-        }
-        .professores-grid {  
-            display: grid;  
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));  
-            gap: 2rem;  
-        }  
-        .professor-card {  
-            background: #ffffff;  
-            border-radius: 10px;  
-            overflow: hidden;  
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  
-            transition: transform 0.3s;  
-        }  
-        .professor-card:hover {  
-            transform: translateY(-5px);  
-        }  
-        .professor-imagem {  
-            width: 100%;  
-            height: auto;  
-            object-fit: cover;  
-        }  
-        .professor-info {  
-            padding: 1.5rem;  
-        }  
-        .professor-info h3 {  
-            color: #333;  
-            margin-bottom: 0.5rem;  
-        }  
-        .professor-info p {  
-            color: #666;  
-            font-size: 0.9rem;  
-            line-height: 1.6;  
-        }  
-        .professor-especialidade {  
-            color: #ff3366;  
-            font-weight: bold;  
-            margin-bottom: 0.5rem;  
-        }  
+.professores {  
+    padding: 80px 20px;  
+    background-color: #1a1a1a;  
+    background-image: url('galeria-de-fotos/3d-music-related-scene.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}  
+
+.professores::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(26, 26, 26, 0.7);
+    z-index: 1;
+}
+
+.professores h2 {  
+    text-align: center;  
+    color: #ff3366;  
+    font-size: 2.5rem;  
+    margin-bottom: 50px;  
+    font-family: 'ROCK STEADY-Hollow', sans-serif;  
+    position: relative;
+    z-index: 2;
+}
+
+.professores-grid {  
+    display: grid;  
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));  
+    gap: 2rem;  
+    position: relative;
+    z-index: 2;
+}  
+
+.professor-card {  
+    background: #ffffff;  
+    border-radius: 10px;  
+    overflow: hidden;  
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  
+    transition: transform 0.3s;  
+}  
+
+.professor-card:hover {  
+    transform: translateY(-5px);  
+}  
+
+.professor-imagem {  
+    width: 100%;  
+    height: auto;  
+    object-fit: cover;  
+}  
+
+.professor-info {  
+    padding: 1.5rem;  
+}  
+
+.professor-info h3 {  
+    color: #333;  
+    margin-bottom: 0.5rem;  
+}  
+
+.professor-info p {  
+    color: #666;  
+    font-size: 0.9rem;  
+    line-height: 1.6;  
+}  
+
+.professor-especialidade {  
+    color: #ff3366;  
+    font-weight: bold;  
+    margin-bottom: 0.5rem;  
+}
         footer {  
             background-color: #1a1a1a;  
             color: white;  
@@ -964,7 +994,7 @@
 .fotos h2 {
   text-align: center;
   margin-bottom: 30px;
-  color: #fff;
+  color: #ff3366;
   text-shadow: 0 0 10px rgba(255, 51, 102, 0.8);
 }
 
