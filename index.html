@@ -720,166 +720,182 @@
         </div>  
     </section>  
  
-  <!-- Seção de Fotos -->
+<!-- Seção de Fotos -->
 <section class="fotos" id="fotos">
-<h2>Fotos</h2>
-
-<!-- Navegação das categorias -->
-<div class="fotos-categorias">
-    <button class="categoria-btn active" onclick="filtrarFotos('escola')">Fotos da Escola</button>
+  <h2>Fotos</h2>
+  <!-- Navegação das categorias -->
+  <div class="fotos-categorias">
+    <button class="categoria-btn" onclick="filtrarFotos('escola')">Fotos da Escola</button>
     <button class="categoria-btn" onclick="filtrarFotos('alunos')">Fotos dos Alunos</button>
     <button class="categoria-btn" onclick="filtrarFotos('concertos')">Concertos dos alunos e Professores</button>
     <button class="categoria-btn" onclick="filtrarFotos('outras')">Outras</button>
-</div>
+  </div>
 
-<div class="fotos-grid">
+  <div class="fotos-grid">
     <!-- Fotos da Escola - mantendo todas as fotos originais aqui -->
-    <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')">
-        <img src="/galeria-de-imagens/NER - Logo 1.png" alt="Logo NER">
-        <div class="foto-overlay">
-            <h3>Logo NER</h3>
-            <p>Um dos nossos logotipos.</p>
-        </div>
+    <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')" style="display: none;">
+      <img src="/galeria-de-imagens/NER - Logo 1.png" alt="Logo NER">
+      <div class="foto-overlay">
+        <h3>Logo NER</h3>
+        <p>Um dos nossos logotipos.</p>
+      </div>
     </div>
-    <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')">
-        <img src="/galeria-de-imagens/A dramatic close-up of a vintage guitar 1.webp" alt="Amp1">
-        <div class="foto-overlay">
-            <h3>Amplificadores</h3>
-            <p>Um dos amps da escola.</p>
-        </div>
+    <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')" style="display: none;">
+      <img src="/galeria-de-imagens/A dramatic close-up of a vintage guitar 1.webp" alt="Amp1">
+      <div class="foto-overlay">
+        <h3>Amplificadores</h3>
+        <p>Um dos amps da escola.</p>
+      </div>
     </div>
-    <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')">
-        <img src="/galeria-de-imagens/drums-7751985_1920.jpg" alt="Workshop de Bateria">
-        <div class="foto-overlay">
-            <h3>Workshop de Bateria</h3>
-            <p>Aprendendo técnicas avançadas de bateria.</p>
-        </div>
+    <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')" style="display: none;">
+      <img src="/galeria-de-imagens/drums-7751985_1920.jpg" alt="Workshop de Bateria">
+      <div class="foto-overlay">
+        <h3>Workshop de Bateria</h3>
+        <p>Aprendendo técnicas avançadas de bateria.</p>
+      </div>
     </div>
-    <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')">
-        <img src="/galeria-de-imagens/Performance1.jpg" alt="Performance">
-        <div class="foto-overlay">
-            <h3>Performance</h3>
-            <p>Conheça o espaço onde a magia acontece.</p>
-        </div>
+    <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')" style="display: none;">
+      <img src="/galeria-de-imagens/Performance1.jpg" alt="Performance">
+      <div class="foto-overlay">
+        <h3>Performance</h3>
+        <p>Conheça o espaço onde a magia acontece.</p>
+      </div>
     </div>
-    <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')">
-        <img src="/galeria-de-imagens/mensagem.jpg" alt="Mensagem">
-        <div class="foto-overlay">
-            <h3>Mensagem</h3>
-            <p>Uma das nossas mensagens.</p>
-        </div>
+    <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')" style="display: none;">
+      <img src="/galeria-de-imagens/mensagem.jpg" alt="Mensagem">
+      <div class="foto-overlay">
+        <h3>Mensagem</h3>
+        <p>Uma das nossas mensagens.</p>
+      </div>
     </div>
-    <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')">
-        <img src="/galeria-de-imagens/Aulas de guitarra2.png" alt="Aulas de Guitarra">
-        <div class="foto-overlay">
-            <h3>Aulas de Guitarra</h3>
-            <p>Inscreve-te.</p>
-        </div>
+    <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')" style="display: none;">
+      <img src="/galeria-de-imagens/Aulas de guitarra2.png" alt="Aulas de Guitarra">
+      <div class="foto-overlay">
+        <h3>Aulas de Guitarra</h3>
+        <p>Inscreve-te.</p>
+      </div>
     </div>
-    <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')">
-        <img src="/galeria-de-imagens/Cocerto com aluna da Escola2.png" alt="Audições">
-        <div class="foto-overlay">
-            <h3>Audições</h3>
-            <p>Onde os alunos mostram a sua técnica.</p>
-        </div>
+    <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')" style="display: none;">
+      <img src="/galeria-de-imagens/Cocerto com aluna da Escola2.png" alt="Audições">
+      <div class="foto-overlay">
+        <h3>Audições</h3>
+        <p>Onde os alunos mostram a sua técnica.</p>
+      </div>
     </div>
-    <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')">
-        <img src="/galeria-de-imagens/ARC_Sobrão2.png" alt="Instalações NER">
-        <div class="foto-overlay">
-            <h3>Nossas Instalações</h3>
-            <p>Conheça o espaço onde a magia acontece.</p>
-        </div>
+    <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')" style="display: none;">
+      <img src="/galeria-de-imagens/ARC_Sobrão2.png" alt="Instalações NER">
+      <div class="foto-overlay">
+        <h3>Nossas Instalações</h3>
+        <p>Conheça o espaço onde a magia acontece.</p>
+      </div>
     </div>
-    <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')">
-        <img src="/galeria-de-imagens/microphone-4320921_1920.jpg" alt="Estúdio de Gravação">
-        <div class="foto-overlay">
-            <h3>Estúdio de Gravação</h3>
-            <p>Nosso estúdio profissional para gravações dos alunos.</p>
-        </div>
+    <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')" style="display: none;">
+      <img src="/galeria-de-imagens/microphone-4320921_1920.jpg" alt="Estúdio de Gravação">
+      <div class="foto-overlay">
+        <h3>Estúdio de Gravação</h3>
+        <p>Nosso estúdio profissional para gravações dos alunos.</p>
+      </div>
     </div>
-
+    
     <!-- Fotos dos Alunos - deixando vazio para inserção posterior -->
     <!-- Modelo para adicionar mais fotos na categoria "Fotos dos Alunos"
-    <div class="foto-card categoria-alunos" onclick="openLightbox('/api/placeholder/800/500')">
-        <img src="/galeria-de-imagens/NOME_DA_IMAGEM.jpg" alt="Descrição da Imagem">
-        <div class="foto-overlay">
-            <h3>Título da Foto</h3>
-            <p>Descrição da foto.</p>
-        </div>
+    <div class="foto-card categoria-alunos" onclick="openLightbox('/api/placeholder/800/500')" style="display: none;">
+      <img src="/galeria-de-imagens/NOME_DA_IMAGEM.jpg" alt="Descrição da Imagem">
+      <div class="foto-overlay">
+        <h3>Título da Foto</h3>
+        <p>Descrição da foto.</p>
+      </div>
     </div>
     -->
-
+    
     <!-- Concertos dos alunos e Professores - deixando vazio para inserção posterior -->
     <!-- Modelo para adicionar mais fotos na categoria "Concertos dos alunos e Professores"
-    <div class="foto-card categoria-concertos" onclick="openLightbox('/api/placeholder/800/500')">
-        <img src="/galeria-de-imagens/NOME_DA_IMAGEM.jpg" alt="Descrição da Imagem">
-        <div class="foto-overlay">
-            <h3>Título da Foto</h3>
-            <p>Descrição da foto.</p>
-        </div>
+    <div class="foto-card categoria-concertos" onclick="openLightbox('/api/placeholder/800/500')" style="display: none;">
+      <img src="/galeria-de-imagens/NOME_DA_IMAGEM.jpg" alt="Descrição da Imagem">
+      <div class="foto-overlay">
+        <h3>Título da Foto</h3>
+        <p>Descrição da foto.</p>
+      </div>
     </div>
     -->
-
+    
     <!-- Outras fotos - deixando vazio para inserção posterior -->
     <!-- Modelo para adicionar mais fotos na categoria "Outras"
-    <div class="foto-card categoria-outras" onclick="openLightbox('/api/placeholder/800/500')">
-        <img src="/galeria-de-imagens/NOME_DA_IMAGEM.jpg" alt="Descrição da Imagem">
-        <div class="foto-overlay">
-            <h3>Título da Foto</h3>
-            <p>Descrição da foto.</p>
-        </div>
+    <div class="foto-card categoria-outras" onclick="openLightbox('/api/placeholder/800/500')" style="display: none;">
+      <img src="/galeria-de-imagens/NOME_DA_IMAGEM.jpg" alt="Descrição da Imagem">
+      <div class="foto-overlay">
+        <h3>Título da Foto</h3>
+        <p>Descrição da foto.</p>
+      </div>
     </div>
     -->
-</div>
+    
+    <!-- Mensagem para quando nenhuma categoria está selecionada inicialmente -->
+    <div id="mensagem-selecao" class="mensagem-selecao">
+      <p>Selecione uma categoria para visualizar as fotos</p>
+    </div>
+  </div>
 </section>
 
 <!-- Lightbox para as fotos -->
 <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <span class="close">&times;</span>
-    <img class="lightbox-content" id="lightbox-img">
+  <span class="close">&times;</span>
+  <img class="lightbox-content" id="lightbox-img">
 </div>
 
 <!-- Adicionar CSS para as categorias de fotos -->
 <style>
 /* Estilos para as categorias de fotos */
 .fotos-categorias {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
 }
 
 .categoria-btn {
-    background-color: #2a2a2a;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 0 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 1rem;
+  background-color: #2a2a2a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
 }
 
 .categoria-btn:hover {
-    background-color: #444;
+  background-color: #444;
 }
 
 .categoria-btn.active {
-    background-color: #ff3366;
-    color: white;
+  background-color: #ff3366;
+  color: white;
+}
+
+/* Estilo para a mensagem de instrução */
+.mensagem-selecao {
+  width: 100%;
+  text-align: center;
+  padding: 50px 0;
+  font-size: 1.2rem;
+  color: #666;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  margin: 20px 0;
 }
 
 @media (max-width: 768px) {
-    .fotos-categorias {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .categoria-btn {
-        width: 80%;
-        margin-bottom: 10px;
-    }
+  .fotos-categorias {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .categoria-btn {
+    width: 80%;
+    margin-bottom: 10px;
+  }
 }
 </style>
 
@@ -887,35 +903,56 @@
 <script>
 // Função para filtrar as fotos por categoria
 function filtrarFotos(categoria) {
-    // Remover classe ativa de todos os botões
-    document.querySelectorAll('.categoria-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    
-    // Adicionar classe ativa ao botão clicado
-    event.target.classList.add('active');
-    
-    // Mostrar/ocultar fotos com base na categoria
-    const fotoCards = document.querySelectorAll('.foto-card');
-    
-    fotoCards.forEach(card => {
-        if (categoria === 'escola' && card.classList.contains('categoria-escola')) {
-            card.style.display = 'block';
-        } else if (categoria === 'alunos' && card.classList.contains('categoria-alunos')) {
-            card.style.display = 'block';
-        } else if (categoria === 'concertos' && card.classList.contains('categoria-concertos')) {
-            card.style.display = 'block';
-        } else if (categoria === 'outras' && card.classList.contains('categoria-outras')) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
-    });
+  // Esconder a mensagem de seleção
+  document.getElementById('mensagem-selecao').style.display = 'none';
+  
+  // Remover classe ativa de todos os botões
+  document.querySelectorAll('.categoria-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  
+  // Adicionar classe ativa ao botão clicado
+  event.target.classList.add('active');
+  
+  // Mostrar/ocultar fotos com base na categoria
+  const fotoCards = document.querySelectorAll('.foto-card');
+  fotoCards.forEach(card => {
+    if (categoria === 'escola' && card.classList.contains('categoria-escola')) {
+      card.style.display = 'block';
+    } else if (categoria === 'alunos' && card.classList.contains('categoria-alunos')) {
+      card.style.display = 'block';
+    } else if (categoria === 'concertos' && card.classList.contains('categoria-concertos')) {
+      card.style.display = 'block';
+    } else if (categoria === 'outras' && card.classList.contains('categoria-outras')) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
 }
 
-// Inicializar mostrando a categoria Fotos da Escola
+// Função para abrir o lightbox
+function openLightbox(imageSrc) {
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightbox-img');
+  lightbox.style.display = 'flex';
+  lightboxImg.src = imageSrc;
+}
+
+// Função para fechar o lightbox
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+
+// Inicialização - não mostrar nenhuma categoria por padrão
 document.addEventListener('DOMContentLoaded', function() {
-    filtrarFotos('escola');
+  // Certifique-se que todas as fotos estão ocultas inicialmente
+  document.querySelectorAll('.foto-card').forEach(card => {
+    card.style.display = 'none';
+  });
+  
+  // Mostrar a mensagem de instrução
+  document.getElementById('mensagem-selecao').style.display = 'block';
 });
 </script>
     <!-- Seção de Serviços -->
