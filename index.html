@@ -985,6 +985,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <button class="categoria-btn" onclick="filtrarFotos('alunos')">Fotos dos Alunos</button>
       <button class="categoria-btn" onclick="filtrarFotos('concertos')">Concertos dos alunos e Professores</button>
       <button class="categoria-btn" onclick="filtrarFotos('outras')">Outras</button>
+      <button class="categoria-btn voltar-btn" onclick="resetCategoria()" style="display: none;">Voltar</button>
     </div>
 
     <div class="fotos-container">
@@ -996,7 +997,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <!-- Container da grade de fotos -->
       <div class="fotos-grid">
         <!-- Fotos da Escola - todas ocultas inicialmente -->
-        <div class="foto-card categoria-escola" onclick="openLightbox('/galeria-de-imagens/NER_Logo_P&B.png', 'Logo NER', 'Um dos nossos logotipos.')" style="display: none;">
+        <div class="foto-card categoria-escola" onclick="openLightbox('/galeria-de-imagens/nova-escola-rock-logo3.png', 'Logo NER', 'Um dos nossos logotipos.')" style="display: none;">
           <img src="/galeria-de-imagens/nova-escola-rock-logo3.png" alt="Logo NER">
           <div class="foto-overlay">
             <h3>Logo NER</h3>
@@ -1212,6 +1213,20 @@ document.addEventListener('DOMContentLoaded', function() {
   box-shadow: 0 0 10px rgba(255, 51, 102, 0.6);
 }
 
+/* Estilo para o botão voltar */
+.voltar-btn {
+  background-color: rgba(26, 26, 26, 0.8);
+  border: 1px solid #ff3366;
+  margin-left: 15px;
+  box-shadow: 0 0 10px rgba(255, 51, 102, 0.4);
+}
+
+.voltar-btn:hover {
+  background-color: rgba(255, 51, 102, 0.8);
+  border-color: white;
+  transform: translateY(-2px);
+}
+
 /* Estilo para os cards de foto */
 .foto-card {
   position: relative;
@@ -1377,6 +1392,9 @@ function filtrarFotos(categoria) {
   // Adicionar classe ativa ao botão clicado
   event.target.classList.add('active');
   
+  // Mostrar o botão voltar
+  document.querySelector('.voltar-btn').style.display = 'inline-block';
+  
   // Mostrar/ocultar fotos com base na categoria
   const fotoCards = document.querySelectorAll('.foto-card');
   fotoCards.forEach(card => {
@@ -1392,6 +1410,25 @@ function filtrarFotos(categoria) {
       card.style.display = 'none';
     }
   });
+}
+
+// Função para resetar e voltar à visualização inicial
+function resetCategoria() {
+  // Mostrar a mensagem de seleção
+  document.getElementById('mensagem-selecao').style.display = 'block';
+  
+  // Ocultar todas as fotos
+  document.querySelectorAll('.foto-card').forEach(card => {
+    card.style.display = 'none';
+  });
+  
+  // Remover classe ativa de todos os botões
+  document.querySelectorAll('.categoria-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  
+  // Ocultar o botão voltar
+  document.querySelector('.voltar-btn').style.display = 'none';
 }
 
 // Função para abrir o lightbox
@@ -1439,6 +1476,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Mostrar a mensagem de instrução
   document.getElementById('mensagem-selecao').style.display = 'block';
+  
+  // Ocultar o botão voltar inicialmente
+  document.querySelector('.voltar-btn').style.display = 'none';
 });
 </script>
     
