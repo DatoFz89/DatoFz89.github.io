@@ -522,19 +522,19 @@
     <div class="logo">Nova Escola Rock</div>
 
     <div class="topnav" id="myTopnav">
-        <a href="#inicio">Início</a>
-        <a href="https://aprender-guitarra-2018.webnode.pt/contacto/" target="_blank">Contacto</a>
-        
-        <a href="#cursos">Cursos</a>
-        <a href="#professores">Professores</a>
-        <a href="#videos">Vídeos</a>
-        <a href="#fotos">Fotos</a>
-        <a href="#servicos">Serviços</a>
-        <a href="#redes-sociais">Segue-nos</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
-        </a>
-    </div>
+    <a href="#inicio">Início</a>
+    <a href="https://aprender-guitarra-2018.webnode.pt/contacto/" target="_blank">Contacto</a>
+    <a href="#cursos">Cursos</a>
+    <a href="#professores">Professores</a>
+    <a href="#videos">Vídeos</a>
+    <a href="#fotos">Fotos</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#parceiros">Parceiros</a>    <!-- Adicione esta linha -->
+    <a href="#redes-sociais">Segue-nos</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+    </a>
+</div>
 </header>
 
  
@@ -1172,6 +1172,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('mensagem-selecao').style.display = 'block';
 });
 </script>
+    
     <!-- Seção de Serviços -->
 <section class="servicos" id="servicos">
 <h2>Nossos Servicos</h2>
@@ -1217,6 +1218,146 @@ document.addEventListener('DOMContentLoaded', function() {
     font-size: 2.5rem;
     margin-bottom: 50px;
     font-family: 'ROCK STEADY-Hollow', sans-serif;
+}
+</style>
+
+    <!-- Seção de Parceiros -->
+<section class="parceiros" id="parceiros">
+    <h2>Nossos Parceiros</h2>
+    <div class="parceiros-grid">
+        <div class="parceiro-card">
+            <a href="https://sites.google.com/view/carlosmatos-rim" target="_blank" class="parceiro-link">
+                <img src="/api/placeholder/400/300" alt="Carlos Matos RIM" class="parceiro-imagem">
+                <div class="parceiro-info">
+                    <h3>Carlos Matos RIM</h3>
+                    <div class="parceiro-especialidade">Reparação de Instrumentos Musicais Eletrónicos</div>
+                    <p>Serviços especializados em reparação, manutenção e melhoramento de instrumentos musicais eletrónicos. Qualidade e precisão em cada detalhe.</p>
+                </div>
+            </a>
+        </div>
+        
+        <div class="parceiro-card">
+            <a href="https://eheae3a6li.mobirisesite.com/" target="_blank" class="parceiro-link">
+                <img src="/api/placeholder/400/300" alt="RE Style" class="parceiro-imagem">
+                <div class="parceiro-info">
+                    <h3>RE Style</h3>
+                    <div class="parceiro-especialidade">Roupa em Segunda Mão</div>
+                    <p>Moda consciente e sustentável. Peças de qualidade em segunda mão, cuidadosamente selecionadas para dar um novo estilo ao seu guarda-roupa.</p>
+                </div>
+            </a>
+        </div>
+        
+        <div class="parceiro-card">
+            <a href="https://tapecariatrevida.mobirisesite.com" target="_blank" class="parceiro-link">
+                <img src="/api/placeholder/400/300" alt="Tapeçaria Atrevida" class="parceiro-imagem">
+                <div class="parceiro-info">
+                    <h3>Tapeçaria Atrevida</h3>
+                    <div class="parceiro-especialidade">Manufatura de Tapeçaria Diferenciada</div>
+                    <p>Arte e inovação em cada trabalho. Tapeçaria que desafia o convencional com designs únicos e manufatura artesanal de alta qualidade.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Estilos para a Seção de Parceiros */
+.parceiros {
+    padding: 80px 20px;
+    background-color: #1a1a1a;
+    background-image: url('galeria-de-imagens/fundoner.jpeg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.parceiros::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(26, 26, 26, 0.8);
+    z-index: 1;
+}
+
+.parceiros h2 {
+    text-align: center;
+    color: #ff3366;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    font-family: 'ROCK STEADY-Hollow', sans-serif;
+    position: relative;
+    z-index: 2;
+}
+
+.parceiros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.parceiro-card {
+    background: #2a2a2a;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.parceiro-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(255, 51, 102, 0.3);
+}
+
+.parceiro-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.parceiro-imagem {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.parceiro-info {
+    padding: 1.5rem;
+    color: white;
+}
+
+.parceiro-info h3 {
+    color: #ff3366;
+    margin-bottom: 0.5rem;
+    font-family: "NewRocker-Regular", sans-serif;
+    font-size: 1.5rem;
+}
+
+.parceiro-especialidade {
+    color: #ddd;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.parceiro-info p {
+    color: #bbb;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .parceiros-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
 }
 </style>
  
