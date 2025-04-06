@@ -969,9 +969,75 @@ document.addEventListener('DOMContentLoaded', function() {
             <p>Um dos nossos logotipos.</p>
           </div>
         </div>
-        <!-- Outras fotos aqui... -->
         
-          
+        <!-- Adicione mais fotos aqui - exemplos -->
+        <!-- Fotos da Escola -->
+        <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')" style="display: none;">
+          <img src="/api/placeholder/400/300" alt="Fachada da Escola">
+          <div class="foto-overlay">
+            <h3>Fachada da Escola</h3>
+            <p>Nossa entrada principal renovada em 2023.</p>
+          </div>
+        </div>
+        
+        <div class="foto-card categoria-escola" onclick="openLightbox('/api/placeholder/800/500')" style="display: none;">
+          <img src="/api/placeholder/400/300" alt="Estúdio de Gravação">
+          <div class="foto-overlay">
+            <h3>Estúdio de Gravação</h3>
+            <p>Equipamentos de última geração para nossas produções.</p>
+          </div>
+        </div>
+        
+        <!-- Fotos dos Alunos -->
+        <div class="foto-card categoria-alunos" onclick="openLightbox('/api/placeholder/800/500')" style="display: none;">
+          <img src="/api/placeholder/400/300" alt="Aula de Guitarra">
+          <div class="foto-overlay">
+            <h3>Aula de Guitarra</h3>
+            <p>Alunos durante a aula prática de guitarra.</p>
+          </div>
+        </div>
+        
+        <div class="foto-card categoria-alunos" onclick="openLightbox('/api/placeholder/800/500')" style="display: none;">
+          <img src="/api/placeholder/400/300" alt="Aula de Bateria">
+          <div class="foto-overlay">
+            <h3>Aula de Bateria</h3>
+            <p>Nossos alunos de bateria em ação.</p>
+          </div>
+        </div>
+        
+        <!-- Fotos de Concertos -->
+        <div class="foto-card categoria-concertos" onclick="openLightbox('/api/placeholder/800/500')" style="display: none;">
+          <img src="/api/placeholder/400/300" alt="Show de Final de Ano">
+          <div class="foto-overlay">
+            <h3>Show de Final de Ano</h3>
+            <p>Apresentação dos alunos em dezembro de 2023.</p>
+          </div>
+        </div>
+        
+        <div class="foto-card categoria-concertos" onclick="openLightbox('/api/placeholder/800/500')" style="display: none;">
+          <img src="/api/placeholder/400/300" alt="Festival de Rock">
+          <div class="foto-overlay">
+            <h3>Festival de Rock</h3>
+            <p>Banda formada por professores em apresentação especial.</p>
+          </div>
+        </div>
+        
+        <!-- Outras Fotos -->
+        <div class="foto-card categoria-outras" onclick="openLightbox('/api/placeholder/800/500')" style="display: none;">
+          <img src="/api/placeholder/400/300" alt="Visita de Artista">
+          <div class="foto-overlay">
+            <h3>Visita de Artista</h3>
+            <p>Workshop especial com músico convidado.</p>
+          </div>
+        </div>
+        
+        <div class="foto-card categoria-outras" onclick="openLightbox('/api/placeholder/800/500')" style="display: none;">
+          <img src="/api/placeholder/400/300" alt="Equipamentos Novos">
+          <div class="foto-overlay">
+            <h3>Equipamentos Novos</h3>
+            <p>Novos instrumentos adquiridos em 2024.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1028,6 +1094,9 @@ document.addEventListener('DOMContentLoaded', function() {
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
   width: 100%;
+  padding-top: 20px; /* Adicionar espaço no topo */
+  position: relative;
+  z-index: 5; /* Z-index menor que o menu de categorias */
 }
 
 /* Estilo rockeiro para a mensagem de instrução */
@@ -1058,7 +1127,9 @@ document.addEventListener('DOMContentLoaded', function() {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 30px;
+  margin-bottom: 40px; /* Aumentado de 30px para 40px */
+  position: relative;
+  z-index: 10; /* Adicionar z-index para garantir que fique acima */
 }
 
 .categoria-btn {
