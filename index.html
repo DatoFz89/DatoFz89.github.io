@@ -709,7 +709,7 @@
 <div class="video-card">
 <div class="video-container">
 <video controls preload="none" style="position: absolute; top: 0; left:
-0; width: 100%; height: 100%;">
+0; width: 100%; height: 100%;" class="video-player">
 <source src="/videos/NER - Nova Escola Rock - Descrição.mp4"
 type="video/mp4">
 O seu navegador não suporta o elemento de vídeo.
@@ -730,7 +730,8 @@ Escola Rock.</p>
   title="NER - Nova Escola Rock School Anthem"
   frameborder="0" 
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-  allowfullscreen>
+  allowfullscreen
+  class="video-player">
 </iframe>
 </div>
 <div class="video-info">
@@ -875,6 +876,69 @@ position: relative;
 z-index: 2; /* Garante que o conteúdo fique acima da sobreposição */
 }
 </style>
+
+<script>
+// Script para garantir que apenas um vídeo toque por vez
+document.addEventListener('DOMContentLoaded', function() {
+  // Seleciona todos os players de vídeo (HTML5 e iframes)
+  const videoPlayers = document.querySelectorAll('.video-player');
+  
+  // Adiciona evento para cada player de vídeo HTML5
+  videoPlayers.forEach(player => {
+    if (player.tagName === 'VIDEO') {
+      player.addEventListener('play', function() {
+        pauseOtherVideos(this);
+      });
+    }
+  });
+  
+  // Adiciona evento para cliques em iframes do YouTube
+  document.addEventListener('click', function(e) {
+    const iframe = e.target.closest('iframe.video-player');
+    if (iframe) {
+      // Pausa todos os vídeos HTML5
+      videoPlayers.forEach(player => {
+        if (player.tagName === 'VIDEO') {
+          player.pause();
+        }
+      });
+      
+      // Recria o iframe para reset de outros iframes do YouTube
+      // Este método funciona porque não podemos controlar diretamente 
+      // iframes de outros domínios por segurança
+      videoPlayers.forEach(player => {
+        if (player.tagName === 'IFRAME' && player !== iframe) {
+          const parentNode = player.parentNode;
+          const oldSrc = player.src;
+          const newIframe = player.cloneNode(true);
+          // Força recarregar o iframe
+          newIframe.src = oldSrc;
+          parentNode.replaceChild(newIframe, player);
+        }
+      });
+    }
+  });
+  
+  function pauseOtherVideos(currentVideo) {
+    videoPlayers.forEach(player => {
+      // Pausa outros vídeos HTML5
+      if (player !== currentVideo && player.tagName === 'VIDEO') {
+        player.pause();
+      }
+      
+      // Reinicia iframes do YouTube
+      if (player.tagName === 'IFRAME') {
+        const parentNode = player.parentNode;
+        const oldSrc = player.src;
+        const newIframe = player.cloneNode(true);
+        // Força recarregar o iframe
+        newIframe.src = oldSrc;
+        parentNode.replaceChild(newIframe, player);
+      }
+    });
+  }
+});
+</script>
  
 <!-- Seção de Fotos -->
 <section class="fotos" id="fotos">
