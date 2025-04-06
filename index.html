@@ -906,51 +906,64 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  // Adiciona evento para cliques em iframes do YouTube
-  document.addEventListener('click', function(e) {
-    const iframe = e.target.closest('iframe.video-player');
-    if (iframe) {
-      // Pausa todos os vídeos HTML5
-      videoPlayers.forEach(player => {
-        if (player.tagName === 'VIDEO') {
-          player.pause();
-        }
-      });
-      
-      // Recria o iframe para reset de outros iframes do YouTube
-      // Este método funciona porque não podemos controlar diretamente 
-      // iframes de outros domínios por segurança
-      videoPlayers.forEach(player => {
-        if (player.tagName === 'IFRAME' && player !== iframe) {
-          const parentNode = player.parentNode;
-          const oldSrc = player.src;
-          const newIframe = player.cloneNode(true);
-          // Força recarregar o iframe
-          newIframe.src = oldSrc;
-          parentNode.replaceChild(newIframe, player);
-        }
-      });
-    }
-  });
-  
-  function pauseOtherVideos(currentVideo) {
+  // Função para pausar outros vídeos e redefinir iframes
+  function pauseOtherVideos(currentPlayer) {
     videoPlayers.forEach(player => {
-      // Pausa outros vídeos HTML5
-      if (player !== currentVideo && player.tagName === 'VIDEO') {
+      // Ignora o player atual
+      if (player === currentPlayer) return;
+      
+      // Pausa vídeos HTML5
+      if (player.tagName === 'VIDEO') {
         player.pause();
       }
       
-      // Reinicia iframes do YouTube
+      // Redefine iframes do YouTube
       if (player.tagName === 'IFRAME') {
         const parentNode = player.parentNode;
         const oldSrc = player.src;
-        const newIframe = player.cloneNode(true);
-        // Força recarregar o iframe
-        newIframe.src = oldSrc;
+        // Força a redefinição adicionando parâmetro de consulta
+        const newSrc = oldSrc.includes('?') 
+          ? oldSrc.split('?')[0] + '?autoplay=0&' + new Date().getTime() 
+          : oldSrc + '?autoplay=0&' + new Date().getTime();
+        
+        const newIframe = player.cloneNode(false);
+        newIframe.src = newSrc;
         parentNode.replaceChild(newIframe, player);
       }
     });
   }
+  
+  // Intercepta cliques em iframes para poder pausar outros vídeos
+  document.addEventListener('click', function(e) {
+    const container = e.target.closest('.video-container');
+    if (container) {
+      const iframe = container.querySelector('iframe.video-player');
+      if (iframe) {
+        // Pausar todos os vídeos HTML5
+        videoPlayers.forEach(player => {
+          if (player.tagName === 'VIDEO') {
+            player.pause();
+          }
+        });
+        
+        // Redefinir outros iframes do YouTube, exceto o clicado
+        videoPlayers.forEach(player => {
+          if (player.tagName === 'IFRAME' && player !== iframe) {
+            const parentNode = player.parentNode;
+            const oldSrc = player.src;
+            // Adiciona parâmetro de consulta único para forçar recarregamento
+            const newSrc = oldSrc.includes('?') 
+              ? oldSrc.split('?')[0] + '?autoplay=0&' + new Date().getTime() 
+              : oldSrc + '?autoplay=0&' + new Date().getTime();
+            
+            const newIframe = player.cloneNode(false);
+            newIframe.src = newSrc;
+            parentNode.replaceChild(newIframe, player);
+          }
+        });
+      }
+    }
+  });
 });
 </script>
  
