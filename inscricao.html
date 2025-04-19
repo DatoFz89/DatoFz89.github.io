@@ -73,7 +73,6 @@
     <script> 
         function mostrarMensagem() { 
             document.getElementById("mensagem").innerText = "A enviar mensagem... Aguarde."; 
-            // Não retornamos false aqui para permitir o envio normal do formulário
             return true;
         } 
     </script> 
@@ -92,13 +91,15 @@
     </header> 
     <div class="form-container"> 
         <h2>Inscreve-te Aqui</h2> 
-        <!-- Retornando para a versão original que funcionava para receber emails -->
         <form action="https://formsubmit.co/nernovaescolarock@gmail.com" method="POST" onsubmit="return mostrarMensagem()"> 
             <!-- Configurações FormSubmit -->
             <input type="hidden" name="_next" value="https://datofz89.github.io/thanks.html"> 
             <input type="hidden" name="_subject" value="Nova Inscrição - Escola Rock"> 
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_autoresponse" value="Recebemos a sua inscrição! Entraremos em contacto em breve.">
+            
+            <!-- Configuração de resposta automática -->
+            <input type="hidden" name="_autoresponse" value="Olá! Recebemos a sua inscrição na Nova Escola Rock (NER). Agradecemos o seu interesse em juntar-se à nossa escola. A nossa equipe irá analisar a sua inscrição e entraremos em contacto em breve. Para qualquer dúvida, pode responder a este email ou ligar para 938066695. Atenciosamente, Equipe NER - Nova Escola Rock">
+            <input type="hidden" name="_template" value="table">
             
             <!-- Campos do formulário -->
             <input type="text" name="nome" placeholder="Nome completo" required> 
