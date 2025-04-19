@@ -85,11 +85,15 @@
     </header> 
     <div class="form-container"> 
         <h2>Inscreve-te Aqui</h2> 
-        <form action="https://formsubmit.co/nernovaescolarock@gmail.com" method="POST"> 
-            <input type="hidden" name="_next" value="thanks.html"> 
-            <input type="hidden" name="_subject" value="Nova Inscrição - Escola Rock"> 
+        <!-- Usando o URL completo para o redirecionamento -->
+        <form action="https://formsubmit.co/nernovaescolarock@gmail.com" method="POST">
+            <!-- Configurações FormSubmit com URL completo -->
+            <input type="hidden" name="_next" value="https://datofz89.github.io/thanks.html">
+            <input type="hidden" name="_subject" value="Nova Inscrição - Escola Rock">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_autoresponse" value="Recebemos a sua inscrição! Entraremos em contacto em breve.">
+            
+            <!-- Campos do formulário -->
             <input type="text" name="nome" placeholder="Nome completo" required> 
             <label>Data de Nascimento</label> 
             <input type="date" name="data_nascimento" required> 
