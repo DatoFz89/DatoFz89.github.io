@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda & Eventos - Nova Escola Rock</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            background-image: url('/api/placeholder/1200/800');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-blend-mode: overlay;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 20px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(255, 0, 0, 0.3);
+            border-bottom: 2px solid #ff0000;
+        }
+
+        .logo {
+            float: left;
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff0000;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
+            font-family: 'Impact', 'Helvetica Neue', Arial, sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .topnav {
+            float: right;
+        }
+
+        .topnav a {
+            display: inline-block;
+            color: #ffffff;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .topnav a:hover {
+            color: #ff0000;
+            transform: scale(1.05);
+            text-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+        }
+
+        .topnav a.active {
+            border-bottom: 3px solid #ff0000;
+        }
+
+        .topnav .icon {
+            display: none;
+        }
+
+        /* Conteúdo principal */
+        .main-content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #ff0000;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            font-family: 'Impact', 'Helvetica Neue', Arial, sans-serif;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #ff0000, transparent);
+        }
+
+        .event-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .event-card {
+            background-color: rgba(20, 20, 20, 0.8);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 0, 0, 0.2);
+            border-color: #ff0000;
+        }
+
+        .event-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid #ff0000;
+        }
+
+        .event-details {
+            padding: 20px;
+        }
+
+        .event-date {
+            background-color: #ff0000;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .event-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #ffffff;
+            font-family: 'Impact', 'Helvetica Neue', Arial, sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .event-description {
+            color: #cccccc;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .event-location {
+            color: #999;
+            font-style: italic;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .event-location i {
+            margin-right: 5px;
+            color: #ff0000;
+        }
+
+        .event-button {
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .event-button:hover {
+            background-color: #cc0000;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+        }
+
+        /* Seções da página */
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-left: 5px solid #ff0000;
+            padding-left: 15px;
+            font-family: 'Impact', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        /* Calendário */
+        .calendar {
+            background-color: rgba(20, 20, 20, 0.8);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+            border: 1px solid #333;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .month-selector {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        .month-selector h3 {
+            font-size: 24px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .month-selector button {
+            background: none;
+            border: none;
+            color: #ff0000;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+        }
+
+        .month-selector button:hover {
+            color: #ffffff;
+            background-color: rgba(255, 0, 0, 0.3);
+            border-radius: 5px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+
+        .calendar-day {
+            padding: 15px 10px;
+            text-align: center;
+            background-color: rgba(30, 30, 30, 0.5);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-day.header {
+            font-weight: bold;
+            color: #ff0000;
+            background-color: transparent;
+            border-bottom: 1px solid #333;
+            margin-bottom: 5px;
+        }
+
+        .calendar-day.has-event {
+            background-color: rgba(255, 0, 0, 0.2);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .calendar-day.has-event:hover {
+            background-color: rgba(255, 0, 0, 0.3);
+            transform: scale(1.05);
+        }
+
+        .calendar-day.has-event::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 5px;
+            background-color: #ff0000;
+            border-radius: 50%;
+        }
+
+        /* Inscrição para eventos */
+        .subscription {
+            background-color: rgba(20, 20, 20, 0.8);
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 40px;
+            border: 1px solid #333;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .subscription h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 3px solid #ff0000;
+            padding-left: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #cccccc;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: rgba(50, 50, 50, 0.8);
+            border: 1px solid #444;
+            border-radius: 5px;
+            color: #ffffff;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #ff0000;
+            box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+            outline: none;
+        }
+
+        .submit-button {
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .submit-button:hover {
+            background-color: #cc0000;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+        }
+
+        /* Responsividade para telas menores */
+        @media screen and (max-width: 768px) {
+            .topnav a:not(:first-child) {
+                display: none;
+            }
+            .topnav a.icon {
+                float: right;
+                display: block;
+            }
+            .topnav.responsive {
+                position: relative;
+                display: block;
+                width: 100%;
+            }
+            .topnav.responsive a.icon {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+            .topnav.responsive a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+            .event-container {
+                grid-template-columns: 1fr;
+            }
+            .calendar-grid {
+                gap: 5px;
+            }
+            .calendar-day {
+                padding: 10px 5px;
+                font-size: 12px;
+            }
+            h1 {
+                font-size: 32px;
+            }
+            .section-title {
+                font-size: 24px;
+            }
+        }
+
+        /* Rockeiros efeitos visuais */
+        .rock-divider {
+            height: 30px;
+            background-image: url('/api/placeholder/800/30');
+            background-size: contain;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .rock-divider::before {
+            content: '🤘';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 30px 5%;
+            text-align: center;
+            border-top: 2px solid #ff0000;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+            padding: 0 15px;
+        }
+
+        .footer-section h3 {
+            color: #ff0000;
+            font-size: 18px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+        }
+
+        .footer-section p {
+            color: #999;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin-right: 10px;
+            color: #ffffff;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #ff0000;
+            transform: scale(1.2);
+        }
+
+        .footer-bottom {
+            margin-top: 30px;
+            padding-top: 10px;
+            border-top: 1px solid #333;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">Nova Escola Rock</div>
+        <div class="topnav" id="myTopnav">
+            <a href="index.html">Início</a>
+            <a href="https://aprender-guitarra-2018.webnode.pt/contacto/" target="_blank">Contacto</a>
+            <a href="cursos.html">Cursos</a>
+            <a href="professores.html">Professores</a>
+            <a href="videos.html">Vídeos</a>
+            <a href="fotos.html">Fotos</a>
+            <a href="servicos.html">Serviços</a>
+            <a href="agenda.html" class="active">Agenda/Eventos</a>
+            <a href="parceiros.html">Parceiros</a>
+            <a href="redes-sociais.html">Segue-nos</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <div class="main-content">
+        <h1>Agenda & Eventos</h1>
+        
+        <!-- Seção de Próximos Eventos -->
+        <section class="section">
+            <h2 class="section-title">Próximos Eventos</h2>
+            <div class="event-container">
+                <!-- Evento 1 -->
+                <div class="event-card">
+                    <img src="/api/placeholder/400/200" alt="Concerto de Alunos">
+                    <div class="event-details">
+                        <span class="event-date">25 de Maio, 2025</span>
+                        <h3 class="event-title">Concerto de Alunos</h3>
+                        <p class="event-description">Venha assistir às apresentações dos nossos talentosos alunos mostrando o que aprenderam neste semestre. Guitarras, baixos, baterias e vocais em plena ação!</p>
+                        <p class="event-location"><i class="fas fa-map-marker-alt"></i> Auditório Nova Escola Rock</p>
+                        <a href="#" class="event-button">Inscrever-se</a>
+                    </div>
+                </div>
+                
+                <!-- Evento 2 -->
+                <div class="event-card">
+                    <img src="/api/placeholder/400/200" alt="Workshop de Guitarra">
+                    <div class="event-details">
+                        <span class="event-date">10 de Junho, 2025</span>
+                        <h3 class="event-title">Workshop de Guitarra</h3>
+                        <p class="event-description">Workshop intensivo com o professor Carlos Santana sobre técnicas avançadas de solo e improvisação para guitarristas de nível intermediário.</p>
+                        <p class="event-location"><i class="fas fa-map-marker-alt"></i> Sala 3, Nova Escola Rock</p>
+                        <a href="#" class="event-button">Inscrever-se</a>
+                    </div>
+                </div>
+                
+                <!-- Evento 3 -->
+                <div class="event-card">
+                    <img src="/api/placeholder/400/200" alt="Festival Rock Summer">
+                    <div class="event-details">
+                        <span class="event-date">15 de Julho, 2025</span>
+                        <h3 class="event-title">Festival Rock Summer</h3>
+                        <p class="event-description">O maior festival de rock do verão! Apresentações de bandas formadas na escola e artistas convidados. Não perca esta celebração do rock and roll!</p>
+                        <p class="event-location"><i class="fas fa-map-marker-alt"></i> Parque Municipal</p>
+                        <a href="#" class="event-button">Inscrever-se</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="rock-divider"></div>
+        
+        <!-- Seção do Calendário -->
+        <section class="section">
+            <h2 class="section-title">Calendário de Atividades</h2>
+            <div class="calendar">
+                <div class="month-selector">
+                    <button><i class="fas fa-chevron-left"></i></button>
+                    <h3>Maio 2025</h3>
+                    <button><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="calendar-grid">
+                    <!-- Dias da semana -->
+                    <div class="calendar-day header">DOM</div>
+                    <div class="calendar-day header">SEG</div>
+                    <div class="calendar-day header">TER</div>
+                    <div class="calendar-day header">QUA</div>
+                    <div class="calendar-day header">QUI</div>
+                    <div class="calendar-day header">SEX</div>
+                    <div class="calendar-day header">SAB</div>
+                    
+                    <!-- Dias do mês - primeira semana -->
+                    <div class="calendar-day"></div>
+                    <div class="calendar-day"></div>
+                    <div class="calendar-day"></div>
+                    <div class="calendar-day"></div>
+                    <div class="calendar-day">1</div>
+                    <div class="calendar-day">2</div>
+                    <div class="calendar-day">3</div>
+                    
+                    <!-- Segunda semana -->
+                    <div class="calendar-day">4</div>
+                    <div class="calendar-day">5</div>
+                    <div class="calendar-day">6</div>
+                    <div class="calendar-day">7</div>
+                    <div class="calendar-day">8</div>
+                    <div class="calendar-day has-event">9</div>
+                    <div class="calendar-day">10</div>
+                    
+                    <!-- Terceira semana -->
+                    <div class="calendar-day">11</div>
+                    <div class="calendar-day">12</div>
+                    <div class="calendar-day has-event">13</div>
+                    <div class="calendar-day">14</div>
+                    <div class="calendar-day">15</div>
+                    <div class="calendar-day">16</div>
+                    <div class="calendar-day">17</div>
+                    
+                    <!-- Quarta semana -->
+                    <div class="calendar-day">18</div>
+                    <div class="calendar-day">19</div>
+                    <div class="calendar-day">20</div>
+                    <div class="calendar-day has-event">21</div>
+                    <div class="calendar-day">22</div>
+                    <div class="calendar-day">23</div>
+                    <div class="calendar-day">24</div>
+                    
+                    <!-- Quinta semana -->
+                    <div class="calendar-day has-event">25</div>
+                    <div class="calendar-day">26</div>
+                    <div class="calendar-day">27</div>
+                    <div class="calendar-day">28</div>
+                    <div class="calendar-day">29</div>
+                    <div class="calendar-day">30</div>
+                    <div class="calendar-day">31</div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 15px; color: #999;">* Os dias marcados em vermelho possuem eventos programados. Clique para mais detalhes.</p>
+        </section>
+        
+        <div class="rock-divider"></div>
+        
+        <!-- Seção Eventos Passados -->
+        <section class="section">
+            <h2 class="section-title">Eventos Passados</h2>
+            <div class="event-container">
+                <!-- Evento Passado 1 -->
+                <div class="event-card">
+                    <img src="/api/placeholder/400/200" alt="Noite de Tributo aos Clássicos">
+                    <div class="event-details">
+                        <span class="event-date">15 de Abril, 2025</span>
+                        <h3 class="event-title">Noite de Tributo aos Clássicos</h3>
+                        <p class="event-description">Uma noite incrível com covers de grandes bandas como Led Zeppelin, Pink Floyd, Queen e muito mais!</p>
+                        <p class="event-location"><i class="fas fa-map-marker-alt"></i> Bar Rock'n Beer</p>
+                        <a href="#" class="event-button">Ver Fotos</a>
+                    </div>
+                </div>
+                
+                <!-- Evento Passado 2 -->
+                <div class="event-card">
+                    <img src="/api/placeholder/400/200" alt="Masterclass de Bateria">
+                    <div class="event-details">
+                        <span class="event-date">2 de Abril, 2025</span>
+                        <h3 class="event-title">Masterclass de Bateria</h3>
+                        <p class="event-description">Masterclass especial com o baterista João Barone sobre ritmos e técnicas avançadas de bateria no rock.</p>
+                        <p class="event-location"><i class="fas fa-map-marker-alt"></i> Nova Escola Rock</p>
+                        <a href="#" class="event-button">Ver Vídeo</a>
+                    </div>
+                </div>
+                
+                <!-- Evento Passado 3 -->
+                <div class="event-card">
+                    <img src="/api/placeholder/400/200" alt="Jam Session">
+                    <div class="event-details">
+                        <span class="event-date">20 de Março, 2025</span>
+                        <h3 class="event-title">Jam Session Mensal</h3>
+                        <p class="event-description">Nossa tradicional jam session aberta a todos os alunos e músicos convidados. Uma noite de improvisação e conexão musical!</p>
+                        <p class="event-location"><i class="fas fa-map-marker-alt"></i> Estúdio Nova Escola Rock</p>
+                        <a href="#" class="event-button">Ver Fotos</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="rock-divider"></div>
+        
+        <!-- Seção de Inscrição para Eventos -->
+        <section class="section">
+            <h2 class="section-title">Inscreva-se para Eventos</h2>
+            <div class="subscription">
+                <h3>Participe dos Nossos Eventos</h3>
+                <form id="event-form">
+                    <div class="form-group">
+                        <label for="event-select">Selecione o Evento:</label>
+                        <select id="event-select" required>
+                            <option value="" disabled selected>-- Escolha um evento --</option>
+                            <option value="concerto-alunos">Concerto de Alunos - 25 de Maio</option>
+                            <option value="workshop-guitarra">Workshop de Guitarra - 10 de Junho</option>
+                            <option value="festival-rock">Festival Rock Summer - 15 de Julho</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name">Nome Completo:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Telefone:</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="participants">Número de Participantes:</label>
+                        <input type="number" id="participants" name="participants" min="1" value="1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="comments">Comentários Adicionais:</label>
+                        <textarea id="comments" name="comments" rows="4"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">Enviar Inscrição</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Nova Escola Rock</h3>
+                <p>Onde a música e a paixão pelo rock se encontram. Desde 2010 formando novos talentos e apaixonados pelo rock and roll.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>Email: info@novaescolarock.pt</p>
+                <p>Telefone: +351 123 456 789</p>
+                <p>Morada: Rua da Música, 42, Lisboa</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Segue-nos</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-spotify"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Nova Escola Rock. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Função para o menu responsivo
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+        
+        // Listeners para dias com eventos no calendário
+        document.querySelectorAll('.calendar-day.has-event').forEach(day => {
+            day.addEventListener('click', function() {
+                alert('Evento agendado para o dia ' + this.innerText + '! Clique em "Próximos Eventos" para ver detalhes.');
+            });
+        });
+        
+        // Form submission
+        document.getElementById('event-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Inscrição recebida! Entraremos em contacto em breve com mais informações.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
