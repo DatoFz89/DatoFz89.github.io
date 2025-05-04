@@ -373,26 +373,6 @@
             box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
         }
 
-        /* Mensagem de sucesso/erro */
-        .form-message {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 5px;
-            display: none;
-        }
-
-        .success-message {
-            background-color: rgba(0, 128, 0, 0.2);
-            border: 1px solid #006400;
-            color: #00c700;
-        }
-
-        .error-message {
-            background-color: rgba(255, 0, 0, 0.2);
-            border: 1px solid #ff0000;
-            color: #ff5252;
-        }
-
         /* Responsividade para telas menores */
         @media screen and (max-width: 768px) {
             .topnav a:not(:first-child) {
@@ -699,10 +679,10 @@
             <h2 class="section-title">Inscreve-te para Eventos</h2>
             <div class="subscription">
                 <h3>Participa nos Nossos Eventos</h3>
-                <form id="event-form" method="POST" action="mailto:nernovaescolarock@gmail.com" enctype="text/plain">
+                <form id="event-form">
                     <div class="form-group">
                         <label for="event-select">Seleciona o Evento:</label>
-                        <select id="event-select" name="evento" required>
+                        <select id="event-select" required>
                             <option value="" disabled selected>-- Escolhe um evento --</option>
                             <option value="concerto-alunos">Concerto de Alunos - 25 de Maio</option>
                             <option value="workshop-guitarra">Workshop de Guitarra - 10 de Junho</option>
@@ -712,7 +692,7 @@
                     
                     <div class="form-group">
                         <label for="name">Nome Completo:</label>
-                        <input type="text" id="name" name="nome" required>
+                        <input type="text" id="name" name="name" required>
                     </div>
                     
                     <div class="form-group">
@@ -722,29 +702,21 @@
                     
                     <div class="form-group">
                         <label for="phone">Telefone:</label>
-                        <input type="tel" id="phone" name="telefone" required>
+                        <input type="tel" id="phone" name="phone" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="participants">Número de Participantes:</label>
-                        <input type="number" id="participants" name="participantes" min="1" value="1" required>
+                        <input type="number" id="participants" name="participants" min="1" value="1" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="comments">Comentários Adicionais:</label>
-                        <textarea id="comments" name="comentarios" rows="4"></textarea>
+                        <textarea id="comments" name="comments" rows="4"></textarea>
                     </div>
                     
                     <button type="submit" class="submit-button">Enviar Inscrição</button>
                 </form>
-                
-                <!-- Mensagens de confirmação -->
-                <div id="success-message" class="form-message success-message">
-                    <p>Inscrição enviada com sucesso! Entraremos em contacto em breve.</p>
-                </div>
-                <div id="error-message" class="form-message error-message">
-                    <p>Ocorreu um erro ao enviar a inscrição. Por favor, tente novamente ou entre em contacto direto pelo email nernovaescolarock@gmail.com.</p>
-                </div>
             </div>
         </section>
     </div>
@@ -776,4 +748,35 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2025
+            <p>&copy; 2025 NER - Nova Escola Rock. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Função para o menu responsivo
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+        
+        // Listeners para dias com eventos no calendário
+        document.querySelectorAll('.calendar-day.has-event').forEach(day => {
+            day.addEventListener('click', function() {
+                alert('Evento agendado para o dia ' + this.innerText + '! Clique em "Próximos Eventos" para ver detalhes.');
+            });
+        });
+        
+        // Form submission
+        document.getElementById('event-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Inscrição recebida! Entraremos em contacto em breve com mais informações.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
