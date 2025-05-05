@@ -674,17 +674,15 @@
         
         <div class="rock-divider"></div>
         
-        <!-- Seção de Inscrição para Eventos -->
-<section class="section">
-  <h2 class="section-title">Inscreve-te para Eventos</h2>
-  <div class="subscription">
-    <h3>Participa nos Nossos Eventos</h3>
-    <form id="event-form" action="https://formsubmit.co/nernovaescolarock@gmail.com" method="POST">
+       <!-- Seção de Inscrição para Eventos -->
+       <section class="section">
+      <h2 class="section-title">Inscreve-te para Eventos</h2>
+      <div class="subscription">
+     <h3>Participa nos Nossos Eventos</h3>
+    <form id="event-form" action="https://formsubmit.co/ajax/nernovaescolarock@gmail.com" method="POST">
       <!-- Campo oculto para o assunto do email -->
       <input type="hidden" name="_subject" value="Nova Inscrição em Evento">
-      <!-- Redirecionar após envio -->
-      <input type="hidden" name="_next" value="https://seusite.com/obrigado.html">
-      <!-- Desativar captcha (opcional) -->
+      <!-- Desativar o captcha -->
       <input type="hidden" name="_captcha" value="false">
       
       <div class="form-group">
@@ -773,14 +771,41 @@
         });
         
         // Form submission
-        // Remova ou comente este código:
-        /*
-        document.getElementById('event-form').addEventListener('submit', function(e) {
-          e.preventDefault();
-     alert('Inscrição recebida! Entraremos em contacto em breve com mais informações.');
-  this.reset();
+document.getElementById('event-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  // Coletar os dados do formulário
+  const formData = new FormData(this);
+  
+  // Adicionar o parâmetro para desativar o captcha
+  formData.append('_captcha', 'false');
+  
+  // Converter para objeto para envio como JSON
+  const formDataObj = {};
+  formData.forEach((value, key) => {
+    formDataObj[key] = value;
+  });
+  
+  // Enviar os dados usando fetch para FormSubmit
+  fetch('https://formsubmit.co/ajax/nernovaescolarock@gmail.com', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(formDataObj)
+  })
+  .then(response => response.json())
+  .then(data => {
+    // Mostrar mensagem de sucesso
+    alert('Inscrição recebida! Entraremos em contacto em breve com mais informações.');
+    this.reset();
+  })
+  .catch(error => {
+    console.error(error);
+    alert('Ocorreu um erro ao enviar sua inscrição. Por favor, tente novamente.');
+  });
 });
-*/
     </script>
 </body>
 </html>
