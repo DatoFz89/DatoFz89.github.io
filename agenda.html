@@ -675,50 +675,51 @@
         <div class="rock-divider"></div>
         
         <!-- Seção de Inscrição para Eventos -->
-        <section class="section">
-            <h2 class="section-title">Inscreve-te para Eventos</h2>
-            <div class="subscription">
-                <h3>Participa nos Nossos Eventos</h3>
-                <form id="event-form">
-                    <div class="form-group">
-                        <label for="event-select">Seleciona o Evento:</label>
-                        <select id="event-select" required>
-                            <option value="" disabled selected>-- Escolhe um evento --</option>
-                            <option value="concerto-alunos">Concerto de Alunos - 25 de Maio</option>
-                            <option value="workshop-guitarra">Workshop de Guitarra - 10 de Junho</option>
-                            <option value="festival-rock">Festival Rock Summer - 15 de Julho</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="name">Nome Completo:</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Telefone:</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="participants">Número de Participantes:</label>
-                        <input type="number" id="participants" name="participants" min="1" value="1" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="comments">Comentários Adicionais:</label>
-                        <textarea id="comments" name="comments" rows="4"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-button">Enviar Inscrição</button>
-                </form>
-            </div>
-        </section>
+<section class="section">
+  <h2 class="section-title">Inscreve-te para Eventos</h2>
+  <div class="subscription">
+    <h3>Participa nos Nossos Eventos</h3>
+    <form id="event-form" action="https://formsubmit.co/nernovaescolarock@gmail.com" method="POST">
+      <!-- Campo oculto para o assunto do email -->
+      <input type="hidden" name="_subject" value="Nova Inscrição em Evento">
+      <!-- Redirecionar após envio -->
+      <input type="hidden" name="_next" value="https://seusite.com/obrigado.html">
+      <!-- Desativar captcha (opcional) -->
+      <input type="hidden" name="_captcha" value="false">
+      
+      <div class="form-group">
+        <label for="event-select">Seleciona o Evento:</label>
+        <select id="event-select" name="evento" required>
+          <option value="" disabled selected>-- Escolhe um evento --</option>
+          <option value="concerto-alunos">Concerto de Alunos - 25 de Maio</option>
+          <option value="workshop-guitarra">Workshop de Guitarra - 10 de Junho</option>
+          <option value="festival-rock">Festival Rock Summer - 15 de Julho</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="name">Nome Completo:</label>
+        <input type="text" id="name" name="nome" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Telefone:</label>
+        <input type="tel" id="phone" name="telefone" required>
+      </div>
+      <div class="form-group">
+        <label for="participants">Número de Participantes:</label>
+        <input type="number" id="participants" name="participantes" min="1" value="1" required>
+      </div>
+      <div class="form-group">
+        <label for="comments">Comentários Adicionais:</label>
+        <textarea id="comments" name="comentarios" rows="4"></textarea>
+      </div>
+      <button type="submit" class="submit-button">Enviar Inscrição</button>
+    </form>
+  </div>
+</section>
     </div>
 
     <!-- Footer -->
@@ -772,11 +773,14 @@
         });
         
         // Form submission
+        // Remova ou comente este código:
+        /*
         document.getElementById('event-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Inscrição recebida! Entraremos em contacto em breve com mais informações.');
-            this.reset();
-        });
+          e.preventDefault();
+     alert('Inscrição recebida! Entraremos em contacto em breve com mais informações.');
+  this.reset();
+});
+*/
     </script>
 </body>
 </html>
