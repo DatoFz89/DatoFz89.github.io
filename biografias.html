@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professores | Nova Escola Rock</title>
+    <style>
+        /* Fonte de estilo rock */
+        @import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+        
+        :root {
+            --primary-color: #e50909;
+            --secondary-color: #1e1e1e;
+            --accent-color: #f1c40f;
+            --text-color: #f5f5f5;
+            --background-dark: #121212;
+            --background-light: #2a2a2a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23222222' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        header {
+            background-color: var(--secondary-color);
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--primary-color));
+        }
+        
+        .hero-title {
+            font-family: 'Rock Salt', cursive;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6),
+                         0 0 10px var(--primary-color);
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            animation: pulsate 2s infinite alternate;
+        }
+        
+        @keyframes pulsate {
+            0% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6), 0 0 10px var(--primary-color); }
+            100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6), 0 0 20px var(--primary-color), 0 0 30px var(--primary-color); }
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .team-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .team-intro h2 {
+            font-family: 'Rock Salt', cursive;
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        .team-intro p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .professors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .professor-card {
+            background-color: var(--background-light);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .professor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 15px var(--primary-color);
+        }
+        
+        .professor-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary-color);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        
+        .professor-card:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .professor-image {
+            height: 280px;
+            width: 100%;
+            object-fit: cover;
+            filter: grayscale(20%);
+            transition: filter 0.3s ease;
+        }
+        
+        .professor-card:hover .professor-image {
+            filter: grayscale(0%);
+        }
+        
+        .professor-info {
+            padding: 1.5rem;
+        }
+        
+        .professor-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .professor-name::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+        }
+        
+        .professor-instrument {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            padding: 3px 10px;
+            background-color: rgba(229, 9, 9, 0.1);
+            border-radius: 20px;
+        }
+        
+        .professor-bio {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        
+        .professor-experience {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .experience-icon {
+            color: var(--accent-color);
+        }
+        
+        .professor-style {
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+        
+        .social-link {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .social-link:hover {
+            color: var(--primary-color);
+            transform: scale(1.2);
+        }
+        
+        .book-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            width: 100%;
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .book-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+        
+        .book-button:hover::before {
+            left: 100%;
+        }
+        
+        .book-button:hover {
+            background-color: #c20808;
+            box-shadow: 0 0 10px var(--primary-color);
+        }
+        
+        .join-team {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem;
+            background-color: var(--background-light);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .join-team::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e50909' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 20.83l2.83-2.83 1.41 1.41L1.41 22.24H0v-1.41zM0 3.07l2.83-2.83 1.41 1.41L1.41 4.48H0V3.07zm28.24 35.52l1.41-1.41 2.83 2.83V40h-1.41l-2.83-2.83zm-9.9 0l1.41-1.41 9.9 9.9h-1.41l-9.9-9.9zm-19.9 0l1.41-1.41 19.9 19.9h-1.41L0 38.59zm32.31-32.31l1.41-1.41 2.83 2.83V9.9l-2.83-2.83-1.41 1.41zM29.9 0h1.41l9.9 9.9v1.41l-9.9-9.9V0zm-13.24 0h1.41l19.9 19.9v1.41L18.07 1.41V0z'/%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+        
+        .join-team h3 {
+            font-family: 'Rock Salt', cursive;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .join-team p {
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .join-button {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+        }
+        
+        .join-button:hover {
+            background-color: #d5ad0a;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px var(--accent-color);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: var(--secondary-color);
+            margin-top: 3rem;
+        }
+        
+        footer p {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .team-intro h2 {
+                font-size: 1.8rem;
+            }
+            
+            .professors-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+        }
+        
+        /* Nav Button Animation */
+        .nav-button {
+            font-family: 'Rock Salt', cursive;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(229, 9, 9, 0.3);
+        }
+        
+        .nav-button:hover {
+            background-color: #c20808;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(229, 9, 9, 0.4);
+        }
+        
+        .nav-button:active {
+            transform: translateY(1px);
+        }
+        
+        .nav-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transition: 0.5s;
+        }
+        
+        .nav-button:hover::before {
+            left: 100%;
+        }
+        
+        .nav-button svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="hero-title">Nova Escola Rock</h1>
+        <p class="subtitle">Nossos mestres do rock que vão guiar a sua jornada musical</p>
+    </header>
+    
+    <div class="container">
+        <div class="team-intro">
+            <h2>Conheça Nossa Equipe</h2>
+            <p>A NER tem orgulho de contar com professores experientes e apaixonados por música, cada um com seu estilo único e histórico profissional. Todos compartilham a mesma missão: despertar e desenvolver o talento musical em cada aluno, independente da idade ou nível.</p>
+        </div>
+        
+        <div class="professors-grid">
+            <!-- Professor 1 -->
+            <div class="professor-card">
+                <img src="/api/placeholder/400/320" alt="Professor de Guitarra" class="professor-image">
+                <div class="professor-info">
+                    <h3 class="professor-name">João Silva</h3>
+                    <span class="professor-instrument">Guitarra</span>
+                    <div class="professor-experience">
+                        <span class="experience-icon">⭐</span>
+                        <span>15 anos de experiência</span>
+                    </div>
+                    <p class="professor-bio">João é um virtuoso da guitarra com formação no Conservatório de Música e experiência em bandas de rock e metal. Especializou-se em técnicas de shred e improvisação, tendo participado em diversos festivais internacionais.</p>
+                    <p class="professor-style">Estilo musical: Rock Clássico, Metal, Blues</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">🎵</a>
+                        <a href="#" class="social-link">📱</a>
+                        <a href="#" class="social-link">📹</a>
+                    </div>
+                    <button class="book-button">Agendar Aula</button>
+                </div>
+            </div>
+            
+            <!-- Professor 2 -->
+            <div class="professor-card">
+                <img src="/api/placeholder/400/320" alt="Professora de Canto" class="professor-image">
+                <div class="professor-info">
+                    <h3 class="professor-name">Maria Oliveira</h3>
+                    <span class="professor-instrument">Canto</span>
+                    <div class="professor-experience">
+                        <span class="experience-icon">⭐</span>
+                        <span>12 anos de experiência</span>
+                    </div>
+                    <p class="professor-bio">Maria é especialista em técnica vocal para rock. Com formação em canto lírico e posteriormente dedicando-se ao rock, desenvolve com os alunos técnicas de projeção, controle respiratório e interpretação.</p>
+                    <p class="professor-style">Estilo musical: Rock Alternativo, Grunge, Hard Rock</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">🎵</a>
+                        <a href="#" class="social-link">📱</a>
+                        <a href="#" class="social-link">📹</a>
+                    </div>
+                    <button class="book-button">Agendar Aula</button>
+                </div>
+            </div>
+            
+            <!-- Professor 3 -->
+            <div class="professor-card">
+                <img src="/api/placeholder/400/320" alt="Professor de Baixo" class="professor-image">
+                <div class="professor-info">
+                    <h3 class="professor-name">Pedro Santos</h3>
+                    <span class="professor-instrument">Baixo</span>
+                    <div class="professor-experience">
+                        <span class="experience-icon">⭐</span>
+                        <span>10 anos de experiência</span>
+                    </div>
+                    <p class="professor-bio">Pedro é um baixista versátil que já tocou em diversos estilos musicais. Especialista em técnicas de slap e tapping, enfatiza a importância da conexão entre baixo e bateria para criar uma base sólida.</p>
+                    <p class="professor-style">Estilo musical: Funk Rock, Punk, Metal</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">🎵</a>
+                        <a href="#" class="social-link">📱</a>
+                        <a href="#" class="social-link">📹</a>
+                    </div>
+                    <button class="book-button">Agendar Aula</button>
+                </div>
+            </div>
+            
+            <!-- Professor 4 -->
+            <div class="professor-card">
+                <img src="/api/placeholder/400/320" alt="Professor de Bateria" class="professor-image">
+                <div class="professor-info">
+                    <h3 class="professor-name">Carlos Mendes</h3>
+                    <span class="professor-instrument">Bateria</span>
+                    <div class="professor-experience">
+                        <span class="experience-icon">⭐</span>
+                        <span>18 anos de experiência</span>
+                    </div>
+                    <p class="professor-bio">Carlos é um baterista experiente com passagens por bandas de rock nacional. Com forte domínio técnico e criativo, ensina desde rudimentos básicos até padrões complexos de double bass e polirritmia.</p>
+                    <p class="professor-style">Estilo musical: Heavy Metal, Hard Rock, Progressive</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">🎵</a>
+                        <a href="#" class="social-link">📱</a>
+                        <a href="#" class="social-link">📹</a>
+                    </div>
+                    <button class="book-button">Agendar Aula</button>
+                </div>
+            </div>
+            
+            <!-- Professor 5 -->
+            <div class="professor-card">
+                <img src="/api/placeholder/400/320" alt="Professora de Piano" class="professor-image">
+                <div class="professor-info">
+                    <h3 class="professor-name">Ana Ferreira</h3>
+                    <span class="professor-instrument">Piano & Teclados</span>
+                    <div class="professor-experience">
+                        <span class="experience-icon">⭐</span>
+                        <span>8 anos de experiência</span>
+                    </div>
+                    <p class="professor-bio">Ana tem formação clássica mas se apaixonou pelo rock progressivo. Especializada em sintetizadores e piano, trabalha técnicas clássicas aplicadas ao contexto do rock e composição.</p>
+                    <p class="professor-style">Estilo musical: Rock Progressivo, Symphonic Metal, Classic Rock</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">🎵</a>
+                        <a href="#" class="social-link">📱</a>
+                        <a href="#" class="social-link">📹</a>
+                    </div>
+                    <button class="book-button">Agendar Aula</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="join-team">
+            <h3>Quer fazer parte da nossa equipe?</h3>
+            <p>Estamos sempre à procura de talentosos professores de música para expandir nossa equipe. Se você é um músico experiente e tem paixão por ensinar, entre em contacto conosco.</p>
+            <button class="join-button">Candidatar-se</button>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2025 Nova Escola Rock (NER) - Todos os direitos reservados</p>
+    </footer>
+
+    <!-- Código do botão para colocar na head -->
+    <div style="text-align: center; margin: 30px auto; padding: 20px; background-color: #1e1e1e; border-radius: 10px; max-width: 600px;">
+        <h3 style="color: #f1c40f; font-family: 'Rock Salt', cursive; margin-bottom: 15px;">Código do Botão para o Header</h3>
+        <p style="color: #f5f5f5; margin-bottom: 20px;">Copie e cole este código no header do seu site para adicionar um botão de navegação para a página de professores:</p>
+        <pre style="background-color: #121212; padding: 15px; border-radius: 5px; color: #e6e6e6; overflow-x: auto; text-align: left;">
+&lt;a href="professores.html" class="nav-button"&gt;
+    &lt;svg viewBox="0 0 24 24"&gt;
+        &lt;path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"&gt;&lt;/path&gt;
+    &lt;/svg&gt;
+    Nossos Professores
+&lt;/a&gt;</pre>
+    </div>
+</body>
+</html>
