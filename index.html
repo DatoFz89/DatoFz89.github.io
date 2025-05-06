@@ -6,6 +6,60 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
     <title>NER - Nova Escola Rock</title>  
     <style>  
+
+       .bio-link-container {
+  text-align: center;
+  margin: 40px auto 20px;
+  padding: 10px;
+}
+
+.bio-link {
+  display: inline-block;
+  background-color: #e50909;
+  color: white;
+  font-family: 'Rock Salt', cursive; /* Se não tiver esta fonte, substitua por outra fonte estilizada */
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(229, 9, 9, 0.3);
+}
+
+.bio-link:hover {
+  background-color: #c20808;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(229, 9, 9, 0.4);
+}
+
+.bio-link:active {
+  transform: translateY(1px);
+}
+
+.bio-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.bio-link:hover::before {
+  left: 100%;
+} 
+        
         /* Estilos existentes */ 
         html, body {  
             overflow-x: hidden;  
@@ -704,7 +758,19 @@
                     <p>Com cada batida, ele transforma o som em arte e a arte em emoção. O mestre da bateria que faz o ritmo pulsar na alma.</p>  
                 </div>  
             </div>  
-        </div>  
+        </div> 
+
+            <div class="bio-link-container" style="position: relative;">
+  <div style="position: absolute; top: -15px; left: 0; right: 0; text-align: center; font-size: 0.9rem; color: #f1c40f;">
+    <span style="background-color: rgba(30, 30, 30, 0.7); padding: 3px 10px; border-radius: 15px;">
+      🎸 DESCUBRA NOSSOS TALENTOS 🎸
+    </span>
+  </div>
+  <a href="biografias.html" class="bio-link" style="padding: 15px 30px; font-size: 1.2rem;">
+    Conheça mais sobre nossos professores
+  </a>
+</div>
+        
     </section>
  
   <!-- Seção de Vídeos -->
