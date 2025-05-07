@@ -561,7 +561,105 @@
         <div class="join-team">
     <h3>Queres fazer parte da nossa equipa?</h3>
     <p>Estamos sempre à procura de talentosos professores de música para expandir a nossa equipa. Se és um músico experiente e tens paixão por ensinar, entra em contacto conosco.</p>
-    <a href="https://api.whatsapp.com/send/?phone=351938066695&text=Olá,%20gostaria%20de%20me%20candidatar%20à%20Nova%20Escola%20Rock." target="_blank" class="join-button">Candidatar-se</a>
+    
+    <!-- Botão de candidatura que abre o popup primeiro -->
+    <button id="openPopupBtn" class="join-button">Candidatar-se</button>
+    
+    <!-- O Pop-up de instruções -->
+    <div id="instructionPopup" class="popup-overlay" style="display: none;">
+        <div class="popup-content">
+            <h4>Como concluir a tua candidatura</h4>
+            <p>Ao clicar em "Continuar", serás direcionado ao WhatsApp.</p>
+            <p>Uma mensagem já estará preparada para enviares. <strong>Basta clicar no botão de enviar</strong> no WhatsApp para completar a tua candidatura.</p>
+            <p>Agradecemos o teu interesse! Entraremos em contacto o mais breve possível.</p>
+            <div class="popup-buttons">
+                <button id="continueToWhatsApp" class="continue-button">Continuar para WhatsApp</button>
+                <button id="closePopup" class="cancel-button">Cancelar</button>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+    /* Estilos para o pop-up */
+    .popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+    
+    .popup-content {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        max-width: 500px;
+        width: 80%;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .popup-buttons {
+        margin-top: 25px;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .continue-button {
+        background-color: #25d366; /* Cor do WhatsApp */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    
+    .cancel-button {
+        background-color: #f1f1f1;
+        color: #333;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    </style>
+    
+    <script>
+    // Código JavaScript para controlar o popup
+    document.addEventListener('DOMContentLoaded', function() {
+        const openPopupBtn = document.getElementById('openPopupBtn');
+        const instructionPopup = document.getElementById('instructionPopup');
+        const continueToWhatsApp = document.getElementById('continueToWhatsApp');
+        const closePopup = document.getElementById('closePopup');
+        
+        // Abrir o popup quando clicar em "Candidatar-se"
+        openPopupBtn.addEventListener('click', function() {
+            instructionPopup.style.display = 'flex';
+        });
+        
+        // Fechar o popup quando clicar em "Cancelar"
+        closePopup.addEventListener('click', function() {
+            instructionPopup.style.display = 'none';
+        });
+        
+        // Redirecionar para o WhatsApp quando clicar em "Continuar"
+        continueToWhatsApp.addEventListener('click', function() {
+            // Fechar o popup
+            instructionPopup.style.display = 'none';
+            
+            // Redirecionar para o WhatsApp com a mensagem pré-definida
+            const whatsappLink = 'https://api.whatsapp.com/send/?phone=351938066695&text=Olá,%20gostaria%20de%20me%20candidatar%20à%20Nova%20Escola%20Rock.';
+            window.open(whatsappLink, '_blank');
+        });
+    });
+    </script>
 </div>
     </div>
     
