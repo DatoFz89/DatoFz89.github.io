@@ -558,7 +558,7 @@
             </div>
         </div>
         
-        <div class="join-team">
+       <div class="join-team">
     <h3>Queres fazer parte da nossa equipa?</h3>
     <p>Estamos sempre à procura de talentosos professores de música para expandir a nossa equipa. Se és um músico experiente e tens paixão por ensinar, entra em contacto conosco.</p>
     
@@ -566,14 +566,14 @@
     <button id="openPopupBtn" class="join-button">Candidatar-se</button>
     
     <!-- O Pop-up de instruções -->
-    <div id="instructionPopup" class="popup-overlay" style="display: none;">
+    <div id="instructionPopup" class="popup-overlay">
         <div class="popup-content">
-            <h4>Como concluir a tua candidatura</h4>
-            <p>Ao clicar em "Continuar", serás direcionado ao WhatsApp.</p>
-            <p>Uma mensagem já estará preparada para enviares. <strong>Basta clicar no botão de enviar</strong> no WhatsApp para completar a tua candidatura.</p>
-            <p>Agradecemos o teu interesse! Entraremos em contacto o mais breve possível.</p>
+            <h4>Como concluir sua candidatura</h4>
+            <p>Ao clicar em "Ir para o WhatsApp", você será direcionado ao aplicativo.</p>
+            <p>Uma mensagem já estará preparada. <strong>Basta clicar no botão de enviar</strong> no WhatsApp para completar sua candidatura.</p>
+            <p>Agradecemos seu interesse! Entraremos em contacto o mais breve possível.</p>
             <div class="popup-buttons">
-                <button id="continueToWhatsApp" class="continue-button">Continuar para WhatsApp</button>
+                <button id="continueToWhatsApp" class="continue-button">Ir para o WhatsApp</button>
                 <button id="closePopup" class="cancel-button">Cancelar</button>
             </div>
         </div>
@@ -588,7 +588,7 @@
         width: 100%;
         height: 100%;
         background-color: rgba(0, 0, 0, 0.7);
-        display: flex;
+        display: none; /* Começa oculto */
         justify-content: center;
         align-items: center;
         z-index: 1000;
@@ -602,6 +602,23 @@
         width: 80%;
         text-align: center;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .popup-content h4 {
+        color: #333;
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+    
+    .popup-content p {
+        color: #555;
+        margin-bottom: 15px;
+        line-height: 1.5;
+    }
+    
+    .popup-content strong {
+        color: #25d366; /* Cor do WhatsApp */
     }
     
     .popup-buttons {
@@ -629,6 +646,18 @@
         border-radius: 5px;
         cursor: pointer;
     }
+    
+    /* Botão principal de candidatura */
+    .join-button {
+        background-color: #0078d7;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 16px;
+    }
     </style>
     
     <script>
@@ -649,7 +678,14 @@
             instructionPopup.style.display = 'none';
         });
         
-        // Redirecionar para o WhatsApp quando clicar em "Continuar"
+        // Fechar o popup se clicar fora da área de conteúdo
+        instructionPopup.addEventListener('click', function(e) {
+            if (e.target === instructionPopup) {
+                instructionPopup.style.display = 'none';
+            }
+        });
+        
+        // Redirecionar para o WhatsApp quando clicar em "Ir para o WhatsApp"
         continueToWhatsApp.addEventListener('click', function() {
             // Fechar o popup
             instructionPopup.style.display = 'none';
