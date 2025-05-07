@@ -767,10 +767,26 @@
       🎸 DESCOBRE OS NOSSOS TALENTOS 🎸
     </span>
   </div>
-  <a href="biografias.html" class="bio-link" style="padding: 15px 30px; font-size: 1.2rem;">
-    Clica em "Biografias" para saber mais sobre os nossos professores
+  <a href="biografias.html" class="bio-link" style="display: inline-block; padding: 15px 30px; font-size: 1.2rem; background-color: #333; color: #fff; text-decoration: none; border-radius: 5px; cursor: pointer; text-align: center;">
+    + INFO
   </a>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Garantir que o link funcione
+  const bioLink = document.querySelector('.bio-link');
+  
+  bioLink.addEventListener('click', function(e) {
+    // Prevenir comportamento padrão apenas para depuração
+    // e.preventDefault();
+    // console.log('Link clicado, redirecionando para biografias.html');
+    
+    // Redirecionar para a página - isso já deveria acontecer automaticamente
+    window.location.href = 'biografias.html';
+  });
+});
+</script>
         
     </section>
  
