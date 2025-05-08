@@ -607,162 +607,522 @@
             <a href="#videos">Vídeos</a>
         </div>
         
-        <section id="fotos" class="gallery-section">
-            <!-- SEÇÃO DE FOTOS -->
-            <!-- Seção de Fotos -->
-            <section class="fotos" id="fotos">
-            <div class="fotos-background"></div>
-            <div class="fotos-content">
-            <h2>Fotos</h2>
-            <!-- Navegação das categorias -->
-            <div class="fotos-categorias">
-            <button class="categoria-btn" onclick="filtrarFotos('escola')">Fotos da
-            Escola</button>
-            <button class="categoria-btn" onclick="filtrarFotos('alunos')">Fotos dos
-            Alunos</button>
-            <button class="categoria-btn" onclick="filtrarFotos('concertos')">Concertos
-            dos alunos e Professores</button>
-            <button class="categoria-btn" onclick="filtrarFotos('outras')">Outras</button>
-            <button class="categoria-btn voltar-btn" onclick="resetCategoria()"
-            style="display: none;">Voltar</button>
-            </div>
-            <div class="fotos-container">
-            <!-- Mensagem para quando nenhuma categoria está selecionada inicialmente
-            -->
-            <div id="mensagem-selecao" class="mensagem-selecao">
-            <p>Selecione uma categoria para visualizar as fotos</p>
-            </div>
-            <!-- Container da grade de fotos -->
-            <div class="fotos-grid">
-            <!-- Fotos da Escola - todas ocultas inicialmente -->
+        <!-- Seção de Fotos -->
+<section class="fotos" id="fotos">
+<div class="fotos-background"></div>
+<div class="fotos-content">
+<h2>Fotos</h2>
+<!-- Navegação das categorias -->
+<div class="fotos-categorias">
+<button class="categoria-btn" onclick="filtrarFotos('escola')">Fotos da
+Escola</button>
+<button class="categoria-btn" onclick="filtrarFotos('alunos')">Fotos dos
+Alunos</button>
+<button class="categoria-btn" onclick="filtrarFotos('concertos')">Concertos
+dos alunos e Professores</button>
+<button class="categoria-btn" onclick="filtrarFotos('outras')">Outras</button>
+<button class="categoria-btn voltar-btn" onclick="resetCategoria()"
+style="display: none;">Voltar</button>
+</div>
+<div class="fotos-container">
+<!-- Mensagem para quando nenhuma categoria está selecionada inicialmente
+-->
+<div id="mensagem-selecao" class="mensagem-selecao">
+<p>Selecione uma categoria para visualizar as fotos</p>
+</div>
+<!-- Container da grade de fotos -->
+<div class="fotos-grid">
+<!-- Fotos da Escola - todas ocultas inicialmente -->
 
-            <div class="foto-card categoria-escola" onclick="openLightbox('/galeria-de-
-            imagens/NER88.png', 'Logo NER', 'Um dos nossos logotipos.')" style="display:
-            none;">
-            <img src="/galeria-de-imagens/nova-escola-rock-logo3.png" alt="Logo NER">
-            <div class="foto-overlay">
-            <h3>Logo NER</h3>
-            <p>Um dos nossos logotipos.</p>
-            </div>
-            </div>
-            <!-- Adicione mais fotos aqui - exemplos -->
-            <!-- Fotos da Escola -->
-            <div class="foto-card categoria-escola" onclick="openLightbox('/galeria-de-
-            imagens/Fachada da Escola.png', 'Fachada da Escola', 'Nossa entrada principal.')"
-            style="display: none;">
-            <img src="/galeria-de-imagens/Fachada da Escola.png" alt="Fachada da
-            Escola">
-            <div class="foto-overlay">
-            <h3>Fachada da Escola</h3>
-            <p>Nossa entrada principal.</p>
-            </div>
-            </div>
-            <div class="foto-card categoria-escola" onclick="openLightbox('/galeria-de-
-            imagens/NER_Logo_P&B.png', 'Logo P&B', 'Nosso Logotipo a Preto e Branco')"
-            style="display: none;">
-            <img src="/galeria-de-imagens/NER_Logo_P&B.png" alt="Logo P&B">
-            <div class="foto-overlay">
-            <h3>Logotipo</h3>
+<div class="foto-card categoria-escola" onclick="openLightbox('/galeria-de-
+imagens/NER88.png', 'Logo NER', 'Um dos nossos logotipos.')" style="display:
+none;">
+<img src="/galeria-de-imagens/nova-escola-rock-logo3.png" alt="Logo NER">
+<div class="foto-overlay">
+<h3>Logo NER</h3>
+<p>Um dos nossos logotipos.</p>
+</div>
+</div>
+<!-- Adicione mais fotos aqui - exemplos -->
+<!-- Fotos da Escola -->
+<div class="foto-card categoria-escola" onclick="openLightbox('/galeria-de-
+imagens/Fachada da Escola.png', 'Fachada da Escola', 'Nossa entrada principal.')"
+style="display: none;">
+<img src="/galeria-de-imagens/Fachada da Escola.png" alt="Fachada da
+Escola">
+<div class="foto-overlay">
+<h3>Fachada da Escola</h3>
+<p>Nossa entrada principal.</p>
+</div>
+</div>
+<div class="foto-card categoria-escola" onclick="openLightbox('/galeria-de-
+imagens/NER_Logo_P&B.png', 'Logo P&B', 'Nosso Logotipo a Preto e Branco')"
+style="display: none;">
+<img src="/galeria-de-imagens/NER_Logo_P&B.png" alt="Logo P&B">
+<div class="foto-overlay">
+<h3>Logotipo</h3>
 
-            <p>Logotipo a Preto e Branco</p>
-            </div>
-            </div>
-            <div class="foto-card categoria-escola"
-            onclick="openLightbox('/api/placeholder/400/300', 'Estúdio de Gravação',
-            'Equipamentos de última geração para nossas produções.')" style="display:
-            none;">
-            <img src="/api/placeholder/400/300" alt="Estúdio de Gravação">
-            <div class="foto-overlay">
-            <h3>Estúdio de Gravação</h3>
-            <p>Equipamentos de última geração para nossas produções.</p>
-            </div>
-            </div>
-            <!-- Fotos dos Alunos -->
-            <div class="foto-card categoria-alunos" onclick="openLightbox('/galeria-de-
-            imagens/Rafinha 2a.png', 'Aula de Guitarra', 'Rafinha - Novo Aluno durante a 1ª
-            aula prática de guitarra.')" style="display: none;">
-            <img src="/galeria-de-imagens/Rafinha 2a.png" alt="Aula de Guitarra">
-            <div class="foto-overlay">
-            <h3>Aula de Guitarra</h3>
-            <p>Rafinha - Novo Aluno durante a 1ª aula prática de guitarra.</p>
-            </div>
-            </div>
-            <div class="foto-card categoria-alunos" onclick="openLightbox('/galeria-de-
-            imagens/Rafinha & Professor de Guitarra.png', 'Aula de Guitarra', 'Rafinha - Novo
-            Aluno com o professor de guitarra.')" style="display: none;">
-            <img src="/galeria-de-imagens/Rafinha & Professor de Guitarra.png" alt="Aula
-            de Guitarra">
+<p>Logotipo a Preto e Branco</p>
+</div>
+</div>
+<div class="foto-card categoria-escola"
+onclick="openLightbox('/api/placeholder/400/300', 'Estúdio de Gravação',
+'Equipamentos de última geração para nossas produções.')" style="display:
+none;">
+<img src="/api/placeholder/400/300" alt="Estúdio de Gravação">
+<div class="foto-overlay">
+<h3>Estúdio de Gravação</h3>
+<p>Equipamentos de última geração para nossas produções.</p>
+</div>
+</div>
+<!-- Fotos dos Alunos -->
+<div class="foto-card categoria-alunos" onclick="openLightbox('/galeria-de-
+imagens/Rafinha 2a.png', 'Aula de Guitarra', 'Rafinha - Novo Aluno durante a 1ª
+aula prática de guitarra.')" style="display: none;">
+<img src="/galeria-de-imagens/Rafinha 2a.png" alt="Aula de Guitarra">
+<div class="foto-overlay">
+<h3>Aula de Guitarra</h3>
+<p>Rafinha - Novo Aluno durante a 1ª aula prática de guitarra.</p>
+</div>
+</div>
+<div class="foto-card categoria-alunos" onclick="openLightbox('/galeria-de-
+imagens/Rafinha & Professor de Guitarra.png', 'Aula de Guitarra', 'Rafinha - Novo
+Aluno com o professor de guitarra.')" style="display: none;">
+<img src="/galeria-de-imagens/Rafinha & Professor de Guitarra.png" alt="Aula
+de Guitarra">
 
-            <div class="foto-overlay">
-            <h3>Aula de Guitarra</h3>
-            <p>Rafinha - Novo Aluno com o professor de guitarra.</p>
-            </div>
-            </div>
-            <div class="foto-card categoria-alunos"
-            onclick="openLightbox('/api/placeholder/400/300', 'Aula de Bateria', 'Nossos
-            alunos de bateria em ação.')" style="display: none;">
-            <img src="/api/placeholder/400/300" alt="Aula de Bateria">
-            <div class="foto-overlay">
-            <h3>Aula de Bateria</h3>
-            <p>Nossos alunos de bateria em ação.</p>
-            </div>
-            </div>
-            <!-- Fotos de Concertos -->
-            <div class="foto-card categoria-concertos"
-            onclick="openLightbox('/api/placeholder/400/300', 'Show de Final de Ano',
-            'Apresentação dos alunos em dezembro de 2023.')" style="display: none;">
-            <img src="/api/placeholder/400/300" alt="Show de Final de Ano">
-            <div class="foto-overlay">
-            <h3>Show de Final de Ano</h3>
-            <p>Apresentação dos alunos em dezembro de 2023.</p>
-            </div>
-            </div>
-            <div class="foto-card categoria-concertos"
-            onclick="openLightbox('/api/placeholder/400/300', 'Festival de Rock', 'Banda
-            formada por professores em apresentação especial.')" style="display: none;">
+<div class="foto-overlay">
+<h3>Aula de Guitarra</h3>
+<p>Rafinha - Novo Aluno com o professor de guitarra.</p>
+</div>
+</div>
+<div class="foto-card categoria-alunos"
+onclick="openLightbox('/api/placeholder/400/300', 'Aula de Bateria', 'Nossos
+alunos de bateria em ação.')" style="display: none;">
+<img src="/api/placeholder/400/300" alt="Aula de Bateria">
+<div class="foto-overlay">
+<h3>Aula de Bateria</h3>
+<p>Nossos alunos de bateria em ação.</p>
+</div>
+</div>
+<!-- Fotos de Concertos -->
+<div class="foto-card categoria-concertos"
+onclick="openLightbox('/api/placeholder/400/300', 'Show de Final de Ano',
+'Apresentação dos alunos em dezembro de 2023.')" style="display: none;">
+<img src="/api/placeholder/400/300" alt="Show de Final de Ano">
+<div class="foto-overlay">
+<h3>Show de Final de Ano</h3>
+<p>Apresentação dos alunos em dezembro de 2023.</p>
+</div>
+</div>
+<div class="foto-card categoria-concertos"
+onclick="openLightbox('/api/placeholder/400/300', 'Festival de Rock', 'Banda
+formada por professores em apresentação especial.')" style="display: none;">
 
-            <img src="/api/placeholder/400/300" alt="Festival de Rock">
-            <div class="foto-overlay">
-            <h3>Festival de Rock</h3>
-            <p>Banda formada por professores em apresentação especial.</p>
-            </div>
-            </div>
-            <!-- Outras Fotos -->
-            <div class="foto-card categoria-outras"
-            onclick="openLightbox('/api/placeholder/400/300', 'Visita de Artista', 'Visita de
-            Artista')" style="display: none;">
-            <img src="/api/placeholder/400/300" alt="Visita de Artista">
-            <div class="foto-overlay">
-            <h3>Visita de Artista</h3>
-            <p>Visita de Artista</p>
-            </div>
-            </div>
-            <div class="foto-card categoria-outras"
-            onclick="openLightbox('/api/placeholder/400/300', 'Equipamentos Novos', 'Novos
-            instrumentos adquiridos em 2024.')" style="display: none;">
-            <img src="/api/placeholder/400/300" alt="Equipamentos Novos">
-            <div class="foto-overlay">
-            <h3>Equipamentos Novos</h3>
-            <p>Novos instrumentos adquiridos em 2024.</p>
-            </div>
-            </div>
-            </div>
-            </div>
+<img src="/api/placeholder/400/300" alt="Festival de Rock">
+<div class="foto-overlay">
+<h3>Festival de Rock</h3>
+<p>Banda formada por professores em apresentação especial.</p>
+</div>
+</div>
+<!-- Outras Fotos -->
+<div class="foto-card categoria-outras"
+onclick="openLightbox('/api/placeholder/400/300', 'Visita de Artista', 'Visita de
+Artista')" style="display: none;">
+<img src="/api/placeholder/400/300" alt="Visita de Artista">
+<div class="foto-overlay">
+<h3>Visita de Artista</h3>
+<p>Visita de Artista</p>
+</div>
+</div>
+<div class="foto-card categoria-outras"
+onclick="openLightbox('/api/placeholder/400/300', 'Equipamentos Novos', 'Novos
+instrumentos adquiridos em 2024.')" style="display: none;">
+<img src="/api/placeholder/400/300" alt="Equipamentos Novos">
+<div class="foto-overlay">
+<h3>Equipamentos Novos</h3>
+<p>Novos instrumentos adquiridos em 2024.</p>
+</div>
+</div>
+</div>
+</div>
 
-            </div>
-            <!-- Lightbox Modal -->
-            <div id="foto-lightbox" class="lightbox">
-            <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
-            <div class="lightbox-content">
-            <img id="lightbox-image" src="" alt="">
-            <div class="lightbox-caption">
-            <h3 id="lightbox-title"></h3>
-            <p id="lightbox-description"></p>
-            </div>
-            </div>
-            </div>
-            </section>
-        </section>
+</div>
+<!-- Lightbox Modal -->
+<div id="foto-lightbox" class="lightbox">
+<span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+<div class="lightbox-content">
+<img id="lightbox-image" src="" alt="">
+<div class="lightbox-caption">
+<h3 id="lightbox-title"></h3>
+<p id="lightbox-description"></p>
+</div>
+</div>
+</div>
+</section>
+<style>
+/* Estilos para a seção de fotos - removido imagem de fundo */
+.fotos {
+position: relative;
+padding: 60px 0;
+overflow: hidden;
+}
+/* Estilo para o background - removida a imagem */
+.fotos-background {
+position: absolute;
+top: 0;
+left: 0;
+
+width: 100%;
+height: 100%;
+opacity: 0.25; /* Opacidade reduzida para não interferir no conteúdo */
+z-index: 1;
+}
+/* Conteúdo da seção de fotos */
+.fotos-content {
+position: relative;
+z-index: 2;
+width: 90%;
+max-width: 1200px;
+margin: 0 auto;
+}
+/* Estilo para o título */
+.fotos h2 {
+text-align: center;
+margin-bottom: 30px;
+color: #ff3366;
+text-shadow: 0 0 10px rgba(255, 51, 102, 0.8);
+}
+/* Estilos para o container de fotos */
+.fotos-container {
+display: flex;
+flex-direction: column;
+align-items: center;
+
+width: 100%;
+position: relative;
+}
+/* Estilos para a grade de fotos */
+.fotos-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+gap: 20px;
+width: 100%;
+padding-top: 20px; /* Adicionar espaço no topo */
+position: relative;
+z-index: 5; /* Z-index menor que o menu de categorias */
+}
+/* Estilo rockeiro para a mensagem de instrução */
+.mensagem-selecao {
+display: block;
+width: 300px;
+margin: 20px auto; /* Reduzido de 40px para 20px */
+padding: 10px 20px; /* Reduzido de 15px 30px para 10px 20px */
+text-align: center;
+background-color: rgba(26, 26, 26, 0.8);
+border: 2px solid #ff3366;
+border-radius: 8px;
+box-shadow: 0 0 15px rgba(255, 51, 102, 0.6);
+}
+
+.mensagem-selecao p {
+margin: 0;
+font-size: 1.1rem; /* Reduzido de 1.2rem para 1.1rem */
+font-weight: bold;
+color: #ffffff;
+text-shadow: 0 0 5px #ff3366;
+font-family: 'Arial', sans-serif;
+letter-spacing: 1px;
+}
+/* Estilos para as categorias de fotos */
+.fotos-categorias {
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+margin-bottom: 20px; /* Reduzido de 40px para 20px */
+position: relative;
+z-index: 10; /* Adicionar z-index para garantir que fique acima */
+}
+.categoria-btn {
+background-color: rgba(42, 42, 42, 0.8);
+color: white;
+border: 1px solid transparent; /* Reduzido de 2px para 1px */
+padding: 8px 15px; /* Reduzido de 10px 20px para 8px 15px */
+margin: 0 5px 8px; /* Reduzido margem inferior de 10px para 8px */
+border-radius: 5px;
+cursor: pointer;
+
+transition: all 0.3s ease;
+font-size: 0.9rem; /* Reduzido de 1rem para 0.9rem */
+}
+.categoria-btn:hover {
+background-color: rgba(68, 68, 68, 0.9);
+border-color: #ff3366;
+transform: translateY(-2px);
+}
+.categoria-btn.active {
+background-color: rgba(255, 51, 102, 0.8);
+color: white;
+border-color: #fff;
+box-shadow: 0 0 10px rgba(255, 51, 102, 0.6);
+}
+/* Estilo para o botão voltar */
+.voltar-btn {
+background-color: rgba(26, 26, 26, 0.8);
+border: 1px solid #ff3366;
+margin-left: 15px;
+box-shadow: 0 0 10px rgba(255, 51, 102, 0.4);
+}
+.voltar-btn:hover {
+background-color: rgba(255, 51, 102, 0.8);
+border-color: white;
+
+transform: translateY(-2px);
+}
+/* Estilo para os cards de foto */
+.foto-card {
+position: relative;
+overflow: hidden;
+border-radius: 8px;
+cursor: pointer;
+transition: transform 0.3s ease;
+box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.foto-card:hover {
+transform: translateY(-5px);
+}
+.foto-card img {
+width: 100%;
+height: 200px;
+object-fit: cover;
+display: block;
+transition: transform 0.5s ease;
+}
+.foto-card:hover img {
+transform: scale(1.05);
+}
+
+.foto-overlay {
+position: absolute;
+bottom: 0;
+left: 0;
+right: 0;
+background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+color: white;
+padding: 15px;
+transform: translateY(100%);
+transition: transform 0.3s ease;
+}
+.foto-card:hover .foto-overlay {
+transform: translateY(0);
+}
+/* Estilos para o Lightbox */
+.lightbox {
+display: none;
+position: fixed;
+z-index: 1000;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+overflow: auto;
+background-color: rgba(0, 0, 0, 0.9);
+
+animation: fadeIn 0.3s;
+}
+@keyframes fadeIn {
+from {opacity: 0;}
+to {opacity: 1;}
+}
+.lightbox-content {
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+width: 90%;
+max-width: 900px;
+margin: 30px auto;
+padding: 20px;
+}
+.lightbox-content img {
+max-width: 100%;
+max-height: 80vh;
+object-fit: contain;
+border: 3px solid #ff3366;
+border-radius: 5px;
+box-shadow: 0 0 20px rgba(255, 51, 102, 0.6);
+}
+
+.lightbox-caption {
+width: 100%;
+text-align: center;
+color: white;
+margin-top: 15px;
+padding: 10px;
+background-color: rgba(0, 0, 0, 0.6);
+border-radius: 5px;
+border-left: 3px solid #ff3366;
+}
+.lightbox-caption h3 {
+margin: 0 0 5px 0;
+color: #ff3366;
+text-shadow: 0 0 5px rgba(255, 51, 102, 0.6);
+}
+.lightbox-caption p {
+margin: 0;
+font-size: 0.9rem;
+}
+.close-lightbox {
+position: absolute;
+top: 15px;
+right: 25px;
+color: #f1f1f1;
+
+font-size: 40px;
+font-weight: bold;
+transition: 0.3s;
+z-index: 1001;
+}
+.close-lightbox:hover,
+.close-lightbox:focus {
+color: #ff3366;
+text-decoration: none;
+cursor: pointer;
+transform: scale(1.1);
+}
+@media (max-width: 768px) {
+.fotos-categorias {
+flex-direction: column;
+align-items: center;
+}
+.categoria-btn {
+width: 80%;
+margin-bottom: 10px;
+}
+.mensagem-selecao {
+width: 80%;
+}
+
+.lightbox-content {
+width: 95%;
+padding: 10px;
+}
+.close-lightbox {
+top: 10px;
+right: 15px;
+font-size: 30px;
+}
+}
+</style>
+<script>
+// Função para filtrar as fotos por categoria
+function filtrarFotos(categoria) {
+    // Esconder a mensagem de seleção
+    document.getElementById('mensagem-selecao').style.display = 'none';
+    
+    // Remover classe ativa de todos os botões
+    document.querySelectorAll('.categoria-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Adicionar classe ativa ao botão clicado
+    // Encontre o botão com base na categoria
+    document.querySelectorAll('.categoria-btn').forEach(btn => {
+        if (btn.textContent.toLowerCase().includes(categoria)) {
+            btn.classList.add('active');
+        }
+    });
+    
+    // Mostrar o botão voltar
+    document.querySelector('.voltar-btn').style.display = 'inline-block';
+    
+    // Mostrar/ocultar fotos com base na categoria
+    const fotoCards = document.querySelectorAll('.foto-card');
+    fotoCards.forEach(card => {
+        if (categoria === 'escola' && card.classList.contains('categoria-escola')) {
+            card.style.display = 'block';
+        } else if (categoria === 'alunos' && card.classList.contains('categoria-alunos')) {
+            card.style.display = 'block';
+        } else if (categoria === 'concertos' && card.classList.contains('categoria-concertos')) {
+            card.style.display = 'block';
+        } else if (categoria === 'outras' && card.classList.contains('categoria-outras')) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+// Função para resetar e voltar à visualização inicial
+function resetCategoria() {
+    // Mostrar a mensagem de seleção
+    document.getElementById('mensagem-selecao').style.display = 'block';
+    
+    // Ocultar todas as fotos
+    document.querySelectorAll('.foto-card').forEach(card => {
+        card.style.display = 'none';
+    });
+    
+    // Remover classe ativa de todos os botões
+    document.querySelectorAll('.categoria-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Ocultar o botão voltar
+    document.querySelector('.voltar-btn').style.display = 'none';
+}
+
+// Função para abrir o lightbox
+function openLightbox(imgSrc, title, description) {
+    // Obter o elemento lightbox
+    const lightbox = document.getElementById('foto-lightbox');
+    const lightboxImg = document.getElementById('lightbox-image');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxDesc = document.getElementById('lightbox-description');
+    
+    // Definir o conteúdo do lightbox
+    lightboxImg.src = imgSrc;
+    lightboxTitle.textContent = title;
+    lightboxDesc.textContent = description;
+    
+    // Mostrar o lightbox
+    lightbox.style.display = 'block';
+    
+    // Desabilitar o scroll do body
+    document.body.style.overflow = 'hidden';
+}
+
+// Função para fechar o lightbox
+function closeLightbox() {
+    document.getElementById('foto-lightbox').style.display = 'none';
+    
+    // Reativar o scroll do body
+    document.body.style.overflow = 'auto';
+}
+
+// Fechar o lightbox ao clicar fora da imagem
+window.addEventListener('click', function(event) {
+    const lightbox = document.getElementById('foto-lightbox');
+    if (event.target === lightbox) {
+        closeLightbox();
+    }
+});
+
+// Inicialização - não mostrar nenhuma categoria por padrão
+document.addEventListener('DOMContentLoaded', function() {
+    // Certifique-se que todas as fotos estão ocultas inicialmente
+    document.querySelectorAll('.foto-card').forEach(card => {
+        card.style.display = 'none';
+    });
+    
+    // Mostrar a mensagem de instrução
+    document.getElementById('mensagem-selecao').style.display = 'block';
+    
+    // Ocultar o botão voltar inicialmente
+    document.querySelector('.voltar-btn').style.display = 'none';
+});
+</script>
         
         <section id="videos" class="gallery-section">
             <!-- SEÇÃO DE VÍDEOS -->
