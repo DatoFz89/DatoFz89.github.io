@@ -1350,6 +1350,7 @@ z-index: 2; /* Garante que o conteúdo fique acima da sobreposição */
 }
 </style>
 <script>
+
 // Carrega a API do YouTube
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
@@ -1383,15 +1384,14 @@ function onYouTubeIframeAPIReady() {
 function onPlayerStateChange(event) {
     // Se o vídeo começou a ser reproduzido (estado 1)
     if (event.data == YT.PlayerState.PLAYING) {
-        var currentPlayerId = event.target.h.id;
+        // Obtém o ID do player atual de forma mais confiável
+        var currentPlayer = event.target;
         
         // Pausa todos os outros players do YouTube
         for (var id in youtubePlayers) {
-            if (id !== currentPlayerId) {
-                var player = youtubePlayers[id];
-                if (player && player.pauseVideo && typeof player.pauseVideo === 'function') {
-                    player.pauseVideo();
-                }
+            var player = youtubePlayers[id];
+            if (player && player !== currentPlayer && player.pauseVideo && typeof player.pauseVideo === 'function') {
+                player.pauseVideo();
             }
         }
         
