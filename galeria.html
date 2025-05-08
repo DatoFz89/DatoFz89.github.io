@@ -1124,7 +1124,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
         
-        <!-- Seção de Vídeos -->
+<!-- Seção de Vídeos -->
 <section class="videos" id="videos">
 <h2>Videos</h2>
 <div class="folder-container">
@@ -1150,7 +1150,8 @@ type="video/mp4">
 O seu navegador não suporta o elemento de vídeo.
 </video>
 </div>
-<div class="video-info"><h3>Apresentação da Escola</h3><p>Conheça as nossas instalações e a equipe
+<div class="video-info">
+<h3>Apresentação da Escola</h3><p>Conheça as nossas instalações e a equipe
 de professores da Nova
 Escola Rock.</p>
 </div>
@@ -1158,7 +1159,7 @@ Escola Rock.</p>
 <div class="video-card">
 <div class="video-container">
 <iframe
-id="youtube-player-80ZoqAdrX98"
+id="youtube-player-1"
 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
 src="https://www.youtube.com/embed/80ZoqAdrX98?enablejsapi=1"
 title="NER - Workshop - Professores em Interação com o público"
@@ -1175,9 +1176,10 @@ class="video-player youtube-player">
 Interação com o Público - Em Meixomil Paços de Ferreira</strong></p>
 </div>
 </div>
-<div class="video-card"><div class="video-container">
+<div class="video-card">
+<div class="video-container">
 <iframe
-id="youtube-player"
+id="youtube-player-2"
 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
 src="https://www.youtube.com/embed/uYwaIaj9vhw?enablejsapi=1"
 title="NER - Nova Escola Rock School Anthem"
@@ -1202,7 +1204,8 @@ Generation"</strong></p>
 type="video/mp4">
 O seu navegador não suporta o elemento de vídeo.
 </video>
-</div><div class="video-info">
+</div>
+<div class="video-info">
 <h3>Rafinha</h3><p>Durante a 1ª Aula de Guitarra</p>
 </div>
 </div>
@@ -1227,8 +1230,10 @@ width: 300px;
 height: 200px;
 margin: 0 auto;
 cursor: pointer;
-transition: transform 0.5s ease;transform-style: preserve-3d;
-}.folder-back {
+transition: transform 0.5s ease;
+transform-style: preserve-3d;
+}
+.folder-back {
 position: absolute;
 width: 100%;
 height: 100%;
@@ -1252,9 +1257,11 @@ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 overflow: hidden;
 }
 .folder-front::before {
-content: "";position: absolute;
+content: "";
+position: absolute;
 top: 0;
-left: 0;width: 100%;
+left: 0;
+width: 100%;
 height: 30px;
 background: rgba(0, 0, 0, 0.1);
 border-radius: 10px 10px 0 0;
@@ -1275,13 +1282,15 @@ filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.3));
 .folder-open-text {
 font-size: 14px;
 color: white;
-background: rgba(0, 0, 0, 0.3);padding: 5px 15px;
+background: rgba(0, 0, 0, 0.3);
+padding: 5px 15px;
 border-radius: 20px;
 transition: all 0.3s ease;
 animation: pulse 2s infinite;
 }
 @keyframes pulse {
-0% { transform: scale(1); }50% { transform: scale(1.05); }
+0% { transform: scale(1); }
+50% { transform: scale(1.05); }
 100% { transform: scale(1); }
 }
 .folder-content {
@@ -1297,7 +1306,8 @@ transform: rotateX(15deg);
 .folder-checkbox:checked + .folder-label + .folder-content {
 max-height: 5000px;
 opacity: 1;
-}.folder-checkbox:checked + .folder-label .folder-front {
+}
+.folder-checkbox:checked + .folder-label .folder-front {
 background: linear-gradient(145deg, #f84848, #d43636);
 }
 .folder-checkbox:checked + .folder-label .folder-open-text {
@@ -1308,7 +1318,8 @@ transform: translateY(-5px) rotateX(10deg);
 }
 .folder:hover .folder-open-text {
 background: rgba(255, 255, 255, 0.2);
-transform: scale(1.1);}
+transform: scale(1.1);
+}
 /* Mantendo o estilo existente da grade de vídeos */
 .videos-grid {
 display: grid;
@@ -1317,7 +1328,8 @@ gap: 20px;
 padding: 20px 0;
 }
 /* Estilo da seção de vídeos - removido o fundo */
-.videos {position: relative;
+.videos {
+position: relative;
 padding: 50px 20px;
 color: white;
 }
@@ -1335,75 +1347,90 @@ z-index: 1;
 .videos .folder-container {
 position: relative;
 z-index: 2; /* Garante que o conteúdo fique acima da sobreposição */
-}</style>
+}
+</style>
 <script>
 // Carrega a API do YouTube
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-// Lista para armazenar referências aos players do YouTube
-var youtubePlayers = [];
+
+// Objeto para armazenar referências aos players do YouTube
+var youtubePlayers = {};
+
 // Chamado automaticamente quando a API do YouTube estiver pronta
 function onYouTubeIframeAPIReady() {
-// Busca todos os iframes do YouTube
-var youtubeIframes = document.querySelectorAll('.youtube-player');
-youtubeIframes.forEach(function(iframe, index) {
-// Obtém o ID do vídeo da URL
-var src = iframe.src;
-var match = src.match(/embed\/([^?]+)/);
-if (match && match[1]) {
-var videoId = match[1];
-// Cria um ID único para este iframe
-var playerId = 'youtube-player-' + index;
-iframe.id = playerId;
-// Inicializa o playeryoutubePlayers.push(new YT.Player(playerId, {
-events: {
-'onStateChange': onPlayerStateChange
+    // Busca todos os iframes do YouTube
+    var youtubeIframes = document.querySelectorAll('.youtube-player');
+    
+    // Inicializa cada player do YouTube
+    youtubeIframes.forEach(function(iframe) {
+        var playerId = iframe.id;
+        
+        if (playerId) {
+            // Cria um novo player do YouTube
+            youtubePlayers[playerId] = new YT.Player(playerId, {
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+    });
 }
-}));
-}
-});
-}
+
 // Quando um player do YouTube muda de estado
 function onPlayerStateChange(event) {
-// Se o vídeo começou a ser reproduzido (estado 1)
-if (event.data == YT.PlayerState.PLAYING) {
-// Pausa todos os outros players do YouTube
-youtubePlayers.forEach(function(player) {
-if (player !== event.target && player.getPlayerState && typeof
-player.getPlayerState === 'function') {
-if (player.getPlayerState() === YT.PlayerState.PLAYING) {
-player.pauseVideo();
+    // Se o vídeo começou a ser reproduzido (estado 1)
+    if (event.data == YT.PlayerState.PLAYING) {
+        var currentPlayerId = event.target.h.id;
+        
+        // Pausa todos os outros players do YouTube
+        for (var id in youtubePlayers) {
+            if (id !== currentPlayerId) {
+                var player = youtubePlayers[id];
+                if (player && player.pauseVideo && typeof player.pauseVideo === 'function') {
+                    player.pauseVideo();
+                }
+            }
+        }
+        
+        // Pausa todos os vídeos HTML5
+        pauseAllHTMLVideos();
+    }
 }
+
+// Função para pausar todos os vídeos HTML5
+function pauseAllHTMLVideos() {
+    var htmlVideos = document.querySelectorAll('video.video-player');
+    htmlVideos.forEach(function(video) {
+        video.pause();
+    });
 }
-});
-// Pausa todos os vídeos HTML5
-var htmlVideos = document.querySelectorAll('video.video-player');
-htmlVideos.forEach(function(video) {
-video.pause();
-});}
-}
+
 // Script para os vídeos HTML5
 document.addEventListener('DOMContentLoaded', function() {
-// Seleciona todos os players de vídeo HTML5
-const htmlVideos = document.querySelectorAll('video.video-player');
-// Adiciona evento para cada player de vídeo HTML5
-htmlVideos.forEach(video => {
-video.addEventListener('play', function() {
-// Pausa outros vídeos HTML5
-htmlVideos.forEach(otherVideo => {
-if (otherVideo !== video) {
-otherVideo.pause();
-}
-});
-// Pausa todos os players do YouTube
-youtubePlayers.forEach(function(player) {
-if (player.pauseVideo && typeof player.pauseVideo === 'function') {
-player.pauseVideo();
-}
-});
-});
-});
+    // Seleciona todos os players de vídeo HTML5
+    const htmlVideos = document.querySelectorAll('video.video-player');
+    
+    // Adiciona evento para cada player de vídeo HTML5
+    htmlVideos.forEach(video => {
+        video.addEventListener('play', function() {
+            // Pausa outros vídeos HTML5
+            htmlVideos.forEach(otherVideo => {
+                if (otherVideo !== video) {
+                    otherVideo.pause();
+                }
+            });
+            
+            // Pausa todos os players do YouTube
+            for (var id in youtubePlayers) {
+                var player = youtubePlayers[id];
+                if (player && player.pauseVideo && typeof player.pauseVideo === 'function') {
+                    player.pauseVideo();
+                }
+            }
+        });
+    });
 });
 </script>
