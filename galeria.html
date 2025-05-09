@@ -105,16 +105,32 @@ body::before {
     opacity: 0.5; /* Você pode ajustar a opacidade conforme desejado (0.1 a 1.0) */
     z-index: 1;
 }
-        .header-content {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        header {
+    position: fixed; /* Fixa o header na janela de visualização */
+    top: 0; /* Alinha no topo da janela */
+    left: 0; /* Alinha à esquerda */
+    width: 100%; /* Ocupa toda a largura da janela */
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+    background-color: #121212; /* Ajuste para a cor que você está usando no header */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Opcional: adiciona uma sombra sutil */
+}
+
+.header-content {
+    position: relative; /* Mantenha isso como está */
+    z-index: 2; /* Mantenha isso como está */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Adicione esta regra para o body para compensar o espaço ocupado pelo header fixo */
+body {
+    padding-top: 80px; /* Ajuste este valor para corresponder à altura do seu header */
+    /* As outras propriedades do body que você já definiu continuam aqui */
+}
         
         .logo {
             font-size: 24px;
