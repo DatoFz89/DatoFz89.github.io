@@ -71,11 +71,20 @@
         } 
     </style> 
     <script> 
-        function mostrarMensagem() { 
-            document.getElementById("mensagem").innerText = "A enviar mensagem... Aguarde."; 
-            return true;
-        } 
-    </script> 
+    function mostrarMensagem() { 
+        document.getElementById("mensagem").innerText = "A enviar mensagem... Aguarde."; 
+        return true;
+    }
+    
+    // Simples função para deixar o seletor de data mais amigável
+    document.addEventListener('DOMContentLoaded', function() {
+        // Adiciona o atributo yearSelector para o campo de data
+        var dateInput = document.querySelector('input[name="data_nascimento"]');
+        if (dateInput) {
+            dateInput.setAttribute('onfocus', 'this.showPicker()');
+        }
+    });
+</script>
 </head> 
 <body> 
     <header> 
