@@ -4,11 +4,11 @@
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Inscrição - NER - Nova Escola Rock</title> 
- 
+
     <style> 
         body { 
             font-family: 'Arial', sans-serif; 
-            background: url('/galeria-de-imagens/fundo_inscricao.jpg') no-repeat center center fixed; 
+            background: url("galeria-de-imagens/fundo_inscricao.jpg") no-repeat center center fixed; 
             background-size: cover; 
             color: white; 
             text-align: center; 
@@ -70,22 +70,6 @@
             background: #e62e5c; 
         } 
     </style> 
-    <script> 
-    function mostrarMensagem() { 
-        document.getElementById("mensagem").innerText = "A enviar mensagem... Aguarde."; 
-        return true;
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        var dateInput = document.querySelector('input[name="data_nascimento"]');
-        if (dateInput) {
-            dateInput.setAttribute('min', '1920-01-01');
-            dateInput.setAttribute('max', '2025-12-31');
-            // Não redefinir o type, já está definido corretamente no HTML
-            // Placeholder não é suportado no type="date" na maioria dos browsers móveis
-        }
-    });
-    </script>
 </head> 
 <body> 
     <header> 
@@ -113,8 +97,8 @@
             
             <!-- Campos do formulário -->
             <input type="text" name="nome" placeholder="Nome completo" required> 
-            <label>Data de Nascimento</label> 
-            <input type="date" name="data_nascimento" required> 
+            <label for="data_nascimento">Data de Nascimento</label> 
+            <input type="date" id="data_nascimento" name="data_nascimento" required> 
             <textarea name="endereco" rows="3" placeholder="Endereço Completo"></textarea> 
             <input type="tel" name="telefone" placeholder="Telefone" required> 
             <input type="email" name="email" placeholder="E-mail" required> 
@@ -133,5 +117,21 @@
         </form> 
         <p id="mensagem" style="color: white; margin-top: 10px;"></p> 
     </div> 
+
+    <script> 
+        function mostrarMensagem() { 
+            document.getElementById("mensagem").innerText = "A enviar mensagem... Aguarde."; 
+            return true;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var dateInput = document.querySelector('input[name="data_nascimento"]');
+            if (dateInput) {
+                dateInput.setAttribute('min', '1920-01-01');
+                dateInput.setAttribute('max', '2025-12-31');
+                dateInput.setAttribute('placeholder', 'AAAA-MM-DD');
+            }
+        });
+    </script>
 </body> 
 </html>
