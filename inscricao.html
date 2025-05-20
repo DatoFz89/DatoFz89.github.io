@@ -77,13 +77,23 @@
     }
     
     // Simples função para deixar o seletor de data mais amigável
-    document.addEventListener('DOMContentLoaded', function() {
-        // Adiciona o atributo yearSelector para o campo de data
-        var dateInput = document.querySelector('input[name="data_nascimento"]');
-        if (dateInput) {
-            dateInput.setAttribute('onfocus', 'this.showPicker()');
-        }
-    });
+   document.addEventListener('DOMContentLoaded', function() {
+    var dateInput = document.querySelector('input[name="data_nascimento"]');
+    if (dateInput) {
+        // Define intervalo aceitável de datas (ex: 1920 a 2025)
+        dateInput.setAttribute('min', '1920-01-01');
+        dateInput.setAttribute('max', '2025-12-31');
+
+        // Preenche com tipo date mesmo assim
+        dateInput.setAttribute('type', 'date');
+
+        // Opcional: mostra um valor de exemplo
+        dateInput.setAttribute('placeholder', 'AAAA-MM-DD');
+
+        // Remove o showPicker(), pois ele não resolve o problema
+        dateInput.removeAttribute('onfocus');
+    }
+});
 </script>
 </head> 
 <body> 
