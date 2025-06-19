@@ -1,187 +1,187 @@
-<!DOCTYPE html> 
-<html lang="pt"> 
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Inscrição - NER - Nova Escola Rock</title> 
- 
-    <style> 
-        body { 
-            font-family: 'Arial', sans-serif; 
-            background: url('/galeria-de-imagens/fundo_inscricao.jpg') no-repeat center center fixed; 
-            background-size: cover; 
-            color: white; 
-            text-align: center; 
-            margin: 0; 
-            padding: 0; 
-        } 
-        header { 
-            background: rgba(0, 0, 0, 0.8); 
-            padding: 20px; 
-        } 
-        .logo { 
-            font-size: 2rem; 
-            font-weight: bold; 
-            color: #ff3366; 
-        } 
-        nav ul { 
-            list-style: none; 
-            padding: 0; 
-        } 
-        nav ul li { 
-            display: inline; 
-            margin: 0 15px; 
-        } 
-        nav ul li a { 
-            color: white; 
-            text-decoration: none; 
-            font-size: 1.2rem; 
-        } 
-        .form-container { 
-            background: rgba(0, 0, 0, 0.8); 
-            padding: 40px; 
-            margin: 50px auto; 
-            width: 50%; 
-            border-radius: 10px; 
-        } 
-        h2 { 
-            color: #ff3366; 
-        } 
-        input, textarea, select { 
-            width: 100%; 
-            padding: 10px; 
-            margin: 10px 0; 
-            border: none; 
-            border-radius: 5px; 
-            font-size: 1rem; 
-        } 
-        button { 
-            background: #ff3366; 
-            color: white; 
-            padding: 15px; 
-            width: 100%; 
-            font-size: 1.2rem; 
-            border: none; 
-            border-radius: 5px; 
-            cursor: pointer; 
-            transition: 0.3s; 
-        } 
-        button:hover { 
-            background: #e62e5c; 
-        } 
-    </style> 
-    <script> 
-    function mostrarMensagem() { 
-        document.getElementById("mensagem").innerText = "A enviar mensagem... Aguarde."; 
-        return true;
-    }
-    
-    // Simples função para deixar o seletor de data mais amigável
-   document.addEventListener('DOMContentLoaded', function() {
-    var dateInput = document.querySelector('input[name="data_nascimento"]');
-    if (dateInput) {
-        // Define intervalo aceitável de datas (ex: 1920 a 2025)
-        dateInput.setAttribute('min', '1920-01-01');
-        dateInput.setAttribute('max', '2025-12-31');
+<!DOCTYPE html>
+<html lang="pt">
 
-        // Preenche com tipo date mesmo assim
-        dateInput.setAttribute('type', 'date');
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrição - NER - Nova Escola Rock</title>
 
-        // Opcional: mostra um valor de exemplo
-        dateInput.setAttribute('placeholder', 'AAAA-MM-DD');
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('/galeria-de-imagens/fundo_inscricao.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
 
-        // Remove o showPicker(), pois ele não resolve o problema
-        dateInput.removeAttribute('onfocus');
-    }
-});
-</script>
-</head> 
-<body> 
-    <header> 
-        <div class="logo">NER - Nova Escola Rock</div> 
-        <nav> 
-            <ul> 
-                <li><a href="index.html">Início</a></li> 
-                <li><a href="index.html#cursos">Cursos</a></li> 
-                <li><a href="index.html#professores">Professores</a></li> 
-                <li><a href="index.html#contato">Contato</a></li>
-            </ul> 
-        </nav> 
-    </header> 
-    <div class="form-container"> 
-        <h2>Inscreve-te Aqui</h2> 
-        <form method="POST" onsubmit="return enviarInscricao()"> 
-            <!-- Configurações FormSubmit -->
-            <input type="hidden" name="_next" value="https://datofz89.github.io/thanks.html"> 
-            <input type="hidden" name="_subject" value="Nova Inscrição - Escola Rock"> 
-            <input type="hidden" name="_captcha" value="false">
-            
-            <!-- Configuração de resposta automática -->
-            <input type="hidden" name="_autoresponse" value="Olá! Recebemos a sua inscrição na Nova Escola Rock (NER). Agradecemos o seu interesse em juntar-se à nossa escola. A nossa equipe irá analisar a sua inscrição e entraremos em contacto em breve. Para qualquer dúvida, pode responder a este email ou ligar para 938066695. Atenciosamente, Equipe NER - Nova Escola Rock">
-            <input type="hidden" name="_template" value="table">
-            
-            <!-- Campos do formulário -->
-            <input type="text" name="nome" placeholder="Nome completo" required> 
-            
-            <input type="date" id="data_nascimento" name="data_nascimento" required>
-            <textarea name="endereco" rows="3" placeholder="Endereço Completo"></textarea> 
-            <input type="tel" name="telefone" placeholder="Telefone" required> 
-            <input type="email" name="email" placeholder="E-mail" required> 
-            <select name="curso" required> 
-                <option value="">Selecione um curso</option> 
-                <option value="guitarra">Guitarra</option> 
-                <option value="baixo">Baixo</option> 
-                <option value="bateria">Bateria</option> 
-                <option value="canto">Canto</option> 
-                <option value="teclado">Teclado/Piano</option> 
-                <option value="acordeao">Acordeão</option> 
-                <option value="cavaquinho">Cavaquinho</option> 
-                <option value="outros">Outros</option> 
-            </select> 
-            <button type="submit">Enviar Inscrição</button> 
-        </form> 
-        <p id="mensagem" style="color: white; margin-top: 10px;"></p> 
-    </div> 
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff3366;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .form-container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            margin: 50px auto;
+            width: 50%;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: #ff3366;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button {
+            background: #ff3366;
+            color: white;
+            padding: 15px;
+            width: 100%;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #e62e5c;
+        }
+    </style>
 
     <script>
-  async function enviarInscricao() {
-    const form = document.forms[0]; // como não há id, usamos o primeiro formulário
-
-    const dados = {
-      nome: form.nome.value,
-      data_nascimento: form.data_nascimento.value,
-      endereco: form.endereco.value,
-      telefone: form.telefone.value,
-      email: form.email.value,
-      curso: form.curso.value
-    };
-
-    document.getElementById("mensagem").innerText = "A enviar inscrição...";
-
-    try {
-      const resposta = await fetch("https://script.google.com/macros/s/AKfycbylAIsT0C85iV8XiouCWmkUdggS2NZZCAvBApfcSJolrnAmDaUD5cbkolbOwQl6NEw6/exec", {
-        method: "POST",
-        body: JSON.stringify(dados),
-        headers: {
-          "Content-Type": "application/json"
+        function mostrarMensagem() {
+            document.getElementById("mensagem").innerText = "A enviar inscrição... Aguarde.";
+            return true;
         }
-      });
 
-      if (resposta.ok) {
-        form.reset();
-        document.getElementById("mensagem").innerText = "Inscrição enviada com sucesso!";
-      } else {
-        document.getElementById("mensagem").innerText = "Erro ao enviar. Tenta novamente.";
-      }
+        document.addEventListener('DOMContentLoaded', function () {
+            var dateInput = document.querySelector('input[name="data_nascimento"]');
+            if (dateInput) {
+                dateInput.setAttribute('min', '1920-01-01');
+                dateInput.setAttribute('max', '2025-12-31');
+                dateInput.setAttribute('type', 'date');
+                dateInput.setAttribute('placeholder', 'AAAA-MM-DD');
+                dateInput.removeAttribute('onfocus');
+            }
+        });
+    </script>
+</head>
 
-    } catch (erro) {
-      console.error(erro);
-      document.getElementById("mensagem").innerText = "Erro ao enviar. Verifica a ligação.";
-    }
+<body>
+    <header>
+        <div class="logo">NER - Nova Escola Rock</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html#cursos">Cursos</a></li>
+                <li><a href="index.html#professores">Professores</a></li>
+                <li><a href="index.html#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    return false; // impedir o envio normal do form
-  }
-</script>
+    <div class="form-container">
+        <h2>Inscreve-te Aqui</h2>
 
-</body> 
+        <form method="POST" onsubmit="return enviarInscricao()">
+            <input type="text" name="nome" placeholder="Nome completo" required>
+            <input type="date" name="data_nascimento" required>
+            <textarea name="endereco" rows="3" placeholder="Endereço Completo"></textarea>
+            <input type="tel" name="telefone" placeholder="Telefone" required>
+            <input type="email" name="email" placeholder="E-mail" required>
+
+            <select name="curso" required>
+                <option value="">Selecione um curso</option>
+                <option value="guitarra">Guitarra</option>
+                <option value="baixo">Baixo</option>
+                <option value="bateria">Bateria</option>
+                <option value="canto">Canto</option>
+                <option value="teclado">Teclado/Piano</option>
+                <option value="acordeao">Acordeão</option>
+                <option value="cavaquinho">Cavaquinho</option>
+                <option value="outros">Outros</option>
+            </select>
+
+            <button type="submit">Enviar Inscrição</button>
+        </form>
+
+        <p id="mensagem" style="color: white; margin-top: 10px;"></p>
+    </div>
+
+    <script>
+        async function enviarInscricao() {
+            const form = document.forms[0];
+
+            const dados = {
+                nome: form.nome.value,
+                data_nascimento: form.data_nascimento.value,
+                endereco: form.endereco.value,
+                telefone: form.telefone.value,
+                email: form.email.value,
+                curso: form.curso.value
+            };
+
+            document.getElementById("mensagem").innerText = "A enviar inscrição...";
+
+            try {
+                const resposta = await fetch("https://script.google.com/macros/s/AKfycbylAIsT0C85iV8XiouCWmkUdggS2NZZCAvBApfcSJolrnAmDaUD5cbkolbOwQl6NEw6/exec", {
+                    method: "POST",
+                    body: JSON.stringify(dados),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+
+                if (resposta.ok) {
+                    form.reset();
+                    document.getElementById("mensagem").innerText = "Inscrição enviada com sucesso!";
+                } else {
+                    document.getElementById("mensagem").innerText = "Erro ao enviar. Tenta novamente.";
+                }
+            } catch (erro) {
+                console.error(erro);
+                document.getElementById("mensagem").innerText = "Erro ao enviar. Verifica a ligação.";
+            }
+
+            return false;
+        }
+    </script>
+</body>
+
 </html>
