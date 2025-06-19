@@ -110,7 +110,7 @@
     </header> 
     <div class="form-container"> 
         <h2>Inscreve-te Aqui</h2> 
-        <form action="https://formsubmit.co/nernovaescolarock@gmail.com" method="POST" onsubmit="return mostrarMensagem()"> 
+        <form method="POST" onsubmit="return enviarInscricao()"> 
             <!-- Configurações FormSubmit -->
             <input type="hidden" name="_next" value="https://datofz89.github.io/thanks.html"> 
             <input type="hidden" name="_subject" value="Nova Inscrição - Escola Rock"> 
@@ -142,5 +142,46 @@
         </form> 
         <p id="mensagem" style="color: white; margin-top: 10px;"></p> 
     </div> 
+
+    <script>
+  async function enviarInscricao() {
+    const form = document.forms[0]; // como não há id, usamos o primeiro formulário
+
+    const dados = {
+      nome: form.nome.value,
+      data_nascimento: form.data_nascimento.value,
+      endereco: form.endereco.value,
+      telefone: form.telefone.value,
+      email: form.email.value,
+      curso: form.curso.value
+    };
+
+    document.getElementById("mensagem").innerText = "A enviar inscrição...";
+
+    try {
+      const resposta = await fetch("https://script.google.com/macros/s/AKfycbylAIsT0C85iV8XiouCWmkUdggS2NZZCAvBApfcSJolrnAmDaUD5cbkolbOwQl6NEw6/exec", {
+        method: "POST",
+        body: JSON.stringify(dados),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+
+      if (resposta.ok) {
+        form.reset();
+        document.getElementById("mensagem").innerText = "Inscrição enviada com sucesso!";
+      } else {
+        document.getElementById("mensagem").innerText = "Erro ao enviar. Tenta novamente.";
+      }
+
+    } catch (erro) {
+      console.error(erro);
+      document.getElementById("mensagem").innerText = "Erro ao enviar. Verifica a ligação.";
+    }
+
+    return false; // impedir o envio normal do form
+  }
+</script>
+
 </body> 
 </html>
