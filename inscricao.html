@@ -1,49 +1,41 @@
 <!DOCTYPE html>
 <html lang="pt">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscrição - NER - Nova Escola Rock</title>
-
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: url('/galeria-de-imagens/fundo_inscricao.jpg') no-repeat center center fixed;
+            background: url('fundo_inscricao.jpg') no-repeat center center fixed;
             background-size: cover;
             color: white;
             text-align: center;
             margin: 0;
             padding: 0;
         }
-
         header {
             background: rgba(0, 0, 0, 0.8);
             padding: 20px;
         }
-
         .logo {
             font-size: 2rem;
             font-weight: bold;
             color: #ff3366;
         }
-
         nav ul {
             list-style: none;
             padding: 0;
         }
-
         nav ul li {
             display: inline;
             margin: 0 15px;
         }
-
         nav ul li a {
             color: white;
             text-decoration: none;
             font-size: 1.2rem;
         }
-
         .form-container {
             background: rgba(0, 0, 0, 0.8);
             padding: 40px;
@@ -51,14 +43,10 @@
             width: 50%;
             border-radius: 10px;
         }
-
         h2 {
             color: #ff3366;
         }
-
-        input,
-        textarea,
-        select {
+        input, textarea, select {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
@@ -66,7 +54,6 @@
             border-radius: 5px;
             font-size: 1rem;
         }
-
         button {
             background: #ff3366;
             color: white;
@@ -78,12 +65,10 @@
             cursor: pointer;
             transition: 0.3s;
         }
-
         button:hover {
             background: #e62e5c;
         }
     </style>
-
     <script>
         function mostrarMensagem() {
             document.getElementById("mensagem").innerText = "A enviar inscrição... Aguarde.";
@@ -102,7 +87,6 @@
         });
     </script>
 </head>
-
 <body>
     <header>
         <div class="logo">NER - Nova Escola Rock</div>
@@ -115,17 +99,14 @@
             </ul>
         </nav>
     </header>
-
     <div class="form-container">
         <h2>Inscreve-te Aqui</h2>
-
-        <form method="POST" onsubmit="return enviarInscricao()">
+        <form method="POST">
             <input type="text" name="nome" placeholder="Nome completo" required>
             <input type="date" name="data_nascimento" required>
             <textarea name="endereco" rows="3" placeholder="Endereço Completo"></textarea>
             <input type="tel" name="telefone" placeholder="Telefone" required>
             <input type="email" name="email" placeholder="E-mail" required>
-
             <select name="curso" required>
                 <option value="">Selecione um curso</option>
                 <option value="guitarra">Guitarra</option>
@@ -137,17 +118,14 @@
                 <option value="cavaquinho">Cavaquinho</option>
                 <option value="outros">Outros</option>
             </select>
-
-            <button type="submit">Enviar Inscrição</button>
+            <button type="button" onclick="enviarInscricao()">Enviar Inscrição</button>
         </form>
-
         <p id="mensagem" style="color: white; margin-top: 10px;"></p>
     </div>
-
     <script>
         async function enviarInscricao() {
+            console.log("Função enviarInscricao chamada");
             const form = document.forms[0];
-
             const dados = {
                 nome: form.nome.value,
                 data_nascimento: form.data_nascimento.value,
@@ -156,9 +134,7 @@
                 email: form.email.value,
                 curso: form.curso.value
             };
-
             document.getElementById("mensagem").innerText = "A enviar inscrição...";
-
             try {
                 const resposta = await fetch("https://script.google.com/macros/s/AKfycbylAIsT0C85iV8XiouCWmkUdggS2NZZCAvBApfcSJolrnAmDaUD5cbkolbOwQl6NEw6/exec", {
                     method: "POST",
@@ -167,7 +143,6 @@
                         "Content-Type": "application/json"
                     }
                 });
-
                 if (resposta.ok) {
                     form.reset();
                     document.getElementById("mensagem").innerText = "Inscrição enviada com sucesso!";
@@ -178,10 +153,8 @@
                 console.error(erro);
                 document.getElementById("mensagem").innerText = "Erro ao enviar. Verifica a ligação.";
             }
-
             return false;
         }
     </script>
 </body>
-
 </html>
