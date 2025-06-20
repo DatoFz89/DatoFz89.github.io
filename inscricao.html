@@ -500,24 +500,24 @@
 
         // Função para salvar inscrição localmente
         function salvarInscricao(dadosAluno) {
-            // Buscar alunos existentes
-            let alunos = JSON.parse(localStorage.getItem('ner_alunos') || '[]');
-            
-            // Adicionar novo aluno
-            const novoAluno = {
-                id: Date.now().toString(36) + Math.random().toString(36).substr(2),
-                ...dadosAluno,
-                data_inscricao: new Date().toISOString().split('T')[0],
-                status: 'nova_inscricao'
-            };
-            
-            alunos.push(novoAluno);
-            
-            // Salvar no localStorage
-            localStorage.setItem('ner_alunos', JSON.stringify(alunos));
-            
-            return novoAluno;
+    fetch("https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbyXIN_dz3aCvkF8JUr-BK6H4vqB3eS48H5e2uuuLw3pZu954jnHvGNfcgEEXA61seyD/exec", {
+        method: "POST",
+        body: JSON.stringify(dadosAluno),
+        headers: {
+            "Content-Type": "application/json"
         }
+    })
+    .then(res => res.text())
+    .then(msg => {
+        console.log("Resposta do Sheets:", msg);
+    })
+    .catch(err => {
+        console.error("Erro ao enviar para Google Sheets:", err);
+        alert("Erro ao gravar inscrição na base de dados.");
+    });
+
+    return dadosAluno; // Continua local também se quiser
+}
 
         // Função para calcular idade
         function calcularIdade(dataNascimento) {
