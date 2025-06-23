@@ -145,7 +145,7 @@
             font-size: 1.1rem;
         }
 
-        input, textarea, select {
+        input, textarea {
             padding: 15px;
             border: none;
             border-radius: 10px;
@@ -156,7 +156,7 @@
             border: 2px solid transparent;
         }
 
-        input:focus, textarea:focus, select:focus {
+        input:focus, textarea:focus {
             outline: none;
             border-color: #ff3366;
             box-shadow: 0 0 15px rgba(255, 51, 102, 0.3);
@@ -166,6 +166,39 @@
         textarea {
             resize: vertical;
             min-height: 100px;
+        }
+
+        .curso-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .curso-option {
+            background: rgba(255, 51, 102, 0.1);
+            border: 2px solid rgba(255, 51, 102, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .curso-option:hover {
+            background: rgba(255, 51, 102, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
+        }
+
+        .curso-option.selected {
+            background: #ff3366;
+            border-color: #ff3366;
+            color: white;
+        }
+
+        .curso-option input[type="radio"] {
+            display: none;
         }
 
         button {
@@ -187,6 +220,13 @@
         button:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(255, 51, 102, 0.4);
+        }
+
+        #mensagem {
+            text-align: center;
+            color: #ff3366;
+            font-size: 1.1rem;
+            margin: 10px 0;
         }
 
         @media (max-width: 768px) {
@@ -269,27 +309,42 @@
                         <label for="email">E-mail</label>
                         <input type="email" name="email" id="email" placeholder="E-mail" required>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label for="curso">Curso</label>
-                        <select name="curso" id="curso" required>
-                            <option value="">Selecione um curso</option>
-                            <option value="guitarra">Guitarra</option>
-                            <option value="baixo">Baixo</option>
-                            <option value="bateria">Bateria</option>
-                            <option value="canto">Canto</option>
-                            <option value="teclado">Teclado/Piano</option>
-                            <option value="acordeao">Acordeão</option>
-                            <option value="cavaquinho">Cavaquinho</option>
-                            <option value="outros">Outros</option>
-                        </select>
+                <div class="form-group">
+                    <label>Curso</label>
+                    <div class="curso-grid">
+                        <div class="curso-option" onclick="selectCurso(this)">
+                            <input type="radio" name="curso" value="guitarra" required>Guitarra
+                        </div>
+                        <div class="curso-option" onclick="selectCurso(this)">
+                            <input type="radio" name="curso" value="baixo" required>Baixo
+                        </div>
+                        <div class="curso-option" onclick="selectCurso(this)">
+                            <input type="radio" name="curso" value="bateria" required>Bateria
+                        </div>
+                        <div class="curso-option" onclick="selectCurso(this)">
+                            <input type="radio" name="curso" value="canto" required>Canto
+                        </div>
+                        <div class="curso-option" onclick="selectCurso(this)">
+                            <input type="radio" name="curso" value="teclado" required>Teclado/Piano
+                        </div>
+                        <div class="curso-option" onclick="selectCurso(this)">
+                            <input type="radio" name="curso" value="acordeao" required>Acordeão
+                        </div>
+                        <div class="curso-option" onclick="selectCurso(this)">
+                            <input type="radio" name="curso" value="cavaquinho" required>Cavaquinho
+                        </div>
+                        <div class="curso-option" onclick="selectCurso(this)">
+                            <input type="radio" name="curso" value="outros" required>Outros
+                        </div>
                     </div>
                 </div>
 
                 <button type="submit">Enviar Inscrição</button>
             </form>
 
-            <p id="mensagem" style="color: white; margin-top: 10px;"></p>
+            <p id="mensagem"></p>
         </div>
     </div>
 
@@ -297,6 +352,12 @@
         function mostrarMensagem() {
             document.getElementById("mensagem").innerText = "A enviar mensagem... Aguarde.";
             return true;
+        }
+
+        function selectCurso(element) {
+            document.querySelectorAll('.curso-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            element.querySelector('input[type="radio"]').checked = true;
         }
 
         document.addEventListener('DOMContentLoaded', function () {
