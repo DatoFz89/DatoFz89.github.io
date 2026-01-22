@@ -124,11 +124,13 @@ document.addEventListener('DOMContentLoaded', function() {
 </head>
 
 <style>
-    input[type="date"]:not([value]),
-    input[type="date"][value=""] {
-        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='40'><text x='10' y='25' fill='%23999' font-size='16'>Data</text></svg>");
-        background-repeat: no-repeat;
-        background-position: 10px center;
+    @media (max-width: 768px) {
+        input[type="date"]:not([value]),
+        input[type="date"][value=""] {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='40'><text x='10' y='25' fill='%23999' font-size='16'>Data</text></svg>");
+            background-repeat: no-repeat;
+            background-position: 10px center;
+        }
     }
 </style>
 
