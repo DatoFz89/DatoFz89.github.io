@@ -217,15 +217,19 @@ required
 document.addEventListener('DOMContentLoaded', function() {
 flatpickr("#data_nascimento", {
 dateFormat: "Y-m-d",
-defaultDate: "Data de Nascimento",
+defaultDate: "2000-01-01",
 minDate: "1920-01-01",
 maxDate: "2040-12-31",
 allowInput: false,
 onReady: function(selectedDates, dateStr, instance) {
-var hint = document.createElement("div");
-hint.textContent = "👆 Toca no ANO para mudar rapidamente";
-hint.className = "mobile-hint";
-instance.calendarContainer.prepend(hint);
+
+    /* 🔥 LIMPA O VALOR VISUAL PARA MOSTRAR O PLACEHOLDER */
+    instance.input.value = "";
+
+    var hint = document.createElement("div");
+    hint.textContent = "👆 Toca no ANO para mudar rapidamente";
+    hint.className = "mobile-hint";
+    instance.calendarContainer.prepend(hint);
 },
 onOpen: function(selectedDates, dateStr, instance) {
 if (window.innerWidth <= 768) {
