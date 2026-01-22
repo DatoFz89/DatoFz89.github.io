@@ -74,25 +74,31 @@ document.getElementById("mensagem").innerText = "A enviar mensagem...
 Aguarde.";
 return true;
 }
-// Simples função para deixar o seletor de data mais amigável 
+// Simples função para deixar o seletor de data mais amigável
 document.addEventListener('DOMContentLoaded', function() {
     var dateInput = document.querySelector('input[name="data_nascimento"]');
     if (dateInput) {
+
+        // Detecta mobile
+        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
         // Define intervalo aceitável de datas (ex: 1920 a 2025)
         dateInput.setAttribute('min', '1920-01-01');
         dateInput.setAttribute('max', '2025-12-31');
 
-        // Preenche com tipo date mesmo assim
-        dateInput.setAttribute('type', 'date');
-
-        // Opcional: mostra um valor de exemplo
-        dateInput.setAttribute('placeholder', 'AAAA-MM-DD');
+        // Desktop mantém date, mobile usa text
+        if (isMobile) {
+            dateInput.setAttribute('type', 'text');
+            dateInput.setAttribute('placeholder', 'Data de nascimento (DD/MM/AAAA)');
+        } else {
+            dateInput.setAttribute('type', 'date');
+            dateInput.setAttribute('placeholder', 'AAAA-MM-DD');
+        }
 
         // Remove o showPicker(), pois ele não resolve o problema
         dateInput.removeAttribute('onfocus');
 
-        // ---- LABEL VISÍVEL (CORRECÇÃO MOBILE) ----
+        // ---- LABEL VISÍVEL ----
 
         var label = document.createElement('label');
         label.textContent = 'Data de Nascimento';
@@ -109,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         dateInput.parentNode.insertBefore(label, dateInput);
 
-        // ---- SELETOR DE ANO (MAIS INTUITIVO) ----
+        // ---- SELETOR DE ANO INTUITIVO ----
 
         var yearSelect = document.createElement('select');
         yearSelect.style.display = 'block';
@@ -128,26 +134,26 @@ document.addEventListener('DOMContentLoaded', function() {
             yearSelect.appendChild(option);
         }
 
-        // Quando o utilizador escolhe o ano, posiciona o date picker nesse ano
         yearSelect.addEventListener('change', function() {
             if (this.value) {
-                var currentValue = dateInput.value;
-                var monthDay = currentValue ? currentValue.substring(4) : '-01-01';
-                dateInput.value = this.value + monthDay;
+                if (isMobile) {
+                    dateInput.value = this.value;
+                } else {
+                    dateInput.value = this.value + '-01-01';
+                }
             }
         });
 
-        // Mantém sincronização se a data for escolhida manualmente
         dateInput.addEventListener('change', function() {
-            if (this.value) {
+            if (this.value && !isMobile) {
                 yearSelect.value = this.value.substring(0, 4);
             }
         });
 
-        // Insere o seletor de ano antes da label
         label.parentNode.insertBefore(yearSelect, label);
     }
 });
+
 
 </script>
 </head>
