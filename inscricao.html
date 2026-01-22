@@ -102,25 +102,50 @@ document.addEventListener('DOMContentLoaded', function() {
             dateInput.dataset.default = 'true';
         }
 
-        // Criar elemento para mensagem mobile (invisível por padrão)
-        var mobileHint = document.createElement('div');
-        mobileHint.textContent = 'Clica no ano para editar o ano';
-        mobileHint.style.fontSize = '14px';
-        mobileHint.style.color = '#555';
-        mobileHint.style.marginTop = '5px';
-        mobileHint.style.display = 'none';
-        mobileHint.style.fontFamily = 'sans-serif';
-        mobileHint.style.transition = 'opacity 0.3s';
+        // ---- NOVO: Tooltip para mobile ----
+        var tooltip = document.createElement('div');
+        tooltip.textContent = 'Clica no ano para editar o ano';
+        tooltip.style.position = 'absolute';
+        tooltip.style.backgroundColor = '#333';
+        tooltip.style.color = '#fff';
+        tooltip.style.padding = '6px 10px';
+        tooltip.style.borderRadius = '4px';
+        tooltip.style.fontSize = '14px';
+        tooltip.style.fontFamily = 'sans-serif';
+        tooltip.style.whiteSpace = 'nowrap';
+        tooltip.style.zIndex = '1000';
+        tooltip.style.display = 'none';
+        tooltip.style.pointerEvents = 'none';
+        tooltip.style.opacity = '0';
+        tooltip.style.transition = 'opacity 0.3s';
 
-        // Colocar logo depois do input
-        dateInput.parentNode.insertBefore(mobileHint, dateInput.nextSibling);
+        // Colocar tooltip no body
+        document.body.appendChild(tooltip);
 
-        // Ao tocar/clicar no input
+        // Função para posicionar o tooltip acima do input
+        function showTooltip() {
+            var rect = dateInput.getBoundingClientRect();
+            tooltip.style.left = rect.left + window.scrollX + 'px';
+            tooltip.style.top = rect.top + window.scrollY - tooltip.offsetHeight - 5 + 'px';
+            tooltip.style.display = 'block';
+            setTimeout(() => { tooltip.style.opacity = '1'; }, 10);
+        }
+
+        function hideTooltip() {
+            tooltip.style.opacity = '0';
+            setTimeout(() => { tooltip.style.display = 'none'; }, 300);
+        }
+
+        // Mostrar tooltip ao clicar no input (apenas mobile)
         dateInput.addEventListener('click', function() {
-            if (window.innerWidth <= 768) { // apenas mobile
-                mobileHint.style.display = 'block';
-                mobileHint.style.opacity = '1';
+            if (window.innerWidth <= 768) {
+                showTooltip();
             }
+        });
+
+        // Esconder tooltip ao sair do input
+        dateInput.addEventListener('blur', function() {
+            hideTooltip();
         });
 
         // Ao tocar, limpa o valor para o utilizador escolher
@@ -137,10 +162,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.value = '2026-01-01';
                 this.dataset.default = 'true';
             }
-            // Ocultar mensagem quando perde foco
-            mobileHint.style.opacity = '0';
-            setTimeout(() => { mobileHint.style.display = 'none'; }, 300);
         });
+
     }
 });
 </script>
