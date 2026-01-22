@@ -1,237 +1,331 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inscrição - NER - Nova Escola Rock</title>
-<style>
-body {
-font-family: 'Arial', sans-serif;
-background: url('/galeria-de-imagens/fundo_inscricao.jpg') no-repeat center
-center fixed;
-background-size: cover;
-color: white;
-text-align: center;
-margin: 0;
-padding: 0;
+<!DOCTYPE html> 
+
+<html lang="pt"> 
+
+<head> 
+
+<meta charset="UTF-8"> 
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+<title>Inscrição - NER - Nova Escola Rock</title> 
+
+<!-- Inclui Flatpickr CSS e JS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<style> 
+
+body { 
+
+font-family: 'Arial', sans-serif; 
+
+background: url('/galeria-de-imagens/fundo_inscricao.jpg') no-repeat center 
+
+center fixed; 
+
+background-size: cover; 
+
+color: white; 
+
+text-align: center; 
+
+margin: 0; 
+
+padding: 0; 
+
+} 
+
+header { 
+
+background: rgba(0, 0, 0, 0.8); 
+
+padding: 20px; 
+
+} 
+
+.logo { 
+
+font-size: 2rem; 
+
+font-weight: bold; 
+
+color: #ff3366; 
+
+} 
+
+nav ul {list-style: none; 
+
+padding: 0; 
+
+} 
+
+nav ul li { 
+
+display: inline; 
+
+margin: 0 15px; 
+
+} 
+
+nav ul li a { 
+
+color: white; 
+
+text-decoration: none; 
+
+font-size: 1.2rem; 
+
+} 
+
+.form-container { 
+
+background: rgba(0, 0, 0, 0.8); 
+
+padding: 40px; 
+
+margin: 50px auto; 
+
+width: 50%; 
+
+border-radius: 10px; 
+
+} 
+
+h2 { 
+
+color: #ff3366; 
+
+} 
+
+input, textarea, select { 
+
+width: 100%; 
+
+padding: 10px; 
+
+margin: 10px 0; 
+
+border: none; 
+
+border-radius: 5px;font-size: 1rem; 
+
+} 
+
+button { 
+
+background: #ff3366; 
+
+color: white; 
+
+padding: 15px; 
+
+width: 100%; 
+
+font-size: 1.2rem; 
+
+border: none; 
+
+border-radius: 5px; 
+
+cursor: pointer; 
+
+transition: 0.3s; 
+
+} 
+
+button:hover { 
+
+background: #e62e5c; 
+
+} 
+
+/* Estilo do input Flatpickr */
+#data_nascimento {
+    padding: 8px 12px;
+    font-size: 16px;
 }
-header {
-background: rgba(0, 0, 0, 0.8);
-padding: 20px;
-}
-.logo {
-font-size: 2rem;
-font-weight: bold;
-color: #ff3366;
-}
-nav ul {list-style: none;
-padding: 0;
-}
-nav ul li {
-display: inline;
-margin: 0 15px;
-}
-nav ul li a {
-color: white;
-text-decoration: none;
-font-size: 1.2rem;
-}
-.form-container {
-background: rgba(0, 0, 0, 0.8);
-padding: 40px;
-margin: 50px auto;
-width: 50%;
-border-radius: 10px;
-}
-h2 {
-color: #ff3366;
-}
-input, textarea, select {
-width: 100%;
-padding: 10px;
-margin: 10px 0;
-border: none;
-border-radius: 5px;font-size: 1rem;
-}
-button {
-background: #ff3366;
-color: white;
-padding: 15px;
-width: 100%;
-font-size: 1.2rem;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-transition: 0.3s;
-}
-button:hover {
-background: #e62e5c;
-}
-</style>
-<script>
-function mostrarMensagem() {
-document.getElementById("mensagem").innerText = "A enviar mensagem...
-Aguarde.";
-return true;
-}
 
-<script>
-// Simples função para deixar o seletor de data mais amigável
-document.addEventListener('DOMContentLoaded', function() {
-    var dateInput = document.querySelector('input[name="data_nascimento"]');
-    if (dateInput) {
-
-        // Define intervalo aceitável de datas (ex: 1920 a 2025)
-        dateInput.setAttribute('min', '1920-01-01');
-        dateInput.setAttribute('max', '2040-12-31');
-
-        // Tipo date
-        dateInput.setAttribute('type', 'date');
-
-        // Placeholder (desktop apenas)
-        dateInput.setAttribute('placeholder', 'AAAA-MM-DD');
-
-        // Remove o showPicker(), pois ele não resolve o problema
-        dateInput.removeAttribute('onfocus');
-
-        // ---- CORRECÇÃO MOBILE: valor visível ----
-
-        // Se estiver vazio, coloca uma data neutra visível
-        if (!dateInput.value) {
-            dateInput.value = '2000-01-01';
-            dateInput.dataset.default = 'true';
-        }
-
-        // ---- NOVO: Tooltip para mobile ----
-        var tooltip = document.createElement('div');
-        tooltip.textContent = 'Clica no ano para editar o ano';
-        tooltip.style.position = 'absolute';
-        tooltip.style.backgroundColor = '#333';
-        tooltip.style.color = '#fff';
-        tooltip.style.padding = '6px 10px';
-        tooltip.style.borderRadius = '4px';
-        tooltip.style.fontSize = '14px';
-        tooltip.style.fontFamily = 'sans-serif';
-        tooltip.style.whiteSpace = 'nowrap';
-        tooltip.style.zIndex = '1000';
-        tooltip.style.display = 'none';
-        tooltip.style.pointerEvents = 'none';
-        tooltip.style.opacity = '0';
-        tooltip.style.transition = 'opacity 0.3s';
-
-        // Colocar tooltip no body
-        document.body.appendChild(tooltip);
-
-        // Função para posicionar o tooltip acima do input
-        function showTooltip() {
-            var rect = dateInput.getBoundingClientRect();
-            tooltip.style.left = rect.left + window.scrollX + 'px';
-            tooltip.style.top = rect.top + window.scrollY - tooltip.offsetHeight - 5 + 'px';
-            tooltip.style.display = 'block';
-            setTimeout(() => { tooltip.style.opacity = '1'; }, 10);
-        }
-
-        function hideTooltip() {
-            tooltip.style.opacity = '0';
-            setTimeout(() => { tooltip.style.display = 'none'; }, 300);
-        }
-
-        // Mostrar tooltip ao clicar no input (apenas mobile)
-        dateInput.addEventListener('click', function() {
-            if (window.innerWidth <= 768) {
-                showTooltip();
-            }
-        });
-
-        // Esconder tooltip ao sair do input
-        dateInput.addEventListener('blur', function() {
-            hideTooltip();
-        });
-
-        // Ao tocar, limpa o valor para o utilizador escolher
-        dateInput.addEventListener('focus', function() {
-            if (this.dataset.default === 'true') {
-                this.value = '';
-                this.dataset.default = 'false';
-            }
-        });
-
-        // Se sair sem escolher, repõe a referência
-        dateInput.addEventListener('blur', function() {
-            if (!this.value) {
-                this.value = '2026-01-01';
-                this.dataset.default = 'true';
-            }
-        });
-
+@media (max-width: 768px) {
+    #data_nascimento {
+        width: 100%;
     }
+}
+
+/* Flatpickr custom: mobile hint */
+.flatpickr-calendar .mobile-hint {
+    text-align: left;
+}
+
+</style> 
+
+<script> 
+
+function mostrarMensagem() { 
+
+document.getElementById("mensagem").innerText = "A enviar mensagem... 
+
+Aguarde."; 
+
+return true; 
+
+} 
+
+</script> 
+
+<script> 
+
+// Simples função para deixar o seletor de data mais amigável 
+
+document.addEventListener('DOMContentLoaded', function() { 
+
+    var dateInput = document.querySelector('input[name="data_nascimento"]'); 
+
+    if (dateInput) { 
+
+        dateInput.setAttribute('min', '1920-01-01'); 
+        dateInput.setAttribute('max', '2040-12-31'); 
+        dateInput.setAttribute('placeholder', 'AAAA-MM-DD'); 
+    } 
+
+}); 
+
+</script> 
+
+</head> 
+
+ 
+
+<style> 
+
+    @media (max-width: 768px) { 
+
+        input[type="date"]:not([value]), 
+
+        input[type="date"][value=""] { 
+
+            background-image: url("data:image/svg+xml;utf8,<svg 
+xmlns='http://www.w3.org/2000/svg' width='200' height='40'><text x='10' y='25' 
+fill='%23999' font-size='16'>Data</text></svg>"); 
+
+            background-repeat: no-repeat; 
+
+            background-position: 10px center; 
+
+        } 
+
+    } 
+
+</style> 
+
+ 
+
+<body> 
+
+<header> 
+
+<div class="logo">NER - Nova Escola Rock</div> 
+
+<nav> 
+
+<ul> 
+
+<li><a href="index.html">Início</a></li> 
+
+<li><a href="index.html#cursos">Cursos</a></li> 
+
+<li><a href="index.html#professores">Professores</a></li> 
+
+<li><a href="index.html#contato">Contato</a></li> 
+
+</ul> 
+
+</nav> 
+
+</header>
+
+<div class="form-container"> 
+
+<h2>Inscreve-te Aqui</h2> 
+
+<form action="https://formsubmit.co/nernovaescolarock@gmail.com" 
+method="POST" onsubmit="return mostrarMensagem()"> 
+
+<input type="hidden" name="_next" value="https://datofz89.github.io/thanks.html"> 
+<input type="hidden" name="_subject" value="Nova Inscrição - Escola Rock"> 
+<input type="hidden" name="_captcha" value="false"> 
+<input type="hidden" name="_autoresponse" value="Olá! Recebemos a sua inscrição na Nova Escola Rock (NER). Agradecemos o seu interesse em juntar-se à nossa escola. A nossa equipe irá analisar a sua inscrição e entraremos em contacto em breve. Para qualquer dúvida, pode responder a este email ou ligar para 938066695. Atenciosamente, Equipe NER - Nova Escola Rock"> 
+<input type="hidden" name="_template" value="table"> 
+
+<input type="text" name="nome" placeholder="Nome completo" required> 
+
+<label for="data_nascimento">Data de Nascimento:</label>
+<input type="text" id="data_nascimento" name="data_nascimento" placeholder="AAAA-MM-DD" required> 
+
+<textarea name="endereco" rows="3" placeholder="Endereço Completo"></textarea> 
+
+<input type="tel" name="telefone" placeholder="Telefone" required> 
+<input type="email" name="email" placeholder="E-mail" required> 
+
+<select name="curso" required> 
+<option value="">Selecione um curso</option> 
+<option value="guitarra">Guitarra Clássica</option> 
+<option value="guitarra">Guitarra Elétrica</option> 
+<option value="baixo">Baixo</option> 
+<option value="bateria">Bateria</option> 
+<option value="canto">Canto</option> 
+<option value="teclado">Teclado/Piano</option> 
+<option value="acordeao">Acordeão</option> 
+<option value="cavaquinho">Cavaquinho</option> 
+<option value="outros">Outros</option> 
+</select> 
+
+<button type="submit">Enviar Inscrição</button> 
+
+</form> 
+
+<p id="mensagem" style="color: white; margin-top: 10px;"></p> 
+
+</div> 
+
+<!-- Inicialização do Flatpickr -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var dateInput = document.getElementById('data_nascimento');
+
+    flatpickr(dateInput, {
+        dateFormat: "Y-m-d",
+        defaultDate: "2000-01-01",
+        minDate: "1920-01-01",
+        maxDate: "2040-12-31",
+        onReady: function(selectedDates, dateStr, instance) {
+            var calendarContainer = instance.calendarContainer;
+            var mobileHint = document.createElement('div');
+            mobileHint.textContent = "Clica no ano para editar o ano";
+            mobileHint.style.fontSize = "14px";
+            mobileHint.style.color = "#555";
+            mobileHint.style.fontFamily = "sans-serif";
+            mobileHint.style.padding = "5px 10px";
+            mobileHint.style.background = "#f0f0f0";
+            mobileHint.style.borderBottom = "1px solid #ccc";
+            mobileHint.style.display = "none";
+            mobileHint.classList.add("mobile-hint");
+            calendarContainer.insertBefore(mobileHint, calendarContainer.firstChild);
+        },
+        onOpen: function(selectedDates, dateStr, instance) {
+            if (window.innerWidth <= 768) {
+                var hint = instance.calendarContainer.querySelector(".mobile-hint");
+                if (hint) hint.style.display = "block";
+            }
+        },
+        onClose: function(selectedDates, dateStr, instance) {
+            var hint = instance.calendarContainer.querySelector(".mobile-hint");
+            if (hint) hint.style.display = "none";
+        }
+    });
 });
 </script>
-</head>
 
-<style>
-    @media (max-width: 768px) {
-        input[type="date"]:not([value]),
-        input[type="date"][value=""] {
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='40'><text x='10' y='25' fill='%23999' font-size='16'>Data</text></svg>");
-            background-repeat: no-repeat;
-            background-position: 10px center;
-        }
-    }
-</style>
+</body> 
 
-    
-<body>
-<header>
-<div class="logo">NER - Nova Escola Rock</div>
-<nav>
-<ul>
-<li><a href="index.html">Início</a></li>
-<li><a href="index.html#cursos">Cursos</a></li>
-<li><a href="index.html#professores">Professores</a></li>
-<li><a href="index.html#contato">Contato</a></li>
-</ul>
-</nav>
-</header><div class="form-container">
-<h2>Inscreve-te Aqui</h2>
-<form action="https://formsubmit.co/nernovaescolarock@gmail.com"
-method="POST" onsubmit="return mostrarMensagem()">
-<!-- Configurações FormSubmit -->
-<input type="hidden" name="_next"
-value="https://datofz89.github.io/thanks.html">
-<input type="hidden" name="_subject" value="Nova Inscrição - Escola
-Rock">
-<input type="hidden" name="_captcha" value="false">
-<!-- Configuração de resposta automática -->
-<input type="hidden" name="_autoresponse" value="Olá! Recebemos a sua
-inscrição na Nova Escola Rock (NER). Agradecemos o seu interesse em juntar-se à
-nossa escola. A nossa equipe irá analisar a sua inscrição e entraremos em
-contacto em breve. Para qualquer dúvida, pode responder a este email ou ligar
-para 938066695. Atenciosamente, Equipe NER - Nova Escola Rock">
-<input type="hidden" name="_template" value="table">
-<!-- Campos do formulário -->
-<input type="text" name="nome" placeholder="Nome completo" required>
-<input type="date" id="data_nascimento" name="data_nascimento"
-required>
-<textarea name="endereco" rows="3" placeholder="Endereço
-Completo"></textarea>
-<input type="tel" name="telefone" placeholder="Telefone" required>
-<input type="email" name="email" placeholder="E-mail" required>
-<select name="curso" required>
-<option value="">Selecione um curso</option>
-<option value="guitarra">Guitarra Clássica</option>
-<option value="guitarra">Guitarra Elétrica</option>
-<option value="baixo">Baixo</option>
-<option value="bateria">Bateria</option>
-<option value="canto">Canto</option>
-<option value="teclado">Teclado/Piano</option>
-<option value="acordeao">Acordeão</option>
-<option value="cavaquinho">Cavaquinho</option>
-<option value="outros">Outros</option>
-</select>
-<button type="submit">Enviar Inscrição</button>
-</form>
-<p id="mensagem" style="color: white; margin-top: 10px;"></p>
-</div>
-</body>
 </html>
