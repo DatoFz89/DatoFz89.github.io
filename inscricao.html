@@ -110,6 +110,13 @@ border: 2px solid #ff3366;
 background: #000;
 }
 
+/* 🔴 CORREÇÃO: MÊS A VERMELHO */
+.flatpickr-current-month,
+.flatpickr-current-month .flatpickr-monthDropdown-months,
+.flatpickr-current-month .flatpickr-monthDropdown-months option {
+color: #ff3366;
+}
+
 .flatpickr-day.selected,
 .flatpickr-day:hover {
 background: #ff3366;
@@ -224,7 +231,6 @@ maxDate: "2040-12-31",
 allowInput: false,
 onReady: function(selectedDates, dateStr, instance) {
 
-    /* 🔥 MOSTRAR PLACEHOLDER NO INÍCIO */
     instance.input.value = "";
 
     var hint = document.createElement("div");
