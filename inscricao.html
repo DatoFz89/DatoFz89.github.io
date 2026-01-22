@@ -110,20 +110,24 @@ document.addEventListener('DOMContentLoaded', function() {
         mobileHint.style.marginTop = '5px';
         mobileHint.style.display = 'none';
         mobileHint.style.fontFamily = 'sans-serif';
+        mobileHint.style.transition = 'opacity 0.3s';
 
         // Colocar logo depois do input
         dateInput.parentNode.insertBefore(mobileHint, dateInput.nextSibling);
+
+        // Ao tocar/clicar no input
+        dateInput.addEventListener('click', function() {
+            if (window.innerWidth <= 768) { // apenas mobile
+                mobileHint.style.display = 'block';
+                mobileHint.style.opacity = '1';
+            }
+        });
 
         // Ao tocar, limpa o valor para o utilizador escolher
         dateInput.addEventListener('focus', function() {
             if (this.dataset.default === 'true') {
                 this.value = '';
                 this.dataset.default = 'false';
-            }
-
-            // ---- MOSTRAR MENSAGEM APENAS EM MOBILE ----
-            if (window.innerWidth <= 768) {
-                mobileHint.style.display = 'block';
             }
         });
 
@@ -134,7 +138,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.dataset.default = 'true';
             }
             // Ocultar mensagem quando perde foco
-            mobileHint.style.display = 'none';
+            mobileHint.style.opacity = '0';
+            setTimeout(() => { mobileHint.style.display = 'none'; }, 300);
         });
     }
 });
