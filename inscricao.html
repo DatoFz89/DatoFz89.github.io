@@ -216,6 +216,7 @@ required
 <script>
 document.addEventListener('DOMContentLoaded', function() {
 flatpickr("#data_nascimento", {
+disableMobile: true,
 dateFormat: "Y-m-d",
 defaultDate: "2000-01-01",
 minDate: "1920-01-01",
@@ -223,7 +224,7 @@ maxDate: "2040-12-31",
 allowInput: false,
 onReady: function(selectedDates, dateStr, instance) {
 
-    /* 🔥 LIMPA O VALOR VISUAL PARA MOSTRAR O PLACEHOLDER */
+    /* 🔥 MOSTRAR PLACEHOLDER NO INÍCIO */
     instance.input.value = "";
 
     var hint = document.createElement("div");
