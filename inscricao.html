@@ -74,20 +74,81 @@ document.getElementById("mensagem").innerText = "A enviar mensagem...
 Aguarde.";
 return true;
 }
-// Simples função para deixar o seletor de data mais amigável
+// Simples função para deixar o seletor de data mais amigável 
 document.addEventListener('DOMContentLoaded', function() {
-var dateInput = document.querySelector('input[name="data_nascimento"]');
-if (dateInput) {// Define intervalo aceitável de datas (ex: 1920 a 2025)
-dateInput.setAttribute('min', '1920-01-01');
-dateInput.setAttribute('max', '2025-12-31');
-// Preenche com tipo date mesmo assim
-dateInput.setAttribute('type', 'date');
-// Opcional: mostra um valor de exemplo
-dateInput.setAttribute('placeholder', 'AAAA-MM-DD');
-// Remove o showPicker(), pois ele não resolve o problema
-dateInput.removeAttribute('onfocus');
-}
+    var dateInput = document.querySelector('input[name="data_nascimento"]');
+    if (dateInput) {
+
+        // Define intervalo aceitável de datas (ex: 1920 a 2025)
+        dateInput.setAttribute('min', '1920-01-01');
+        dateInput.setAttribute('max', '2025-12-31');
+
+        // Preenche com tipo date mesmo assim
+        dateInput.setAttribute('type', 'date');
+
+        // Opcional: mostra um valor de exemplo
+        dateInput.setAttribute('placeholder', 'AAAA-MM-DD');
+
+        // Remove o showPicker(), pois ele não resolve o problema
+        dateInput.removeAttribute('onfocus');
+
+        // ---- LABEL VISÍVEL (CORRECÇÃO MOBILE) ----
+
+        var label = document.createElement('label');
+        label.textContent = 'Data de Nascimento';
+        label.setAttribute('for', dateInput.id || 'data_nascimento');
+
+        label.style.display = 'block';
+        label.style.marginBottom = '4px';
+        label.style.fontSize = '14px';
+        label.style.opacity = '0.85';
+
+        if (!dateInput.id) {
+            dateInput.id = 'data_nascimento';
+        }
+
+        dateInput.parentNode.insertBefore(label, dateInput);
+
+        // ---- SELETOR DE ANO (MAIS INTUITIVO) ----
+
+        var yearSelect = document.createElement('select');
+        yearSelect.style.display = 'block';
+        yearSelect.style.marginBottom = '6px';
+        yearSelect.style.width = '100%';
+
+        var defaultOption = document.createElement('option');
+        defaultOption.textContent = 'Selecionar ano';
+        defaultOption.value = '';
+        yearSelect.appendChild(defaultOption);
+
+        for (var year = 2025; year >= 1920; year--) {
+            var option = document.createElement('option');
+            option.value = year;
+            option.textContent = year;
+            yearSelect.appendChild(option);
+        }
+
+        // Quando o utilizador escolhe o ano, posiciona o date picker nesse ano
+        yearSelect.addEventListener('change', function() {
+            if (this.value) {
+                var currentValue = dateInput.value;
+                var monthDay = currentValue ? currentValue.substring(4) : '-01-01';
+                dateInput.value = this.value + monthDay;
+            }
+        });
+
+        // Mantém sincronização se a data for escolhida manualmente
+        dateInput.addEventListener('change', function() {
+            if (this.value) {
+                yearSelect.value = this.value.substring(0, 4);
+            }
+        });
+
+        // Insere o seletor de ano antes da label
+        label.parentNode.insertBefore(yearSelect, label);
+    }
 });
+
 </script>
 </head>
 <body>
