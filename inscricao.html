@@ -79,80 +79,45 @@ document.addEventListener('DOMContentLoaded', function() {
     var dateInput = document.querySelector('input[name="data_nascimento"]');
     if (dateInput) {
 
-        // Detecta mobile
-        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
         // Define intervalo aceitável de datas (ex: 1920 a 2025)
         dateInput.setAttribute('min', '1920-01-01');
-        dateInput.setAttribute('max', '2025-12-31');
+        dateInput.setAttribute('max', '2040-12-31');
 
-        // Desktop mantém date, mobile usa text
-        if (isMobile) {
-            dateInput.setAttribute('type', 'text');
-            dateInput.setAttribute('placeholder', 'Data de nascimento (DD/MM/AAAA)');
-        } else {
-            dateInput.setAttribute('type', 'date');
-            dateInput.setAttribute('placeholder', 'AAAA-MM-DD');
-        }
+        // Tipo date
+        dateInput.setAttribute('type', 'date');
+
+        // Placeholder (desktop apenas)
+        dateInput.setAttribute('placeholder', 'AAAA-MM-DD');
 
         // Remove o showPicker(), pois ele não resolve o problema
         dateInput.removeAttribute('onfocus');
 
-        // ---- LABEL VISÍVEL ----
+        // ---- CORRECÇÃO MOBILE: valor visível ----
 
-        var label = document.createElement('label');
-        label.textContent = 'Data de Nascimento';
-        label.setAttribute('for', dateInput.id || 'data_nascimento');
-
-        label.style.display = 'block';
-        label.style.marginBottom = '4px';
-        label.style.fontSize = '14px';
-        label.style.opacity = '0.85';
-
-        if (!dateInput.id) {
-            dateInput.id = 'data_nascimento';
+        // Se estiver vazio, coloca uma data neutra visível
+        if (!dateInput.value) {
+            dateInput.value = '2000-01-01';
+            dateInput.dataset.default = 'true';
         }
 
-        dateInput.parentNode.insertBefore(label, dateInput);
-
-        // ---- SELETOR DE ANO INTUITIVO ----
-
-        var yearSelect = document.createElement('select');
-        yearSelect.style.display = 'block';
-        yearSelect.style.marginBottom = '6px';
-        yearSelect.style.width = '100%';
-
-        var defaultOption = document.createElement('option');
-        defaultOption.textContent = 'Selecionar ano';
-        defaultOption.value = '';
-        yearSelect.appendChild(defaultOption);
-
-        for (var year = 2025; year >= 1920; year--) {
-            var option = document.createElement('option');
-            option.value = year;
-            option.textContent = year;
-            yearSelect.appendChild(option);
-        }
-
-        yearSelect.addEventListener('change', function() {
-            if (this.value) {
-                if (isMobile) {
-                    dateInput.value = this.value;
-                } else {
-                    dateInput.value = this.value + '-01-01';
-                }
+        // Ao tocar, limpa o valor para o utilizador escolher
+        dateInput.addEventListener('focus', function() {
+            if (this.dataset.default === 'true') {
+                this.value = '';
+                this.dataset.default = 'false';
             }
         });
 
-        dateInput.addEventListener('change', function() {
-            if (this.value && !isMobile) {
-                yearSelect.value = this.value.substring(0, 4);
+        // Se sair sem escolher, repõe a referência
+        dateInput.addEventListener('blur', function() {
+            if (!this.value) {
+                this.value = '2026-01-01';
+                this.dataset.default = 'true';
             }
         });
-
-        label.parentNode.insertBefore(yearSelect, label);
     }
 });
+
 
 
 </script>
