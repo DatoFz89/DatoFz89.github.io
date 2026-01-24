@@ -174,8 +174,8 @@ return true;
 
 <h2>Inscreve-te Aqui</h2> 
 
-<form action="https://formsubmit.co/nernovaescolarock@gmail.com" 
-method="POST" onsubmit="return mostrarMensagem()"> 
+<form id="formInscricao">
+ 
 
 <input type="hidden" name="_next" value="https://datofz89.github.io/thanks.html"> 
 <input type="hidden" name="_subject" value="Nova Inscrição - Escola Rock"> 
@@ -246,6 +246,39 @@ instance.currentYearElement.click();
 });
 });
 </script>
+
+    <script>
+document.getElementById("formInscricao").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  document.getElementById("mensagem").innerText =
+    "A enviar inscrição... aguarda 🤘";
+
+  const dados = {
+    nome: this.nome.value,
+    data_nascimento: this.data_nascimento.value,
+    endereco: this.endereco.value,
+    telefone: this.telefone.value,
+    email: this.email.value,
+    instrumento: this.curso.value
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycbybZlxuI7QDF37baE73dWBizVRNvjmO8hZqjLfy66upnwRDPHMnlJcunpfK_fj2hqy3RA/exec", {
+    method: "POST",
+    body: JSON.stringify(dados),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(() => {
+    window.location.href = "https://datofz89.github.io/thanks.html";
+  })
+  .catch(() => {
+    alert("Erro ao enviar inscrição. Tenta novamente.");
+  });
+});
+</script>
+
 
 </body> 
 </html>
