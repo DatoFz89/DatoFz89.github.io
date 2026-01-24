@@ -1,285 +1,197 @@
-<!DOCTYPE html>  
-
-<html lang="pt">  
-
-<head>  
-
-<meta charset="UTF-8">  
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
-
-<title>Inscrição - NER - Nova Escola Rock</title>  
-
-<link rel="stylesheet" 
-href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"> 
-
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> 
-
- 
-
-<style>  
-
-body {  
-font-family: 'Arial', sans-serif;  
-background: url('/galeria-de-imagens/fundo_inscricao.jpg') no-repeat center 
-center fixed;  
-background-size: cover;  
-color: white;  
-text-align: center;  
-margin: 0;  
-padding: 0;  
-}  
-
-header {  
-background: rgba(0, 0, 0, 0.8);  
-padding: 20px;  
-}  
-
-.logo {  
-font-size: 2rem;  
-font-weight: bold;  
-color: #ff3366;  
-}  
-
-nav ul { list-style: none; padding: 0; }  
-
-nav ul li {  
-display: inline;  
-margin: 0 15px;  
-}  
-
-nav ul li a {  
-color: white;  
-text-decoration: none;  
-font-size: 1.2rem;  
-}  
-
-.form-container {  
-background: rgba(0, 0, 0, 0.85);  
-padding: 40px;  
-margin: 50px auto;  
-width: 50%;  
-border-radius: 10px;  
-}  
-
-h2 { color: #ff3366; }  
-
-input, textarea, select {  
-width: 100%;  
-padding: 10px;  
-margin: 10px 0;  
-border: none;  
-border-radius: 5px;  
-font-size: 1rem;  
-}  
-
-/*         BOTÃO DATA NASCIMENTO */ 
-#data_nascimento { 
-background: linear-gradient(135deg, #ff3366, #b3003b); 
-color: white; 
-font-weight: bold; 
-text-align: center; 
-cursor: pointer; 
-letter-spacing: 1px; 
-box-shadow: 0 0 10px rgba(255, 51, 102, 0.6); 
-} 
-
-#data_nascimento::placeholder { 
-color: white; 
-opacity: 1; 
-} 
-
-button {  
-background: #ff3366;  
-color: white;  
-padding: 15px;  
-width: 100%;  
-font-size: 1.2rem;  
-border: none;  
-border-radius: 5px;  
-cursor: pointer;  
-transition: 0.3s;  
-}  
-
-button:hover { background: #e62e5c; }  
-
-/*         FLATPICKR ROCK STYLE */ 
-.flatpickr-calendar { 
-background: #111; 
-color: #fff; 
-border: 2px solid #ff3366; 
-} 
-
-.flatpickr-months, 
-.flatpickr-weekdays { 
-background: #000; 
-} 
-
-/*   CORREÇÃO: MÊS A VERMELHO */ 
-.flatpickr-current-month, 
-.flatpickr-current-month .flatpickr-monthDropdown-months, 
-.flatpickr-current-month .flatpickr-monthDropdown-months option { 
-color: #ff3366; 
-} 
-
-.flatpickr-day.selected, 
-.flatpickr-day:hover { 
-background: #ff3366; 
-border-color: #ff3366; 
-} 
-
-.flatpickr-current-month input.cur-year { 
-font-size: 18px; 
-font-weight: bold; 
-color: #ff3366; 
-cursor: pointer; 
-} 
-
-/*        MOBILE */ 
-@media (max-width: 768px) { 
-.form-container { width: 90%; } 
-} 
-
-/* Mensagem mobile */ 
-.flatpickr-calendar .mobile-hint { 
-font-size: 14px; 
-padding: 8px; 
-background: #000; 
-color: #ff3366; 
-border-bottom: 1px solid #ff3366; 
-text-align: center; 
-} 
-
-</style>  
-
-</head>  
-
-<body>  
-
-<header>  
-<div class="logo">NER - Nova Escola Rock</div>  
-<nav>  
-<ul>  
-<li><a href="index.html">Início</a></li>  
-<li><a href="index.html#cursos">Cursos</a></li>  
-<li><a href="index.html#professores">Professores</a></li>  
-<li><a href="index.html#contato">Contato</a></li>  
-</ul>  
-</nav>  
-</header>  
-
-<div class="form-container">  
-
-<h2>Inscreve-te Aqui</h2>  
-
-<form id="formInscricao">  
-
-<input type="hidden" name="_next" 
-value="https://datofz89.github.io/thanks.html">  
-
-<input type="hidden" name="_subject" value="Nova Inscrição - Escola Rock">  
-<input type="hidden" name="_captcha" value="false">  
-<input type="hidden" name="_template" value="table">  
-
-<input type="text" name="nome" placeholder="Nome completo" required>  
-
-<input  
-type="text"  
-id="data_nascimento"  
-name="data_nascimento"  
-placeholder="Data de Nascimento"  
-readonly  
-required
->  
-
-<textarea name="endereco" rows="3" placeholder="Endereço 
-Completo"></textarea>  
-
-<input type="tel" name="telefone" placeholder="Telefone" required>  
-<input type="email" name="email" placeholder="E-mail" required>  
-
-<select name="curso" required>  
-<option value="">Selecione um curso</option>  
-<option value="guitarra">Guitarra Clássica</option>  
-<option value="guitarra">Guitarra Elétrica</option>  
-<option value="baixo">Baixo</option>  
-<option value="bateria">Bateria</option>  
-<option value="canto">Canto</option>  
-<option value="teclado">Teclado/Piano</option>  
-<option value="acordeao">Acordeão</option>  
-<option value="cavaquinho">Cavaquinho</option>  
-<option value="outros">Outros</option>  
-</select>  
-
-<button type="submit">Enviar Inscrição</button>  
-
-</form>  
-
-<p id="mensagem" style="color: white; margin-top: 10px;"></p>  
-
-</div>  
-
-<script> 
-document.addEventListener('DOMContentLoaded', function() { 
-flatpickr("#data_nascimento", { 
-disableMobile: true, 
-dateFormat: "Y-m-d", 
-defaultDate: "2000-01-01", 
-minDate: "1920-01-01", 
-maxDate: "2040-12-31", 
-allowInput: false, 
-onReady: function(selectedDates, dateStr, instance) { 
-
-instance.input.value = ""; 
-
-var hint = document.createElement("div"); 
-hint.textContent = "      Toca no ANO para mudar rapidamente"; 
-hint.className = "mobile-hint"; 
-instance.calendarContainer.prepend(hint); 
-}, 
-onOpen: function(selectedDates, dateStr, instance) { 
-if (window.innerWidth <= 768) { 
-instance.currentYearElement.click(); 
-} 
-} 
-}); 
-}); 
-</script> 
-
-<script> 
-document.getElementById("formInscricao").addEventListener("submit", 
-function(e) { 
-e.preventDefault(); 
-
-document.getElementById("mensagem").innerText = 
-"A enviar inscrição... aguarde."; 
-
-const dados = { 
-nome: this.nome.value, 
-data_nascimento: this.data_nascimento.value, 
-endereco: this.endereco.value, 
-telefone: this.telefone.value, 
-email: this.email.value, 
-instrumento: this.curso.value 
-}; 
-
-fetch("https://script.google.com/macros/s/AKfycbzPiA2VhAhy1Jb4Jv-ZEolCLRL7Mynw0KfOoLdn6a01vHCE2QqsjwTQHen68xxcipTLdw/exec", { 
-method: "POST", 
-body: JSON.stringify(dados), 
-headers: { 
-"Content-Type": "application/json" 
-} 
-}) 
-.then(() => { 
-window.location.href = "https://datofz89.github.io/thanks.html"; 
-}) 
-.catch(() => { 
-alert("Erro ao enviar inscrição. Tenta novamente."); 
-}); 
-
-}); 
-</script>  
-
-</body>  
-
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inscrição - NER - Nova Escola Rock</title>
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<style>
+body {
+font-family: 'Arial', sans-serif;
+background: url('/galeria-de-imagens/fundo_inscricao.jpg') no-repeat center
+center fixed;
+background-size: cover;
+color: white;
+text-align: center;
+margin: 0;
+padding: 0;
+}header {
+background: rgba(0, 0, 0, 0.8);
+padding: 20px;
+}
+.logo {
+font-size: 2rem;
+font-weight: bold;
+color: #ff3366;
+}
+nav ul { list-style: none; padding: 0; }
+nav ul li {
+display: inline;
+margin: 0 15px;
+}
+nav ul li a {
+color: white;
+text-decoration: none;
+font-size: 1.2rem;
+}
+.form-container {
+background: rgba(0, 0, 0, 0.85);
+padding: 40px;
+margin: 50px auto;width: 50%;
+border-radius: 10px;
+}
+h2 { color: #ff3366; }
+input, textarea, select {
+width: 100%;
+padding: 10px;
+margin: 10px 0;
+border: none;
+border-radius: 5px;
+font-size: 1rem;
+}
+/* BOTÃO DATA NASCIMENTO */
+#data_nascimento {
+background: linear-gradient(135deg, #ff3366, #b3003b);
+color: white;
+font-weight: bold;
+text-align: center;
+cursor: pointer;
+letter-spacing: 1px;
+box-shadow: 0 0 10px rgba(255, 51, 102, 0.6);
+}
+#data_nascimento::placeholder {
+color: white;opacity: 1;
+}
+button {
+background: #ff3366;
+color: white;
+padding: 15px;
+width: 100%;
+font-size: 1.2rem;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: 0.3s;
+}
+button:hover { background: #e62e5c; }
+/* FLATPICKR ROCK STYLE */
+.flatpickr-calendar {
+background: #111;
+color: #fff;
+border: 2px solid #ff3366;
+}
+.flatpickr-months,
+.flatpickr-weekdays {
+background: #000;
+}/* CORREÇÃO: MÊS A VERMELHO */
+.flatpickr-current-month,
+.flatpickr-current-month .flatpickr-monthDropdown-months,
+.flatpickr-current-month .flatpickr-monthDropdown-months option {
+color: #ff3366;
+}
+.flatpickr-day.selected,
+.flatpickr-day:hover {
+background: #ff3366;
+border-color: #ff3366;
+}
+.flatpickr-current-month input.cur-year {
+font-size: 18px;
+font-weight: bold;
+color: #ff3366;
+cursor: pointer;
+} /
+* MOBILE */
+@media (max-width: 768px) {
+.form-container { width: 90%; }
+}
+/* Mensagem mobile */
+.flatpickr-calendar .mobile-hint {font-size: 14px;
+padding: 8px;
+background: #000;
+color: #ff3366;
+border-bottom: 1px solid #ff3366;
+text-align: center;
+}
+</style>
+<script>
+function mostrarMensagem() {
+document.getElementById("mensagem").innerText = "A enviar mensagem...
+Aguarde.";
+return true;
+}
+</script>
+</head>
+<body>
+<header>
+<div class="logo">NER - Nova Escola Rock</div>
+<nav>
+<ul>
+<li><a href="index.html">Início</a></li>
+<li><a href="index.html#cursos">Cursos</a></li><li><a href="index.html#professores">Professores</a></li>
+<li><a href="index.html#contato">Contato</a></li>
+</ul>
+</nav>
+</header>
+<div class="form-container">
+<h2>Inscreve-te Aqui</h2>
+<form action="https://formsubmit.co/nernovaescolarock@gmail.com"
+method="POST" onsubmit="return mostrarMensagem()">
+<input type="hidden" name="_next"
+value="https://datofz89.github.io/thanks.html">
+<input type="hidden" name="_subject" value="Nova Inscrição - Escola Rock">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="table">
+<input type="text" name="nome" placeholder="Nome completo" required>
+<!-- BOTÃO DATA -->
+<input
+type="text"
+id="data_nascimento"
+name="data_nascimento"
+placeholder="Data de Nascimento"
+readonlyrequired
+>
+<textarea name="endereco" rows="3" placeholder="Endereço
+Completo"></textarea>
+<input type="tel" name="telefone" placeholder="Telefone" required>
+<input type="email" name="email" placeholder="E-mail" required>
+<select name="curso" required>
+<option value="">Selecione um curso</option>
+<option value="guitarra">Guitarra Clássica</option>
+<option value="guitarra">Guitarra Elétrica</option>
+<option value="baixo">Baixo</option>
+<option value="bateria">Bateria</option>
+<option value="canto">Canto</option>
+<option value="teclado">Teclado/Piano</option>
+<option value="acordeao">Acordeão</option>
+<option value="cavaquinho">Cavaquinho</option>
+<option value="outros">Outros</option>
+</select>
+<button type="submit">Enviar Inscrição</button>
+</form>
+<p id="mensagem" style="color: white; margin-top: 10px;"></p></div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+flatpickr("#data_nascimento", {
+disableMobile: true,
+dateFormat: "Y-m-d",
+defaultDate: "2000-01-01",
+minDate: "1920-01-01",
+maxDate: "2040-12-31",
+allowInput: false,
+onReady: function(selectedDates, dateStr, instance) {
+instance.input.value = "";
+var hint = document.createElement("div");
+hint.textContent = " Toca no ANO para mudar rapidamente";
+hint.className = "mobile-hint";
+instance.calendarContainer.prepend(hint);
+},
+onOpen: function(selectedDates, dateStr, instance) {
+if (window.innerWidth <= 768) {
+instance.currentYearElement.click();
+} }
+});
+});
+</script></body>
 </html>
