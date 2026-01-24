@@ -11,24 +11,24 @@
 
 <style>  
 body {  
-  font-family: 'Arial', sans-serif;  
-  background: url('/galeria-de-imagens/fundo_inscricao.jpg') no-repeat center center fixed;  
-  background-size: cover;  
-  color: white;  
-  text-align: center;  
-  margin: 0;  
-  padding: 0;  
+font-family: 'Arial', sans-serif;  
+background: url('/galeria-de-imagens/fundo_inscricao.jpg') no-repeat center center fixed;  
+background-size: cover;  
+color: white;  
+text-align: center;  
+margin: 0;  
+padding: 0;  
 }  
 
 header {  
-  background: rgba(0, 0, 0, 0.8);  
-  padding: 20px;  
+background: rgba(0, 0, 0, 0.8);  
+padding: 20px;  
 }  
 
 .logo {  
-  font-size: 2rem;  
-  font-weight: bold;  
-  color: #ff3366;  
+font-size: 2rem;  
+font-weight: bold;  
+color: #ff3366;  
 }  
 
 nav ul { list-style: none; padding: 0; }  
@@ -36,45 +36,55 @@ nav ul li { display: inline; margin: 0 15px; }
 nav ul li a { color: white; text-decoration: none; font-size: 1.2rem; }  
 
 .form-container {  
-  background: rgba(0, 0, 0, 0.85);  
-  padding: 40px;  
-  margin: 50px auto;  
-  width: 50%;  
-  border-radius: 10px;  
+background: rgba(0, 0, 0, 0.85);  
+padding: 40px;  
+margin: 50px auto;  
+width: 50%;  
+border-radius: 10px;  
 }  
 
 h2 { color: #ff3366; }  
 
 input, textarea, select {  
-  width: 100%;  
-  padding: 10px;  
-  margin: 10px 0;  
-  border: none;  
-  border-radius: 5px;  
-  font-size: 1rem;  
+width: 100%;  
+padding: 10px;  
+margin: 10px 0;  
+border: none;  
+border-radius: 5px;  
+font-size: 1rem;  
 }  
 
 #data_nascimento { 
-  background: linear-gradient(135deg, #ff3366, #b3003b); 
-  color: white; 
-  font-weight: bold; 
-  text-align: center; 
-  cursor: pointer; 
+background: linear-gradient(135deg, #ff3366, #b3003b); 
+color: white; 
+font-weight: bold; 
+text-align: center; 
+cursor: pointer; 
+letter-spacing: 1px; 
+box-shadow: 0 0 10px rgba(255, 51, 102, 0.6); 
+} 
+
+#data_nascimento::placeholder { 
+color: white; 
+opacity: 1; 
 } 
 
 button {  
-  background: #ff3366;  
-  color: white;  
-  padding: 15px;  
-  width: 100%;  
-  font-size: 1.2rem;  
-  border: none;  
-  border-radius: 5px;  
-  cursor: pointer;  
+background: #ff3366;  
+color: white;  
+padding: 15px;  
+width: 100%;  
+font-size: 1.2rem;  
+border: none;  
+border-radius: 5px;  
+cursor: pointer;  
+transition: 0.3s;  
 }  
 
+button:hover { background: #e62e5c; }  
+
 @media (max-width: 768px) { 
-  .form-container { width: 90%; } 
+.form-container { width: 90%; } 
 } 
 </style>  
 </head>  
@@ -82,7 +92,7 @@ button {
 <body>  
 
 <header>  
-  <div class="logo">NER - Nova Escola Rock</div>  
+<div class="logo">NER - Nova Escola Rock</div>  
 </header>  
 
 <div class="form-container">  
@@ -92,7 +102,14 @@ button {
 
 <input type="text" name="nome" placeholder="Nome completo" required>  
 
-<input type="text" id="data_nascimento" name="data_nascimento" placeholder="Data de Nascimento" readonly required>  
+<input  
+type="text"  
+id="data_nascimento"  
+name="data_nascimento"  
+placeholder="Data de Nascimento"  
+readonly  
+required
+>  
 
 <textarea name="endereco" rows="3" placeholder="Endereço Completo"></textarea>  
 
@@ -100,62 +117,72 @@ button {
 <input type="email" name="email" placeholder="E-mail" required>  
 
 <select name="curso" required>  
-  <option value="">Selecione um curso</option>  
-  <option value="Guitarra Clássica">Guitarra Clássica</option>  
-  <option value="Guitarra Elétrica">Guitarra Elétrica</option>  
-  <option value="Baixo">Baixo</option>  
-  <option value="Bateria">Bateria</option>  
-  <option value="Canto">Canto</option>  
-  <option value="Teclado/Piano">Teclado/Piano</option>  
+<option value="">Selecione um curso</option>  
+<option value="guitarra">Guitarra Clássica</option>  
+<option value="guitarra">Guitarra Elétrica</option>  
+<option value="baixo">Baixo</option>  
+<option value="bateria">Bateria</option>  
+<option value="canto">Canto</option>  
+<option value="teclado">Teclado/Piano</option>  
+<option value="acordeao">Acordeão</option>  
+<option value="cavaquinho">Cavaquinho</option>  
+<option value="outros">Outros</option>  
 </select>  
 
 <button type="submit">Enviar Inscrição</button>  
 </form>  
 
-<p id="mensagem" style="margin-top: 10px;"></p>  
+<p id="mensagem" style="color: white; margin-top: 10px;"></p>  
 </div>  
 
-<script>
-flatpickr("#data_nascimento", {
-  dateFormat: "Y-m-d",
-  disableMobile: true
-});
-</script>
+<script> 
+flatpickr("#data_nascimento", { 
+disableMobile: true, 
+dateFormat: "Y-m-d", 
+defaultDate: "2000-01-01", 
+minDate: "1920-01-01", 
+maxDate: "2040-12-31", 
+allowInput: false, 
+onReady: function(selectedDates, dateStr, instance) { 
+instance.input.value = ""; 
+} 
+}); 
+</script> 
 
-<script>
-document.getElementById("formInscricao").addEventListener("submit", function(e) {
-  e.preventDefault();
+<script> 
+document.getElementById("formInscricao").addEventListener("submit", function(e) { 
+e.preventDefault(); 
 
-  document.getElementById("mensagem").innerText = "A enviar inscrição... aguarda 🤘";
+document.getElementById("mensagem").innerText = 
+"A enviar inscrição... aguarda 🤘"; 
 
-  const dados = {
-    nome: this.nome.value,
-    data_nascimento: this.data_nascimento.value,
-    endereco: this.endereco.value,
-    telefone: this.telefone.value,
-    email: this.email.value,
-    instrumento: this.curso.value
-  };
+const dados = { 
+nome: this.nome.value, 
+data_nascimento: this.data_nascimento.value, 
+endereco: this.endereco.value, 
+telefone: this.telefone.value, 
+email: this.email.value, 
+instrumento: this.curso.value 
+}; 
 
-  fetch("https://script.google.com/macros/s/AKfycbybZlxuI7QDF37baE73dWBizVRNvjmO8hZqjLfy66upnwRDPHMnlJcunpfK_fj2hqy3RA/exec", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(dados)
-  })
-  .then(response => response.json())
-  .then(result => {
-    if (result.status === "success") {
-      window.location.href = "https://datofz89.github.io/thanks.html";
-    } else {
-      throw new Error("Erro no Apps Script");
-    }
-  })
-  .catch(err => {
-    console.error(err);
-    alert("Erro ao enviar inscrição. Tenta novamente.");
-  });
-});
-</script>
+fetch("https://script.google.com/macros/s/AKfycbybZlxuI7QDF37baE73dWBizVRNvjmO8hZqjLfy66upnwRDPHMnlJcunpfK_fj2hqy3RA/exec", { 
+method: "POST", 
+headers: { "Content-Type": "application/json" }, 
+body: JSON.stringify(dados) 
+}) 
+.then(response => response.json()) 
+.then(result => { 
+if (result.status === "success") { 
+window.location.href = "https://datofz89.github.io/thanks.html"; 
+} else { 
+throw new Error("Erro no Apps Script"); 
+} 
+}) 
+.catch(() => { 
+alert("Erro ao enviar inscrição. Tenta novamente."); 
+}); 
+}); 
+</script>  
 
 </body>  
 </html>
