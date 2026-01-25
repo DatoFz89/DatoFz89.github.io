@@ -137,13 +137,18 @@ function enviarFormulario(event) {
     curso: document.getElementById('curso').value
   };
   
+  // Criar FormData em vez de JSON
+  const form = new FormData();
+  form.append('nome', formData.nome);
+  form.append('data_nascimento', formData.data_nascimento);
+  form.append('endereco', formData.endereco);
+  form.append('telefone', formData.telefone);
+  form.append('email', formData.email);
+  form.append('curso', formData.curso);
+  
   fetch('https://api.sheetbest.com/sheets/880fd50e-e9a0-424c-83c5-b27796b1e398', {
     method: 'POST',
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(formData)
+    body: form
   })
   .then(response => {
     if (response.ok) {
