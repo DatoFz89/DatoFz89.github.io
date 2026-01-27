@@ -221,19 +221,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const dados = new FormData(form);
 
         fetch("https://script.google.com/macros/s/AKfycbxftNAgJFw5d455fLTm0zgYNIjuzbNVZTqLo9IV3u7RX9txaOvpCT7Bm4LT0op1EHJA/exec", {
-            method: "POST",
-            body: dados
-        })
-        .then(() => {
-            mensagem.innerText = "Inscrição enviada com sucesso! 🎸";
-            setTimeout(() => {
-                window.location.href = "thanks.html";
-            }, 1500);
-        })
-        .catch(() => {
-            mensagem.innerText = "Erro ao enviar inscrição. Tenta novamente.";
-        });
-    });
+    method: "POST",
+    body: dados,
+    mode: "no-cors"
+})
+.then(() => {
+    mensagem.innerText = "Inscrição enviada com sucesso! 🎸";
+    setTimeout(() => {
+        window.location.href = "thanks.html";
+    }, 1500);
 
 });
 </script>
