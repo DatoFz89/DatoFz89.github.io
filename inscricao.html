@@ -18,7 +18,6 @@ text-align: center;
 margin: 0; 
 padding: 0; 
 } 
-
 header { 
 background: rgba(0, 0, 0, 0.8); 
 padding: 20px; 
@@ -26,6 +25,7 @@ padding: 20px;
 .logo { 
 font-size: 2rem; 
 font-weight: bold; 
+
 color: #ff3366; 
 } 
 nav ul { list-style: none; padding: 0; } 
@@ -54,6 +54,7 @@ border: none;
 border-radius: 5px; 
 font-size: 1rem; 
 } 
+
 /* BOTÃO DATA NASCIMENTO */
 #data_nascimento {
 background: linear-gradient(135deg, #ff3366, #b3003b);
@@ -82,6 +83,7 @@ transition: 0.3s;
 button:hover { background: #e62e5c; } 
 /* FLATPICKR ROCK STYLE */
 .flatpickr-calendar {
+
 background: #111;
 color: #fff;
 border: 2px solid #ff3366;
@@ -90,7 +92,6 @@ border: 2px solid #ff3366;
 .flatpickr-weekdays {
 background: #000;
 }
-
 /* CORREÇÃO: MÊS A VERMELHO */
 .flatpickr-current-month,
 .flatpickr-current-month .flatpickr-monthDropdown-months,
@@ -110,6 +111,7 @@ cursor: pointer;
 }
 /* MOBILE */
 @media (max-width: 768px) {
+
 .form-container { width: 90%; }
 }
 /* Mensagem mobile */
@@ -121,54 +123,70 @@ color: #ff3366;
 border-bottom: 1px solid #ff3366;
 text-align: center;
 }
+/* EFEITO PISCAR */
+@keyframes piscar {
+    0%, 100% { 
+        opacity: 1; 
+    }
+    50% { 
+        opacity: 0; 
+    }
+}
 </style> 
 <script> 
 function enviarFormulario(event) {
-  event.preventDefault();
-  
-  document.getElementById("mensagem").innerText = "A enviar inscrição... Aguarde.";
-  
-  const formData = {
-    nome: document.getElementById('nome').value,
-    data_nascimento: document.getElementById('data_nascimento').value,
-    endereco: document.getElementById('endereco').value,
-    telefone: document.getElementById('telefone').value,
-    email: document.getElementById('email').value,
-    curso: document.getElementById('curso').value
-  };
-  
-  // Criar FormData em vez de JSON
-  const form = new FormData();
-  form.append('nome', formData.nome);
-  form.append('data_nascimento', formData.data_nascimento);
-  form.append('endereco', formData.endereco);
-  form.append('telefone', formData.telefone);
-  form.append('email', formData.email);
-  form.append('curso', formData.curso);
-  
-  fetch('https://api.sheetbest.com/sheets/880fd50e-e9a0-424c-83c5-b27796b1e398', {
-    method: 'POST',
-    body: form
-  })
-  .then(response => {
-    if (response.ok) {
-      document.getElementById("mensagem").innerText = "✅ Inscrição enviada com sucesso!";
-      document.getElementById("mensagem").style.color = "#00ff00";
-      document.getElementById('inscricaoForm').reset();
-      setTimeout(() => {
-        window.location.href = "https://datofz89.github.io/thanks.html";
-      }, 2000);
-    } else {
-      throw new Error('Erro ao enviar');
-    }
-  })
-  .catch(error => {
-    document.getElementById("mensagem").innerText = "❌ Erro ao enviar. Tenta novamente.";
-    document.getElementById("mensagem").style.color = "#ff3366";
-    console.error('Erro:', error);
-  });
-  
-  return false;
+ event.preventDefault();
+ 
+ document.getElementById("mensagem").innerText = "A enviar inscrição... 
+Aguarde.";
+ 
+ const formData = {
+ nome: document.getElementById('nome').value,
+ data_nascimento: document.getElementById('data_nascimento').value,
+ endereco: document.getElementById('endereco').value,
+ telefone: document.getElementById('telefone').value,
+ email: document.getElementById('email').value,
+ curso: document.getElementById('curso').value
+ };
+ 
+
+ // Criar FormData em vez de JSON
+ const form = new FormData();
+ form.append('nome', formData.nome);
+ form.append('data_nascimento', formData.data_nascimento);
+ form.append('endereco', formData.endereco);
+ form.append('telefone', formData.telefone);
+ form.append('email', formData.email);
+ form.append('curso', formData.curso);
+ 
+ fetch('https://api.sheetbest.com/sheets/880fd50e-e9a0-424c-83c5-
+b27796b1e398', {
+ method: 'POST',
+ body: form
+ })
+ .then(response => {
+ if (response.ok) {
+ const mensagem = document.getElementById("mensagem");
+ mensagem.innerText = " Inscrição enviada com sucesso!";
+ mensagem.style.color = "#00ff00";
+ mensagem.style.animation = "piscar 0.5s infinite";
+ document.getElementById('inscricaoForm').reset();
+ setTimeout(() => {
+ window.location.href = "https://datofz89.github.io/thanks.html";
+ }, 2000);
+ } else {
+ throw new Error('Erro ao enviar');
+ }
+ })
+ .catch(error => {
+
+ document.getElementById("mensagem").innerText = " Erro ao enviar. Tenta 
+novamente.";
+ document.getElementById("mensagem").style.color = "#ff3366";
+ console.error('Erro:', error);
+ });
+ 
+ return false;
 }
 </script> 
 </head> 
@@ -187,9 +205,11 @@ function enviarFormulario(event) {
 <div class="form-container"> 
 <h2>Inscreve-te Aqui</h2> 
 <form id="inscricaoForm" onsubmit="enviarFormulario(event)"> 
-<input type="text" name="nome" id="nome" placeholder="Nome completo" required> 
+<input type="text" name="nome" id="nome" placeholder="Nome completo" 
+required> 
 <!-- BOTÃO DATA -->
 <input 
+
 type="text" 
 id="data_nascimento" 
 name="data_nascimento" 
@@ -197,7 +217,8 @@ placeholder="Data de Nascimento"
 readonly 
 required
 >
-<textarea name="endereco" id="endereco" rows="3" placeholder="Endereço Completo"></textarea> 
+<textarea name="endereco" id="endereco" rows="3" placeholder="Endereço 
+Completo"></textarea> 
 <input type="tel" name="telefone" id="telefone" placeholder="Telefone" required> 
 <input type="email" name="email" id="email" placeholder="E-mail" required> 
 <select name="curso" id="curso" required> 
@@ -217,6 +238,7 @@ required
 <p id="mensagem" style="color: white; margin-top: 10px;"></p> 
 </div> 
 <script>
+
 document.addEventListener('DOMContentLoaded', function() {
 flatpickr("#data_nascimento", {
 disableMobile: true,
@@ -226,11 +248,11 @@ minDate: "1920-01-01",
 maxDate: "2040-12-31",
 allowInput: false,
 onReady: function(selectedDates, dateStr, instance) {
- instance.input.value = "";
- var hint = document.createElement("div");
- hint.textContent = "👆 Toca no ANO para mudar rapidamente";
- hint.className = "mobile-hint";
- instance.calendarContainer.prepend(hint);
+instance.input.value = "";
+var hint = document.createElement("div");
+hint.textContent = " Toca no ANO para mudar rapidamente";
+hint.className = "mobile-hint";
+instance.calendarContainer.prepend(hint);
 },
 onOpen: function(selectedDates, dateStr, instance) {
 if (window.innerWidth <= 768) {
