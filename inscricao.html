@@ -220,11 +220,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const dados = new FormData(form);
 
-        fetch("https://script.google.com/macros/s/AKfycbxftNAgJFw5d455fLTm0zgYNIjuzbNVZTqLo9IV3u7RX9txaOvpCT7Bm4LT0op1EHJA/exec", {
+     fetch("https://script.google.com/macros/s/AKfycbxftNAgJFw5d455fLTm0zgYNIjuzbNVZTqLo9IV3u7RX9txaOvpCT7Bm4LT0op1EHJA/exec", {
     method: "POST",
     body: dados,
     mode: "no-cors"
 })
+
 .then(() => {
     mensagem.innerText = "Inscrição enviada com sucesso! 🎸";
     setTimeout(() => {
