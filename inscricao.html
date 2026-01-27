@@ -227,12 +227,14 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 
 .then(() => {
-    mensagem.innerText = "Inscrição enviada com sucesso! 🎸";
+    mensagem.innerText = "Inscrição enviada com sucesso!";
     setTimeout(() => {
         window.location.href = "thanks.html";
     }, 1500);
-
 });
+}); // <-- fecha submit
+}); // <-- fecha DOMContentLoaded
+
 </script>
 
 </body>
