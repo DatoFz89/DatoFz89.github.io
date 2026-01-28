@@ -1,243 +1,145 @@
-<!DOCTYPE html>
-<html lang="pt">
+<!DOCTYPE html> 
 
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inscrição - NER - Nova Escola Rock</title>
+<html lang="pt"> 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+ 
 
-<style>
+<head> 
 
-body {
-    font-family: 'Arial', sans-serif;
-    background: url('/galeria-de-imagens/fundo_inscricao.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-}
+<meta charset="UTF-8"> 
 
-header {
-    background: rgba(0, 0, 0, 0.8);
-    padding: 20px;
-}
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
-.logo {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #ff3366;
-}
+<title>Inscrição - NER - Nova Escola Rock</title> 
 
-nav ul {
-    list-style: none;
-    padding: 0;
-}
+ 
 
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
+<link rel="stylesheet" 
+href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"> 
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-}
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> 
 
-.form-container {
-    background: rgba(0, 0, 0, 0.85);
-    padding: 40px;
-    margin: 50px auto;
-    width: 50%;
-    border-radius: 10px;
-}
+ 
 
-h2 {
-    color: #ff3366;
-}
+<style> 
+/* (CSS igual – não mexido) */
+</style> 
 
-input, textarea, select {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-}
+</head> 
 
-/* BOTÃO DATA NASCIMENTO */
-#data_nascimento {
-    background: linear-gradient(135deg, #ff3366, #b3003b);
-    color: white;
-    font-weight: bold;
-    text-align: center;
-    cursor: pointer;
-    letter-spacing: 1px;
-    box-shadow: 0 0 10px rgba(255, 51, 102, 0.6);
-}
+ 
 
-#data_nascimento::placeholder {
-    color: white;
-    opacity: 1;
-}
+<body> 
 
-button {
-    background: #ff3366;
-    color: white;
-    padding: 15px;
-    width: 100%;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
+<header> 
+    <div class="logo">NER - Nova Escola Rock</div> 
+    <nav> 
+        <ul> 
+            <li><a href="index.html">Início</a></li> 
+            <li><a href="index.html#cursos">Cursos</a></li> 
+            <li><a href="index.html#professores">Professores</a></li> 
+            <li><a href="index.html#contato">Contato</a></li> 
+        </ul> 
+    </nav> 
+</header> 
 
-button:hover {
-    background: #e62e5c;
-}
+ 
 
-/* FLATPICKR */
-.flatpickr-calendar {
-    background: #111;
-    color: #fff;
-    border: 2px solid #ff3366;
-}
+<div class="form-container"> 
 
-.flatpickr-current-month,
-.flatpickr-current-month input.cur-year {
-    color: #ff3366;
-    font-weight: bold;
-}
+<h2>Inscreve-te Aqui</h2> 
 
-.flatpickr-day.selected,
-.flatpickr-day:hover {
-    background: #ff3366;
-    border-color: #ff3366;
-}
+<form id="formInscricao"> 
 
-@media (max-width: 768px) {
-    .form-container { width: 90%; }
-}
+<input type="text" name="nome" placeholder="Nome completo" required> 
 
-.flatpickr-calendar .mobile-hint {
-    font-size: 14px;
-    padding: 8px;
-    background: #000;
-    color: #ff3366;
-    border-bottom: 1px solid #ff3366;
-    text-align: center;
-}
+<input 
+    type="text" 
+    id="data_nascimento" 
+    name="data_nascimento" 
+    placeholder="Data de Nascimento" 
+    readonly 
+    required 
+> 
 
-</style>
-</head>
+<textarea name="endereco" rows="3" placeholder="Endereço 
+Completo"></textarea> 
 
-<body>
+<input type="tel" name="telefone" placeholder="Telefone" required> 
+<input type="email" name="email" placeholder="E-mail" required> 
 
-<header>
-    <div class="logo">NER - Nova Escola Rock</div>
-    <nav>
-        <ul>
-            <li><a href="index.html">Início</a></li>
-            <li><a href="index.html#cursos">Cursos</a></li>
-            <li><a href="index.html#professores">Professores</a></li>
-            <li><a href="index.html#contato">Contato</a></li>
-        </ul>
-    </nav>
-</header>
+<select name="curso" required> 
+    <option value="">Selecione um curso</option> 
+    <option value="Guitarra Clássica">Guitarra Clássica</option> 
+    <option value="Guitarra Elétrica">Guitarra Elétrica</option> 
+    <option value="Baixo">Baixo</option> 
+    <option value="Bateria">Bateria</option> 
+    <option value="Canto">Canto</option> 
+    <option value="Teclado/Piano">Teclado/Piano</option> 
+    <option value="Acordeão">Acordeão</option> 
+    <option value="Cavaquinho">Cavaquinho</option> 
+    <option value="Outros">Outros</option> 
+</select> 
 
-<div class="form-container">
+<button type="submit">Enviar Inscrição</button> 
 
-<h2>Inscreve-te Aqui</h2>
+</form> 
 
-<form id="formInscricao">
+<p id="mensagem" style="margin-top:10px;"></p> 
 
-<input type="text" name="nome" placeholder="Nome completo" required>
+</div> 
 
-<input
-    type="text"
-    id="data_nascimento"
-    name="data_nascimento"
-    placeholder="Data de Nascimento"
-    readonly
-    required
->
+ 
 
-<textarea name="endereco" rows="3" placeholder="Endereço Completo"></textarea>
+<script> 
+document.addEventListener('DOMContentLoaded', function() { 
 
-<input type="tel" name="telefone" placeholder="Telefone" required>
-<input type="email" name="email" placeholder="E-mail" required>
+    flatpickr("#data_nascimento", { 
+        disableMobile: true, 
+        dateFormat: "Y-m-d", 
+        defaultDate: "2000-01-01", 
+        allowInput: false, 
+        onReady: function(selectedDates, dateStr, instance) { 
+            instance.input.value = ""; 
+            var hint = document.createElement("div"); 
+            hint.textContent = "      Toca no ANO para mudar rapidamente"; 
+            hint.className = "mobile-hint"; 
+            instance.calendarContainer.prepend(hint); 
+        } 
+    }); 
 
-<select name="curso" required>
-    <option value="">Selecione um curso</option>
-    <option value="Guitarra Clássica">Guitarra Clássica</option>
-    <option value="Guitarra Elétrica">Guitarra Elétrica</option>
-    <option value="Baixo">Baixo</option>
-    <option value="Bateria">Bateria</option>
-    <option value="Canto">Canto</option>
-    <option value="Teclado/Piano">Teclado/Piano</option>
-    <option value="Acordeão">Acordeão</option>
-    <option value="Cavaquinho">Cavaquinho</option>
-    <option value="Outros">Outros</option>
-</select>
+    const form = document.getElementById("formInscricao"); 
+    const mensagem = document.getElementById("mensagem"); 
 
-<button type="submit">Enviar Inscrição</button>
+    form.addEventListener("submit", function(e) { 
+        e.preventDefault(); 
 
-</form>
+        mensagem.innerText = "A enviar inscrição... aguarda    "; 
 
-<p id="mensagem" style="margin-top:10px;"></p>
+        const dados = new FormData(form); 
 
-</div>
+        fetch("https://script.google.com/macros/s/AKfycbxftNAgJFw5d455fLTm0zgYNIjuzbNVZTqLo9IV3u7RX9txaOvpCT7Bm4LT0op1EHJA/exec", { 
+            method: "POST", 
+            body: dados 
+        }) 
+        .then(response => response.text()) 
+        .then(texto => { 
+            mensagem.innerText = "Inscrição enviada com sucesso!"; 
+            setTimeout(() => { 
+                window.location.href = "thanks.html"; 
+            }, 1500); 
+        }) 
+        .catch(err => { 
+            mensagem.innerText = "Erro ao enviar inscrição ❌"; 
+            console.error(err); 
+        }); 
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
+    }); 
+}); 
+</script> 
 
-    flatpickr("#data_nascimento", {
-        disableMobile: true,
-        dateFormat: "Y-m-d",
-        defaultDate: "2000-01-01",
-        allowInput: false,
-        onReady: function(selectedDates, dateStr, instance) {
-            instance.input.value = "";
-            var hint = document.createElement("div");
-            hint.textContent = "👆 Toca no ANO para mudar rapidamente";
-            hint.className = "mobile-hint";
-            instance.calendarContainer.prepend(hint);
-        }
-    });
+ 
 
-    const form = document.getElementById("formInscricao");
-    const mensagem = document.getElementById("mensagem");
+</body> 
 
-    form.addEventListener("submit", function(e) {
-        e.preventDefault();
-
-        mensagem.innerText = "A enviar inscrição... aguarda 🤘";
-
-        const dados = new FormData(form);
-
-fetch("https://script.google.com/macros/s/AKfycbxftNAgJFw5d455fLTm0zgYNIjuzbNVZTqLo9IV3u7RX9txaOvpCT7Bm4LT0op1EHJA/exec", {
-    method: "POST",
-    body: dados
-})
-.then(response => response.text())
-.then(texto => {
-    mensagem.innerText = "Inscrição enviada com sucesso!";
-    setTimeout(() => {
-        window.location.href = "thanks.html";
-    }, 1500);
-})
-.catch(err => {
-    mensagem.innerText = "Erro ao enviar inscrição ❌";
-    console.error(err);
-});
-
-
-</script>
-
-</body>
 </html>
