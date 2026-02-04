@@ -69,6 +69,16 @@
             font-size: 0.9em;
             color: #aaa;
         }
+
+        .toggle-manual {
+    cursor: pointer;
+}
+
+.manual-conteudo {
+    display: none;
+    margin-top: 15px;
+}
+
     </style>
 </head>
 
@@ -91,8 +101,8 @@
     </div>
 
     <div class="section">
-        <h2>🎸 MANUAL</h2>
-        <ul>
+        <h2 class="toggle-manual">🎸 MANUAL (clicar para abrir)</h2>
+        <ul class="manual-conteudo">
             <li><a href="ficheiros/guitarra/manual_guitarra_nivel1_spark_semanas_1a4.pdf" download>Manual – Nível 1 (Semanas 1 a 4)</a></li>
             <li><a href="ficheiros/guitarra/manual_guitarra_nivel2_flame_semanas_5a8.pdf" download>Manual – Nível 2 (Semanas 5 a 8)</a></li>
             <li><a href="ficheiros/guitarra/manual_guitarra_nivel3_blaze_semanas_9a12.pdf" download>Manual – Nível 3 (Semanas 9 a 12)</a></li>
@@ -129,5 +139,18 @@
     © 2026 – NER - Nova Escola Rock | Todos os direitos reservados
 </footer>
 
+<script>
+    const tituloManual = document.querySelector(".toggle-manual");
+    const conteudoManual = document.querySelector(".manual-conteudo");
+
+    tituloManual.addEventListener("click", () => {
+        conteudoManual.style.display =
+            conteudoManual.style.display === "none" || conteudoManual.style.display === ""
+                ? "block"
+                : "none";
+    });
+</script>
+
+    
 </body>
 </html>
