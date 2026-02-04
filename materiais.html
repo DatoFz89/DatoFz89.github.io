@@ -70,14 +70,15 @@
             color: #aaa;
         }
 
-        .toggle-manual {
+.toggle {
     cursor: pointer;
 }
 
-.manual-conteudo {
+.conteudo {
     display: none;
     margin-top: 15px;
 }
+
 
     </style>
 </head>
@@ -92,46 +93,55 @@
 <main>
 
     <div class="section">
-        <h2>🎸 Exercícios de Guitarra</h2>
-        <ul>
-            <li><a href="ficheiros/guitarra/exercicios-de-pentatonica.pdf" download>Exercício de Pentatónica</a></li>
-            <li><a href="ficheiros/guitarra/aquecimento-diario.pdf" download>Aquecimento Diário</a></li>
-        </ul>
-        
-    </div>
+    <h2 class="toggle">🎸 Exercícios de Guitarra</h2>
+    <ul class="conteudo">
+        <li><a href="ficheiros/guitarra/exercicios-de-pentatonica.pdf" download>Exercício de Pentatónica</a></li>
+        <li><a href="ficheiros/guitarra/aquecimento-diario.pdf" download>Aquecimento Diário</a></li>
+    </ul>
+</div>
+
 
     <div class="section">
-        <h2 class="toggle-manual">🎸 MANUAL (clicar para abrir)</h2>
-        <ul class="manual-conteudo">
-            <li><a href="ficheiros/guitarra/manual_guitarra_nivel1_spark_semanas_1a4.pdf" download>Manual – Nível 1 (Semanas 1 a 4)</a></li>
-            <li><a href="ficheiros/guitarra/manual_guitarra_nivel2_flame_semanas_5a8.pdf" download>Manual – Nível 2 (Semanas 5 a 8)</a></li>
-            <li><a href="ficheiros/guitarra/manual_guitarra_nivel3_blaze_semanas_9a12.pdf" download>Manual – Nível 3 (Semanas 9 a 12)</a></li>
-            <li><a href="ficheiros/guitarra/manual_guitarra_nivel4_inferno_semanas_13a16.pdf" download>Manual – Nível 4 (Semanas 5 a 8)</a></li>
-        </ul>
-    </div>
-            
+    <h2 class="toggle">🎸 MANUAL</h2>
+    <ul class="conteudo">
+        <li><a href="ficheiros/guitarra/manual_guitarra_nivel1_spark_semanas_1a4.pdf" download>Manual – Nível 1 (Semanas 1 a 4)</a></li>
+        <li><a href="ficheiros/guitarra/manual_guitarra_nivel2_flame_semanas_5a8.pdf" download>Manual – Nível 2 (Semanas 5 a 8)</a></li>
+        <li><a href="ficheiros/guitarra/manual_guitarra_nivel3_blaze_semanas_9a12.pdf" download>Manual – Nível 3 (Semanas 9 a 12)</a></li>
+        <li><a href="ficheiros/guitarra/manual_guitarra_nivel4_inferno_semanas_13a16.pdf" download>Manual – Nível 4 (Semanas 13 a 16)</a></li>
+    </ul>
+</div>
+
+ <div class="section">
+    <h2 class="toggle">🎹 Piano / Teclado</h2>
+    <ul class="conteudo">
+        <li><a href="ficheiros/piano/piano-teclado.pdf" download>Piano / Teclado</a></li>
+    </ul>
+</div>
+           
 
     <div class="section">
-        <h2>🎵 Teoria Musical</h2>
-        <ul>
-            <li><a href="ficheiros/teoria/escalas-maiores.pdf" download>Escalas Maiores</a></li>
-            <li><a href="ficheiros/teoria/intervalos.pdf" download>Intervalos Musicais</a></li>
-        </ul>
-    </div>
+    <h2 class="toggle">🎵 Teoria Musical</h2>
+    <ul class="conteudo">
+        <li><a href="ficheiros/teoria/escalas-maiores.pdf" download>Escalas Maiores</a></li>
+        <li><a href="ficheiros/teoria/intervalos.pdf" download>Intervalos Musicais</a></li>
+    </ul>
+</div>
 
     <div class="section">
-        <h2>🥁 Outros Instrumentos</h2>
-        <ul>
-            <li><a href="ficheiros/bateria/ritmos-base.pdf" download>Ritmos Base de Bateria</a></li>
-        </ul>
-    </div>
+    <h2 class="toggle">🥁 Outros Instrumentos</h2>
+    <ul class="conteudo">
+        <li><a href="ficheiros/bateria/ritmos-base.pdf" download>Ritmos Base de Bateria</a></li>
+    </ul>
+</div>
+
 
     <div class="section">
-        <h2>📄 Outros Recursos</h2>
-        <ul>
-            <li><a href="ficheiros/outros/plano-estudo.pdf" download>Plano de Estudo Semanal</a></li>
-        </ul>
-    </div>
+    <h2 class="toggle">📄 Outros Recursos</h2>
+    <ul class="conteudo">
+        <li><a href="ficheiros/outros/plano-estudo.pdf" download>Plano de Estudo Semanal</a></li>
+    </ul>
+</div>
+
 
 </main>
 
@@ -140,16 +150,17 @@
 </footer>
 
 <script>
-    const tituloManual = document.querySelector(".toggle-manual");
-    const conteudoManual = document.querySelector(".manual-conteudo");
-
-    tituloManual.addEventListener("click", () => {
-        conteudoManual.style.display =
-            conteudoManual.style.display === "none" || conteudoManual.style.display === ""
-                ? "block"
-                : "none";
+    document.querySelectorAll(".toggle").forEach(titulo => {
+        titulo.addEventListener("click", () => {
+            const conteudo = titulo.nextElementSibling;
+            conteudo.style.display =
+                conteudo.style.display === "none" || conteudo.style.display === ""
+                    ? "block"
+                    : "none";
+        });
     });
 </script>
+
 
     
 </body>
