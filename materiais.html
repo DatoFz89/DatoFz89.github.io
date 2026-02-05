@@ -4,179 +4,226 @@
 <meta charset="UTF-8">
 <title>Materiais | NER - Nova Escola Rock</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Fonte Rock -->
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&display=swap" rel="stylesheet">
+
+<!-- Fonte Metal para o título -->
+<link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+
+    
 <style>
 body {
-font-family: Arial, Helvetica, sans-serif;
-margin: 0;
-background-color: #0f0f0f;
-color: #f2f2f2;
+    font-family: 'Oswald', Arial, sans-serif;
+    margin: 0;
+    background: radial-gradient(circle at top, #1a1a1a, #000);
+    color: #f2f2f2;
 }
+
+/* HEADER */
 header {
-background-color: #111;
-padding: 20px;
-text-align: center;
-border-bottom: 2px solid #e60000;
+    background: linear-gradient(180deg, #000, #111);
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 3px solid #e60000;
+    box-shadow: 0 10px 30px rgba(230,0,0,0.25);
 }
+
 header h1 {
-margin: 0;
-color: #e60000;
+    font-family: 'Metal Mania', cursive;
+    margin: 0;
+    font-size: 2.8em;
+    color: #e60000;
+    text-shadow:
+        0 0 10px rgba(230,0,0,0.8),
+        0 0 25px rgba(230,0,0,0.6);
+    letter-spacing: 3px;
 }
-main {max-width: 900px;
-margin: auto;
-padding: 30px 20px;
+
+header p {
+    margin-top: 8px;
+    color: #bbb;
+    letter-spacing: 1px;
 }
+
+/* MAIN */
+main {
+    max-width: 900px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+/* SEÇÕES */
 .section {
-margin-bottom: 40px;
+    margin-bottom: 35px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #1a1a1a, #111);
+    box-shadow: 0 0 20px rgba(0,0,0,0.8);
 }
+
+/* TÍTULOS */
 .section h2 {
-color: #e60000;
-border-bottom: 1px solid #333;
-padding-bottom: 5px;
+    margin: 0;
+    padding: 15px 20px;
+    cursor: pointer;
+    background: linear-gradient(90deg, #e60000, #900000);
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px rgba(0,0,0,0.8);
+    transition: all 0.3s ease;
 }
-ul {
-list-style: none;
-padding-left: 0;
+
+.section h2:hover {
+    background: linear-gradient(90deg, #ff1a1a, #b30000);
+    text-shadow: 0 0 15px rgba(255,0,0,0.9);
 }
-li {
-background-color: #1a1a1a;
-margin-bottom: 10px;
-padding: 12px 15px;
-border-left: 4px solid #e60000;
-}
-a {color: #ffffff;
-text-decoration: none;
-}
-a:hover {
-text-decoration: underline;
-}
-footer {
-text-align: center;
-padding: 20px;
-background-color: #111;
-font-size: 0.9em;
-color: #aaa;
-}
-.toggle {
-cursor: pointer;
-}
+
+/* CONTEÚDO */
 .conteudo {
-display: none;
-margin-top: 15px;
+    display: none;
+    padding: 20px;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* LISTAS */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    background: linear-gradient(90deg, #1f1f1f, #141414);
+    margin-bottom: 10px;
+    padding: 14px 16px;
+    border-left: 4px solid #e60000;
+    transition: all 0.25s ease;
+}
+
+li:hover {
+    background: #222;
+    transform: translateX(5px);
+    box-shadow: 0 0 10px rgba(230,0,0,0.4);
+}
+
+/* LINKS */
+a {
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+
+a::before {
+    content: "▶ ";
+    color: #e60000;
+}
+
+a:hover {
+    color: #ff4d4d;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #000;
+    font-size: 0.9em;
+    color: #777;
+    border-top: 2px solid #e60000;
+    letter-spacing: 1px;
 }
 </style>
-</head><body>
+</head>
+
+<body>
+
 <header>
-<h1>Materiais de Estudo</h1>
-<p>NER – Nova Escola Rock</p>
+    <h1>Materiais de Estudo</h1>
+    <p>NER – Nova Escola Rock</p>
 </header>
+
+    
 <main>
+
 <div class="section">
-<h2 class="toggle"> Exercícios de Guitarra</h2>
-<ul class="conteudo">
-<li><a href="ficheiros/guitarra/exercicios-de-pentatonica.pdf"
-download>Exercício de Pentatónica</a></li>
-<li><a href="ficheiros/guitarra/as_escalas_pentatónicas_extensoes.pdf"
-download>Exercício de Pentatónica - Extensões</a></li>
-<li><a href="ficheiros/guitarra/aquecimento-diario.pdf"
-download>Aquecimento Diário</a></li>
-</ul>
+    <h2 class="toggle">🎸 Exercícios de Guitarra</h2>
+    <ul class="conteudo">
+        <li><a href="ficheiros/guitarra/exercicios-de-pentatonica.pdf" download>Exercício de Pentatónica</a></li>
+        <li><a href="ficheiros/guitarra/as_escalas_pentatónicas_extensoes.pdf" download>Pentatónica – Extensões</a></li>
+        <li><a href="ficheiros/guitarra/aquecimento-diario.pdf" download>Aquecimento Diário</a></li>
+    </ul>
 </div>
+
 <div class="section">
-<h2 class="toggle"> MANUAL</h2>
-<ul class="conteudo">
-<li><a
-href="ficheiros/guitarra/manual_guitarra_nivel1_spark_semanas_1a4.pdf"
-download>Manual – Nível 1 (Semanas 1 a 4)</a></li><li><a
-href="ficheiros/guitarra/manual_guitarra_nivel2_flame_semanas_5a8.pdf"
-download>Manual – Nível 2 (Semanas 5 a 8)</a></li>
-<li><a
-href="ficheiros/guitarra/manual_guitarra_nivel3_blaze_semanas_9a12.pdf"
-download>Manual – Nível 3 (Semanas 9 a 12)</a></li>
-<li><a
-href="ficheiros/guitarra/manual_guitarra_nivel4_inferno_semanas_13a16.pdf"
-download>Manual – Nível 4 (Semanas 13 a 16)</a></li>
-</ul>
+    <h2 class="toggle">📘 Manual</h2>
+    <ul class="conteudo">
+        <li><a href="ficheiros/guitarra/manual_guitarra_nivel1_spark_semanas_1a4.pdf" download>Nível 1 – Spark</a></li>
+        <li><a href="ficheiros/guitarra/manual_guitarra_nivel2_flame_semanas_5a8.pdf" download>Nível 2 – Flame</a></li>
+        <li><a href="ficheiros/guitarra/manual_guitarra_nivel3_blaze_semanas_9a12.pdf" download>Nível 3 – Blaze</a></li>
+        <li><a href="ficheiros/guitarra/manual_guitarra_nivel4_inferno_semanas_13a16.pdf" download>Nível 4 – Inferno</a></li>
+    </ul>
 </div>
+
 <div class="section">
-<h2 class="toggle"> Piano / Teclado</h2>
-<ul class="conteudo">
-<li><a href="ficheiros/piano/piano-teclado.pdf" download>Piano /
-Teclado</a></li>
-</ul>
+    <h2 class="toggle">🎹 Piano / Teclado</h2>
+    <ul class="conteudo">
+        <li><a href="ficheiros/piano/piano-teclado.pdf" download>Piano / Teclado</a></li>
+    </ul>
 </div>
+
 <div class="section">
-<h2 class="toggle"> Bateria</h2>
-<ul class="conteudo">
-<li><a href="ficheiros/bateria/bateria.pdf" download>Bateria</a></li>
-</ul>
+    <h2 class="toggle">🥁 Bateria</h2>
+    <ul class="conteudo">
+        <li><a href="ficheiros/bateria/bateria.pdf" download>Bateria</a></li>
+    </ul>
 </div>
+
 <div class="section">
-<h2 class="toggle"> Canto</h2>
-<ul class="conteudo"><li><a href="ficheiros/canto/canto.pdf" download>Canto</a></li>
-</ul>
+    <h2 class="toggle">🎤 Canto</h2>
+    <ul class="conteudo">
+        <li><a href="ficheiros/canto/canto.pdf" download>Canto</a></li>
+    </ul>
 </div>
+
 <div class="section">
-<h2 class="toggle"> Baixo</h2>
-<ul class="conteudo">
-<li><a href="ficheiros/baixo/baixo.pdf" download>Baixo</a></li>
-</ul>
+    <h2 class="toggle">🎸 Baixo</h2>
+    <ul class="conteudo">
+        <li><a href="ficheiros/baixo/baixo.pdf" download>Baixo</a></li>
+    </ul>
 </div>
+
 <div class="section">
-<h2 class="toggle"> Outros Instrumentos</h2>
-<ul class="conteudo">
-<li><a href="ficheiros/bateria/ritmos-base.pdf" download>Ritmos Base de
-Bateria</a></li>
-</ul>
+    <h2 class="toggle">🔥 Backing Tracks</h2>
+    <ul class="conteudo">
+        <li><a href="ficheiros/backing-tracks/Eternal Grind_BT1_60bpm.mp3" download>Eternal Grind – 60 BPM</a></li>
+        <li><a href="ficheiros/backing-tracks/Eternal Grind_bt2_60bpm.mp3" download>Eternal Grind – Alt</a></li>
+        <li><a href="ficheiros/backing-tracks/Relentless Pulse_1bpm120.mp3" download>Relentless Pulse – 120 BPM</a></li>
+        <li><a href="ficheiros/backing-tracks/Relentless Pulse_2bpm120.mp3" download>Relentless Pulse – Alt</a></li>
+    </ul>
 </div>
-<div class="section">
-<h2 class="toggle"> Teoria Musical</h2>
-<ul class="conteudo">
-<li><a href="ficheiros/teoria/escalas-maiores.pdf" download>Escalas
-Maiores</a></li>
-<li><a href="ficheiros/teoria/intervalos.pdf" download>Intervalos
-Musicais</a></li>
-</ul>
-</div><div class="section">
-<h2 class="toggle"> Backing Tracks</h2>
-<ul class="conteudo">
-<li>
-<a href="ficheiros/backing-tracks/Eternal Grind_BT1_60bpm.mp3"
-download>Eternal Grind BT1 - 60 BPM</a>
-</li>
-<li>
-<a href="ficheiros/backing-tracks/Eternal Grind_bt2_60bpm.mp3"
-download>Eternal Grind BT2 - 60 BPM</a>
-</li>
-<li>
-<a href="ficheiros/backing-tracks/Relentless Pulse_1bpm120.mp3"
-download>Relentless Pulse 1 - 120 BPM</a>
-</li>
-<li>
-<a href="ficheiros/backing-tracks/Relentless Pulse_2bpm120.mp3"
-download>Relentless Pulse 2 - 120 BPM</a>
-</li>
-</ul>
-</div>
-<div class="section">
-<h2 class="toggle"> Outros Recursos</h2>
-<ul class="conteudo">
-<li><a href="ficheiros/outros/plano-estudo.pdf" download>Plano de Estudo
-Semanal</a></li></ul>
-</div>
+
 </main>
+
 <footer>
-© 2026 – NER - Nova Escola Rock | Todos os direitos reservados
+© 2026 – NER · Nova Escola Rock
 </footer>
+
 <script>
 document.querySelectorAll(".toggle").forEach(titulo => {
-titulo.addEventListener("click", () => {
-const conteudo = titulo.nextElementSibling;
-conteudo.style.display =
-conteudo.style.display === "none" || conteudo.style.display === ""
-? "block"
-: "none";
-});
+    titulo.addEventListener("click", () => {
+        const conteudo = titulo.nextElementSibling;
+        conteudo.style.display =
+            conteudo.style.display === "block" ? "none" : "block";
+    });
 });
 </script>
+
 </body>
 </html>
