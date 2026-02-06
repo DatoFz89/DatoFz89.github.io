@@ -259,5 +259,32 @@ document.querySelectorAll(".toggle").forEach(titulo => {
 });
 </script>
 
+<audio id="bgRock" autoplay loop muted>
+    <source src="ficheiros/scorpions_falling_star.mp3" type="audio/mpeg">
+</audio>
+
+<button id="btnSom" onclick="toggleSom()" 
+style="position: fixed; bottom: 20px; right: 20px; 
+background:#e60000; color:white; border:none; padding:10px 15px;
+border-radius:5px; cursor:pointer;">
+🔇 Som OFF
+</button>
+
+<script>
+function toggleSom() {
+    var audio = document.getElementById("bgRock");
+    var btn = document.getElementById("btnSom");
+
+    if (audio.muted) {
+        audio.muted = false;
+        btn.innerHTML = "🔊 Som ON";
+    } else {
+        audio.muted = true;
+        btn.innerHTML = "🔇 Som OFF";
+    }
+}
+</script>
+
+    
 </body>
 </html>
