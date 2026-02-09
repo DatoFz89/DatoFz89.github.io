@@ -1,0 +1,10 @@
+|-------------------- Guitar Pro v5.2 --------------------|
+
+  USER ID: SERIALBAY.COM
+  KEY ID: AAAAA-AW50A-AAAAZ
+
+  Para a tradução do programa, copie os arquivos de 
+ gpl.zip para a respectiva pasta onde foi instalado o 
+ programa.
+
+|------------------ Guia do Guitarrista ------------------|
