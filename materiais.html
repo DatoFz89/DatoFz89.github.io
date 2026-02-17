@@ -233,6 +233,49 @@ a:hover {
     text-decoration: underline;
 }
 
+.conteudo {
+    display: none;
+}
+
+.instrumento {
+    margin-bottom: 12px;
+}
+
+.rock-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #e60000;
+    color: white;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.rock-btn:hover {
+    background-color: #ff1a1a;
+}
+
+.conteudo-instrumento {
+    display: none;
+    background-color: #1a1a1a;
+    padding: 15px;
+    border-left: 4px solid #e60000;
+}
+
+.conteudo-instrumento a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 8px;
+}
+
+.conteudo-instrumento a:hover {
+    text-decoration: underline;
+}
+
     
 </style>
 </head>
@@ -324,56 +367,58 @@ a:hover {
 </div>
 
 <div class="section">
-    <h2>🎬 Vídeos Didáticos</h2>
+    <h2 class="toggle">🎬 Vídeos Didáticos</h2>
 
-    <div class="instrumento">
-        <button class="rock-btn" onclick="toggleInstrumento('eletrica')">
-            🎸 Guitarra Elétrica
-        </button>
-        <div id="eletrica" class="conteudo-instrumento">
-            <a href="https://mega.nz/file/D1hHhB4K#FLKKpGoTbPyIk3DmbXdC0P9O-kf6AgAaW2PO3jThIQ8" target="_blank">Primeiro Ano de Guitarra</a>
-            <a href="https://mega.nz/file/WhICBAyB#Pzc74rPoIHPZ6Gm01SQJb90CyZ7wLBH-YlrL1qBzrIc" target="_blank">Memória Musical Duradoura</a>
-            <a href="https://mega.nz/file/qtRH3CxL#_nebi0xjrMCRlimQeNFSmsqL0UAWCfC4VRViyvSb1hY" target="_blank">Como Sobreviver à Guitarra</a>
+    <div class="conteudo">
+
+        <div class="instrumento">
+            <button class="rock-btn" onclick="toggleInstrumento('eletrica')">
+                🎸 Guitarra Elétrica
+            </button>
+            <div id="eletrica" class="conteudo-instrumento">
+                <a href="https://mega.nz/file/D1hHhB4K#FLKKpGoTbPyIk3DmbXdC0P9O-kf6AgAaW2PO3jThIQ8" target="_blank">Primeiro Ano de Guitarra</a>
+                <a href="https://mega.nz/file/WhICBAyB#Pzc74rPoIHPZ6Gm01SQJb90CyZ7wLBH-YlrL1qBzrIc" target="_blank">Memória Musical Duradoura</a>
+                <a href="https://mega.nz/file/qtRH3CxL#_nebi0xjrMCRlimQeNFSmsqL0UAWCfC4VRViyvSb1hY" target="_blank">Como Sobreviver à Guitarra</a>
+            </div>
         </div>
-    </div>
 
-    <div class="instrumento">
-        <button class="rock-btn" onclick="toggleInstrumento('classica')">🎼 Guitarra Clássica</button>
-        <div id="classica" class="conteudo-instrumento"></div>
-    </div>
+        <div class="instrumento">
+            <button class="rock-btn" onclick="toggleInstrumento('classica')">🎼 Guitarra Clássica</button>
+            <div id="classica" class="conteudo-instrumento"></div>
+        </div>
 
-    <div class="instrumento">
-        <button class="rock-btn" onclick="toggleInstrumento('baixo')">🎸 Baixo</button>
-        <div id="baixo" class="conteudo-instrumento"></div>
-    </div>
+        <div class="instrumento">
+            <button class="rock-btn" onclick="toggleInstrumento('baixo')">🎸 Baixo</button>
+            <div id="baixo" class="conteudo-instrumento"></div>
+        </div>
 
-    <div class="instrumento">
-        <button class="rock-btn" onclick="toggleInstrumento('bateria')">🥁 Bateria</button>
-        <div id="bateria" class="conteudo-instrumento"></div>
-    </div>
+        <div class="instrumento">
+            <button class="rock-btn" onclick="toggleInstrumento('bateria')">🥁 Bateria</button>
+            <div id="bateria" class="conteudo-instrumento"></div>
+        </div>
 
-    <div class="instrumento">
-        <button class="rock-btn" onclick="toggleInstrumento('canto')">🎤 Canto</button>
-        <div id="canto" class="conteudo-instrumento"></div>
-    </div>
+        <div class="instrumento">
+            <button class="rock-btn" onclick="toggleInstrumento('canto')">🎤 Canto</button>
+            <div id="canto" class="conteudo-instrumento"></div>
+        </div>
 
-    <div class="instrumento">
-        <button class="rock-btn" onclick="toggleInstrumento('teclado')">🎹 Teclado / Piano</button>
-        <div id="teclado" class="conteudo-instrumento"></div>
-    </div>
+        <div class="instrumento">
+            <button class="rock-btn" onclick="toggleInstrumento('teclado')">🎹 Teclado / Piano</button>
+            <div id="teclado" class="conteudo-instrumento"></div>
+        </div>
 
-    <div class="instrumento">
-        <button class="rock-btn" onclick="toggleInstrumento('acordeao')">🪗 Acordeão</button>
-        <div id="acordeao" class="conteudo-instrumento"></div>
-    </div>
+        <div class="instrumento">
+            <button class="rock-btn" onclick="toggleInstrumento('acordeao')">🪗 Acordeão</button>
+            <div id="acordeao" class="conteudo-instrumento"></div>
+        </div>
 
-    <div class="instrumento">
-        <button class="rock-btn" onclick="toggleInstrumento('cavaquinho')">🎶 Cavaquinho</button>
-        <div id="cavaquinho" class="conteudo-instrumento"></div>
-    </div>
+        <div class="instrumento">
+            <button class="rock-btn" onclick="toggleInstrumento('cavaquinho')">🎶 Cavaquinho</button>
+            <div id="cavaquinho" class="conteudo-instrumento"></div>
+        </div>
 
+    </div>
 </div>
-
 
 <div class="section">
     <h2 class="toggle">🔥 Backing Tracks</h2>
@@ -464,6 +509,21 @@ function toggleSom() {
 </script>
 
 <script>
+
+// mantém o teu sistema de toggle principal
+document.querySelectorAll(".toggle").forEach(function(titulo) {
+    titulo.addEventListener("click", function() {
+        var conteudo = this.nextElementSibling;
+
+        if (conteudo.style.display === "block") {
+            conteudo.style.display = "none";
+        } else {
+            conteudo.style.display = "block";
+        }
+    });
+});
+
+// toggle individual dos instrumentos
 function toggleInstrumento(id) {
     var elemento = document.getElementById(id);
 
@@ -473,7 +533,9 @@ function toggleInstrumento(id) {
         elemento.style.display = "block";
     }
 }
+
 </script>
+
 
     
 </body>
