@@ -536,7 +536,49 @@ function toggleInstrumento(id) {
 
 </script>
 
+<script>
 
+document.querySelectorAll(".toggle").forEach(function(titulo) {
+
+    titulo.addEventListener("click", function() {
+
+        var conteudo = this.nextElementSibling;
+
+        if (conteudo.style.display === "block") {
+
+            conteudo.style.display = "none";
+
+        } else {
+
+            conteudo.style.display = "block";
+
+        }
+
+    });
+
+});
+
+function toggleSubfolder(id) {
+
+    var el = document.getElementById(id);
+
+    if (el.style.display === "block") {
+
+        el.style.display = "none";
+
+    } else {
+
+        el.style.display = "block";
+
+    }
+
+}
+
+</script>
+
+</body>
+
+</html>
     
 </body>
 </html>
