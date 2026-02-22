@@ -3,6 +3,17 @@
 <head> 
 <meta charset="UTF-8"> 
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
+<meta name="description" content="NER - Nova Escola Rock. Escola de Música em Paços de Ferreira desde 2018. Aulas de guitarra, baixo, bateria, canto, piano e produção musical. Marca já a tua aula experimental.">
+
+<meta name="keywords" content="Escola de Música Paços de Ferreira, Aulas de Guitarra Paços de Ferreira, Escola de Rock Paços de Ferreira, Aulas de Bateria Paços de Ferreira, NER Nova Escola Rock">
+
+<meta name="author" content="NER - Nova Escola Rock">
+
+<meta property="og:title" content="NER - Nova Escola Rock | Escola de Música em Paços de Ferreira">
+<meta property="og:description" content="Desde 2018 a formar músicos em Paços de Ferreira. Aulas de guitarra, baixo, bateria, canto e produção musical.">
+<meta property="og:type" content="website">
+
+
 <link rel="stylesheet" 
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
 <title>NER - Nova Escola Rock</title> 
@@ -596,7 +607,52 @@ display: block;
  right: 15px;
  }
 }
+
+/* Botão WhatsApp Flutuante */
+.whatsapp-float {
+position: fixed;
+bottom: 20px;
+right: 20px;
+background-color: #25D366;
+color: white;
+border-radius: 50%;
+width: 60px;
+height: 60px;
+text-align: center;
+font-size: 30px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+z-index: 1000;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: transform 0.3s ease;
+text-decoration: none;
+}
+
+.whatsapp-float:hover {
+transform: scale(1.1);
+background-color: #1ebe5d;
+}
+
+ 
 </style> 
+
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "MusicSchool",
+"name": "NER - Nova Escola Rock",
+"address": {
+"@type": "PostalAddress",
+"addressLocality": "Paços de Ferreira",
+"addressCountry": "PT"
+},
+"telephone": "+351938066695",
+"url": "https://datofz89.github.io"
+}
+</script>
+
+ 
 </head> 
 <body>
 <!-- Banner da Rádio - canto superior direito -->
@@ -633,7 +689,15 @@ noreferrer">Agenda/Eventos</a>
 <br> 
 <br> 
 <br> 
-<h1 style="font-size: 40px;"><br>Ξ NER Ξ<br>Onde o Rock Ganha Vida</h1> 
+<h1 style="font-size: 40px;">
+<br>Ξ NER Ξ<br>
+Onde o Rock Ganha Vida
+<br>
+<span style="font-size:18px; font-family: Arial;">
+Desde 2018 a formar músicos em Paços de Ferreira
+</span>
+</h1>
+ 
 <h4 class="scrolling-text">Ξ Inscrições Abertas Ξ</h4> 
 <br> 
 <br> 
@@ -651,7 +715,7 @@ Quem Somos
 </div> 
 </section> 
 <section class="cursos" id="cursos"> 
-<h2>Nossos Cursos</h2> 
+<h2>Os Nossos Cursos</h2> 
 <div class="cursos-grid"> 
 <div class="curso-card"> 
 <h3>Guitarra Clássica/Elétrica</h3> 
@@ -685,9 +749,9 @@ encanta, som que contagia!</p>
 </div> 
 </section> 
 <script> 
-function mostrarContacto() { 
-alert("Para agendar sua aula experimental, entre em contacto: +351 938066695"); 
-} 
+function mostrarContacto() {  
+alert("Para agendares a tua aula experimental, entra em contacto: +351 938066695");  
+}
 function myFunction() { 
 var x = document.getElementById("myTopnav"); 
 if (x.className === "topnav") { 
@@ -727,7 +791,7 @@ x.className = "topnav";
 }); 
 </script> 
 <section class="professores" id="professores"> 
-<h2>Nossos Professores</h2> 
+<h2>Os Nossos Professores</h2> 
 <div class="professores-grid"> 
 <div class="professor-card"> 
 <img src="galeria-de-imagens/deodato.jpg" alt="Professor Deodato" 
@@ -789,6 +853,36 @@ da bateria que faz o ritmo pulsar na alma.</p>
 </div>
 </div>
 </section>
+ <section style="padding: 80px 20px; background-color:#111; text-align:center;">
+<h2 style="color:#ff3366; font-family:'ROCK STEADY-Hollow'; font-size:2.5rem;">
+Porque Escolher a NER?
+</h2>
+
+<div style="max-width:900px; margin:40px auto; color:white; font-size:1.1rem; line-height:1.8;">
+<p>✔ Escola especializada em Rock e Música Moderna</p>
+<p>✔ Professores com experiência real de palco e estúdio</p>
+<p>✔ Estúdio de gravação próprio</p>
+<p>✔ Rádio própria da escola</p>
+<p>✔ Aulas individuais adaptadas ao ritmo de cada aluno</p>
+<p>✔ Ambiente criativo, motivador e personalizado</p>
+</div>
+</section>
+
+<section style="padding:60px 20px; background-color:#000; color:white; text-align:center;">
+<h2 style="color:#ff3366; font-family:'ROCK STEADY-Hollow'; font-size:2rem;">
+Escola de Música em Paços de Ferreira
+</h2>
+
+<div style="max-width:900px; margin:30px auto; line-height:1.8; font-size:1rem;">
+<p>A NER - Nova Escola Rock é uma escola de música em Paços de Ferreira dedicada ao ensino de guitarra, baixo, bateria, canto, piano e produção musical.</p>
+
+<p>Desde 2018 que ajudamos alunos de todas as idades a desenvolver talento, técnica e confiança no palco.</p>
+
+<p>Se procuras aulas de guitarra em Paços de Ferreira ou queres aprender música num ambiente criativo e profissional, a NER é o lugar certo.</p>
+</div>
+</section>
+
+
 <!-- Adicionar o botão aqui, antes do primeiro fechamento </div> -->
 <div style="text-align: center; margin-top: 15px;">
 <a href="biografias.html" target="_blank" rel="noopener noreferrer" 
@@ -803,7 +897,7 @@ font-size: 14px;">+ INFO</a>
 </div>
 <!-- Seção de Serviços -->
 <section class="servicos" id="servicos">
-<h2>Nossos Servicos</h2>
+<h2>Os Nossos Serviços</h2>
 <div class="cursos-grid">
 <div class="curso-card">
 <h3>Estúdio de Gravação</h3>
@@ -861,7 +955,7 @@ font-family: 'ROCK STEADY-Hollow', sans-serif;
 </style>
 <!-- Seção de Parceiros -->
 <section class="parceiros" id="parceiros">
-<h2>Nossos Parceiros</h2>
+<h2>Os Nossos Parceiros</h2>
 <div class="parceiros-grid">
 <div class="parceiro-card">
 <a href="https://www.facebook.com/arcsobrao.clubesobrao/?locale=pt_PT" 
@@ -1016,6 +1110,20 @@ grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 </style>
 <!-- Secção de Redes Sociais adicionada --> 
+<section style="padding:80px 20px; background-color:#1a1a1a; text-align:center;">
+<h2 style="color:#ff3366; font-family:'ROCK STEADY-Hollow'; font-size:2.5rem;">
+O Que Dizem os Nossos Alunos
+</h2>
+
+<div style="max-width:900px; margin:40px auto; color:white; line-height:1.8;">
+<p>"A NER mudou completamente a minha forma de tocar guitarra. Ambiente incrível!"</p>
+<br>
+<p>"Professores dedicados e sempre motivadores. Recomendo a 100%."</p>
+<br>
+<p>"Mais do que uma escola, é uma família rock."</p>
+</div>
+</section>
+ 
 <section id="redes-sociais" style="text-align:center; padding: 40px; background-color: #1a1a1a;"> 
 <h2 style="color: #ff3366; font-family: 'ROCK STEADY-Hollow';">Segue-nos nas 
 redes sociais!</h2> 
@@ -1049,5 +1157,13 @@ otherVideo.pause();
 });
 });
 </script>
+
+ <a href="https://wa.me/351938066695" 
+target="_blank" 
+class="whatsapp-float" 
+title="Fala connosco no WhatsApp">
+<i class="fa fa-whatsapp"></i>
+</a>
+
 </body> 
 </html>
