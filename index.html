@@ -606,8 +606,10 @@ display: block;
 
 .radio-banner {
  position: fixed;
- bottom: 20px;
- left: 20px;
+ bottom: 20px;     /* 👈 fixa em baixo */
+ left: 20px;       /* 👈 fixa à esquerda */
+ top: auto;        /* 👈 garante que não fica no topo */
+ right: auto;      /* 👈 garante que não vai para a direita */
  width: 60px;
  height: 60px;
  padding: 0;
@@ -616,6 +618,7 @@ display: block;
  justify-content: center;
  border-radius: 50%;
  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+ z-index: 1000;
 }
 
 .radio-banner img {
@@ -623,6 +626,7 @@ display: block;
  height: auto;
  border-radius: 50%;
 }
+
 
 
 }
