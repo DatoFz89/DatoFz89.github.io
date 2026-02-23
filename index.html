@@ -602,13 +602,30 @@ width: 100%;
 height: auto;
 display: block;
 }
-@media screen and (max-width: 600px) {
- .radio-banner {
- width: 90px;
- top: 90px;
- right: 15px;
- }
+@media screen and (max-width: 768px) {
+
+.radio-banner {
+ position: fixed;
+ bottom: 20px;
+ left: 20px;
+ top: auto;
+ right: auto;
+ width: 60px;
+ height: 60px;
+ border-radius: 50%;
+ padding: 5px;
+ box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
+
+.
+ .radio-banner img {
+ width: 100%;
+ height: auto;
+ border-radius: 50%;
+ }
+
+}
+
 
 /* Botão WhatsApp Flutuante */
 .whatsapp-float {
