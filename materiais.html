@@ -576,6 +576,110 @@ function toggleSubfolder(id) {
 
 </script>
 
+<script>
+function abrirPreview(link) {
+    document.getElementById("previewModal").style.display = "block";
+    document.getElementById("previewFrame").src = link;
+}
+
+function fecharPreview() {
+    document.getElementById("previewModal").style.display = "none";
+    document.getElementById("previewFrame").src = "";
+}
+</script>    
+
+<script>
+document.querySelectorAll("a[download]").forEach(function(link){
+
+    link.addEventListener("click", function(e){
+        e.preventDefault();
+
+        const file = this.getAttribute("href");
+        const previewArea = document.getElementById("previewContent");
+        const downloadBtn = document.getElementById("downloadBtn");
+
+        previewArea.innerHTML = "";
+        downloadBtn.href = file;
+        downloadBtn.setAttribute("download","");
+
+        document.getElementById("previewModal").style.display = "block";
+
+        if(file.endsWith(".pdf")){
+            previewArea.innerHTML = 
+                '<iframe src="'+file+'" style="width:100%; height:100%; border:none;"></iframe>';
+        }
+
+        else if(file.match(/\.(jpg|jpeg|png|gif)$/)){
+            previewArea.innerHTML = 
+                '<img src="'+file+'" style="max-width:100%; max-height:100%; display:block; margin:auto;">';
+        }
+
+        else if(file.endsWith(".mp3")){
+            previewArea.innerHTML = 
+                '<audio controls style="width:100%;"><source src="'+file+'"></audio>';
+        }
+
+        else{
+            previewArea.innerHTML = 
+                '<p style="color:white;">Preview não disponível para este tipo de ficheiro.</p>';
+        }
+
+    });
+
+});
+
+function fecharPreview(){
+    document.getElementById("previewModal").style.display = "none";
+    document.getElementById("previewContent").innerHTML = "";
+}
+</script>
+
+    
+<!-- MODAL UNIVERSAL PREVIEW -->
+<div id="previewModal" style="
+display:none;
+position:fixed;
+z-index:9999;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.95);
+">
+
+    <span onclick="fecharPreview()" style="
+    position:absolute;
+    top:20px;
+    right:40px;
+    color:white;
+    font-size:40px;
+    cursor:pointer;">&times;</span>
+
+    <div style="
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:85%;
+    height:85%;
+    background:#111;
+    padding:15px;
+    border-radius:8px;
+    display:flex;
+    flex-direction:column;">
+
+        <div style="text-align:right; margin-bottom:10px;">
+            <a id="downloadBtn" 
+               style="background:#e60000; padding:8px 15px; color:white; text-decoration:none; border-radius:5px;">
+               ⬇ Download
+            </a>
+        </div>
+
+        <div id="previewContent" style="flex:1;"></div>
+
+    </div>
+</div>
+    
 </body>
 
 </html>
