@@ -1,371 +1,1203 @@
 <!DOCTYPE html>
 <html lang="pt">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta name="description" content="NER - Nova Escola Rock. Escola de Música
+em Paços de Ferreira desde 2018. Aulas de guitarra, baixo, bateria, canto, piano e
+produção musical. Marca já a tua aula experimental.">
+<meta name="keywords" content="Escola de Música Paços de Ferreira, Aulas de
+Guitarra Paços de Ferreira, Escola de Rock Paços de Ferreira, Aulas de Bateria
+Paços de Ferreira, NER Nova Escola Rock">
+<meta name="author" content="NER - Nova Escola Rock">
+<meta property="og:title" content="NER - Nova Escola Rock | Escola de Música em
+Paços de Ferreira">
+<meta property="og:description" content="Desde 2018 a formar músicos em
+Paços de Ferreira. Aulas de guitarra, baixo, bateria, canto e produção musical.">
+<meta property="og:type" content="website">
 <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/fontawesome.min.css">
 <title>NER - Nova Escola Rock</title>
-
-<style>
-
+<link
+href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap"
+rel="stylesheet">
+<style>.bio-link-container {
+text-align: center;
+margin: 40px auto 20px;
+padding: 10px;
+}
+.bio-link {
+display: inline-block;
+background-color: #e50909;
+color: white;
+font-family: 'Rock Salt', cursive;
+text-decoration: none;
+padding: 12px 25px;
+border-radius: 30px;
+font-size: 1.1rem;
+text-transform: uppercase;
+letter-spacing: 1px;
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+box-shadow: 0 4px 15px rgba(229, 9, 9, 0.3);
+}
+.bio-link:hover {
+background-color: #c20808;
+transform: translateY(-3px);
+box-shadow: 0 8px 20px rgba(229, 9, 9, 0.4);
+}
+.bio-link:active {
+transform: translateY(1px);}
+.bio-link::before {
+content: "";
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(
+90deg,
+transparent,
+rgba(255, 255, 255, 0.3),
+transparent
+);
+transition: 0.5s;
+}
+.bio-link:hover::before {
+left: 100%;
+}
+/* Estilos existentes */
+html, body {
+overflow-x: hidden;
+width: 100%;
+}
+.scrolling-text {
+font-size: 30px;
+white-space: nowrap;
+overflow: hidden;display: inline-block;
+animation: scroll-left-to-right 10s linear infinite;
+}
+@keyframes scroll-left-to-right {
+0% {
+transform: translateX(-100%);
+}
+100% {
+transform: translateX(100%);
+}
+}
+@font-face {
+font-family: "ROCK STEADY-Hollow";
+src:
+url("https://db.onlinewebfonts.com/t/7b126ca9fc9ae059a9a0a08f6314a661.eot");
+src:
+url("https://db.onlinewebfonts.com/t/7b126ca9fc9ae059a9a0a08f6314a661.eot?#
+iefix") format("embedded-opentype"),
+url("https://db.onlinewebfonts.com/t/7b126ca9fc9ae059a9a0a08f6314a661.woff2
+") format("woff2"),
+url("https://db.onlinewebfonts.com/t/7b126ca9fc9ae059a9a0a08f6314a661.woff"
+) format("woff"),
+url("https://db.onlinewebfonts.com/t/7b126ca9fc9ae059a9a0a08f6314a661.ttf")
+format("truetype");
+}
+@font-face {
+font-family: "NewRocker-Regular";
+src: url("fonts/NewRocker-Regular.ttf") format("truetype");
+}
+.rockstar-text {font-family: "NewRocker-Regular", sans-serif;
+}
 body {
-
-margin:0;
-font-family:Arial, Helvetica, sans-serif;
-background-color:black;
-padding-top:50px;
-
+font-family: Arial, Helvetica, sans-serif;
+background-color: black !important;
+padding-top: 50px;
 }
-
-/* HEADER */
-
-header{
-
-background:black;
-color:white;
-position:fixed;
-top:0;
-width:100%;
-height:50px;
-z-index:1000;
-display:flex;
-align-items:center;
-padding-left:20px;
-
+/* Header - Modificado para ficar fixo */
+header {
+background: black;
+color: white;
+padding: 1rem;
+height: 50px;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+z-index: 1000;
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
-
-.logo{
-
-color:#ff3366;
-font-size:28px;
-
+@font-face {
+font-family: 'Hard Rock';
+src: url('fonts/HARD_ROCK.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
 }
-
-/* HERO */
-
-.hero{
-
-background:
-linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
-url("galeria-de-imagens/fundoner.jpeg");
-
-background-size:cover;
-background-position:center;
-
-height:80vh;
-
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-color:white;
-
+.logo {
+font-size: 2rem;font-weight: normal;
+color: #ff3366;
+font-family: 'Hard Rock', sans-serif;
+float: left;
 }
-
-.hero h1{
-
-font-size:40px;
-
+.topnav {
+overflow: hidden;
+float: right;
+background-color: transparent;
+margin-right: 30px;
 }
-
-/* BOTÕES */
-
-.cta-button{
-
-background:#ff3366;
-color:white;
-padding:12px 25px;
-margin:10px;
-border:none;
-cursor:pointer;
-text-decoration:none;
-display:inline-block;
-
+.topnav a {
+float: left;
+display: block;
+color: #f2f2f2;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+font-size: 17px;
 }
-
-.cta-button:hover{
-
-background:#e62e5c;
-
+.topnav a:hover {
+background-color: #ddd;
+color: black;
 }
-
-/* RADIO */
-
-.radio-banner{
-
-position:fixed;
-top:100px;
-right:20px;
-width:100px;
-z-index:999;
-
+.topnav a.active {
+background-color: #04AA6D;
+color: white;
+}.topnav .icon {
+display: none;
+color: white;
 }
-
-.radio-banner img{
-
-width:100%;
-
+@media screen and (max-width: 600px) {
+.topnav a:not(:last-child) {
+display: none;
 }
-
-/* SECTIONS */
-
-section{
-
-padding:80px 20px;
-
+.topnav a.icon {
+float: right;
+display: block;
+color: white;
 }
-
-h2{
-
-color:#ff3366;
-text-align:center;
-
+.topnav.responsive {
+position: relative;
+float: none;
+width: 100%;
+position: absolute;
+top: 50px;
+left: 0;
+background-color: black !important;
+z-index: 1000;
 }
-
-/* GRID */
-
-.grid{
-
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-
+.topnav.responsive a {
+float: none;
+display: block;
+width: 100%;
+text-align: left;padding: 15px;
+border-bottom: 1px solid #333;
 }
-
-/* CARDS */
-
-.card{
-
-background:#2a2a2a;
-color:white;
-padding:20px;
-text-align:center;
-
+.hero-content h1 {
+font-size: 2rem;
+font-family: 'ROCK STEADY-Hollow';
 }
-
-.card img{
-
-width:100%;
-
 }
-
-/* PROFESSORES */
-
-.professor{
-
-background:white;
-color:black;
-
+@media (max-width: 1024px) {
+.hero-content h1 {
+font-size: 2rem;
+font-family: 'ROCK STEADY-Hollow';
 }
-
-/* FOOTER */
-
-footer{
-
-background:#111;
-color:white;
-text-align:center;
-padding:20px;
-
+.cta-button {
+font-size: 1rem;
 }
-
+.cursos-grid {
+grid-template-columns: repeat(2, 1fr);
+}
+.professores-grid {
+grid-template-columns: repeat(2, 1fr);
+}
+}
+.background-fixed {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;height: 100%;
+background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("galeria-deimagens/fundoner.jpeg");
+background-size: cover;
+background-position: center;
+z-index: -1;
+}
+/* Hero Section */
+.hero {
+background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("galeria-deimagens/fundoner.jpeg");
+background-size: cover;
+background-position: center;
+background-attachment: fixed;
+height: 80vh;
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+color: white;
+}
+.hero-content {
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-top: -60px;
+}
+.hero .cta-button {padding: 0.5rem 1rem;
+font-size: 0.95rem;
+}
+.botoes-hero {
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 1rem;
+margin-top: -30px;
+}
+/* Botões */
+.cta-button {
+background: #ff3366;
+color: white;
+padding: 0.5rem 1rem;
+border: none;
+border-radius: 5px;
+font-size: 0.95rem;
+cursor: pointer;
+transition: background 0.3s;
+text-decoration: none;
+}
+.cta-button:hover {
+background: #e62e5c;
+}
+.hero-content {
+display: flex;
+flex-direction: column;align-items: center;
+}
+.hero-content .cta-button {
+margin: 10px;
+}
+/* Seção Cursos */
+.cursos {
+padding: 80px 20px;
+background-color: #1a1a1a;
+}
+.cursos h2 {
+text-align: center;
+color: #ff3366;
+font-size: 2.5rem;
+margin-bottom: 50px;
+font-family: 'ROCK STEADY-Hollow', sans-serif;
+}
+.cursos-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 30px;
+max-width: 1200px;
+margin: 0 auto;
+}
+.curso-card {
+background: #2a2a2a;
+padding: 30px;
+border-radius: 10px;text-align: center;
+transition: transform 0.3s;
+color: white;
+}
+.curso-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
+}
+.curso-card h3 {
+color: #ff3366;
+font-size: 1.5rem;
+margin-bottom: 15px;
+font-family: "NewRocker-Regular", sans-serif;
+}
+.curso-card p {
+font-size: 1.1rem;
+line-height: 1.6;
+}
+@media (min-width: 768px) {
+.hero-content .cta-button {
+display: inline-block;
+}
+}
+/* Seção Professores */
+.professores {
+padding: 80px 20px;
+background-color: #1a1a1a;
+background-image: url('galeria-de-imagens/3d-music-related-scene.jpg');background-attachment: fixed;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+position: relative;
+}
+.professores::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(26, 26, 26, 0.7);
+z-index: 1;
+}
+.professores h2 {
+text-align: center;
+color: #ff3366;
+font-size: 2.5rem;
+margin-bottom: 50px;
+font-family: 'ROCK STEADY-Hollow', sans-serif;
+position: relative;
+z-index: 2;
+}
+.professores-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));gap: 2rem;
+position: relative;
+z-index: 2;
+}
+.professor-card {
+background: #ffffff;
+border-radius: 10px;
+overflow: hidden;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+transition: transform 0.3s;
+}
+.professor-card:hover {
+transform: translateY(-5px);
+}
+.professor-imagem {
+width: 100%;
+height: auto;
+object-fit: cover;
+}
+.professor-info {
+padding: 1.5rem;
+}
+.professor-info h3 {
+color: #333;
+margin-bottom: 0.5rem;
+}
+.professor-info p {
+color: #666;font-size: 0.9rem;
+line-height: 1.6;
+}
+.professor-especialidade {
+color: #ff3366;
+font-weight: bold;
+margin-bottom: 0.5rem;
+}
+footer {
+background-color: #1a1a1a;
+color: white;
+padding: 20px;
+text-align: center;
+font-size: 1rem;
+margin-top: 5px;
+}
+footer .footer-content ul {
+list-style: none;
+padding: 0;
+}
+footer .footer-content ul li {
+display: inline;
+margin-right: 20px;
+}
+footer .footer-content ul li a {
+color: white;
+text-decoration: none;
+}footer .footer-content ul li a:hover {
+color: #ff3366;
+}
+/* Estilos para o botão de contato */
+.contact-button {
+display: block;
+margin: 20px auto;
+text-align: center;
+width: fit-content;
+padding: 1rem 2rem;
+background: #ff3366;
+color: white;
+border: none;
+border-radius: 5px;
+font-size: 1.1rem;
+cursor: pointer;
+transition: background 0.3s;
+text-decoration: none;
+}
+.contact-button:hover {
+background: #e62e5c;
+}
+/* Seção de Vídeos */
+.videos {
+padding: 80px 20px;
+background-color: #8f8d8d;
+}
+.videos h2 {text-align: center;
+color: #ff3366;
+font-size: 2.5rem;
+margin-bottom: 50px;
+font-family: 'ROCK STEADY-Hollow', sans-serif;
+}
+.videos-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 30px;
+max-width: 1200px;
+margin: 0 auto;
+}
+.video-card {
+background: #2a2a2a;
+border-radius: 10px;
+overflow: hidden;
+transition: transform 0.3s;
+}
+.video-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
+}
+.video-container {
+position: relative;
+padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+height: 0;
+overflow: hidden;}
+.video-container video {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+border: 0;
+}
+.video-info {
+padding: 1.5rem;
+color: white;
+}
+.video-info h3 {
+color: #ff3366;
+font-size: 1.3rem;
+margin-bottom: 10px;
+font-family: "NewRocker-Regular", sans-serif;
+}
+.video-info p {
+font-size: 0.9rem;
+line-height: 1.6;
+}
+/* Seção de Fotos */
+.fotos {
+padding: 80px 20px;
+background-color: #1a1a1a;
+}.fotos h2 {
+text-align: center;
+color: #ff3366;
+font-size: 2.5rem;
+margin-bottom: 50px;
+font-family: 'ROCK STEADY-Hollow', sans-serif;
+}
+.fotos-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 20px;
+max-width: 1200px;
+margin: 0 auto;
+}
+.foto-card {
+position: relative;
+border-radius: 10px;
+overflow: hidden;
+height: 250px;
+transition: transform 0.3s;
+}
+.foto-card:hover {
+transform: scale(1.03);
+box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
+}
+.foto-card img {
+width: 100%;
+height: 100%;object-fit: cover;
+}
+.foto-overlay {
+position: absolute;
+bottom: 0;
+left: 0;
+right: 0;
+background: rgba(0, 0, 0, 0.7);
+color: white;
+padding: 10px;
+transform: translateY(100%);
+transition: transform 0.3s;
+}
+.foto-card:hover .foto-overlay {
+transform: translateY(0);
+}
+.foto-overlay h3 {
+color: #ff3366;
+font-size: 1.1rem;
+margin-bottom: 5px;
+font-family: "NewRocker-Regular", sans-serif;
+}
+.foto-overlay p {
+font-size: 0.8rem;
+line-height: 1.4;
+}
+/* Lightbox para as fotos */
+.lightbox {display: none;
+position: fixed;
+z-index: 1000;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.9);
+text-align: center;
+}
+.lightbox-content {
+position: relative;
+top: 50%;
+transform: translateY(-50%);
+margin: auto;
+display: block;
+max-width: 90%;
+max-height: 90%;
+}
+.close {
+position: absolute;
+top: 20px;
+right: 30px;
+color: white;
+font-size: 40px;
+font-weight: bold;
+transition: 0.3s;
+cursor: pointer;}
+.close:hover {
+color: #ff3366;
+}
+/* Banner Rádio */
+.radio-banner {
+position: fixed;
+top: 100px;
+right: 15px;
+z-index: 999;
+display: block;
+width: 100px;
+border-radius: 8px;
+overflow: hidden;
+box-shadow: 0 4px 20px rgba(229, 9, 9, 0.5);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+border: 2px solid #cc0000;
+}
+.radio-banner:hover {
+transform: scale(1.05);
+box-shadow: 0 6px 25px rgba(229, 9, 9, 0.8);
+}
+.radio-banner img {
+width: 100%;
+height: auto;
+display: block;
+}
+@media screen and (max-width: 768px) {.radio-banner {
+position: fixed;
+bottom: 20px;
+left: 20px;
+width: 60px;
+height: 60px;
+top: auto;
+right: auto;
+padding: 0;
+border-radius: 50%;
+background-color: #cc0000;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+z-index: 1000;
+animation: pulseRadio 2s infinite;
+font-family: Arial, sans-serif;
+overflow: visible;
+}
+/* Esconde imagem original no mobile */
+.radio-banner img {
+display: none;
+}/* Ícone */
+.radio-banner::before {
+content: "\f0a1";
+font-family: FontAwesome;
+font-size: 18px;
+color: white;
+margin-bottom: 2px;
+}
+/* Texto ON AIR */
+.radio-banner::after {
+content: "ON AIR";
+font-size: 8px;
+font-weight: bold;
+color: white;
+letter-spacing: 1px;
+animation: blinkOnAir 1.2s infinite;
+}
+/* Micro badge lateral */
+.radio-banner span {
+position: absolute;
+top: -4px;
+right: -4px;
+width: 14px;
+height: 14px;
+background: #ff0000;
+border-radius: 50%;border: 2px solid white;
+animation: blinkDot 1.2s infinite;
+}
+/* Pulsar exterior */
+@keyframes pulseRadio {
+0% {
+box-shadow: 0 0 0 0 rgba(204, 0, 0, 0.7);
+}
+70% {
+box-shadow: 0 0 0 15px rgba(204, 0, 0, 0);
+}
+100% {
+box-shadow: 0 0 0 0 rgba(204, 0, 0, 0);
+}
+}
+/* Piscar texto */
+@keyframes blinkOnAir {
+0%, 100% { opacity: 1; }
+50% { opacity: 0.4; }
+}
+/* Piscar ponto */
+@keyframes blinkDot {
+0%, 100% { opacity: 1; }
+50% { opacity: 0.3; }
+}}
+/* Botão WhatsApp Flutuante */
+.whatsapp-float {
+position: fixed;
+bottom: 20px;
+right: 20px;
+background-color: #25D366;
+color: white;
+border-radius: 50%;
+width: 60px;
+height: 60px;
+text-align: center;
+font-size: 30px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+z-index: 1000;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: transform 0.3s ease;
+text-decoration: none;
+}
+.whatsapp-float:hover {
+transform: scale(1.1);
+background-color: #1ebe5d;
+}/* Fonte Rock com suporte completo PT */
+.rock-pt {
+font-family: 'New Rocker', cursive !important;
+}
 </style>
-
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "MusicSchool",
+"name": "NER - Nova Escola Rock",
+"address": {
+"@type": "PostalAddress",
+"addressLocality": "Paços de Ferreira",
+"addressCountry": "PT"
+},
+"telephone": "+351938066695",
+"url": "https://datofz89.github.io"
+}
+</script>
 </head>
-
 <body>
-
-<!-- RADIO -->
-
-<a href="https://nernovaescolarock.radio12345.com"
-
-target="_blank"
-
-class="radio-banner">
-
-<img src="galeria-de-imagens/radio_banner.png">
-
+<!-- Banner da Rádio - canto superior direito -->
+<a href="https://nernovaescolarock.radio12345.com"target="_blank"
+rel="noopener noreferrer"
+class="radio-banner"
+title="Rádio NER - Ouve-nos ao vivo!">
+<img src="galeria-de-imagens/radio_banner.png"
+alt="Rádio No Ar - NER Nova Escola Rock">
+<span></span>
 </a>
-
-<!-- HEADER -->
-
 <header>
-
-<div class="logo">
-
-Nova Escola Rock
-
-</div>
-
+<div class="logo">Nova Escola Rock</div>
+<div class="topnav" id="myTopnav">
+<a href="#inicio">Início</a>
+<a href="https://aprender-guitarra-2018.webnode.pt/contacto/"
+target="_blank">Contacto</a>
+<a href="#cursos">Cursos</a>
+<a href="#professores">Professores</a>
+<a href="biografias.html" target="_blank" rel="noopener
+noreferrer">Biografias</a>
+<a href="galeria.html">Galeria</a>
+<a href="#servicos">Serviços</a>
+<a href="materiais.html" target="_blank" rel="noopener noreferrer">Materiais</a>
+<a href="agenda.html" target="_blank" rel="noopener
+noreferrer">Agenda/Eventos</a>
+<a href="#parceiros">Parceiros</a>
+<a href="#redes-sociais">Segue-nos</a>
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+<i class="fa fa-bars"></i></a></div>
 </header>
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div>
-
-<h1>
-
-NER<br>
+<section class="hero" id="inicio">
+<div class="hero-content">
+<br>
+<br>
+<br>
+<br>
+<h1 style="font-size: 40px;">
+<br>Ξ NER Ξ<br>
 Onde o Rock Ganha Vida
-
+<br>
+<div style="font-size:18px; font-family: Arial; max-width: 100%; overflow-wrap:
+break-word; white-space: normal;">
+Desde 2018 a Formar Músicos
+</div>
+<div style="font-size:18px; font-family: Arial; max-width: 100%; overflow-wrap:
+break-word; white-space: normal;">
+Em Paços de Ferreira
+</div>
 </h1>
-
-<button class="cta-button"
-
-onclick="alert('Contacto: +351 938066695')">
-
-Agenda uma Aula Experimental
-
-</button>
-
-<a href="inscricao.html"
-
-class="cta-button"
-
-target="_blank">
-
+<h4 class="scrolling-text">Ξ Inscrições Abertas Ξ</h4>
+<br>
+<button class="cta-button" onclick="mostrarContacto()">Agenda uma Aula
+Experimental</button><button class="cta-button"
+onclick="window.open('inscricao.html', '_blank')">
 Inscreve-te Aqui
-
-</a>
-
+</button>
 <a href="https://aprender-guitarra-2018.webnode.pt/"
-
-class="cta-button"
-
-target="_blank">
-
+target="_blank"
+class="cta-button">
 Quem Somos
-
 </a>
-
 </div>
-
 </section>
-
-<!-- CURSOS -->
-
-<section>
-
-<h2>Cursos</h2>
-
-<div class="grid">
-
-<div class="card">
-
-Guitarra
-
+<section class="cursos" id="cursos">
+<h2>Os Nossos Cursos</h2>
+<div class="cursos-grid">
+<div class="curso-card">
+<h3>Guitarra Clássica/Elétrica</h3>
+<p>Do básico ao avançado, aprende todos os estilos do rock & muito mais...</p>
 </div>
-
-<div class="card">
-
-Baixo
-
+<div class="curso-card">
+<h3>Baixo</h3>
+<p>Desenvolve o teu groove e cria a base perfeita.</p>
 </div>
-
-<div class="card">
-
-Bateria
-
+<div class="curso-card">
+<h3>Bateria</h3>
+<p>Domina as técnicas e ritmos essenciais do rock.</p>
 </div>
-
-<div class="card">
-
-Canto
-
+<div class="curso-card">
+<h3>Canto</h3><p>Aprende a projetar a tua voz como um verdadeiro rockstar.</p>
 </div>
-
-<div class="card">
-
-Piano
-
+<div class="curso-card">
+<h3>Teclado/Piano</h3>
+<p>Deixa os teus dedos darem voz à alma.</p>
 </div>
-
+<div class="curso-card">
+<h3>Acordeão</h3>
+<p>A magia do acordeão começa aqui!</p>
 </div>
-
+<div class="curso-card">
+<h3>Cavaquinho</h3>
+<p>Começa no cavaquinho e toca o mundo!<br>Cavaquinho, a simplicidade que
+encanta, som que contagia!</p>
+</div>
+</div>
 </section>
-
-<!-- PROFESSORES -->
-
-<section>
-
-<h2>Professores</h2>
-
-<div class="grid">
-
-<div class="card professor">
-
-<img src="galeria-de-imagens/deodato.jpg">
-
-<p>Deodato Barbosa</p>
-
+<script>
+function mostrarContacto() {
+alert("Para agendares a tua aula experimental, entra em contacto: +351
+938066695");
+}
+function myFunction() {
+var x = document.getElementById("myTopnav");
+if (x.className === "topnav") {
+x.className += " responsive";
+} else {
+x.className = "topnav";}
+}
+// Função para abrir o lightbox
+function openLightbox(imgSrc) {
+document.getElementById('lightbox').style.display = 'block';
+document.getElementById('lightbox-img').src = imgSrc;
+}
+// Função para fechar o lightbox
+function closeLightbox() {
+document.getElementById('lightbox').style.display = 'none';
+}
+// Função para rolagem suave ao clicar nos links de navegação
+document.addEventListener('DOMContentLoaded', function() {
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+if(targetId === "#" || targetId === "") return;
+const targetElement = document.querySelector(targetId);
+if(!targetElement) return;
+window.scrollTo({
+top: targetElement.offsetTop - 50,
+behavior: 'smooth'
+});
+var x = document.getElementById("myTopnav");
+if (x.className.includes("responsive")) {
+x.className = "topnav";
+}});
+});
+});
+</script>
+<section class="professores" id="professores">
+<h2>Os Nossos Professores</h2>
+<div class="professores-grid">
+<div class="professor-card">
+<img src="galeria-de-imagens/deodato.jpg" alt="Professor Deodato"
+class="professor-imagem">
+<div class="professor-info">
+<h3>Deodato Barbosa</h3>
+<div class="professor-especialidade">Guitarra Clássica/Elétrica/Formação
+Musical</div>
+<p>30 anos de experiência em guitarra. Especializado em rock clássico e heavy
+metal.</p>
 </div>
-
-<div class="card professor">
-
-<img src="galeria-de-imagens/renato.jpg">
-
-<p>Renato Barbosa</p>
-
 </div>
-
-<div class="card professor">
-
-<img src="galeria-de-imagens/filbass.jpg">
-
-<p>Filipe Nunes</p>
-
+<div class="professor-card">
+<img src="galeria-de-imagens/FilipeMiguelCarvalho_Canto2.png" alt="Professor
+Filipe" class="professor-imagem">
+<div class="professor-info">
+<h3>Filipe Carvalho</h3>
+<div class="professor-especialidade">Canto/Formação Musical</div>
+<p>Formado em música com especialização em técnica vocal.<br>"Com um
+professor de canto dedicado, a tua voz não só vai brilhar, vai conquistar!"</p>
 </div>
-
+</div><div class="professor-card">
+<img src="galeria-de-imagens/renato.jpg" alt="Professor Renato"
+class="professor-imagem">
+<div class="professor-info">
+<h3>Renato Barbosa</h3>
+<div class="professor-especialidade">Guitarra Elétrica/Produtor</div>
+<p>O mestre das cordas e da produção, onde o talento encontra a perfeição.</p>
 </div>
-
+</div>
+<div class="professor-card">
+<img src="galeria-de-imagens/filbass.jpg" alt="Professor Filipe" class="professorimagem">
+<div class="professor-info">
+<h3>Filipe Nunes</h3>
+<div class="professor-especialidade">Baixo</div>
+<p>O baixo não é apenas um instrumento, é a força invisível que move a música
+— e um grande professor ensina a dominá-lo com alma e precisão.</p>
+</div>
+</div>
+<div class="professor-card">
+<img src="galeria-de-imagens/filipe_piano.png" alt="Professor Filipe"
+class="professor-imagem">
+<div class="professor-info">
+<h3>Filipe Carvalho</h3>
+<div class="professor-especialidade">Piano/Teclado/Formação Musical</div>
+<p>Mais do que ensinar notas, um professor de piano guia mãos e corações para
+a verdadeira magia da música.</p>
+</div></div>
+<div class="professor-card">
+<img src="galeria-de-imagens/Sidónio Nunes.png" alt="Professor Sidónio"
+class="professor-imagem">
+<div class="professor-info">
+<h3>Sidónio Nunes</h3>
+<div class="professor-especialidade">Bateria</div>
+<p>Com cada batida, ele transforma o som em arte e a arte em emoção. O mestre
+da bateria que faz o ritmo pulsar na alma.</p>
+</div>
+</div>
 </section>
-
-<!-- SERVIÇOS -->
-
-<section>
-
-<h2>Serviços</h2>
-
-<div class="grid">
-
-<div class="card">
-
-Estúdio Gravação
-
+<section style="padding: 80px 20px; background-color:#111; text-align:center;">
+<h2 style="color:#ff3366; font-family:'ROCK STEADY-Hollow'; font-size:2.5rem;">
+Porque Escolher a NER?
+</h2>
+<div style="max-width:900px; margin:40px auto; color:white; font-size:1.1rem;
+line-height:1.8;">
+<p>✔ Escola especializada em Rock e Música Moderna</p>
+<p>✔ Professores com experiência real de palco e estúdio</p>
+<p>✔ Estúdio de gravação próprio</p>
+<p>✔ Rádio própria da escola</p>
+<p>✔ Aulas individuais adaptadas ao ritmo de cada aluno</p>
+<p>✔ Ambiente criativo, motivador e personalizado</p>
 </div>
-
-<div class="card">
-
-Ensaios
-
+</section><section style="padding:60px 20px; background-color:#000; color:white; textalign:center;">
+<h2 class="rock-pt" style="color:#ff3366; font-size:2rem;">
+Escola de Música em Paços de Ferreira
+</h2>
+<div style="max-width:900px; margin:30px auto; line-height:1.8; font-size:1rem;">
+<p>A NER - Nova Escola Rock é uma escola de música em Paços de Ferreira
+dedicada ao ensino de guitarra elétrica, guitarra clássica, baixo, bateria, canto,
+piano, acordeão, cavaquinho e produção musical.</p>
+<p>Desde 2018 que ajudamos alunos de todas as idades a desenvolver talento,
+técnica e confiança no palco.</p>
+<p>Se procuras aulas de guitarra ou outro instrumento em Paços de Ferreira ou
+queres aprender música num ambiente criativo e profissional, a NER é o lugar
+certo.</p>
 </div>
-
-<div class="card">
-
-Produção
-
-</div>
-
-</div>
-
 </section>
-
-<!-- FOOTER -->
-
-<footer>
-
-© 2025 Nova Escola Rock
-
+<!-- Adicionar o botão aqui, antes do primeiro fechamento </div> -->
+<div style="text-align: center; margin-top: 15px;">
+<a href="biografias.html" target="_blank" rel="noopener noreferrer"
+style="display: inline-block; padding: 8px 20px; background-color: #000; color:
+#fff; text-decoration: none; border: 2px solid #ff0000; border-radius: 0; font-weight:
+bold; text-transform: uppercase; letter-spacing: 2px; box-shadow: 3px 3px 0
+#ff0000; transition: all 0.3s; font-family: 'Impact', 'Haettenschweiler', sans-serif;
+font-size: 14px;">+ INFO</a><br>
+<br>
+</div>
+</div>
+<!-- Seção de Serviços -->
+<section class="servicos" id="servicos">
+<h2 class="rock-pt">Os Nossos Serviços</h2>
+<div class="cursos-grid">
+<div class="curso-card">
+<h3>Estúdio de Gravação</h3>
+<p>Serviço profissional de gravação para bandas e artistas solo, com
+equipamentos de alta qualidade.</p>
+</div>
+<div class="curso-card">
+<h3>Ensaios para Bandas</h3>
+<p>Aluguer de sala com equipamentos completos para ensaios de bandas por
+hora ou pacotes.</p>
+</div>
+<div class="curso-card">
+<h3>Produção Musical</h3>
+<p>Serviços de arranjo, mixagem e masterização com nossos produtores
+experientes.</p>
+</div>
+<div class="curso-card">
+<h3>Workshops Especializados</h3>
+<p>Workshops intensivos sobre técnicas avançadas, teoria musical e estilos
+específicos do rock.</p></div>
+<div class="curso-card">
+<h3>Aluguer de Instrumentos</h3>
+<p>Aluguer de instrumentos de qualidade para eventos, shows ou período de
+aprendizagem.</p>
+</div>
+<div class="curso-card">
+<a href="https://sites.google.com/view/carlosmatos-rim" target="_blank"
+style="text-decoration: none;">
+<h3>Reparação de Instrumentos</h3>
+</a>
+<p>Serviço técnico especializado em manutenção e reparação de guitarras,
+baixos e outros instrumentos.</p>
+<p class="click-info" style="font-size: 0.8em; font-style: italic; margin-top:
+5px;">(Clique no título para mais informações)</p>
+</div>
+</section>
+<style>
+/* Estilos para a Seção de Serviços */
+.servicos {
+padding: 80px 20px;
+background-color: #363636;
+background-image: none;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+}
+.servicos h2 {text-align: center;
+color: #ff3366;
+font-size: 2.5rem;
+margin-bottom: 50px;
+font-family: 'ROCK STEADY-Hollow', sans-serif;
+}
+</style>
+<!-- Seção de Parceiros -->
+<section class="parceiros" id="parceiros">
+<h2>Os Nossos Parceiros</h2>
+<div class="parceiros-grid">
+<div class="parceiro-card">
+<a href="https://www.facebook.com/arcsobrao.clubesobrao/?locale=pt_PT"
+target="_blank"
+class="parceiro-link">
+<img src="/galeria-deimagens/associacao_recreativa_e_cultural_de_sobrao_logo.jpg"
+alt="Associação Recreativa e Cultural de Sobrão"
+class="parceiro-imagem">
+<div class="parceiro-info">
+<h3>Associação Recreativa e Cultural de Sobrão</h3>
+<div class="parceiro-especialidade">Cultura, Recreio e Tradição</div>
+<p>Promoção de atividades culturais, recreativas e comunitárias, preservando as
+tradições locais e reforçando o espírito associativo local.</p>
+</div>
+</a>
+</div>
+<div class="parceiro-card"><a href="https://sites.google.com/view/carlosmatos-rim" target="_blank"
+class="parceiro-link">
+<img src="/galeria-de-imagens/CarloaMatosRIM.png" alt="Carlos Matos RIM"
+class="parceiro-imagem">
+<div class="parceiro-info">
+<h3>Carlos Matos RIM</h3>
+<div class="parceiro-especialidade">Reparação de Instrumentos Musicais
+Eletrónicos</div>
+<p>Serviços especializados em reparação, manutenção e melhoramento de
+instrumentos musicais eletrónicos. Qualidade e precisão em cada detalhe.</p>
+</div>
+</a>
+</div>
+<div class="parceiro-card">
+<a href="https://eheae3a6li.mobirisesite.com/" target="_blank" class="parceirolink">
+<img src="/galeria-de-imagens/[RE] Style.png" alt="RE Style" class="parceiroimagem">
+<div class="parceiro-info">
+<h3>RE Style</h3>
+<div class="parceiro-especialidade">Roupa em Segunda Mão</div>
+<p>Moda consciente e sustentável. Peças de qualidade em segunda mão,
+cuidadosamente selecionadas para dar um novo estilo ao seu guardaroupa.</p>
+</div>
+</a>
+</div>
+<div class="parceiro-card">
+<a href="https://tapecariatrevida.mobirisesite.com" target="_blank"
+class="parceiro-link"><img src="/galeria-de-imagens/Tapeçaria Atrevida.png" alt="Tapeçaria Atrevida"
+class="parceiro-imagem">
+<div class="parceiro-info">
+<h3>Tapeçaria Atrevida</h3>
+<div class="parceiro-especialidade">Manufatura de Tapeçaria Diferenciada</div>
+<p>Arte e inovação em cada trabalho. Tapeçaria que desafia o convencional com
+designs únicos e manufatura artesanal de alta qualidade.</p>
+</div>
+</a>
+</div>
+</div>
+</section>
+<style>
+/* Estilos para a Seção de Parceiros */
+.parceiros {
+padding: 80px 20px;
+background-color: #1a1a1a;
+background-image: url('galeria-de-imagens/fundoner.jpeg');
+background-attachment: fixed;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+position: relative;
+}
+.parceiros::before {
+content: '';
+position: absolute;
+top: 0;left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(26, 26, 26, 0.8);
+z-index: 1;
+}
+.parceiros h2 {
+text-align: center;
+color: #ff3366;
+font-size: 2.5rem;
+margin-bottom: 50px;
+font-family: 'ROCK STEADY-Hollow', sans-serif;
+position: relative;
+z-index: 2;
+}
+.parceiros-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 2rem;
+position: relative;
+z-index: 2;
+max-width: 1200px;
+margin: 0 auto;
+}
+.parceiro-card {
+background: #2a2a2a;
+border-radius: 10px;
+overflow: hidden;transition: transform 0.3s, box-shadow 0.3s;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+.parceiro-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 15px 30px rgba(255, 51, 102, 0.3);
+}
+.parceiro-link {
+text-decoration: none;
+color: inherit;
+display: block;
+}
+.parceiro-imagem {
+display: block;
+max-width: 100%;
+max-height: 160px;
+width: auto;
+height: auto;
+margin: 20px auto;
+object-fit: contain;
+background-color: #fff;
+}
+.parceiro-info {
+padding: 1.5rem;
+color: white;
+}
+.parceiro-info h3 {
+color: #ff3366;margin-bottom: 0.5rem;
+font-family: "NewRocker-Regular", sans-serif;
+font-size: 1.5rem;
+}
+.parceiro-especialidade {
+color: #ddd;
+font-weight: bold;
+margin-bottom: 1rem;
+font-size: 0.9rem;
+}
+.parceiro-info p {
+color: #bbb;
+font-size: 0.9rem;
+line-height: 1.6;
+}
+@media (max-width: 768px) {
+.parceiros-grid {
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+} }
+#redes-sociais a {
+text-decoration: none;
+display: inline-block;
+}
+</style>
+<!-- Secção de Redes Sociais adicionada -->
+<section style="padding:80px 20px; background-color:#1a1a1a; textalign:center;"><h2 style="color:#ff3366; font-family:'ROCK STEADY-Hollow'; font-size:2.5rem;">
+O Que Dizem os Nossos Alunos
+</h2>
+<div style="max-width:900px; margin:40px auto; color:white; line-height:1.8;">
+<p>"A NER mudou completamente a minha forma de tocar guitarra. Ambiente
+incrível!"</p>
+<br>
+<p>"Professores dedicados e sempre motivadores. Recomendo a 100%."</p>
+<br>
+<p>"Mais do que uma escola, é uma família rock."</p>
+</div>
+</section>
+<section id="redes-sociais" style="text-align:center; padding: 40px; backgroundcolor: #1a1a1a;">
+<h2 style="color: #ff3366; font-family: 'ROCK STEADY-Hollow';">Segue-nos nas
+redes sociais!</h2>
+<div style="margin-top: 20px;">
+<a href="https://www.facebook.com/novaescolarock" target="_blank" class="fa
+fa-facebook" style="font-size: 40px; color: white; margin: 10px;"></a>
+<a href="https://www.instagram.com/novaescolarock/" target="_blank" class="fa
+fa-instagram" style="font-size: 40px; color: white; margin: 10px;"></a>
+<a href="https://www.youtube.com/@nernovaescolarock1669" target="_blank"
+class="fa fa-youtube" style="font-size: 40px; color: white; margin: 10px;"></a>
+<a href="https://www.facebook.com/deodatoformador/" target="_blank"
+class="fa fa-music" style="font-size: 40px; color: white; margin: 10px;"></a>
+</div>
+</section><footer>
+<div class="footer-content">
+<p>&copy; 2025 NER - Nova Escola Rock. Todos os direitos reservados.</p>
+</div>
 </footer>
-
-</body>
-
-</html>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+const videos = document.querySelectorAll(".video-container video");
+videos.forEach(video => {
+video.addEventListener("play", function () {
+videos.forEach(otherVideo => {
+if (otherVideo !== video) {
+otherVideo.pause();
+}
+});
+});
+});
+});
+</script>
+<a href="https://wa.me/351938066695"
+target="_blank"
+class="whatsapp-float"
+title="Fala connosco no WhatsApp">
+<i class="fa fa-whatsapp"></i>
+</a>
+</body></html>
