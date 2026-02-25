@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet"
@@ -12,31 +15,35 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 <style>
 
 body {
-font-family: Arial, Helvetica, sans-serif;
-background-color: black;
-padding-top: 50px;
+
 margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background-color:black;
+padding-top:50px;
+
 }
 
 /* HEADER */
 
-header {
+header{
 
 background:black;
 color:white;
-padding:1rem;
-height:50px;
 position:fixed;
 top:0;
 width:100%;
+height:50px;
 z-index:1000;
+display:flex;
+align-items:center;
+padding-left:20px;
 
 }
 
 .logo{
 
-font-size:2rem;
 color:#ff3366;
+font-size:28px;
 
 }
 
@@ -50,6 +57,7 @@ url("galeria-de-imagens/fundoner.jpeg");
 
 background-size:cover;
 background-position:center;
+
 height:80vh;
 
 display:flex;
@@ -60,15 +68,24 @@ color:white;
 
 }
 
+.hero h1{
+
+font-size:40px;
+
+}
+
+/* BOTÕES */
+
 .cta-button{
 
 background:#ff3366;
 color:white;
-padding:10px 20px;
+padding:12px 25px;
+margin:10px;
 border:none;
 cursor:pointer;
 text-decoration:none;
-margin:10px;
+display:inline-block;
 
 }
 
@@ -78,13 +95,13 @@ background:#e62e5c;
 
 }
 
-/* RADIO BANNER */
+/* RADIO */
 
 .radio-banner{
 
 position:fixed;
 top:100px;
-right:15px;
+right:20px;
 width:100px;
 z-index:999;
 
@@ -96,69 +113,54 @@ width:100%;
 
 }
 
-/* CURSOS */
+/* SECTIONS */
 
-.cursos{
+section{
 
 padding:80px 20px;
-background:#1a1a1a;
-color:white;
 
 }
 
-.cursos-grid{
+h2{
+
+color:#ff3366;
+text-align:center;
+
+}
+
+/* GRID */
+
+.grid{
 
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
+gap:20px;
 
 }
 
-.curso-card{
+/* CARDS */
+
+.card{
 
 background:#2a2a2a;
-padding:20px;
-
-}
-
-/* PROFESSORES */
-
-.professores{
-
-padding:80px 20px;
-background:#1a1a1a;
 color:white;
+padding:20px;
+text-align:center;
 
 }
 
-.professores-grid{
-
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-
-}
-
-.professor-card{
-
-background:white;
-color:black;
-
-}
-
-.professor-card img{
+.card img{
 
 width:100%;
 
 }
 
-/* SERVICOS */
+/* PROFESSORES */
 
-.servicos{
+.professor{
 
-padding:80px 20px;
-background:#363636;
-color:white;
+background:white;
+color:black;
 
 }
 
@@ -166,7 +168,7 @@ color:white;
 
 footer{
 
-background:#1a1a1a;
+background:#111;
 color:white;
 text-align:center;
 padding:20px;
@@ -182,12 +184,16 @@ padding:20px;
 <!-- RADIO -->
 
 <a href="https://nernovaescolarock.radio12345.com"
+
 target="_blank"
+
 class="radio-banner">
 
 <img src="galeria-de-imagens/radio_banner.png">
 
 </a>
+
+<!-- HEADER -->
 
 <header>
 
@@ -205,19 +211,38 @@ Nova Escola Rock
 
 <div>
 
-<h1>NER - Onde o Rock Ganha Vida</h1>
+<h1>
 
-<button class="cta-button">
+NER<br>
+Onde o Rock Ganha Vida
+
+</h1>
+
+<button class="cta-button"
+
+onclick="alert('Contacto: +351 938066695')">
 
 Agenda uma Aula Experimental
 
 </button>
 
 <a href="inscricao.html"
-target="_blank"
-class="cta-button">
+
+class="cta-button"
+
+target="_blank">
 
 Inscreve-te Aqui
+
+</a>
+
+<a href="https://aprender-guitarra-2018.webnode.pt/"
+
+class="cta-button"
+
+target="_blank">
+
+Quem Somos
 
 </a>
 
@@ -227,19 +252,41 @@ Inscreve-te Aqui
 
 <!-- CURSOS -->
 
-<section class="cursos">
+<section>
 
 <h2>Cursos</h2>
 
-<div class="cursos-grid">
+<div class="grid">
 
-<div class="curso-card">Guitarra</div>
+<div class="card">
 
-<div class="curso-card">Baixo</div>
+Guitarra
 
-<div class="curso-card">Bateria</div>
+</div>
 
-<div class="curso-card">Canto</div>
+<div class="card">
+
+Baixo
+
+</div>
+
+<div class="card">
+
+Bateria
+
+</div>
+
+<div class="card">
+
+Canto
+
+</div>
+
+<div class="card">
+
+Piano
+
+</div>
 
 </div>
 
@@ -247,17 +294,33 @@ Inscreve-te Aqui
 
 <!-- PROFESSORES -->
 
-<section class="professores">
+<section>
 
 <h2>Professores</h2>
 
-<div class="professores-grid">
+<div class="grid">
 
-<div class="professor-card">
+<div class="card professor">
 
 <img src="galeria-de-imagens/deodato.jpg">
 
-<p>Deodato</p>
+<p>Deodato Barbosa</p>
+
+</div>
+
+<div class="card professor">
+
+<img src="galeria-de-imagens/renato.jpg">
+
+<p>Renato Barbosa</p>
+
+</div>
+
+<div class="card professor">
+
+<img src="galeria-de-imagens/filbass.jpg">
+
+<p>Filipe Nunes</p>
 
 </div>
 
@@ -265,37 +328,41 @@ Inscreve-te Aqui
 
 </section>
 
-<!-- BOTÃO INFO -->
+<!-- SERVIÇOS -->
 
-<div style="text-align:center; margin-top:20px;">
-
-<a href="biografias.html"
-target="_blank"
-class="cta-button">
-
-+ INFO
-
-</a>
-
-</div>
-
-<!-- SERVICOS -->
-
-<section class="servicos">
+<section>
 
 <h2>Serviços</h2>
 
-<p>Estúdio, Ensaios, Produção</p>
+<div class="grid">
+
+<div class="card">
+
+Estúdio Gravação
+
+</div>
+
+<div class="card">
+
+Ensaios
+
+</div>
+
+<div class="card">
+
+Produção
+
+</div>
+
+</div>
 
 </section>
 
+<!-- FOOTER -->
+
 <footer>
 
-<p>
-
 © 2025 Nova Escola Rock
-
-</p>
 
 </footer>
 
