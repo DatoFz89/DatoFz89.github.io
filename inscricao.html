@@ -118,36 +118,25 @@ button:hover { background: #e62e5c; }
 </style> 
 <script> 
 function enviarFormulario(event) { 
- event.preventDefault(); 
- document.getElementById("mensagem").innerText = "A enviar inscrição... Aguarde."; 
- const formData = { 
- nome: document.getElementById('nome').value, 
- data_nascimento: document.getElementById('data_nascimento').value, 
- endereco: document.getElementById('endereco').value, 
- telefone: document.getElementById('telefone').value, 
- email: document.getElementById('email').value, 
- curso: document.getElementById('curso').value 
- }; 
+ event.preventDefault();
+ document.getElementById("mensagem").innerText = "A enviar inscrição... Aguarde.";
 
- const params = new URLSearchParams();
- Object.keys(formData).forEach(key => params.append(key, formData[key]));
+ var form = document.getElementById('inscricaoForm');
+ var iframe = document.getElementById('hidden_iframe');
 
- fetch('https://script.google.com/macros/s/AKfycbwybNZ47rFFVCnYOriSG3XJW9o4tw4VJcmx4BmWiGdarfI9yLIWZiyx2dc4AgtZb3Z8/exec', { 
- method: 'POST',
- mode: 'no-cors',
- body: params
- }) 
- .then(() => { 
- document.getElementById("mensagem").innerText = " Inscrição enviada com sucesso!"; 
- document.getElementById("mensagem").style.color = "#00ff00"; 
- document.getElementById('inscricaoForm').reset(); 
- setTimeout(() => { window.location.href = "https://datofz89.github.io/thanks.html"; }, 2000); 
- }) 
- .catch(error => { 
- document.getElementById("mensagem").innerText = " Erro ao enviar. Tenta novamente."; 
- document.getElementById("mensagem").style.color = "#ff3366"; 
- console.error('Erro:', error); 
- }); 
+ // Preenche o campo URL do action com o Apps Script
+ form.action = 'https://script.google.com/macros/s/AKfycbwybNZ47rFFVCnYOriSG3XJW9o4tw4VJcmx4BmWiGdarfI9yLIWZiyx2dc4AgtZb3Z8/exec';
+ form.method = 'POST';
+ form.target = 'hidden_iframe';
+
+ iframe.onload = function() {
+   document.getElementById("mensagem").innerText = " Inscrição enviada com sucesso!";
+   document.getElementById("mensagem").style.color = "#00ff00";
+   form.reset();
+   setTimeout(() => { window.location.href = "https://datofz89.github.io/thanks.html"; }, 2000);
+ };
+
+ form.submit();
  return false; 
 } 
 </script> 
@@ -164,6 +153,7 @@ function enviarFormulario(event) {
  </ul> 
  </nav> 
 </header> 
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 <div class="form-container"> 
  <h2>Inscreve-te Aqui</h2> 
  <form id="inscricaoForm" onsubmit="enviarFormulario(event)"> 
