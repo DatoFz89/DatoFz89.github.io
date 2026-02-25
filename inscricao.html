@@ -133,19 +133,15 @@ function enviarFormulario(event) {
  Object.keys(formData).forEach(key => params.append(key, formData[key]));
 
  fetch('https://script.google.com/macros/s/AKfycbwybNZ47rFFVCnYOriSG3XJW9o4tw4VJcmx4BmWiGdarfI9yLIWZiyx2dc4AgtZb3Z8/exec', { 
- method: 'POST', 
+ method: 'POST',
+ mode: 'no-cors',
  body: params
  }) 
- .then(response => response.text()) 
- .then(text => { 
- if (text === 'OK' || text.includes('OK')) { 
+ .then(() => { 
  document.getElementById("mensagem").innerText = " Inscrição enviada com sucesso!"; 
  document.getElementById("mensagem").style.color = "#00ff00"; 
  document.getElementById('inscricaoForm').reset(); 
  setTimeout(() => { window.location.href = "https://datofz89.github.io/thanks.html"; }, 2000); 
- } else { 
- throw new Error('Erro ao enviar'); 
- } 
  }) 
  .catch(error => { 
  document.getElementById("mensagem").innerText = " Erro ao enviar. Tenta novamente."; 
