@@ -1,1 +1,574 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quem Somos | NER - Nova Escola Rock</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  body {
+    font-family: 'Oswald', Arial, sans-serif;
+    background-color: #0a0a0a;
+    color: #f2f2f2;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(180deg, #000, #111);
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 3px solid #e60000;
+    box-shadow: 0 10px 30px rgba(230,0,0,0.25);
+  }
+
+  header h1 {
+    font-family: 'Metal Mania', cursive;
+    font-size: 2.8em;
+    color: #e60000;
+    text-shadow: 0 0 10px rgba(230,0,0,0.8), 0 0 25px rgba(230,0,0,0.6);
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+  }
+
+  header p {
+    color: #bbb;
+    letter-spacing: 1px;
+    font-size: 0.95em;
+  }
+
+  nav ul { list-style: none; padding: 0; margin-top: 16px; }
+  nav ul li { display: inline; margin: 0 15px; }
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+  }
+  nav ul li a:hover { color: #e60000; }
+
+  /* HERO BANNER */
+  .hero {
+    background:
+      linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+      url('galeria-de-imagens/fundoner.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 100px 20px;
+    text-align: center;
+    position: relative;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #e60000, transparent);
+  }
+
+  .hero h2 {
+    font-family: 'Metal Mania', cursive;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    color: #fff;
+    text-shadow: 0 0 30px rgba(230,0,0,0.5);
+    letter-spacing: 4px;
+    margin-bottom: 16px;
+  }
+
+  .hero h2 span { color: #e60000; }
+
+  .hero p {
+    font-size: 1.2rem;
+    color: #ccc;
+    font-weight: 300;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* MAIN */
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 60px 20px 80px;
+  }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #e60000;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::before {
+    content: '';
+    width: 30px;
+    height: 2px;
+    background: #e60000;
+  }
+
+  /* HISTÓRIA */
+  .historia {
+    margin-bottom: 70px;
+  }
+
+  .historia h3 {
+    font-family: 'Metal Mania', cursive;
+    font-size: 2.2rem;
+    color: #fff;
+    margin-bottom: 24px;
+    letter-spacing: 2px;
+  }
+
+  .historia-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  @media (max-width: 640px) {
+    .historia-grid { grid-template-columns: 1fr; }
+  }
+
+  .historia-card {
+    background: linear-gradient(180deg, #1a1a1a, #111);
+    border-left: 3px solid #e60000;
+    padding: 28px 24px;
+    position: relative;
+  }
+
+  .historia-year {
+    font-family: 'Metal Mania', cursive;
+    font-size: 3rem;
+    color: #e60000;
+    opacity: 0.15;
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    line-height: 1;
+  }
+
+  .historia-card h4 {
+    font-size: 1rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #e60000;
+    margin-bottom: 10px;
+  }
+
+  .historia-card p {
+    font-size: 0.95rem;
+    color: #bbb;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* MISSÃO */
+  .missao {
+    margin-bottom: 70px;
+  }
+
+  .missao h3 {
+    font-family: 'Metal Mania', cursive;
+    font-size: 2.2rem;
+    color: #fff;
+    margin-bottom: 24px;
+    letter-spacing: 2px;
+  }
+
+  .missao-destaque {
+    background: linear-gradient(135deg, #1a0000, #110000);
+    border: 1px solid #3a0000;
+    border-left: 4px solid #e60000;
+    padding: 36px 32px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .missao-destaque::before {
+    content: '"';
+    font-family: 'Metal Mania', cursive;
+    font-size: 180px;
+    color: #e60000;
+    opacity: 0.05;
+    position: absolute;
+    top: -30px;
+    left: 10px;
+    line-height: 1;
+  }
+
+  .missao-destaque p {
+    font-size: 1.3rem;
+    color: #f2f2f2;
+    line-height: 1.7;
+    font-weight: 300;
+    position: relative;
+    z-index: 1;
+  }
+
+  .missao-destaque p em {
+    color: #e60000;
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  .valores-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  @media (max-width: 640px) {
+    .valores-grid { grid-template-columns: 1fr; }
+  }
+
+  .valor-card {
+    background: linear-gradient(180deg, #1a1a1a, #111);
+    padding: 24px 20px;
+    text-align: center;
+    border-top: 2px solid #e60000;
+    transition: transform 0.2s;
+  }
+
+  .valor-card:hover { transform: translateY(-4px); }
+
+  .valor-icon {
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .valor-card h4 {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #e60000;
+    margin-bottom: 8px;
+  }
+
+  .valor-card p {
+    font-size: 0.85rem;
+    color: #999;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* DIFERENCIADORES */
+  .diferencial {
+    margin-bottom: 70px;
+  }
+
+  .diferencial h3 {
+    font-family: 'Metal Mania', cursive;
+    font-size: 2.2rem;
+    color: #fff;
+    margin-bottom: 24px;
+    letter-spacing: 2px;
+  }
+
+  .diff-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  @media (max-width: 640px) {
+    .diff-list { grid-template-columns: 1fr; }
+  }
+
+  .diff-item {
+    background: linear-gradient(90deg, #1a1a1a, #111);
+    padding: 16px 20px;
+    border-left: 3px solid #e60000;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    transition: all 0.2s;
+  }
+
+  .diff-item:hover {
+    background: #222;
+    transform: translateX(5px);
+    box-shadow: 0 0 10px rgba(230,0,0,0.3);
+  }
+
+  .diff-check {
+    color: #e60000;
+    font-size: 1.1rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .diff-item p {
+    font-size: 0.95rem;
+    color: #ccc;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: linear-gradient(135deg, #1a0000, #0a0a0a);
+    border: 1px solid #3a0000;
+    padding: 50px 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #e60000, transparent);
+  }
+
+  .cta-section h3 {
+    font-family: 'Metal Mania', cursive;
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+  }
+
+  .cta-section p {
+    color: #bbb;
+    font-size: 1rem;
+    margin-bottom: 28px;
+    font-weight: 300;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: linear-gradient(90deg, #e60000, #900000);
+    color: white;
+    padding: 14px 36px;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(90deg, #ff1a1a, #b30000);
+    box-shadow: 0 0 20px rgba(230,0,0,0.4);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: #e60000;
+    padding: 14px 36px;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    border: 2px solid #e60000;
+    transition: all 0.3s;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(230,0,0,0.1);
+    transform: translateY(-2px);
+  }
+
+  /* FOOTER */
+  footer {
+    background: #000;
+    border-top: 1px solid #1a1a1a;
+    padding: 24px 20px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #444;
+    letter-spacing: 1px;
+  }
+
+  /* Animações */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .historia, .missao, .diferencial, .cta-section {
+    animation: fadeUp 0.6s ease both;
+  }
+  .missao { animation-delay: 0.1s; }
+  .diferencial { animation-delay: 0.2s; }
+  .cta-section { animation-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>NER — Nova Escola Rock</h1>
+  <p>Escola de Música em Paços de Ferreira</p>
+  <nav>
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="index.html#cursos">Cursos</a></li>
+      <li><a href="index.html#professores">Professores</a></li>
+      <li><a href="index.html#contacto">Contacto</a></li>
+      <li><a href="inscricao.html">Inscrição</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <h2>Quem <span>Somos</span></h2>
+  <p>Desde 2018 a formar músicos com paixão, técnica e identidade em Paços de Ferreira.</p>
+</div>
+
+<main>
+
+  <!-- HISTÓRIA -->
+  <section class="historia">
+    <div class="section-label">A Nossa História</div>
+    <h3>De onde viemos</h3>
+    <div class="historia-grid">
+
+      <div class="historia-card">
+        <span class="historia-year">2018</span>
+        <h4>O Início</h4>
+        <p>A NER — Nova Escola Rock nasceu em 2018 em Paços de Ferreira, fruto da paixão de Deodato Barbosa pela música e pelo ensino. Com mais de 30 anos de experiência em guitarra, o objetivo era criar um espaço diferente — onde o rock e a música moderna fossem o centro de tudo.</p>
+      </div>
+
+      <div class="historia-card">
+        <span class="historia-year">ARC</span>
+        <h4>A Parceria</h4>
+        <p>A escola nasceu em parceria com a Associação Recreativa e Cultural de Sobrão (A.R.C.), instalada na Rua da Cavada 105, Meixomil. Um espaço único com salas de aula equipadas, sala de convívio com bilhar e matraquilhos, café/bar e rádio própria da escola.</p>
+      </div>
+
+      <div class="historia-card">
+        <span class="historia-year">7+</span>
+        <h4>Crescimento</h4>
+        <p>Em mais de 7 anos de atividade, a NER cresceu e consolidou-se como referência em ensino de música moderna na região. Hoje conta com uma equipa de professores especializados, cada um com provas dadas no ensino e no palco.</p>
+      </div>
+
+      <div class="historia-card">
+        <span class="historia-year">📻</span>
+        <h4>Rádio Própria</h4>
+        <p>Um marco único: a NER tem a sua própria rádio online — a Rádio NER. Um projeto que vai além do ensino e cria uma comunidade ativa em torno da música rock, dando voz aos alunos e à escola 24 horas por dia.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MISSÃO E VALORES -->
+  <section class="missao">
+    <div class="section-label">Missão & Valores</div>
+    <h3>O que nos move</h3>
+
+    <div class="missao-destaque">
+      <p>A nossa missão é <em>formar músicos completos</em> — com técnica sólida, espírito criativo e identidade própria. Acreditamos que a música transforma pessoas e que <em>qualquer um pode aprender a tocar</em>, independentemente da idade ou experiência.</p>
+    </div>
+
+    <div class="valores-grid">
+      <div class="valor-card">
+        <span class="valor-icon">🎸</span>
+        <h4>Paixão</h4>
+        <p>Ensinamos com a mesma paixão com que tocamos. A música não é só técnica — é emoção.</p>
+      </div>
+      <div class="valor-card">
+        <span class="valor-icon">🎯</span>
+        <h4>Dedicação</h4>
+        <p>Cada aluno é único. Adaptamos o ensino ao ritmo e aos objetivos de cada um.</p>
+      </div>
+      <div class="valor-card">
+        <span class="valor-icon">🤝</span>
+        <h4>Comunidade</h4>
+        <p>Mais do que uma escola, somos uma família rock. Um ambiente onde todos se sentem em casa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- O QUE NOS DIFERENCIA -->
+  <section class="diferencial">
+    <div class="section-label">O Que Nos Diferencia</div>
+    <h3>Porque a NER é diferente</h3>
+
+    <div class="diff-list">
+      <div class="diff-item">
+        <span class="diff-check">✔</span>
+        <p>Escola especializada em Rock e Música Moderna — não somos uma escola genérica</p>
+      </div>
+      <div class="diff-item">
+        <span class="diff-check">✔</span>
+        <p>Professores com experiência real no palco e em estúdio, não apenas no ensino</p>
+      </div>
+      <div class="diff-item">
+        <span class="diff-check">✔</span>
+        <p>Rádio própria da escola — única na região</p>
+      </div>
+      <div class="diff-item">
+        <span class="diff-check">✔</span>
+        <p>Instrumentos disponíveis na escola — não precisas de ter o teu próprio para começar</p>
+      </div>
+      <div class="diff-item">
+        <span class="diff-check">✔</span>
+        <p>Repertório moderno e atual — aprendes as músicas que realmente queres tocar</p>
+      </div>
+      <div class="diff-item">
+        <span class="diff-check">✔</span>
+        <p>Aulas para todas as idades — crianças, jovens e adultos, principiantes e avançados</p>
+      </div>
+      <div class="diff-item">
+        <span class="diff-check">✔</span>
+        <p>Do zero ao palco — preparamos os alunos para atuar ao vivo</p>
+      </div>
+      <div class="diff-item">
+        <span class="diff-check">✔</span>
+        <p>Parceria com estúdios externos especializados para gravação profissional</p>
+      </div>
+      <div class="diff-item">
+        <span class="diff-check">✔</span>
+        <p>Ambiente criativo e motivador — mais de 7 anos a provar que funciona</p>
+      </div>
+      <div class="diff-item">
+        <span class="diff-check">✔</span>
+        <p>Comunidade ativa de músicos e alunos — nunca estás sozinho nesta viagem</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h3>Pronto para começar?</h3>
+    <p>A tua primeira aula experimental é gratuita. Sem compromissos.</p>
+    <div class="cta-buttons">
+      <a href="inscricao.html" class="btn-primary">🎸 Inscreve-te Agora</a>
+      <a href="index.html#contacto" class="btn-secondary">Fala Connosco</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  © 2026 NER — Nova Escola Rock · Todos os direitos reservados
+</footer>
+
+</body>
+</html>
