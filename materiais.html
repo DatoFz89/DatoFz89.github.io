@@ -286,6 +286,34 @@ a:hover {
     margin-right: 8px;
     border-radius: 50%;
 }
+
+/* BOTÃO INÍCIO */
+.btn-inicio {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 10px 28px;
+    background: linear-gradient(90deg, #e60000, #900000);
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Metal Mania', cursive;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    border: 1px solid #ff1a1a;
+    box-shadow: 0 0 12px rgba(230,0,0,0.5);
+    transition: all 0.3s ease;
+}
+
+.btn-inicio:hover {
+    background: linear-gradient(90deg, #ff1a1a, #b30000);
+    box-shadow: 0 0 25px rgba(230,0,0,0.8);
+    transform: translateY(-2px);
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.btn-inicio::before {
+    content: "← ";
+    color: #fff;
+}
     
 </style>
 </head>
@@ -295,7 +323,7 @@ a:hover {
 <header>
     <h1>Materiais de Estudo</h1>
     <p>NER – Nova Escola Rock</p>
-    <a href="index.html" style="display:inline-block; margin-top:12px; background:linear-gradient(90deg,#e60000,#900000); color:white; padding:8px 24px; text-decoration:none; font-weight:500; letter-spacing:2px; border-radius:4px; font-size:0.9rem;">← Início</a>
+    <a href="index.html" class="btn-inicio">Início</a>
 </header>
 <main>
 
