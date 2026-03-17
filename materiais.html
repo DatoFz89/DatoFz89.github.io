@@ -816,11 +816,24 @@ document.addEventListener("DOMContentLoaded", function () {
             return textoA.localeCompare(textoB, "pt");
         });
 
-        // Primeiro os normais ordenados, depois as subpastas no fim
         [...normais, ...subpastas].forEach(function (li) {
             ul.appendChild(li);
         });
     });
+
+    // Ordena os botões de instrumentos em Vídeos Didáticos
+    const videosConteudo = document.querySelector("div.conteudo");
+    if (videosConteudo) {
+        const instrumentos = Array.from(videosConteudo.querySelectorAll(":scope > .instrumento"));
+        instrumentos.sort(function (a, b) {
+            const textoA = a.innerText.trim().toLowerCase();
+            const textoB = b.innerText.trim().toLowerCase();
+            return textoA.localeCompare(textoB, "pt");
+        });
+        instrumentos.forEach(function (div) {
+            videosConteudo.appendChild(div);
+        });
+    }
 });
 </script>
     
