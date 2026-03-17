@@ -454,7 +454,7 @@ a:hover {
 
 <!-- Guitar Pro Serial -->
 <li>
-    <a href="#" onclick="pedirPassword(event, 'ficheiros/outros/guitar_pro_v5.2_serial.txt', '713789FzNer2')">
+    <a href="#" onclick="pedirPassword(event, 'ficheiros/outros/guitar_pro_v5.2_serial.pdf', '713789FzNer2')">
         Guitar Pro Serial
     </a>
 </li>
@@ -939,22 +939,13 @@ function confirmarPassword() {
     const input = document.getElementById("inputPassword").value;
     if (input === _pass) {
         fecharModalPassword();
-        fetch(_ficheiro)
-            .then(response => response.blob())
-            .then(blob => {
-                const url = window.URL.createObjectURL(blob);
-                const link = document.createElement("a");
-                link.href = url;
-                // Extrai o nome do ficheiro do caminho
-                link.download = _ficheiro.split("/").pop();
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                window.URL.revokeObjectURL(url);
-            })
-            .catch(() => {
-                alert("Erro ao fazer download. Tenta novamente.");
-            });
+        const link = document.createElement("a");
+        link.href = _ficheiro;
+        link.download = _ficheiro.split("/").pop();
+        link.target = "_blank";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     } else {
         document.getElementById("erroPassword").style.display = "block";
         document.getElementById("inputPassword").value = "";
