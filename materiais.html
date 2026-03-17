@@ -806,12 +806,18 @@ background:rgba(0,0,0,0.95);
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("ul.conteudo, ul.subfolder-content").forEach(function (ul) {
         const items = Array.from(ul.querySelectorAll(":scope > li"));
-        items.sort(function (a, b) {
+        
+        const normais = items.filter(li => !li.querySelector(".subfolder-btn"));
+        const subpastas = items.filter(li => li.querySelector(".subfolder-btn"));
+
+        normais.sort(function (a, b) {
             const textoA = a.innerText.trim().toLowerCase();
             const textoB = b.innerText.trim().toLowerCase();
             return textoA.localeCompare(textoB, "pt");
         });
-        items.forEach(function (li) {
+
+        // Primeiro os normais ordenados, depois as subpastas no fim
+        [...normais, ...subpastas].forEach(function (li) {
             ul.appendChild(li);
         });
     });
