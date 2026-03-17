@@ -937,7 +937,13 @@ function confirmarPassword() {
     const input = document.getElementById("inputPassword").value;
     if (input === _pass) {
         fecharModalPassword();
-        window.open(_ficheiro, "_blank");
+        const link = document.createElement("a");
+        link.href = _ficheiro;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     } else {
         document.getElementById("erroPassword").style.display = "block";
         document.getElementById("inputPassword").value = "";
