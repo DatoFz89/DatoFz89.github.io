@@ -447,14 +447,12 @@ a:hover {
         <li><a href="ficheiros/outros/ner_inscricao_de_socio.docx" download> Ficha de Inscrição de Sócio</a></li>
         <!-- Guitar Pro SetUp -->
 <li>
-    <a href="#" onclick="pedirPassword(event, 'ficheiros/outros/guitar_pro_v5.2.exe', '713789FzNer1')">
+    <a href="#" onclick="pedirPassword(event, 'https://mega.nz/file/r8BUSCKa#xzGXsmHFX32XDYNEolrMueLkLjLfEJKTTXzZ04kOkww', '713789FzNer1')">
         Guitar Pro SetUp
     </a>
 </li>
-
-<!-- Guitar Pro Serial -->
 <li>
-    <a href="#" onclick="pedirPassword(event, 'ficheiros/outros/guitar_pro_v5.2_serial.txt', '713789FzNer2')">
+    <a href="#" onclick="pedirPassword(event, 'https://mega.nz/file/bs4DSJaA#TiOtEFGY7enZ9psz8s0u803ypixypeiPaFKCcKYti4g', '713789FzNer2')">
         Guitar Pro Serial
     </a>
 </li>
@@ -939,29 +937,7 @@ function confirmarPassword() {
     const input = document.getElementById("inputPassword").value;
     if (input === _pass) {
         fecharModalPassword();
-        if (_ficheiro.endsWith(".txt")) {
-            fetch(_ficheiro)
-                .then(response => response.text())
-                .then(text => {
-                    const blob = new Blob([text], { type: "application/octet-stream" });
-                    const url = window.URL.createObjectURL(blob);
-                    const link = document.createElement("a");
-                    link.href = url;
-                    link.download = _ficheiro.split("/").pop();
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                    window.URL.revokeObjectURL(url);
-                });
-        } else {
-            const link = document.createElement("a");
-            link.href = _ficheiro;
-            link.download = _ficheiro.split("/").pop();
-            link.target = "_blank";
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
+        window.open(_ficheiro, "_blank");
     } else {
         document.getElementById("erroPassword").style.display = "block";
         document.getElementById("inputPassword").value = "";
@@ -969,7 +945,6 @@ function confirmarPassword() {
     }
 }
 
-// Permite confirmar com a tecla Enter
 document.getElementById("inputPassword").addEventListener("keydown", function(e) {
     if (e.key === "Enter") confirmarPassword();
 });
