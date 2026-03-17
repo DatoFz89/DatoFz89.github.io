@@ -834,6 +834,19 @@ document.addEventListener("DOMContentLoaded", function () {
             videosConteudo.appendChild(div);
         });
     }
+
+    // Ordena os links dentro de cada instrumento em Vídeos Didáticos
+    document.querySelectorAll(".conteudo-instrumento").forEach(function (div) {
+        const links = Array.from(div.querySelectorAll(":scope > a"));
+        links.sort(function (a, b) {
+            const textoA = a.innerText.trim().toLowerCase();
+            const textoB = b.innerText.trim().toLowerCase();
+            return textoA.localeCompare(textoB, "pt");
+        });
+        links.forEach(function (a) {
+            div.appendChild(a);
+        });
+    });
 });
 </script>
     
