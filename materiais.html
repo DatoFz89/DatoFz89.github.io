@@ -939,13 +939,29 @@ function confirmarPassword() {
     const input = document.getElementById("inputPassword").value;
     if (input === _pass) {
         fecharModalPassword();
-        const link = document.createElement("a");
-        link.href = _ficheiro;
-        link.download = _ficheiro.split("/").pop();
-        link.target = "_blank";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        if (_ficheiro.endsWith(".txt")) {
+            fetch(_ficheiro)
+                .then(response => response.text())
+                .then(text => {
+                    const blob = new Blob([text], { type: "application/octet-stream" });
+                    const url = window.URL.createObjectURL(blob);
+                    const link = document.createElement("a");
+                    link.href = url;
+                    link.download = _ficheiro.split("/").pop();
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    window.URL.revokeObjectURL(url);
+                });
+        } else {
+            const link = document.createElement("a");
+            link.href = _ficheiro;
+            link.download = _ficheiro.split("/").pop();
+            link.target = "_blank";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
     } else {
         document.getElementById("erroPassword").style.display = "block";
         document.getElementById("inputPassword").value = "";
