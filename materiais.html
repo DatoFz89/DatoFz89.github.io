@@ -939,12 +939,22 @@ function confirmarPassword() {
     const input = document.getElementById("inputPassword").value;
     if (input === _pass) {
         fecharModalPassword();
-        const link = document.createElement("a");
-        link.href = _ficheiro;
-        link.download = "";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        fetch(_ficheiro)
+            .then(response => response.blob())
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const link = document.createElement("a");
+                link.href = url;
+                // Extrai o nome do ficheiro do caminho
+                link.download = _ficheiro.split("/").pop();
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                window.URL.revokeObjectURL(url);
+            })
+            .catch(() => {
+                alert("Erro ao fazer download. Tenta novamente.");
+            });
     } else {
         document.getElementById("erroPassword").style.display = "block";
         document.getElementById("inputPassword").value = "";
