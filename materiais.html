@@ -445,8 +445,19 @@ a:hover {
     <ul class="conteudo">
         <!-- <li><a href="ficheiros/outros/plano-estudo.pdf" download> Plano de Estudo Semanal</a></li> -->
         <li><a href="ficheiros/outros/ner_inscricao_de_socio.docx" download> Ficha de Inscrição de Sócio</a></li>
-        <li><a href="ficheiros/outros/guitar_pro_v5.2.exe" download> Guitar Pro SetUp</a></li>
-         <li><a href="ficheiros/outros/guitar_pro_v5.2_serial.txt" download> Guitar Pro Serial</a></li>
+        <!-- Guitar Pro SetUp -->
+<li>
+    <a href="#" onclick="pedirPassword(event, 'ficheiros/outros/guitar_pro_v5.2.exe', '713789FzNer1')">
+        Guitar Pro SetUp
+    </a>
+</li>
+
+<!-- Guitar Pro Serial -->
+<li>
+    <a href="#" onclick="pedirPassword(event, 'ficheiros/outros/guitar_pro_v5.2_serial.txt', '713789FzNer2')">
+        Guitar Pro Serial
+    </a>
+</li>
         <li><a href="ficheiros/outros/como_instalar_guitar_pro5.txt" download> Como Instalar Guitar Pro 5</a></li>
         <li><a href="https://ner-testemunhos.netlify.app" target="_blank">📝 Formulário de Testemunho de Aluno</a></li>
     </ul>
@@ -848,6 +859,109 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+</script>
+
+    <!-- MODAL PASSWORD -->
+<div id="modalPassword" style="
+    display:none;
+    position:fixed;
+    z-index:99999;
+    left:0; top:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.92);
+">
+    <div style="
+        position:absolute;
+        top:50%; left:50%;
+        transform:translate(-50%,-50%);
+        background:#1a1a1a;
+        border:2px solid #e60000;
+        border-radius:8px;
+        padding:30px 40px;
+        text-align:center;
+        min-width:300px;
+    ">
+        <h3 style="color:#e60000; font-family:'Metal Mania',cursive; margin-bottom:20px;">
+            🔒 Conteúdo Protegido
+        </h3>
+        <p style="color:#ccc; margin-bottom:15px;">Introduz a password para fazer download:</p>
+        <input id="inputPassword" type="password" placeholder="Password..." style="
+            width:100%;
+            padding:10px;
+            background:#111;
+            border:1px solid #e60000;
+            color:white;
+            border-radius:4px;
+            font-size:15px;
+            margin-bottom:15px;
+            box-sizing:border-box;
+        ">
+        <p id="erroPassword" style="color:#ff4d4d; display:none; margin-bottom:10px;">
+            ❌ Password incorreta!
+        </p>
+        <div style="display:flex; gap:10px; justify-content:center;">
+            <button onclick="confirmarPassword()" style="
+                background:linear-gradient(90deg,#e60000,#900000);
+                color:white; border:none;
+                padding:10px 25px;
+                border-radius:4px;
+                cursor:pointer;
+                font-weight:bold;
+                font-size:15px;
+            ">Download</button>
+            <button onclick="fecharModalPassword()" style="
+                background:#333;
+                color:white; border:none;
+                padding:10px 25px;
+                border-radius:4px;
+                cursor:pointer;
+                font-size:15px;
+            ">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<script>
+let _ficheiro = "";
+let _pass = "";
+
+function pedirPassword(e, ficheiro, pass) {
+    e.preventDefault();
+    _ficheiro = ficheiro;
+    _pass = pass;
+    document.getElementById("inputPassword").value = "";
+    document.getElementById("erroPassword").style.display = "none";
+    document.getElementById("modalPassword").style.display = "block";
+    setTimeout(() => document.getElementById("inputPassword").focus(), 100);
+}
+
+function confirmarPassword() {
+    const input = document.getElementById("inputPassword").value;
+    if (input === _pass) {
+        fecharModalPassword();
+        const link = document.createElement("a");
+        link.href = _ficheiro;
+        link.download = "";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    } else {
+        document.getElementById("erroPassword").style.display = "block";
+        document.getElementById("inputPassword").value = "";
+        document.getElementById("inputPassword").focus();
+    }
+}
+
+// Permite confirmar com a tecla Enter
+document.getElementById("inputPassword").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") confirmarPassword();
+});
+
+function fecharModalPassword() {
+    document.getElementById("modalPassword").style.display = "none";
+    _ficheiro = "";
+    _pass = "";
+}
 </script>
     
 </body>
