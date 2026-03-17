@@ -919,6 +919,52 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
 </div>
 
+<!-- MODAL DOWNLOAD -->
+<div id="modalDownload" style="
+    display:none;
+    position:fixed;
+    z-index:99999;
+    left:0; top:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.92);
+">
+    <div style="
+        position:absolute;
+        top:50%; left:50%;
+        transform:translate(-50%,-50%);
+        background:#1a1a1a;
+        border:2px solid #e60000;
+        border-radius:8px;
+        padding:30px 40px;
+        text-align:center;
+        min-width:300px;
+    ">
+        <h3 style="color:#e60000; font-family:'Metal Mania',cursive; margin-bottom:20px;">
+            ✅ Password Correta!
+        </h3>
+        <p style="color:#ccc; margin-bottom:20px;">Clica no botão para fazer o download:</p>
+        <div style="display:flex; gap:10px; justify-content:center;">
+            <a id="linkDownload" href="#" target="_blank" onclick="document.getElementById('modalDownload').style.display='none'" style="
+                background:linear-gradient(90deg,#e60000,#900000);
+                color:white;
+                padding:10px 25px;
+                border-radius:4px;
+                font-weight:bold;
+                font-size:15px;
+                text-decoration:none;
+            ">⬇ Download</a>
+            <button onclick="document.getElementById('modalDownload').style.display='none'" style="
+                background:#333;
+                color:white; border:none;
+                padding:10px 25px;
+                border-radius:4px;
+                cursor:pointer;
+                font-size:15px;
+            ">Fechar</button>
+        </div>
+    </div>
+</div>
+
 <script>
 let _ficheiro = "";
 let _pass = "";
@@ -936,14 +982,11 @@ function pedirPassword(e, ficheiro, pass) {
 function confirmarPassword() {
     const input = document.getElementById("inputPassword").value;
     if (input === _pass) {
-        fecharModalPassword();
-        const link = document.createElement("a");
-        link.href = _ficheiro;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        document.getElementById("inputPassword").value = "";
+        document.getElementById("erroPassword").style.display = "none";
+        document.getElementById("modalPassword").style.display = "none";
+        document.getElementById("linkDownload").href = _ficheiro;
+        document.getElementById("modalDownload").style.display = "block";
     } else {
         document.getElementById("erroPassword").style.display = "block";
         document.getElementById("inputPassword").value = "";
