@@ -803,20 +803,19 @@ background:rgba(0,0,0,0.95);
 </div>
 
 <script>
-  // Ordena todos os <ul> de materiais alfabeticamente ao carregar
-  document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".conteudo ul, .subfolder-content").forEach(function (ul) {
-      const items = Array.from(ul.querySelectorAll(":scope > li"));
-      items.sort(function (a, b) {
-        const textoA = a.innerText.trim().toLowerCase();
-        const textoB = b.innerText.trim().toLowerCase();
-        return textoA.localeCompare(textoB, "pt");
-      });
-      items.forEach(function (li) {
-        ul.appendChild(li);
-      });
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll("ul.conteudo, ul.subfolder-content").forEach(function (ul) {
+        const items = Array.from(ul.querySelectorAll(":scope > li"));
+        items.sort(function (a, b) {
+            const textoA = a.innerText.trim().toLowerCase();
+            const textoB = b.innerText.trim().toLowerCase();
+            return textoA.localeCompare(textoB, "pt");
+        });
+        items.forEach(function (li) {
+            ul.appendChild(li);
+        });
     });
-  });
+});
 </script>
     
 </body>
