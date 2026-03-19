@@ -573,6 +573,10 @@ a:hover {
         <li><a href="ficheiros/backing-tracks/single_chord_backingtrack_eminor_60bpm.mp3" download>Single Chord Backing Track E minor 60bpm</a></li>
         <li><a href="ficheiros/backing-tracks/single_chord_backingtrack_aminor_60bpm.mp3" download>Single Chord Backing Track A minor 60bpm</a></li>
         <li><a href="ficheiros/backing-tracks/sunshine_of_your_love_backing_track.mp3" download>Shunshine of Your Love - Backing track</a></li>
+
+        <li>
+  <a href="#" onclick="abrirYT('gwtXDA7WoS0'); return false;">Atmospheric Ambient Pad Backing Track in E Minor ▶</a>
+</li>
         
         <!-- BOTÃO SUBPASTA ROCKEIRO -->
         <li>
@@ -1044,6 +1048,32 @@ function fecharModalPassword() {
     _pass = "";
 }
 </script>
+
+<script>
+  function abrirYT(id) {
+    document.getElementById('yt-iframe').src = 'https://www.youtube.com/embed/' + id + '?autoplay=1';
+    const modal = document.getElementById('yt-modal');
+    modal.style.display = 'flex';
+  }
+  function fecharYT() {
+    document.getElementById('yt-iframe').src = '';
+    document.getElementById('yt-modal').style.display = 'none';
+  }
+  document.getElementById('yt-modal').addEventListener('click', function(e) {
+    if (e.target === this) fecharYT();
+  });
+</script>
+
+<div id="yt-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:9999; align-items:center; justify-content:center;">
+  <div style="position:relative; width:90%; max-width:800px;">
+    <button onclick="fecharYT()" style="position:absolute; top:-36px; right:0; background:none; border:none; color:white; font-size:28px; cursor:pointer;">✕</button>
+    <div style="position:relative; padding-bottom:56.25%; height:0;">
+      <iframe id="yt-iframe" src="" frameborder="0" allowfullscreen
+        style="position:absolute; top:0; left:0; width:100%; height:100%;">
+      </iframe>
+    </div>
+  </div>
+</div>
     
 </body>
 
