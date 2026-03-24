@@ -1,708 +1,649 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professores | Nova Escola Rock</title>
-    <style>
-        /* Fonte de estilo rock */
-        @import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-        
-        :root {
-            --primary-color: #e50909;
-            --secondary-color: #1e1e1e;
-            --accent-color: #f1c40f;
-            --text-color: #f5f5f5;
-            --background-dark: #121212;
-            --background-light: #2a2a2a;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--background-dark);
-            color: var(--text-color);
-            line-height: 1.6;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23222222' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-        
-        header {
-            background-color: var(--secondary-color);
-            padding: 1rem 0;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        header::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 5px;
-            bottom: 0;
-            left: 0;
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--primary-color));
-        }
-        
-        .hero-title {
-            font-family: 'Rock Salt', cursive;
-            font-size: 2.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6),
-                         0 0 10px var(--primary-color);
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-            animation: pulsate 2s infinite alternate;
-        }
-        
-        @keyframes pulsate {
-            0% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6), 0 0 10px var(--primary-color); }
-            100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6), 0 0 20px var(--primary-color), 0 0 30px var(--primary-color); }
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            font-weight: 300;
-            margin-bottom: 1rem;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        .team-intro {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .team-intro h2 {
-            font-family: 'Rock Salt', cursive;
-            font-size: 2rem;
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-        }
-        
-        .team-intro p {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-        }
-        
-        .professors-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        
-        .professor-card {
-            background-color: var(--background-light);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .professor-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 15px var(--primary-color);
-        }
-        
-        .professor-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--primary-color);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.3s ease;
-        }
-        
-        .professor-card:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-        
-        .professor-image {
-            height: 280px;
-            width: 100%;
-            object-fit: cover;
-            filter: grayscale(20%);
-            transition: filter 0.3s ease;
-        }
-        
-        .professor-card:hover .professor-image {
-            filter: grayscale(0%);
-        }
-        
-        .professor-info {
-            padding: 1.5rem;
-        }
-        
-        .professor-name {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--accent-color);
-            position: relative;
-            display: inline-block;
-        }
-        
-        .professor-name::after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--primary-color);
-        }
-        
-        .professor-instrument {
-            color: var(--primary-color);
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-            padding: 3px 10px;
-            background-color: rgba(229, 9, 9, 0.1);
-            border-radius: 20px;
-        }
-        
-        .professor-bio {
-            margin-bottom: 1rem;
-            line-height: 1.7;
-        }
-        
-        .professor-experience {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        
-        .experience-icon {
-            color: var(--accent-color);
-        }
-        
-        .professor-style {
-            font-style: italic;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 1rem;
-        }
-        
-        .social-link {
-            color: var(--text-color);
-            font-size: 1.2rem;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-        
-        .social-link:hover {
-            color: var(--primary-color);
-            transform: scale(1.2);
-        }
-        
-        .book-button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0.6rem 1.2rem;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: block;
-            width: 100%;
-            margin-top: 1rem;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .book-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: all 0.5s ease;
-            z-index: -1;
-        }
-        
-        .book-button:hover::before {
-            left: 100%;
-        }
-        
-        .book-button:hover {
-            background-color: #c20808;
-            box-shadow: 0 0 10px var(--primary-color);
-        }
-        
-        .join-team {
-            text-align: center;
-            margin-top: 4rem;
-            padding: 2rem;
-            background-color: var(--background-light);
-            border-radius: 10px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .join-team::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e50909' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 20.83l2.83-2.83 1.41 1.41L1.41 22.24H0v-1.41zM0 3.07l2.83-2.83 1.41 1.41L1.41 4.48H0V3.07zm28.24 35.52l1.41-1.41 2.83 2.83V40h-1.41l-2.83-2.83zm-9.9 0l1.41-1.41 9.9 9.9h-1.41l-9.9-9.9zm-19.9 0l1.41-1.41 19.9 19.9h-1.41L0 38.59zm32.31-32.31l1.41-1.41 2.83 2.83V9.9l-2.83-2.83-1.41 1.41zM29.9 0h1.41l9.9 9.9v1.41l-9.9-9.9V0zm-13.24 0h1.41l19.9 19.9v1.41L18.07 1.41V0z'/%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.3;
-        }
-        
-        .join-team h3 {
-            font-family: 'Rock Salt', cursive;
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .join-team p {
-            margin-bottom: 1.5rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .join-button {
-            background-color: var(--accent-color);
-            color: var(--secondary-color);
-            border: none;
-            padding: 0.8rem 1.5rem;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            z-index: 1;
-            display: inline-block;
-        }
-        
-        .join-button:hover {
-            background-color: #d5ad0a;
-            transform: scale(1.05);
-            box-shadow: 0 0 15px var(--accent-color);
-        }
-        
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            background-color: var(--secondary-color);
-            margin-top: 3rem;
-        }
-        
-        footer p {
-            font-size: 0.9rem;
-            color: #aaa;
-        }
-        
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .subtitle {
-                font-size: 1rem;
-            }
-            
-            .team-intro h2 {
-                font-size: 1.8rem;
-            }
-            
-            .professors-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                gap: 1.5rem;
-            }
-            
-            .container {
-                padding: 1rem;
-            }
-        }
-        
-        /* Nav Button Animation */
-        .nav-button {
-            font-family: 'Rock Salt', cursive;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 15px rgba(229, 9, 9, 0.3);
-        }
-        
-        .nav-button:hover {
-            background-color: #c20808;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(229, 9, 9, 0.4);
-        }
-        
-        .nav-button:active {
-            transform: translateY(1px);
-        }
-        
-        .nav-button::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.3),
-                transparent
-            );
-            transition: 0.5s;
-        }
-        
-        .nav-button:hover::before {
-            left: 100%;
-        }
-        
-        .nav-button svg {
-            width: 20px;
-            height: 20px;
-            fill: white;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professores | NER - Nova Escola Rock</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red:       #ff3366;
+      --red-dark:  #c0001f;
+      --red-glow:  rgba(255, 51, 102, 0.6);
+      --gold:      #f1c40f;
+      --bg:        #0e0e0e;
+      --surface:   #1a1a1a;
+      --surface2:  #242424;
+      --text:      #f0f0f0;
+      --muted:     #888;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Barlow', sans-serif;
+      line-height: 1.6;
+      padding-top: 70px;
+      /* Subtle noise texture */
+      background-image:
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ff3366' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    /* ── HEADER ──────────────────────────────────── */
+    .rock-header {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      background: #000;
+      z-index: 1000;
+      border-bottom: 2px solid var(--red);
+      box-shadow: 0 0 20px var(--red-glow);
+    }
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      color: var(--red);
+      text-decoration: none;
+      letter-spacing: 3px;
+      text-shadow: 0 0 12px var(--red-glow);
+    }
+    .home-btn {
+      padding: 8px 18px;
+      background: var(--red);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .home-btn:hover {
+      background: var(--red-dark);
+      box-shadow: 0 4px 14px var(--red-glow);
+    }
+
+    /* ── HERO ────────────────────────────────────── */
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 64px 24px 48px;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 120px; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--red), transparent);
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(52px, 9vw, 90px);
+      color: var(--red);
+      letter-spacing: 6px;
+      text-shadow: 0 0 40px var(--red-glow);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .hero-sub {
+      color: var(--muted);
+      font-size: 1rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero-desc {
+      max-width: 680px;
+      margin: 0 auto;
+      color: #bbb;
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    /* ── GRID ────────────────────────────────────── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .professors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px;
+    }
+
+    /* ── CARD ────────────────────────────────────── */
+    .prof-card {
+      background: var(--surface);
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+      transition: transform 0.35s cubic-bezier(.22,.68,0,1.2), box-shadow 0.35s;
+      border: 1px solid transparent;
+      display: flex;
+      flex-direction: column;
+    }
+    .prof-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.6), 0 0 24px var(--red-glow);
+      border-color: var(--red);
+    }
+
+    /* Red accent line that sweeps on hover */
+    .prof-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%; height: 3px;
+      background: var(--red);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.35s ease;
+    }
+    .prof-card:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    /* Photo */
+    .prof-photo-wrap {
+      position: relative;
+      height: 270px;
+      overflow: hidden;
+    }
+    .prof-photo-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      filter: grayscale(30%) brightness(0.9);
+      transition: filter 0.4s, transform 0.5s;
+    }
+    .prof-card:hover .prof-photo-wrap img {
+      filter: grayscale(0%) brightness(1);
+      transform: scale(1.04);
+    }
+
+    /* Instrument badge over photo */
+    .instr-badge {
+      position: absolute;
+      top: 14px; right: 14px;
+      background: rgba(0,0,0,0.75);
+      border: 1px solid var(--red);
+      color: var(--red);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      backdrop-filter: blur(4px);
+    }
+
+    /* Body */
+    .prof-body {
+      padding: 22px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .prof-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.9rem;
+      letter-spacing: 2px;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .prof-xp {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .prof-xp::before {
+      content: '';
+      display: inline-block;
+      width: 28px; height: 2px;
+      background: var(--red);
+      border-radius: 2px;
+    }
+
+    .prof-bio {
+      font-size: 0.9rem;
+      color: #bbb;
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 16px;
+    }
+
+    .prof-style {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 18px;
+      padding-left: 10px;
+      border-left: 2px solid var(--red);
+    }
+
+    /* Social + CTA row */
+    .prof-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--surface2);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+    }
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--surface2);
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+    }
+    .social-link:hover {
+      background: var(--red);
+      color: #fff;
+      transform: scale(1.15);
+    }
+
+    .info-btn {
+      padding: 8px 20px;
+      background: transparent;
+      color: var(--red);
+      border: 2px solid var(--red);
+      border-radius: 6px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+    .info-btn:hover {
+      background: var(--red);
+      color: #fff;
+      box-shadow: 0 4px 14px var(--red-glow);
+    }
+
+    /* ── JOIN SECTION ─────────────────────────────── */
+    .join-section {
+      margin-top: 60px;
+      background: var(--surface);
+      border-radius: 14px;
+      border: 1px solid var(--surface2);
+      padding: 48px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .join-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ff3366' fill-opacity='0.04' fill-rule='evenodd'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 20.83l2.83-2.83 1.41 1.41L1.41 22.24H0v-1.41zM0 3.07l2.83-2.83 1.41 1.41L1.41 4.48H0V3.07zm28.24 35.52l1.41-1.41 2.83 2.83V40h-1.41l-2.83-2.83z'/%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .join-section h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(28px, 5vw, 42px);
+      color: var(--gold);
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .join-section p {
+      color: #bbb;
+      max-width: 640px;
+      margin: 0 auto 28px;
+      font-size: 1rem;
+      position: relative;
+    }
+    .join-btn {
+      display: inline-block;
+      padding: 14px 36px;
+      background: #25d366;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .join-btn:hover {
+      background: #1da851;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+    }
+
+    /* ── POPUP ────────────────────────────────────── */
+    .popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      backdrop-filter: blur(4px);
+    }
+    .popup-overlay.open { display: flex; }
+
+    .popup-box {
+      background: var(--surface);
+      border: 1px solid var(--red);
+      border-radius: 14px;
+      max-width: 460px;
+      width: 90%;
+      padding: 36px;
+      text-align: center;
+      box-shadow: 0 0 40px var(--red-glow);
+      animation: popIn 0.3s cubic-bezier(.22,.68,0,1.2);
+    }
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.88); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    .popup-box h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.7rem;
+      letter-spacing: 2px;
+      color: var(--red);
+      margin-bottom: 16px;
+    }
+    .popup-box p {
+      color: #bbb;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .popup-box strong { color: #25d366; }
+    .popup-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 24px;
+    }
+    .btn-whatsapp {
+      padding: 10px 24px;
+      background: #25d366;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .btn-whatsapp:hover {
+      background: #1da851;
+      box-shadow: 0 4px 14px rgba(37,211,102,0.4);
+    }
+    .btn-cancel {
+      padding: 10px 24px;
+      background: var(--surface2);
+      color: var(--muted);
+      border: 1px solid var(--surface2);
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-cancel:hover {
+      border-color: var(--red);
+      color: var(--text);
+    }
+
+    /* ── FOOTER ───────────────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 24px;
+      background: #000;
+      border-top: 1px solid var(--surface2);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────── */
+    @media (max-width: 600px) {
+      .professors-grid { grid-template-columns: 1fr; }
+      .join-section { padding: 36px 20px; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1 class="hero-title">NER - Nova Escola Rock</h1>
-        <p class="subtitle">Os Nossos mestres do rock que vão guiar a tua jornada musical</p>
-    </header>
-    
-    <div class="container">
-        <div class="team-intro">
-            <h2>Vem Conhecer a Nossa Equipa</h2>
-            <p>A NER tem orgulho de contar com professores experientes e apaixonados por música, cada um com o seu estilo único e histórico profissional. Todos partilham a mesma missão: despertar e desenvolver o talento musical em cada aluno, independentemente da idade ou nível.</p>
-        </div>
-        
-        <div class="professors-grid">
-            <!-- Professor 1 -->
-            <div class="professor-card">
-                <img src="/galeria-de-imagens/DatoFz2.jpg" alt="Professor de Guitarra" class="professor-image">
-                <div class="professor-info">
-                    <h3 class="professor-name">Deodato Barbosa</h3>
-                    <span class="professor-instrument">Deodato Barbosa Guitarra Clássica/Elétrica/Formação Musical</span>
-                    <div class="professor-experience">
-                        <span class="experience-icon">⭐</span>
-                        <span>30 anos de experiência</span>
-                    </div>
-                    <p class="professor-bio">Deodato Barbosa é um guitarrista com formação no Conservatório de Música de Braga e Escola de Jazz do Porto, com experiência em bandas de rock e metal. Especializou-se em técnicas de rock clássico, heavy metal e improvisação, tendo participado em diversos festivais, workshops e outros eventos como animação de crianças e jovens.</p>
-                    <p class="professor-style">Estilo musical: Rock Clássico, Metal, Blues</p>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/novaescolarock" class="social-link">📘</a>
-                        <a href="https://www.instagram.com/novaescolarock/" class="social-link">📸</a>
-                        <a href="https://www.youtube.com/@nernovaescolarock1669" class="social-link">▶️</a>
-                        <a href="https://www.facebook.com/deodatoformador/" class="social-link">🌐</a>
-                    </div>
-                    <a href="https://aprender-guitarra-2018.webnode.pt/quem-somos/" target="_blank" class="book-button">+ Info</a>
 
-                </div>
-            </div>
-
-            <!-- Professor 2 -->
-            <div class="professor-card">
-                <img src="/galeria-de-imagens/renato.jpg" alt="Professor de Guitarra" class="professor-image">
-                <div class="professor-info">
-                    <h3 class="professor-name">Renato Barbosa</h3>
-                    <span class="professor-instrument">Renato Barbosa Guitarra Elétrica/Produtor</span>
-                    <div class="professor-experience">
-                        <span class="experience-icon">⭐</span>
-                        <span>10 anos de experiência</span>
-                    </div>
-                    <p class="professor-bio">O mestre das cordas e da produção, onde o talento encontra a perfeição. Renato Barbosa é um virtuoso da guitarra, com experiência em bandas de rock e metal. 
-                        Especializou-se em técnicas de heavy metal e improvisação.</p>
-                    <p class="professor-style">Estilo musical: Rock Clássico, Metal, Blues</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link">🎵</a>
-                        <a href="#" class="social-link">📱</a>
-                        <a href="#" class="social-link">📹</a>
-                    </div>
-                    <button class="book-button">+ Info</button>
-                </div>
-            </div>
-            
-            <!-- Professor 3 -->
-            <div class="professor-card">
-                <img src="/galeria-de-imagens/FilipeMiguelCarvalho_Canto2.png" alt="Professor de Canto" class="professor-image">
-                <div class="professor-info">
-                    <h3 class="professor-name">Filipe Carvalho</h3>
-                    <span class="professor-instrument">Canto/Formação Musical</span>
-                    <div class="professor-experience">
-                        <span class="experience-icon">⭐</span>
-                        <span>20 anos de experiência</span>
-                    </div>
-                    <p class="professor-bio">Filipe Carvalho é Formado em música com especialização em técnica vocal.
-                    "Com um professor de canto dedicado, a tua voz não só vai brilhar, vai conquistar!". Desenvolve com os alunos técnicas de projeção, controle respiratório e interpretação.</p>
-                    <p class="professor-style">Estilo musical: Clássico & Rock</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link">🎵</a>
-                        <a href="#" class="social-link">📱</a>
-                        <a href="#" class="social-link">📹</a>
-                    </div>
-                    <button class="book-button">+ Info</button>
-                </div>
-            </div>
-            
-            <!-- Professor 4 -->
-            <div class="professor-card">
-                <img src="/galeria-de-imagens/filbass.jpg" alt="Professor de Baixo" class="professor-image">
-                <div class="professor-info">
-                    <h3 class="professor-name">Filipe Nunes</h3>
-                    <span class="professor-instrument">Baixo</span>
-                    <div class="professor-experience">
-                        <span class="experience-icon">⭐</span>
-                        <span>20 anos de experiência</span>
-                    </div>
-                    <p class="professor-bio">O baixo não é apenas um instrumento, é a força invisível que move a música — e um grande professor ensina a dominá-lo com alma e precisão. Filipe Nunes é um baixista versátil que já tocou em diversos estilos musicais e em diversas bandas. Especialista em técnicas de slap e tapping, entre outras, enfatiza a importância da ligação entre baixo e bateria para criar uma base sólida.</p>
-                    <p class="professor-style">Estilo musical: Funk, Rock, Punk, Metal, entre outros</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link">🎵</a>
-                        <a href="#" class="social-link">📱</a>
-                        <a href="#" class="social-link">📹</a>
-                    </div>
-                    <button class="book-button">+ Info</button>
-                </div>
-            </div>
-            
-            <!-- Professor 5 -->
-            <div class="professor-card">
-                <img src="/galeria-de-imagens/Sidónio Nunes.png" alt="Professor de Bateria" class="professor-image">
-                <div class="professor-info">
-                    <h3 class="professor-name">Sidónio Nunes</h3>
-                    <span class="professor-instrument">Bateria</span>
-                    <div class="professor-experience">
-                        <span class="experience-icon">⭐</span>
-                        <span>18 anos de experiência</span>
-                    </div>
-                    <p class="professor-bio">Com cada batida, Sidónio Nunes transforma o som em arte e a arte em emoção. O mestre da bateria que faz o ritmo pulsar na alma. É um baterista experiente com passagens por diversas bandas. Com forte domínio técnico e criativo, ensina desde rudimentos básicos até padrões complexos.</p>
-                    <p class="professor-style">Estilo musical: Heavy Metal, Hard Rock, Progressive, entre outros</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link">🎵</a>
-                        <a href="#" class="social-link">📱</a>
-                        <a href="#" class="social-link">📹</a>
-                    </div>
-                    <button class="book-button">+ Info</button>
-                </div>
-            </div>
-            
-            <!-- Professor 6 -->
-            <div class="professor-card">
-                <img src="/galeria-de-imagens/filipe_piano.png" alt="Professor de Piano" class="professor-image">
-                <div class="professor-info">
-                    <h3 class="professor-name">Filipe Carvalho</h3>
-                    <span class="professor-instrument">Piano/Teclado/Formação Musical</span>
-                    <div class="professor-experience">
-                        <span class="experience-icon">⭐</span>
-                        <span>15 anos de experiência</span>
-                    </div>
-                    <p class="professor-bio">Mais do que ensinar notas, Filipe Carvalho guia mãos e corações para a verdadeira magia da música... Trabalha técnicas clássicas aplicadas ao contexto não só Clássico, como também do rock e composição.</p>
-                    <p class="professor-style">Estilo musical: Clássico, Rock Progressivo, Rock Classico</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link">🎵</a>
-                        <a href="#" class="social-link">📱</a>
-                        <a href="#" class="social-link">📹</a>
-                    </div>
-                    <button class="book-button">+ Info</button>
-                </div>
-            </div>
-        </div>
-        
-       <div class="join-team">
-    <h3>Queres fazer parte da nossa equipa?</h3>
-    <p>Estamos sempre à procura de talentosos professores de música para expandir a nossa equipa. Se és um músico experiente e tens paixão por ensinar, entra em contacto conosco.</p>
-    
-    <!-- Botão de candidatura que abre o popup primeiro -->
-    <button id="openPopupBtn" class="join-button">Candidatura</button>
-    
-    <!-- O Pop-up de instruções -->
-    <div id="instructionPopup" class="popup-overlay">
-        <div class="popup-content">
-            <h4>Como concluires a candidatura</h4>
-            <p>Ao clicares em "Ir para o WhatsApp", serás direcionado para o aplicativo.</p>
-            <p>Uma mensagem já estará preparada. <strong>Basta clicares no botão de enviar</strong> no WhatsApp para completares a tua candidatura.</p>
-            <p>Agradecemos o teu interesse! Entraremos em contacto o mais breve possível.</p>
-            <div class="popup-buttons">
-                <button id="continueToWhatsApp" class="continue-button">Ir para o WhatsApp</button>
-                <button id="closePopup" class="cancel-button">Cancelar</button>
-            </div>
-        </div>
+  <!-- HEADER -->
+  <header class="rock-header">
+    <div class="header-content">
+      <a href="#" class="logo">Nova Escola Rock</a>
+      <a href="https://datofz89.github.io/" class="home-btn">← Voltar ao Início</a>
     </div>
-    
-    <style>
-    /* Estilos para o pop-up */
-    .popup-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.7);
-        display: none; /* Começa oculto */
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-    }
-    
-    .popup-content {
-        background-color: white;
-        padding: 30px;
-        border-radius: 10px;
-        max-width: 500px;
-        width: 80%;
-        text-align: center;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-    
-    .popup-content h4 {
-        color: #333;
-        margin-top: 0;
-        margin-bottom: 20px;
-        font-size: 20px;
-    }
-    
-    .popup-content p {
-        color: #555;
-        margin-bottom: 15px;
-        line-height: 1.5;
-    }
-    
-    .popup-content strong {
-        color: #25d366; /* Cor do WhatsApp */
-    }
-    
-    .popup-buttons {
-        margin-top: 25px;
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-    }
-    
-    .continue-button {
-        background-color: #25d366; /* Cor do WhatsApp */
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-weight: bold;
-    }
-    
-    .cancel-button {
-        background-color: #f1f1f1;
-        color: #333;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    
-    /* Botão principal de candidatura */
-    .join-button {
-        background-color: #0078d7;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-weight: bold;
-        font-size: 16px;
-    }
-    </style>
-    
-    <script>
-    // Código JavaScript para controlar o popup
-    document.addEventListener('DOMContentLoaded', function() {
-        const openPopupBtn = document.getElementById('openPopupBtn');
-        const instructionPopup = document.getElementById('instructionPopup');
-        const continueToWhatsApp = document.getElementById('continueToWhatsApp');
-        const closePopup = document.getElementById('closePopup');
-        
-        // Abrir o popup quando clicar em "Candidatar-se"
-        openPopupBtn.addEventListener('click', function() {
-            instructionPopup.style.display = 'flex';
-        });
-        
-        // Fechar o popup quando clicar em "Cancelar"
-        closePopup.addEventListener('click', function() {
-            instructionPopup.style.display = 'none';
-        });
-        
-        // Fechar o popup se clicar fora da área de conteúdo
-        instructionPopup.addEventListener('click', function(e) {
-            if (e.target === instructionPopup) {
-                instructionPopup.style.display = 'none';
-            }
-        });
-        
-        // Redirecionar para o WhatsApp quando clicar em "Ir para o WhatsApp"
-        continueToWhatsApp.addEventListener('click', function() {
-            // Fechar o popup
-            instructionPopup.style.display = 'none';
-            
-            // Redirecionar para o WhatsApp com a mensagem pré-definida
-            const whatsappLink = 'https://api.whatsapp.com/send/?phone=351938066695&text=Olá,%20gostaria%20de%20me%20candidatar%20à%20Nova%20Escola%20Rock.';
-            window.open(whatsappLink, '_blank');
-        });
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1 class="hero-title">Os Professores</h1>
+    <p class="hero-sub">Os mestres que vão guiar a tua jornada musical</p>
+    <p class="hero-desc">A NER tem orgulho de contar com professores experientes e apaixonados por música, cada um com o seu estilo único. Todos partilham a mesma missão: despertar e desenvolver o talento em cada aluno, independentemente da idade ou nível.</p>
+  </section>
+
+  <!-- GRID -->
+  <div class="container">
+    <div class="professors-grid">
+
+      <!-- ── Deodato Barbosa ── -->
+      <div class="prof-card">
+        <div class="prof-photo-wrap">
+          <img src="/galeria-de-imagens/DatoFz2.jpg" alt="Deodato Barbosa">
+          <span class="instr-badge">🎸 Guitarra</span>
+        </div>
+        <div class="prof-body">
+          <h3 class="prof-name">Deodato Barbosa</h3>
+          <p class="prof-xp">30 anos de experiência</p>
+          <p class="prof-bio">Formado no Conservatório de Música de Braga e Escola de Jazz do Porto, com experiência em bandas de rock e metal. Especializado em técnicas de rock clássico, heavy metal e improvisação, tendo participado em festivais, workshops e animações para crianças e jovens.</p>
+          <p class="prof-style">Rock Clássico · Heavy Metal · Blues</p>
+          <div class="prof-footer">
+            <div class="social-links">
+              <a href="https://www.facebook.com/novaescolarock" class="social-link" target="_blank" title="Facebook NER">f</a>
+              <a href="https://www.instagram.com/novaescolarock/" class="social-link" target="_blank" title="Instagram NER">ig</a>
+              <a href="https://www.youtube.com/@nernovaescolarock1669" class="social-link" target="_blank" title="YouTube NER">yt</a>
+              <a href="https://www.facebook.com/deodatoformador/" class="social-link" target="_blank" title="Facebook Pessoal">fb</a>
+            </div>
+            <a href="https://aprender-guitarra-2018.webnode.pt/quem-somos/" target="_blank" class="info-btn">+ Info</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Renato Barbosa ── -->
+      <div class="prof-card">
+        <div class="prof-photo-wrap">
+          <img src="/galeria-de-imagens/renato.jpg" alt="Renato Barbosa">
+          <span class="instr-badge">🎸 Guitarra · Produção</span>
+        </div>
+        <div class="prof-body">
+          <h3 class="prof-name">Renato Barbosa</h3>
+          <p class="prof-xp">10 anos de experiência</p>
+          <p class="prof-bio">Virtuoso da guitarra e produtor musical, com experiência em bandas de rock e metal. Especializado em técnicas de heavy metal e improvisação — o mestre das cordas onde o talento encontra a perfeição.</p>
+          <p class="prof-style">Rock Clássico · Heavy Metal · Blues</p>
+          <div class="prof-footer">
+            <div class="social-links">
+              <a href="#" class="social-link" title="Facebook">f</a>
+              <a href="#" class="social-link" title="Instagram">ig</a>
+              <a href="#" class="social-link" title="YouTube">yt</a>
+            </div>
+            <button class="info-btn">+ Info</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Filipe Carvalho (Canto) ── -->
+      <div class="prof-card">
+        <div class="prof-photo-wrap">
+          <img src="/galeria-de-imagens/FilipeMiguelCarvalho_Canto2.png" alt="Filipe Carvalho - Canto">
+          <span class="instr-badge">🎤 Canto</span>
+        </div>
+        <div class="prof-body">
+          <h3 class="prof-name">Filipe Carvalho</h3>
+          <p class="prof-xp">20 anos de experiência</p>
+          <p class="prof-bio">Formado em música com especialização em técnica vocal. Desenvolve com os alunos técnicas de projeção, controlo respiratório e interpretação. Com um professor de canto dedicado, a tua voz não só vai brilhar — vai conquistar.</p>
+          <p class="prof-style">Clássico · Rock</p>
+          <div class="prof-footer">
+            <div class="social-links">
+              <a href="#" class="social-link" title="Facebook">f</a>
+              <a href="#" class="social-link" title="Instagram">ig</a>
+              <a href="#" class="social-link" title="YouTube">yt</a>
+            </div>
+            <button class="info-btn">+ Info</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Filipe Nunes (Baixo) ── -->
+      <div class="prof-card">
+        <div class="prof-photo-wrap">
+          <img src="/galeria-de-imagens/filbass.jpg" alt="Filipe Nunes - Baixo">
+          <span class="instr-badge">🎸 Baixo</span>
+        </div>
+        <div class="prof-body">
+          <h3 class="prof-name">Filipe Nunes</h3>
+          <p class="prof-xp">20 anos de experiência</p>
+          <p class="prof-bio">Baixista versátil que já tocou em diversos estilos e bandas. Especialista em técnicas de slap e tapping, enfatiza a importância da ligação entre baixo e bateria para criar uma base sólida. O baixo não é apenas um instrumento — é a força invisível que move a música.</p>
+          <p class="prof-style">Funk · Rock · Punk · Metal</p>
+          <div class="prof-footer">
+            <div class="social-links">
+              <a href="#" class="social-link" title="Facebook">f</a>
+              <a href="#" class="social-link" title="Instagram">ig</a>
+              <a href="#" class="social-link" title="YouTube">yt</a>
+            </div>
+            <button class="info-btn">+ Info</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Sidónio Nunes (Bateria) ── -->
+      <div class="prof-card">
+        <div class="prof-photo-wrap">
+          <img src="/galeria-de-imagens/Sidónio Nunes.png" alt="Sidónio Nunes - Bateria">
+          <span class="instr-badge">🥁 Bateria</span>
+        </div>
+        <div class="prof-body">
+          <h3 class="prof-name">Sidónio Nunes</h3>
+          <p class="prof-xp">18 anos de experiência</p>
+          <p class="prof-bio">Baterista experiente com passagens por diversas bandas. Com forte domínio técnico e criativo, ensina desde rudimentos básicos até padrões complexos. Com cada batida, transforma o som em arte e a arte em emoção pura.</p>
+          <p class="prof-style">Heavy Metal · Hard Rock · Progressive</p>
+          <div class="prof-footer">
+            <div class="social-links">
+              <a href="#" class="social-link" title="Facebook">f</a>
+              <a href="#" class="social-link" title="Instagram">ig</a>
+              <a href="#" class="social-link" title="YouTube">yt</a>
+            </div>
+            <button class="info-btn">+ Info</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Filipe Carvalho (Piano) ── -->
+      <div class="prof-card">
+        <div class="prof-photo-wrap">
+          <img src="/galeria-de-imagens/filipe_piano.png" alt="Filipe Carvalho - Piano">
+          <span class="instr-badge">🎹 Piano · Teclado</span>
+        </div>
+        <div class="prof-body">
+          <h3 class="prof-name">Filipe Carvalho</h3>
+          <p class="prof-xp">15 anos de experiência</p>
+          <p class="prof-bio">Mais do que ensinar notas, guia mãos e corações para a verdadeira magia da música. Trabalha técnicas clássicas aplicadas ao contexto do rock e composição, com uma abordagem que vai do clássico ao progressivo.</p>
+          <p class="prof-style">Clássico · Rock Progressivo · Rock Clássico</p>
+          <div class="prof-footer">
+            <div class="social-links">
+              <a href="#" class="social-link" title="Facebook">f</a>
+              <a href="#" class="social-link" title="Instagram">ig</a>
+              <a href="#" class="social-link" title="YouTube">yt</a>
+            </div>
+            <button class="info-btn">+ Info</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /professors-grid -->
+
+    <!-- JOIN SECTION -->
+    <div class="join-section">
+      <h3>Queres fazer parte da nossa equipa?</h3>
+      <p>Estamos sempre à procura de talentosos professores de música. Se és um músico experiente com paixão por ensinar, entra em contacto connosco.</p>
+      <button class="join-btn" id="openPopupBtn">💬 Candidatura via WhatsApp</button>
+    </div>
+
+  </div><!-- /container -->
+
+  <footer>
+    <p>© 2026 NER - Nova Escola Rock — Todos os direitos reservados</p>
+  </footer>
+
+  <!-- POPUP -->
+  <div id="popup" class="popup-overlay">
+    <div class="popup-box">
+      <h4>Candidatura</h4>
+      <p>Ao clicares em <strong style="color:var(--red)">"Ir para o WhatsApp"</strong>, serás redirecionado para a aplicação.</p>
+      <p>Uma mensagem já estará preparada — <strong>basta carregar em enviar</strong> para completares a tua candidatura.</p>
+      <p>Agradecemos o teu interesse! Entraremos em contacto o mais breve possível.</p>
+      <div class="popup-actions">
+        <button class="btn-whatsapp" id="goWhatsApp">Ir para o WhatsApp</button>
+        <button class="btn-cancel" id="closePopup">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const popup = document.getElementById('popup');
+    document.getElementById('openPopupBtn').addEventListener('click', () => popup.classList.add('open'));
+    document.getElementById('closePopup').addEventListener('click', () => popup.classList.remove('open'));
+    popup.addEventListener('click', e => { if (e.target === popup) popup.classList.remove('open'); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') popup.classList.remove('open'); });
+    document.getElementById('goWhatsApp').addEventListener('click', () => {
+      popup.classList.remove('open');
+      window.open('https://api.whatsapp.com/send/?phone=351938066695&text=Ol%C3%A1%2C+gostaria+de+me+candidatar+%C3%A0+Nova+Escola+Rock.', '_blank');
     });
-    </script>
-</div>
-    </div>
-    
-    <footer>
-        <p>© 2025 NER - Nova Escola Rock - Todos os direitos reservados</p>
-    </footer>
-
-   
+  </script>
 </body>
 </html>
