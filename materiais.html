@@ -5,8 +5,7 @@
 <title>Materiais | NER - Nova Escola Rock</title> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 <link 
-href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700
-&family=Metal+Mania&display=swap" rel="stylesheet"> 
+href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&family=Metal+Mania&display=swap" rel="stylesheet"> 
 <style> 
   :root { 
     --red: #e60000; 
@@ -25,7 +24,6 @@ href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700
   * { box-sizing: border-box; margin: 0; padding: 0; } 
   body { 
     font-family: var(--font); 
- 
     background: var(--bg); 
     color: var(--text); 
     min-height: 100vh; 
@@ -137,13 +135,11 @@ href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700
     padding: 16px 20px; 
     background: linear-gradient(90deg, rgba(230,0,0,0.15), transparent); 
     border-bottom: 1px solid var(--border); 
- 
     cursor: pointer; 
     user-select: none; 
     transition: background 0.2s; 
   } 
-  .card-header:hover { background: linear-gradient(90deg, rgba(230,0,0,0.25), 
-transparent); } 
+  .card-header:hover { background: linear-gradient(90deg, rgba(230,0,0,0.25), transparent); } 
   .card-header h2 { 
     font-size: 1.05rem; 
     font-weight: 500; 
@@ -221,14 +217,12 @@ transparent); }
     text-align: left; 
     transition: all 0.2s; 
   } 
-  .subfolder-toggle:hover { background: linear-gradient(90deg, rgba(230,0,0,0.25), 
-var(--bg4)); } 
+  .subfolder-toggle:hover { background: linear-gradient(90deg, rgba(230,0,0,0.25), var(--bg4)); } 
   .subfolder-content { 
     display: none; 
     padding-left: 18px; 
     padding-top: 6px; 
     list-style: none; 
-    display: none; 
     gap: 5px; 
   } 
   .subfolder-content.open { display: grid; } 
@@ -304,8 +298,7 @@ var(--bg4)); }
     border: none; 
     cursor: pointer; 
   } 
-  .play-btn:hover { background: linear-gradient(90deg, var(--red-hover), #b30000); 
-transform: scale(1.02); } 
+  .play-btn:hover { background: linear-gradient(90deg, var(--red-hover), #b30000); transform: scale(1.02); } 
   /* ── MODAL PREVIEW ── */ 
   #previewModal { 
     display: none; 
@@ -409,8 +402,7 @@ transform: scale(1.02); }
     font-family: var(--font); 
     margin-bottom: 6px; 
   } 
-  .err-pass { color: #ff4d4d; font-size: 0.85rem; margin-bottom: 10px; display: none; 
-} 
+  .err-pass { color: #ff4d4d; font-size: 0.85rem; margin-bottom: 10px; display: none; } 
   .pass-actions { display: flex; gap: 10px; justify-content: center; margin-top: 4px; } 
   .btn-dl { 
     padding: 9px 22px; 
@@ -465,7 +457,6 @@ transform: scale(1.02); }
     color: #fff; 
     border: none; 
     padding: 9px 14px; 
- 
     border-radius: 4px; 
     cursor: pointer; 
     font-family: var(--font); 
@@ -491,7 +482,6 @@ transform: scale(1.02); }
 <header> 
   <h1>Materiais de Estudo</h1> 
   <p>NER – Nova Escola Rock</p> 
- 
   <a href="index.html" class="btn-inicio">← Início</a> 
 </header> 
 <main> 
@@ -509,8 +499,6 @@ transform: scale(1.02); }
   </nav> 
   <!-- ===== GUITARRA ===== --> 
   <div id="tab-guitarra" class="panel active"> 
- 
- 
     <div class="card"> 
       <div class="card-header open" onclick="toggleCard(this)"> 
         <span class="card-icon">       </span> 
@@ -519,82 +507,35 @@ transform: scale(1.02); }
       </div> 
       <div class="card-body open"> 
         <ul class="file-list"> 
-          <li><a 
-href="ficheiros/guitarra/aquecimento_diario_guitarristas_iniciantes.pdf" 
-download><span class="file-icon">    </span> Aquecimento Diário</a></li> 
-          <li><a href="ficheiros/guitarra/cinco_desenhos_pentatonica.pdf" 
-download><span class="file-icon">    </span> 5 Desenhos da Escala 
-Pentatónica</a></li> 
-          <li><a href="ficheiros/guitarra/cinco_formas_escala_do_maior.rar" 
-download><span class="file-icon">      </span> Cinco Formas da Escala do 
-Maior</a></li> 
-          <li><a href="ficheiros/guitarra/dedilhado_com_um_so_dedo_guit1.pdf" 
-download><span class="file-icon">    </span> Dedilhado com um só dedo – 
-Guitarra 1</a></li> 
-          <li><a href="ficheiros/guitarra/dedilhado_com_um_so_dedo_guit2.pdf" 
-download><span class="file-icon">    </span> Dedilhado com um só dedo – 
-Guitarra 2</a></li> 
-          <li><a href="ficheiros/guitarra/dedilhados_simples_1.png" download><span 
-class="file-icon">🖼</span> Dedilhados Simples</a></li> 
-          <li><a 
-href="ficheiros/guitarra/eric_clapton_wonderful_tonight_exercicio_bends.pdf" 
-download><span class="file-icon">    </span> Wonderful Tonight – Eric Clapton 
-Bend Exercise</a></li> 
-          <li><a href="ficheiros/guitarra/exercicios-de-pentatonica.pdf" 
-download><span class="file-icon">    </span> Exercício de Pentatónica</a></li> 
-          <li><a href="ficheiros/guitarra/exercicios_ritmicos.pdf" download><span 
-class="file-icon">    </span> Exercícios Rítmicos</a></li> 
-          <li><a href="ficheiros/guitarra/figuras_ritmicas_e_seu_valor.pdf" 
-download><span class="file-icon">    </span> Figuras Rítmicas & seu 
-Valor</a></li> 
-          <li><a 
-href="ficheiros/guitarra/guia_aquecimento_diario_rock_completo_profissional.pdf
-" download><span class="file-icon">    </span> Guia Completo de Aquecimento 
-Diário</a></li> 
-          <li><a href="ficheiros/guitarra/independencia_de_dedos.pdf" 
-download><span class="file-icon">    </span> Independência de Dedos</a></li> 
-          <li><a href="ficheiros/guitarra/lá_ré_mi_power_chords.jpg" download><span 
-class="file-icon">🖼</span> Lá Ré Mi – Power Chords</a></li> 
-          <li><a href="ficheiros/guitarra/notas_no_braco_da_guitarra.pdf" 
-download><span class="file-icon">    </span> Notas no Braço da 
-Guitarra</a></li> 
-          <li><a href="ficheiros/guitarra/as_escalas_pentatónicas_extensoes.pdf" 
-download><span class="file-icon">    </span> Pentatónica – Extensões</a></li> 
-          <li><a href="ficheiros/guitarra/palm_muting_exercicios.pdf" download><span 
-class="file-icon">    </span> Palm Muting – Exercícios</a></li> 
-          <li><a href="ficheiros/guitarra/primeira_musica_queen_descricao.pdf" 
-download><span class="file-icon">    </span> Primeira Música – We Will Rock 
-You – E5 Power Chord</a></li> 
-          <li><a href="ficheiros/guitarra/primeiros_3_acordes.png" download><span 
-class="file-icon">🖼</span> Primeiros 3 Acordes</a></li> 
-          <li><a href="ficheiros/guitarra/os_primeiros_ritmos.pdf" download><span 
-class="file-icon">    </span> Primeiros Ritmos – Mão Direita</a></li> 
-          <li><a href="ficheiros/guitarra/quintas_posição_aberta.png" download><span 
-class="file-icon">🖼</span> Quintas em Posição Aberta</a></li> 
-          <li><a href="ficheiros/guitarra/sequencia_power_chords_a5_g5_f5.png" 
-download><span class="file-icon">🖼</span> Power Chords Exercise 1</a></li> 
-          <li><a 
-href="ficheiros/guitarra/single_chord_backingtrack_eminor_60bpm.pdf" 
-download><span class="file-icon">    </span> Single Chord Palm Muting 
-Exercise</a></li> 
-          <li><a href="ficheiros/guitarra/we_will_rock_you_melodia_guit1.pdf" 
-download><span class="file-icon">    </span> We Will Rock You – Melodia – Guit 
-1</a></li> 
-          <li><a href="ficheiros/guitarra/we_will_rock_you_melodia_guit2.pdf" 
-download><span class="file-icon">    </span> We Will Rock You – Melodia – Guit 
-2</a></li> 
-          <li><a href="ficheiros/guitarra/afinação_standard.png" download><span 
-class="file-icon">🖼</span> Afinação Standard</a></li> 
-          <li><a href="ficheiros/guitarra/afinação_tab.png" download><span 
-class="file-icon">🖼</span> Afinação TAB</a></li> 
+          <li><a href="ficheiros/guitarra/aquecimento_diario_guitarristas_iniciantes.pdf" download><span class="file-icon">    </span> Aquecimento Diário</a></li> 
+          <li><a href="ficheiros/guitarra/cinco_desenhos_pentatonica.pdf" download><span class="file-icon">    </span> 5 Desenhos da Escala Pentatónica</a></li> 
+          <li><a href="ficheiros/guitarra/cinco_formas_escala_do_maior.rar" download><span class="file-icon">      </span> Cinco Formas da Escala do Maior</a></li> 
+          <li><a href="ficheiros/guitarra/dedilhado_com_um_so_dedo_guit1.pdf" download><span class="file-icon">    </span> Dedilhado com um só dedo – Guitarra 1</a></li> 
+          <li><a href="ficheiros/guitarra/dedilhado_com_um_so_dedo_guit2.pdf" download><span class="file-icon">    </span> Dedilhado com um só dedo – Guitarra 2</a></li> 
+          <li><a href="ficheiros/guitarra/dedilhados_simples_1.png" download><span class="file-icon">🖼</span> Dedilhados Simples</a></li> 
+          <li><a href="ficheiros/guitarra/eric_clapton_wonderful_tonight_exercicio_bends.pdf" download><span class="file-icon">    </span> Wonderful Tonight – Eric Clapton Bend Exercise</a></li> 
+          <li><a href="ficheiros/guitarra/exercicios-de-pentatonica.pdf" download><span class="file-icon">    </span> Exercício de Pentatónica</a></li> 
+          <li><a href="ficheiros/guitarra/exercicios_ritmicos.pdf" download><span class="file-icon">    </span> Exercícios Rítmicos</a></li> 
+          <li><a href="ficheiros/guitarra/figuras_ritmicas_e_seu_valor.pdf" download><span class="file-icon">    </span> Figuras Rítmicas &amp; seu Valor</a></li> 
+          <li><a href="ficheiros/guitarra/guia_aquecimento_diario_rock_completo_profissional.pdf" download><span class="file-icon">    </span> Guia Completo de Aquecimento Diário</a></li> 
+          <li><a href="ficheiros/guitarra/independencia_de_dedos.pdf" download><span class="file-icon">    </span> Independência de Dedos</a></li> 
+          <li><a href="ficheiros/guitarra/lá_ré_mi_power_chords.jpg" download><span class="file-icon">🖼</span> Lá Ré Mi – Power Chords</a></li> 
+          <li><a href="ficheiros/guitarra/notas_no_braco_da_guitarra.pdf" download><span class="file-icon">    </span> Notas no Braço da Guitarra</a></li> 
+          <li><a href="ficheiros/guitarra/as_escalas_pentatónicas_extensoes.pdf" download><span class="file-icon">    </span> Pentatónica – Extensões</a></li> 
+          <li><a href="ficheiros/guitarra/palm_muting_exercicios.pdf" download><span class="file-icon">    </span> Palm Muting – Exercícios</a></li> 
+          <li><a href="ficheiros/guitarra/primeira_musica_queen_descricao.pdf" download><span class="file-icon">    </span> Primeira Música – We Will Rock You – E5 Power Chord</a></li> 
+          <li><a href="ficheiros/guitarra/primeiros_3_acordes.png" download><span class="file-icon">🖼</span> Primeiros 3 Acordes</a></li> 
+          <li><a href="ficheiros/guitarra/os_primeiros_ritmos.pdf" download><span class="file-icon">    </span> Primeiros Ritmos – Mão Direita</a></li> 
+          <li><a href="ficheiros/guitarra/quintas_posição_aberta.png" download><span class="file-icon">🖼</span> Quintas em Posição Aberta</a></li> 
+          <li><a href="ficheiros/guitarra/sequencia_power_chords_a5_g5_f5.png" download><span class="file-icon">🖼</span> Power Chords Exercise 1</a></li> 
+          <li><a href="ficheiros/guitarra/single_chord_backingtrack_eminor_60bpm.pdf" download><span class="file-icon">    </span> Single Chord Palm Muting Exercise</a></li> 
+          <li><a href="ficheiros/guitarra/we_will_rock_you_melodia_guit1.pdf" download><span class="file-icon">    </span> We Will Rock You – Melodia – Guit 1</a></li> 
+          <li><a href="ficheiros/guitarra/we_will_rock_you_melodia_guit2.pdf" download><span class="file-icon">    </span> We Will Rock You – Melodia – Guit 2</a></li> 
+          <li><a href="ficheiros/guitarra/afinação_standard.png" download><span class="file-icon">🖼</span> Afinação Standard</a></li> 
+          <li><a href="ficheiros/guitarra/afinação_tab.png" download><span class="file-icon">🖼</span> Afinação TAB</a></li> 
           <!-- Links externos --> 
-          <li><a href="https://mega.nz/file/ioBXUI4I#B0IfW3zrzkuFOKs7JgM-
-zVXM5G5oZCeY4sRei6D9DM" target="_blank"><span class="file-
-icon">  </span> Padrões Melódicos 1</a></li> 
-          <li><a 
-href="https://mega.nz/file/2s4WRAxR#ZwkNiK583lXtgkNymbzvhgkK5IxAIiVeBFrxZ
-pgt5-g" target="_blank"><span class="file-icon">  </span> Licks Instantâneos – 
-Sunshine of Your Love</a></li> 
+          <li><a href="https://mega.nz/file/ioBXUI4I#B0IfW3zrzkuFOKs7JgM-zVXM5G5oZCeY4sRei6D9DM" target="_blank"><span class="file-icon">  </span> Padrões Melódicos 1</a></li> 
+          <li><a href="https://mega.nz/file/2s4WRAxR#ZwkNiK583lXtgkNymbzvhgkK5IxAIiVeBFrxZpgt5-g" target="_blank"><span class="file-icon">  </span> Licks Instantâneos – Sunshine of Your Love</a></li> 
           <!-- Guitar Pro subfolder --> 
           <li> 
             <button class="subfolder-toggle" onclick="toggleSub('gpSub')"> 
@@ -603,18 +544,10 @@ Sunshine of Your Love</a></li>
               <span style="margin-left:auto; color:var(--red);">▼</span> 
             </button> 
             <ul id="gpSub" class="subfolder-content"> 
-              <li><a 
-href="ficheiros/guitarra/eric_clapton_wonderful_tonight_exercicio_bends.gp5" 
-download><span class="file-icon">       </span> Wonderful Tonight – Exercício de 
-Bends</a></li> 
-              <li><a href="ficheiros/guitarra/eric_clapton_wonderful_tonight_full.gp5" 
-download><span class="file-icon">       </span> Wonderful Tonight – 
-Completa</a></li> 
-              <li><a href="ficheiros/guitarra/exercicios-escala-pentatonica-menor-de-
-la.gp5" download><span class="file-icon">       </span> Escala Pentatónica Menor 
-de Lá</a></li> 
-              <li><a href="ficheiros/guitarra/independencia_de_dedos.gp5" 
-download><span class="file-icon">       </span> Independência de Dedos</a></li> 
+              <li><a href="ficheiros/guitarra/eric_clapton_wonderful_tonight_exercicio_bends.gp5" download><span class="file-icon">       </span> Wonderful Tonight – Exercício de Bends</a></li> 
+              <li><a href="ficheiros/guitarra/eric_clapton_wonderful_tonight_full.gp5" download><span class="file-icon">       </span> Wonderful Tonight – Completa</a></li> 
+              <li><a href="ficheiros/guitarra/exercicios-escala-pentatonica-menor-de-la.gp5" download><span class="file-icon">       </span> Escala Pentatónica Menor de Lá</a></li> 
+              <li><a href="ficheiros/guitarra/independencia_de_dedos.gp5" download><span class="file-icon">       </span> Independência de Dedos</a></li> 
             </ul> 
           </li> 
         </ul> 
@@ -628,11 +561,8 @@ download><span class="file-icon">       </span> Independência de Dedos</a></li>
       </div> 
       <div class="card-body"> 
         <ul class="file-list"> 
-          <li><a href="ficheiros/guitarra/ner_psicologia_na_musica_v3.pdf" 
-download><span class="file-icon">    </span> NER – Psicologia na Música 
-(V3)</a></li> 
-          <li><a href="ficheiros/outros/ner_inscricao_de_socio.docx" download><span 
-class="file-icon">         </span> Ficha de Inscrição de Sócio</a></li> 
+          <li><a href="ficheiros/guitarra/ner_psicologia_na_musica_v3.pdf" download><span class="file-icon">    </span> NER – Psicologia na Música (V3)</a></li> 
+          <li><a href="ficheiros/outros/ner_inscricao_de_socio.docx" download><span class="file-icon">         </span> Ficha de Inscrição de Sócio</a></li> 
         </ul> 
       </div> 
     </div> 
@@ -647,22 +577,13 @@ class="file-icon">         </span> Ficha de Inscrição de Sócio</a></li>
       </div> 
       <div class="card-body open"> 
         <ul class="file-list"> 
-          <li><a href="ficheiros/guitarra/curso_improvisacao_modulos_1_3.pdf" 
-download><span class="file-icon">    </span> Módulos 1 a 3</a></li> 
-          <li><a href="ficheiros/guitarra/curso_improvisacao_modulos_4_5_6.pdf" 
-download><span class="file-icon">    </span> Módulos 4 a 6</a></li> 
-          <li><a href="ficheiros/guitarra/curso_improvisacao_modulos_7_8_9.pdf" 
-download><span class="file-icon">    </span> Módulos 7 a 9</a></li> 
-          <li><a href="ficheiros/guitarra/curso_improvisacao_modulo_10.pdf" 
-download><span class="file-icon">    </span> Módulo 10</a></li> 
-          <li><a 
-href="ficheiros/guitarra/curso_improvisacao_consideracoes_finais.pdf" 
-download><span class="file-icon">    </span> Considerações Finais do 
-Curso</a></li> 
-          <li><a href="ficheiros/guitarra/curso_improvisacao_psicologia.pdf" 
-download><span class="file-icon">    </span> A Psicologia na Guitarra</a></li> 
+          <li><a href="ficheiros/guitarra/curso_improvisacao_modulos_1_3.pdf" download><span class="file-icon">    </span> Módulos 1 a 3</a></li> 
+          <li><a href="ficheiros/guitarra/curso_improvisacao_modulos_4_5_6.pdf" download><span class="file-icon">    </span> Módulos 4 a 6</a></li> 
+          <li><a href="ficheiros/guitarra/curso_improvisacao_modulos_7_8_9.pdf" download><span class="file-icon">    </span> Módulos 7 a 9</a></li> 
+          <li><a href="ficheiros/guitarra/curso_improvisacao_modulo_10.pdf" download><span class="file-icon">    </span> Módulo 10</a></li> 
+          <li><a href="ficheiros/guitarra/curso_improvisacao_consideracoes_finais.pdf" download><span class="file-icon">    </span> Considerações Finais do Curso</a></li> 
+          <li><a href="ficheiros/guitarra/curso_improvisacao_psicologia.pdf" download><span class="file-icon">    </span> A Psicologia na Guitarra</a></li> 
         </ul> 
- 
       </div> 
     </div> 
   </div> 
@@ -676,25 +597,11 @@ download><span class="file-icon">    </span> A Psicologia na Guitarra</a></li>
       </div> 
       <div class="card-body open"> 
         <ul class="file-list"> 
-          <li><a 
-href="ficheiros/guitarra/manual_guitarra_nivel1_spark_semanas_1a4.pdf" 
-download><span class="file-icon">    </span> Nível 1 – Spark (Semanas 1–
-4)</a></li> 
-          <li><a 
-href="ficheiros/guitarra/manual_guitarra_nivel2_flame_semanas_5a8.pdf" 
-download><span class="file-icon">    </span> Nível 2 – Flame (Semanas 5–
-8)</a></li> 
-          <li><a 
-href="ficheiros/guitarra/manual_guitarra_nivel3_blaze_semanas_9a12.pdf" 
-download><span class="file-icon">    </span> Nível 3 – Blaze (Semanas 9–
-12)</a></li> 
-          <li><a 
-href="ficheiros/guitarra/manual_guitarra_nivel4_inferno_semanas_13a16.pdf" 
-download><span class="file-icon">    </span> Nível 4 – Inferno (Semanas 13–
-16)</a></li> 
-          <li><a 
-href="ficheiros/guitarra/O_Arsenal_do_Guitarrista_Domínio_e_Expressão.pdf" 
-download><span class="file-icon">    </span> O Arsenal do Guitarrista</a></li> 
+          <li><a href="ficheiros/guitarra/manual_guitarra_nivel1_spark_semanas_1a4.pdf" download><span class="file-icon">    </span> Nível 1 – Spark (Semanas 1–4)</a></li> 
+          <li><a href="ficheiros/guitarra/manual_guitarra_nivel2_flame_semanas_5a8.pdf" download><span class="file-icon">    </span> Nível 2 – Flame (Semanas 5–8)</a></li> 
+          <li><a href="ficheiros/guitarra/manual_guitarra_nivel3_blaze_semanas_9a12.pdf" download><span class="file-icon">    </span> Nível 3 – Blaze (Semanas 9–12)</a></li> 
+          <li><a href="ficheiros/guitarra/manual_guitarra_nivel4_inferno_semanas_13a16.pdf" download><span class="file-icon">    </span> Nível 4 – Inferno (Semanas 13–16)</a></li> 
+          <li><a href="ficheiros/guitarra/O_Arsenal_do_Guitarrista_Domínio_e_Expressão.pdf" download><span class="file-icon">    </span> O Arsenal do Guitarrista</a></li> 
         </ul> 
       </div> 
     </div> 
@@ -709,24 +616,13 @@ download><span class="file-icon">    </span> O Arsenal do Guitarrista</a></li>
       </div> 
       <div class="card-body open"> 
         <ul class="file-list"> 
-          <li><a href="ficheiros/piano/believer_versão_fácil.docx" download><span 
-class="file-icon">         </span> Believer – Versão fácil</a></li> 
-          <li><a href="ficheiros/piano/estudo_czerny_estudo_11_op599.docx" 
-download><span class="file-icon">         </span> Estudo Czerny – Estudo nº 
-11</a></li> 
-          <li><a 
-href="ficheiros/piano/exercícios_de_estudo_das_notas_principais_na_pauta.docx
-" download><span class="file-icon">         </span> Exercícios – Notas Principais na 
-Pauta</a></li> 
-          <li><a href="ficheiros/piano/interstellar2.docx" download><span class="file-
-icon">         </span> Interstellar 2</a></li> 
-          <li><a href="ficheiros/piano/para_elisa_beethoven.docx" download><span 
-class="file-icon">         </span> Para Elisa – Beethoven</a></li> 
-          <li><a href="ficheiros/piano/primavera_4_estações_vivaldi.docx" 
-download><span class="file-icon">         </span> Primavera – 4 Estações – 
-Vivaldi</a></li> 
-          <li><a href="ficheiros/piano/stay_rihanna.docx" download><span class="file-
-icon">         </span> Stay – Rihanna</a></li> 
+          <li><a href="ficheiros/piano/believer_versão_fácil.docx" download><span class="file-icon">         </span> Believer – Versão fácil</a></li> 
+          <li><a href="ficheiros/piano/estudo_czerny_estudo_11_op599.docx" download><span class="file-icon">         </span> Estudo Czerny – Estudo nº 11</a></li> 
+          <li><a href="ficheiros/piano/exercícios_de_estudo_das_notas_principais_na_pauta.docx" download><span class="file-icon">         </span> Exercícios – Notas Principais na Pauta</a></li> 
+          <li><a href="ficheiros/piano/interstellar2.docx" download><span class="file-icon">         </span> Interstellar 2</a></li> 
+          <li><a href="ficheiros/piano/para_elisa_beethoven.docx" download><span class="file-icon">         </span> Para Elisa – Beethoven</a></li> 
+          <li><a href="ficheiros/piano/primavera_4_estações_vivaldi.docx" download><span class="file-icon">         </span> Primavera – 4 Estações – Vivaldi</a></li> 
+          <li><a href="ficheiros/piano/stay_rihanna.docx" download><span class="file-icon">         </span> Stay – Rihanna</a></li> 
         </ul> 
       </div> 
     </div> 
@@ -741,22 +637,19 @@ icon">         </span> Stay – Rihanna</a></li>
       </div> 
       <div class="card-body open"> 
         <ul class="file-list"> 
-          <li><a href="ficheiros/bateria/bateria.pdf" download><span class="file-
-icon">    </span> Bateria</a></li> 
+          <li><a href="ficheiros/bateria/bateria.pdf" download><span class="file-icon">    </span> Bateria</a></li> 
         </ul> 
       </div> 
     </div> 
     <div class="card"> 
       <div class="card-header" onclick="toggleCard(this)"> 
         <span class="card-icon">   </span> 
- 
         <h2>Canto</h2> 
         <span class="chevron">▼</span> 
       </div> 
       <div class="card-body"> 
         <ul class="file-list"> 
-          <li><a href="ficheiros/canto/canto.pdf" download><span class="file-
-icon">    </span> Canto</a></li> 
+          <li><a href="ficheiros/canto/canto.pdf" download><span class="file-icon">    </span> Canto</a></li> 
         </ul> 
       </div> 
     </div> 
@@ -768,15 +661,13 @@ icon">    </span> Canto</a></li>
       </div> 
       <div class="card-body"> 
         <ul class="file-list"> 
-          <li><a href="ficheiros/baixo/baixo.pdf" download><span class="file-
-icon">    </span> Baixo</a></li> 
+          <li><a href="ficheiros/baixo/baixo.pdf" download><span class="file-icon">    </span> Baixo</a></li> 
         </ul> 
       </div> 
     </div> 
   </div> 
   <!-- ===== BACKING TRACKS ===== --> 
   <div id="tab-backing" class="panel"> 
- 
     <div class="card"> 
       <div class="card-header open" onclick="toggleCard(this)"> 
         <span class="card-icon">   </span> 
@@ -785,38 +676,19 @@ icon">    </span> Baixo</a></li>
       </div> 
       <div class="card-body open"> 
         <ul class="file-list"> 
-          <li><a href="ficheiros/backing-tracks/Eternal Grind_BT1_60bpm.mp3" 
-download><span class="file-icon"> </span> Eternal Grind – 60 BPM</a></li> 
-          <li><a href="ficheiros/backing-tracks/Eternal Grind_bt2_60bpm.mp3" 
-download><span class="file-icon"> </span> Eternal Grind – Alt</a></li> 
-          <li><a href="ficheiros/guitarra/independencia_de_dedos.mp3" 
-download><span class="file-icon"> </span> Independência de Dedos</a></li> 
-          <li><a href="ficheiros/backing-tracks/palm_mute_exercicio1.mp3" 
-download><span class="file-icon"> </span> Palm Mute – Exercício 1</a></li> 
-          <li><a href="ficheiros/backing-tracks/palm_mute_exercicio2.mp3" 
-download><span class="file-icon"> </span> Palm Mute – Exercício 2</a></li> 
-          <li><a href="ficheiros/backing-tracks/palm_mute_exercicio3.mp3" 
-download><span class="file-icon"> </span> Palm Mute – Exercício 3</a></li> 
-          <li><a href="ficheiros/backing-tracks/Relentless Pulse_1bpm120.mp3" 
-download><span class="file-icon"> </span> Relentless Pulse – 120 
-BPM</a></li> 
-          <li><a href="ficheiros/backing-tracks/Relentless Pulse_2bpm120.mp3" 
-download><span class="file-icon"> </span> Relentless Pulse – Alt</a></li> 
-          <li><a 
-href="ficheiros/backingtracks/single_chord_backingtrack_aminor_60bpm.mp3" 
-download><span class="file-icon"> </span> Single Chord – A minor 60 
-BPM</a></li> 
-          <li><a 
-href="ficheiros/backingtracks/single_chord_backingtrack_eminor_60bpm.mp3" 
-download><span class="file-icon"> </span> Single Chord – E minor 60 
-BPM</a></li> 
-          <li><a 
-href="ficheiros/backingtracks/sunshine_of_your_love_backing_track.mp3" 
-download><span class="file-icon"> </span> Sunshine of Your Love – Backing 
-Track</a></li> 
+          <li><a href="ficheiros/backing-tracks/Eternal Grind_BT1_60bpm.mp3" download><span class="file-icon"> </span> Eternal Grind – 60 BPM</a></li> 
+          <li><a href="ficheiros/backing-tracks/Eternal Grind_bt2_60bpm.mp3" download><span class="file-icon"> </span> Eternal Grind – Alt</a></li> 
+          <li><a href="ficheiros/guitarra/independencia_de_dedos.mp3" download><span class="file-icon"> </span> Independência de Dedos</a></li> 
+          <li><a href="ficheiros/backing-tracks/palm_mute_exercicio1.mp3" download><span class="file-icon"> </span> Palm Mute – Exercício 1</a></li> 
+          <li><a href="ficheiros/backing-tracks/palm_mute_exercicio2.mp3" download><span class="file-icon"> </span> Palm Mute – Exercício 2</a></li> 
+          <li><a href="ficheiros/backing-tracks/palm_mute_exercicio3.mp3" download><span class="file-icon"> </span> Palm Mute – Exercício 3</a></li> 
+          <li><a href="ficheiros/backing-tracks/Relentless Pulse_1bpm120.mp3" download><span class="file-icon"> </span> Relentless Pulse – 120 BPM</a></li> 
+          <li><a href="ficheiros/backing-tracks/Relentless Pulse_2bpm120.mp3" download><span class="file-icon"> </span> Relentless Pulse – Alt</a></li> 
+          <li><a href="ficheiros/backingtracks/single_chord_backingtrack_aminor_60bpm.mp3" download><span class="file-icon"> </span> Single Chord – A minor 60 BPM</a></li> 
+          <li><a href="ficheiros/backingtracks/single_chord_backingtrack_eminor_60bpm.mp3" download><span class="file-icon"> </span> Single Chord – E minor 60 BPM</a></li> 
+          <li><a href="ficheiros/backingtracks/sunshine_of_your_love_backing_track.mp3" download><span class="file-icon"> </span> Sunshine of Your Love – Backing Track</a></li> 
           <li> 
-            <a href="#" onclick="abrirYT('gwtXDA7WoS0'); return false;"><span 
-class="file-icon">▶</span> Atmospheric Ambient Pad – E Minor (YouTube)</a> 
+            <a href="#" onclick="abrirYT('gwtXDA7WoS0'); return false;"><span class="file-icon">▶</span> Atmospheric Ambient Pad – E Minor (YouTube)</a> 
           </li> 
           <!-- Subfolder Sequência --> 
           <li> 
@@ -825,28 +697,19 @@ class="file-icon">▶</span> Atmospheric Ambient Pad – E Minor (YouTube)</a>
               <span style="margin-left:auto; color:var(--red);">▼</span> 
             </button> 
             <ul id="subSeq" class="subfolder-content"> 
-              <li><a href="ficheiros/backing-tracks/Sequência-A5-G5-F5-
-G5/grinding_line1.mp3" download><span class="file-icon"> </span> Grinding 
-Line 1</a></li> 
-              <li><a href="ficheiros/backing-tracks/Sequência-A5-G5-F5-
-G5/grinding_line2.mp3" download><span class="file-icon"> </span> Grinding 
-Line 2</a></li> 
-              <li><a href="ficheiros/backing-tracks/Sequência-A5-G5-F5-
-G5/muted_cycle.mp3" download><span class="file-icon"> </span> Muted 
-Cycle</a></li> 
+              <li><a href="ficheiros/backing-tracks/Sequência-A5-G5-F5-G5/grinding_line1.mp3" download><span class="file-icon"> </span> Grinding Line 1</a></li> 
+              <li><a href="ficheiros/backing-tracks/Sequência-A5-G5-F5-G5/grinding_line2.mp3" download><span class="file-icon"> </span> Grinding Line 2</a></li> 
+              <li><a href="ficheiros/backing-tracks/Sequência-A5-G5-F5-G5/muted_cycle.mp3" download><span class="file-icon"> </span> Muted Cycle</a></li> 
             </ul> 
           </li> 
           <!-- Subfolder Riffs --> 
- 
           <li> 
             <button class="subfolder-toggle" onclick="toggleSub('subRiffs')"> 
               <span>   Riffs Power Chords</span> 
               <span style="margin-left:auto; color:var(--red);">▼</span> 
             </button> 
             <ul id="subRiffs" class="subfolder-content"> 
-              <li><a href="ficheiros/guitarra/quintas_posição_aberta.mp3" 
-download><span class="file-icon"> </span> Quintas em Posição 
-Aberta</a></li> 
+              <li><a href="ficheiros/guitarra/quintas_posição_aberta.mp3" download><span class="file-icon"> </span> Quintas em Posição Aberta</a></li> 
             </ul> 
           </li> 
         </ul> 
@@ -855,105 +718,54 @@ Aberta</a></li>
   </div> 
   <!-- ===== VÍDEOS ===== --> 
   <div id="tab-videos" class="panel"> 
-    <p style="color:var(--muted); margin-bottom:16px; font-size:0.9rem; letter-
-spacing:0.5px;">Seleciona um instrumento para ver os vídeos disponíveis.</p> 
+    <p style="color:var(--muted); margin-bottom:16px; font-size:0.9rem; letter-spacing:0.5px;">Seleciona um instrumento para ver os vídeos disponíveis.</p> 
     <div class="instrument-grid" id="instrGrid"> 
-      <button class="instr-btn" onclick="toggleInstr('v-eletrica', this)">        Guitarra 
-Elétrica</button> 
-      <button class="instr-btn" onclick="toggleInstr('v-classica', this)">        Guitarra 
-Clássica</button> 
-      <button class="instr-btn" onclick="toggleInstr('v-baixo', this)">        
-Baixo</button> 
-      <button class="instr-btn" onclick="toggleInstr('v-bateria', this)">        
-Bateria</button> 
-      <button class="instr-btn" onclick="toggleInstr('v-canto', this)">    
-Canto</button> 
-      <button class="instr-btn" onclick="toggleInstr('v-teclado', this)">     Teclado / 
-Piano</button> 
-      <button class="instr-btn" onclick="toggleInstr('v-acordeao', this)">         
-Acordeão</button> 
-      <button class="instr-btn" onclick="toggleInstr('v-cavaquinho', this)">  
-Cavaquinho</button> 
+      <button class="instr-btn" onclick="toggleInstr('v-eletrica', this)">        Guitarra Elétrica</button> 
+      <button class="instr-btn" onclick="toggleInstr('v-classica', this)">        Guitarra Clássica</button> 
+      <button class="instr-btn" onclick="toggleInstr('v-baixo', this)">        Baixo</button> 
+      <button class="instr-btn" onclick="toggleInstr('v-bateria', this)">        Bateria</button> 
+      <button class="instr-btn" onclick="toggleInstr('v-canto', this)">    Canto</button> 
+      <button class="instr-btn" onclick="toggleInstr('v-teclado', this)">     Teclado / Piano</button> 
+      <button class="instr-btn" onclick="toggleInstr('v-acordeao', this)">         Acordeão</button> 
+      <button class="instr-btn" onclick="toggleInstr('v-cavaquinho', this)">  Cavaquinho</button> 
     </div> 
     <!-- Vídeos Guitarra Elétrica --> 
     <ul id="v-eletrica" class="instr-links file-list" style="margin-top:12px;"> 
-      <li><a 
-href="https://mega.nz/file/a0hHjBZa#ddZcD8OkvhiETVvWaJjL3XJuxz_P5NfE_eTfW
-xmjK98" target="_blank"><span class="file-icon">▶</span> A Guitarra, o Cérebro 
-e a Lição Para Além da Música</a></li> 
-      <li><a 
-href="https://mega.nz/file/TxRnyKSQ#FXa1fFSDjMd7bE738WdFlJFq4qWfXHcntp0
-20efmnXo" target="_blank"><span class="file-icon">▶</span> A Psicologia na 
-Música</a></li> 
-      <li><a 
-href="https://mega.nz/file/6tojAbjZ#kcIiYvx058YPOGqrLb_rPQAukx9L_brLVaV4yDn
-JPNo" target="_blank"><span class="file-icon">▶</span> A minor Pentatonic – 5 
-Positions</a></li> 
-      <li><a 
-href="https://mega.nz/file/qtRH3CxL#_nebi0xjrMCRlimQeNFSmsqL0UAWCfC4VR
-ViyvSb1hY" target="_blank"><span class="file-icon">▶</span> Como Sobreviver à 
-Guitarra</a></li> 
-      <li><a 
-href="https://mega.nz/file/WhICBAyB#Pzc74rPoIHPZ6Gm01SQJb90CyZ7wLBHYlrL
-1qBzrIc" target="_blank"><span class="file-icon">▶</span> Memória Musical 
-Duradoura</a></li> 
-      <li><a 
-href="https://mega.nz/file/D1hHhB4K#FLKKpGoTbPyIk3DmbXdC0P9Okf6AgAaW2
-PO3jThIQ8" target="_blank"><span class="file-icon">▶</span> Primeiro Ano de 
-Guitarra</a></li> 
-      <li><a 
-href="https://mega.nz/file/Kl5iHKpA#L56ROSIUwoLGYgpWHZ60gEz5KBEcwN3Mm
-HbLqafIfmk" target="_blank"><span class="file-icon">▶</span> We Will Rock You 
-– Backing Vídeo</a></li> 
-      <li><a href="https://www.youtube.com/watch?v=XVpzjrxvBCM" 
-target="_blank"><span class="file-icon">▶</span> Wonderful Tonight – Backing 
-Track com acordes</a></li> 
-      <li><a 
-href="https://mega.nz/file/6tojAbjZ#kcIiYvx058YPOGqrLb_rPQAukx9L_brLVaV4yDn
-JPNo" target="_blank"><span class="file-icon">▶</span> 5 Desenhos Pentatónica 
-com Backing Track</a></li> 
+      <li><a href="https://mega.nz/file/a0hHjBZa#ddZcD8OkvhiETVvWaJjL3XJuxz_P5NfE_eTfWxmjK98" target="_blank"><span class="file-icon">▶</span> A Guitarra, o Cérebro e a Lição Para Além da Música</a></li> 
+      <li><a href="https://mega.nz/file/TxRnyKSQ#FXa1fFSDjMd7bE738WdFlJFq4qWfXHcntp020efmnXo" target="_blank"><span class="file-icon">▶</span> A Psicologia na Música</a></li> 
+      <li><a href="https://mega.nz/file/6tojAbjZ#kcIiYvx058YPOGqrLb_rPQAukx9L_brLVaV4yDnJPNo" target="_blank"><span class="file-icon">▶</span> A minor Pentatonic – 5 Positions</a></li> 
+      <li><a href="https://mega.nz/file/qtRH3CxL#_nebi0xjrMCRlimQeNFSmsqL0UAWCfC4VRViyvSb1hY" target="_blank"><span class="file-icon">▶</span> Como Sobreviver à Guitarra</a></li> 
+      <li><a href="https://mega.nz/file/WhICBAyB#Pzc74rPoIHPZ6Gm01SQJb90CyZ7wLBHYlrL1qBzrIc" target="_blank"><span class="file-icon">▶</span> Memória Musical Duradoura</a></li> 
+      <li><a href="https://mega.nz/file/D1hHhB4K#FLKKpGoTbPyIk3DmbXdC0P9Okf6AgAaW2PO3jThIQ8" target="_blank"><span class="file-icon">▶</span> Primeiro Ano de Guitarra</a></li> 
+      <li><a href="https://mega.nz/file/Kl5iHKpA#L56ROSIUwoLGYgpWHZ60gEz5KBEcwN3MmHbLqafIfmk" target="_blank"><span class="file-icon">▶</span> We Will Rock You – Backing Vídeo</a></li> 
+      <li><a href="https://www.youtube.com/watch?v=XVpzjrxvBCM" target="_blank"><span class="file-icon">▶</span> Wonderful Tonight – Backing Track com acordes</a></li> 
+      <li><a href="https://mega.nz/file/6tojAbjZ#kcIiYvx058YPOGqrLb_rPQAukx9L_brLVaV4yDnJPNo" target="_blank"><span class="file-icon">▶</span> 5 Desenhos Pentatónica com Backing Track</a></li> 
     </ul> 
-    <ul id="v-classica" class="instr-links file-list" style="margin-top:12px;"><li 
-style="padding:12px; color:var(--muted);">Em breve...</li></ul> 
-    <ul id="v-baixo" class="instr-links file-list" style="margin-top:12px;"><li 
-style="padding:12px; color:var(--muted);">Em breve...</li></ul> 
-    <ul id="v-bateria" class="instr-links file-list" style="margin-top:12px;"><li 
-style="padding:12px; color:var(--muted);">Em breve...</li></ul> 
-    <ul id="v-canto" class="instr-links file-list" style="margin-top:12px;"><li 
-style="padding:12px; color:var(--muted);">Em breve...</li></ul> 
-    <ul id="v-teclado" class="instr-links file-list" style="margin-top:12px;"><li 
-style="padding:12px; color:var(--muted);">Em breve...</li></ul> 
-    <ul id="v-acordeao" class="instr-links file-list" style="margin-top:12px;"><li 
-style="padding:12px; color:var(--muted);">Em breve...</li></ul> 
-    <ul id="v-cavaquinho" class="instr-links file-list" style="margin-top:12px;"><li 
-style="padding:12px; color:var(--muted);">Em breve...</li></ul> 
+    <ul id="v-classica" class="instr-links file-list" style="margin-top:12px;"><li style="padding:12px; color:var(--muted);">Em breve...</li></ul> 
+    <ul id="v-baixo" class="instr-links file-list" style="margin-top:12px;"><li style="padding:12px; color:var(--muted);">Em breve...</li></ul> 
+    <ul id="v-bateria" class="instr-links file-list" style="margin-top:12px;"><li style="padding:12px; color:var(--muted);">Em breve...</li></ul> 
+    <ul id="v-canto" class="instr-links file-list" style="margin-top:12px;"><li style="padding:12px; color:var(--muted);">Em breve...</li></ul> 
+    <ul id="v-teclado" class="instr-links file-list" style="margin-top:12px;"><li style="padding:12px; color:var(--muted);">Em breve...</li></ul> 
+    <ul id="v-acordeao" class="instr-links file-list" style="margin-top:12px;"><li style="padding:12px; color:var(--muted);">Em breve...</li></ul> 
+    <ul id="v-cavaquinho" class="instr-links file-list" style="margin-top:12px;"><li style="padding:12px; color:var(--muted);">Em breve...</li></ul> 
   </div> 
   <!-- ===== PODCASTS ===== --> 
   <div id="tab-podcasts" class="panel"> 
     <div class="podcast-grid"> 
       <div class="podcast-card"> 
         <h3>A Ciência para não desistir da Guitarra</h3> 
-        <p>Reflexão sobre motivação, consistência e mentalidade no estudo da 
-guitarra.</p> 
-        <a 
-href="https://mega.nz/file/29RW3CZb#npZ5BeR0uSCXI3zRxmaoBacT9DAF1Hivtw
-NTt_hEGk" target="_blank" class="play-btn">▶ Ouvir / Download</a> 
+        <p>Reflexão sobre motivação, consistência e mentalidade no estudo da guitarra.</p> 
+        <a href="https://mega.nz/file/29RW3CZb#npZ5BeR0uSCXI3zRxmaoBacT9DAF1HivtwNTt_hEGk" target="_blank" class="play-btn">▶ Ouvir / Download</a> 
       </div> 
       <div class="podcast-card"> 
         <h3>Aprender Guitarra no Palco sem Teoria</h3> 
-        <p>Como desenvolver segurança e musicalidade mesmo sem base teórica 
-profunda.</p> 
-        <a 
-href="https://mega.nz/file/PpgzQD5R#jYGJwb4py8xlemGlSip1NEBJFmSheQobdC
-aEbP8ixLU" target="_blank" class="play-btn">▶ Ouvir / Download</a> 
+        <p>Como desenvolver segurança e musicalidade mesmo sem base teórica profunda.</p> 
+        <a href="https://mega.nz/file/PpgzQD5R#jYGJwb4py8xlemGlSip1NEBJFmSheQobdCaEbP8ixLU" target="_blank" class="play-btn">▶ Ouvir / Download</a> 
       </div> 
       <div class="podcast-card"> 
         <h3>Como a Música Transforma o Cérebro</h3> 
-        <p>O impacto profundo da música na mente, na aprendizagem e na 
-criatividade.</p> 
-        <a 
-href="https://mega.nz/file/vxZkQRhC#bAFSV9cnC0qcsPOgFJAsz27vswWJ9MoB5A
-WIqJ8lqhk" target="_blank" class="play-btn">▶ Ouvir / Download</a> 
+        <p>O impacto profundo da música na mente, na aprendizagem e na criatividade.</p> 
+        <a href="https://mega.nz/file/vxZkQRhC#bAFSV9cnC0qcsPOgFJAsz27vswWJ9MoB5AWIqJ8lqhk" target="_blank" class="play-btn">▶ Ouvir / Download</a> 
       </div> 
     </div> 
   </div> 
@@ -968,24 +780,17 @@ WIqJ8lqhk" target="_blank" class="play-btn">▶ Ouvir / Download</a>
       <div class="card-body open"> 
         <ul class="file-list"> 
           <li> 
-            <button class="file-item" onclick="pedirPassword(event, 
-'https://mega.nz/file/r8BUSCKa#xzGXsmHFX32XDYNEolrMueLkLjLfEJKTTXzZ04kO
-kww', '713789FzNer1')"> 
+            <button class="file-item" onclick="pedirPassword(event, 'https://mega.nz/file/r8BUSCKa#xzGXsmHFX32XDYNEolrMueLkLjLfEJKTTXzZ04kOkww', '713789FzNer1')"> 
               <span class="file-icon">   </span> Guitar Pro SetUp 
             </button> 
           </li> 
           <li> 
-            <button class="file-item" onclick="pedirPassword(event, 
-'https://mega.nz/file/atZFxZTT#xuuJBavQPbooV4INhWT7Io1eh3zpOUXUAzoIS2Ux-
-E', '713789FzNer2')"> 
+            <button class="file-item" onclick="pedirPassword(event, 'https://mega.nz/file/atZFxZTT#xuuJBavQPbooV4INhWT7Io1eh3zpOUXUAzoIS2Ux-E', '713789FzNer2')"> 
               <span class="file-icon">   </span> Guitar Pro Serial 
             </button> 
           </li> 
-          <li><a href="ficheiros/outros/como_instalar_guitar_pro5.txt" 
-download><span class="file-icon">    </span> Como Instalar Guitar Pro 
-5</a></li> 
-          <li><a href="https://ner-testemunhos.netlify.app" target="_blank"><span 
-class="file-icon">  </span> Formulário de Testemunho de Aluno</a></li> 
+          <li><a href="ficheiros/outros/como_instalar_guitar_pro5.txt" download><span class="file-icon">    </span> Como Instalar Guitar Pro 5</a></li> 
+          <li><a href="https://ner-testemunhos.netlify.app" target="_blank"><span class="file-icon">  </span> Formulário de Testemunho de Aluno</a></li> 
         </ul> 
       </div> 
     </div> 
@@ -1014,12 +819,9 @@ class="file-icon">  </span> Formulário de Testemunho de Aluno</a></li>
     <p>Introduz a password para fazer download:</p> 
     <input id="inputPassword" type="password" placeholder="Password..."> 
     <p class="err-pass" id="erroPassword">Password incorreta!</p> 
- 
- 
     <div class="pass-actions"> 
       <button class="btn-dl" onclick="confirmarPassword()">Download</button> 
-      <button class="btn-cancel" 
-onclick="fecharModalPassword()">Cancelar</button> 
+      <button class="btn-cancel" onclick="fecharModalPassword()">Cancelar</button> 
     </div> 
   </div> 
 </div> 
@@ -1029,36 +831,33 @@ onclick="fecharModalPassword()">Cancelar</button>
     <h3>Password Correta!</h3> 
     <p>Clica para fazer o download:</p> 
     <div class="pass-actions"> 
-      <a id="linkDownload" href="#" target="_blank" 
-onclick="document.getElementById('modalDownload').classList.remove('open')" 
-         class="btn-dl">⬇ Download</a> 
-      <button class="btn-cancel" 
-onclick="document.getElementById('modalDownload').classList.remove('open')">
-Fechar</button> 
+      <a id="linkDownload" href="#" target="_blank" onclick="document.getElementById('modalDownload').classList.remove('open')" class="btn-dl">⬇ Download</a> 
+      <button class="btn-cancel" onclick="document.getElementById('modalDownload').classList.remove('open')">Fechar</button> 
     </div> 
   </div> 
 </div> 
 <!-- YT MODAL --> 
 <div id="yt-modal"> 
   <div style="position:relative; width:90%; max-width:800px;"> 
-         
-    <button onclick="fecharYT()" style="position:absolute; top:-36px; right:0; 
-background:none; border:none; color:white; font-size:28px; 
-cursor:pointer;">✕</button> 
+    <button onclick="fecharYT()" style="position:absolute; top:-36px; right:0; background:none; border:none; color:white; font-size:28px; cursor:pointer;">✕</button> 
     <div style="position:relative; padding-bottom:56.25%; height:0;"> 
-      <iframe id="yt-iframe" src="" frameborder="0" allowfullscreen 
-        style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe> 
+      <iframe id="yt-iframe" src="" frameborder="0" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe> 
     </div> 
   </div> 
 </div> 
 <script> 
-  /* ── TABS ── */ 
+  /* ── TABS ── */
   function showTab(id, btn) {
-    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('tab-' + id).classList.add('active');
-    btn.classList.add('active');
-}
+    document.querySelectorAll('.panel').forEach(function(p) {
+      p.classList.remove('active');
+    });
+    document.querySelectorAll('.tab-btn').forEach(function(b) {
+      b.classList.remove('active');
+    });
+    var panel = document.getElementById('tab-' + id);
+    if (panel) panel.classList.add('active');
+    if (btn) btn.classList.add('active');
+  }
   /* ── ACCORDION ── */ 
   function toggleCard(header) { 
     header.classList.toggle('open'); 
@@ -1068,7 +867,6 @@ cursor:pointer;">✕</button>
   /* ── SUBFOLDERS ── */ 
   function toggleSub(id) { 
     const el = document.getElementById(id); 
- 
     el.classList.toggle('open'); 
   } 
   /* ── VIDEO INSTRUMENT TOGGLE ── */ 
@@ -1094,19 +892,13 @@ cursor:pointer;">✕</button>
       downloadBtn.setAttribute("download", ""); 
       document.getElementById("previewModal").classList.add("open"); 
       if (file.endsWith(".pdf")) { 
- 
-        previewArea.innerHTML = '<iframe src="' + file + '" 
-style="width:100%;height:100%;border:none;border-radius:4px;"></iframe>'; 
+        previewArea.innerHTML = '<iframe src="' + file + '" style="width:100%;height:100%;border:none;border-radius:4px;"></iframe>'; 
       } else if (file.match(/\.(jpg|jpeg|png|gif)$/i)) { 
-        previewArea.innerHTML = '<img src="' + file + '" style="max-width:100%;max-
-height:100%;display:block;margin:auto;">'; 
+        previewArea.innerHTML = '<img src="' + file + '" style="max-width:100%;max-height:100%;display:block;margin:auto;">'; 
       } else if (file.endsWith(".mp3")) { 
-        previewArea.innerHTML = '<div style="display:flex;align-
-items:center;height:100%;"><audio controls style="width:100%;"><source src="' 
-+ file + '"></audio></div>'; 
+        previewArea.innerHTML = '<div style="display:flex;align-items:center;height:100%;"><audio controls style="width:100%;"><source src="' + file + '"></audio></div>'; 
       } else { 
-        previewArea.innerHTML = '<p style="color:var(--
-muted);padding:20px;">Preview não disponível para este tipo de ficheiro.</p>'; 
+        previewArea.innerHTML = '<p style="color:var(--muted);padding:20px;">Preview não disponível para este tipo de ficheiro.</p>'; 
       } 
     }); 
   }); 
@@ -1137,8 +929,7 @@ muted);padding:20px;">Preview não disponível para este tipo de ficheiro.</p>';
       document.getElementById("inputPassword").focus(); 
     } 
   } 
-  document.getElementById("inputPassword").addEventListener("keydown", 
-function(e) { 
+  document.getElementById("inputPassword").addEventListener("keydown", function(e) { 
     if (e.key === "Enter") confirmarPassword(); 
   }); 
   function fecharModalPassword() { 
@@ -1147,8 +938,7 @@ function(e) {
   } 
   /* ── YOUTUBE ── */ 
   function abrirYT(id) { 
-    document.getElementById('yt-iframe').src = 'https://www.youtube.com/embed/' 
-+ id + '?autoplay=1'; 
+    document.getElementById('yt-iframe').src = 'https://www.youtube.com/embed/' + id + '?autoplay=1'; 
     document.getElementById('yt-modal').classList.add('open'); 
   } 
   function fecharYT() { 
