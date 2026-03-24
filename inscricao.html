@@ -1,230 +1,463 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Inscrição - NER - Nova Escola Rock</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<style>
-body {
-  font-family: 'Arial', sans-serif;
-  background: url('galeria-de-imagens/fundo_inscricao.jpg') no-repeat center center;
-  background-size: cover;
-  background-attachment: scroll;
-  color: white;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-header {
-  background: rgba(0, 0, 0, 0.8);
-  padding: 20px;
-}
-.logo {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #ff3366;
-}
-nav ul { list-style: none; padding: 0; }
-nav ul li {
-  display: inline;
-  margin: 0 15px;
-}
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.2rem;
-}
-.form-container {
-  background: rgba(0, 0, 0, 0.85);
-  padding: 40px;
-  margin: 50px auto;
-  width: 50%;
-  max-width: 500px;
-  border-radius: 10px;
-  box-sizing: border-box;
-}
-h2 { color: #ff3366; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Inscrição | NER - Nova Escola Rock</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <style>
+    :root {
+      --red:      #ff3366;
+      --red-dark: #c0001f;
+      --red-glow: rgba(255, 51, 102, 0.6);
+      --green:    #25d366;
+      --bg:       #0e0e0e;
+      --surface:  #1a1a1a;
+      --surface2: #242424;
+      --border:   #2e2e2e;
+      --text:     #f0f0f0;
+      --muted:    #888;
+    }
 
-input, textarea, select {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  box-sizing: border-box;
-}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* CORRIGIDO: data de nascimento igual aos outros campos */
-#data_nascimento {
-  background: white;
-  color: #333;
-  font-weight: normal;
-  text-align: left;
-  cursor: pointer;
-  letter-spacing: normal;
-  box-shadow: none;
-}
-#data_nascimento::placeholder {
-  color: #999;
-  opacity: 1;
-}
+    body {
+      font-family: 'Barlow', sans-serif;
+      background-color: var(--bg);
+      background-image: url('galeria-de-imagens/fundo_inscricao.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: var(--text);
+      min-height: 100vh;
+      padding-top: 70px;
+    }
 
-button {
-  background: #ff3366;
-  color: white;
-  padding: 15px;
-  width: 100%;
-  font-size: 1.2rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-button:hover { background: #e62e5c; }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.78);
+      z-index: 0;
+      pointer-events: none;
+    }
 
-.flatpickr-calendar {
-  background: #111;
-  color: #fff;
-  border: 2px solid #ff3366;
-}
-.flatpickr-months,
-.flatpickr-weekdays {
-  background: #000;
-}
-.flatpickr-current-month,
-.flatpickr-current-month .flatpickr-monthDropdown-months,
-.flatpickr-current-month .flatpickr-monthDropdown-months option {
-  color: #ff3366;
-}
-.flatpickr-day.selected,
-.flatpickr-day:hover {
-  background: #ff3366;
-  border-color: #ff3366;
-}
-.flatpickr-current-month input.cur-year {
-  font-size: 18px;
-  font-weight: bold;
-  color: #ff3366;
-  cursor: pointer;
-}
-@media (max-width: 768px) {
-  .form-container { width: 90%; }
-}
-.flatpickr-calendar .mobile-hint {
-  font-size: 14px;
-  padding: 8px;
-  background: #000;
-  color: #ff3366;
-  border-bottom: 1px solid #ff3366;
-  text-align: center;
-}
-</style>
+    /* ── HEADER ──────────────────────────────────── */
+    .rock-header {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      background: #000;
+      z-index: 1000;
+      border-bottom: 2px solid var(--red);
+      box-shadow: 0 0 20px var(--red-glow);
+    }
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      color: var(--red);
+      text-decoration: none;
+      letter-spacing: 3px;
+      text-shadow: 0 0 12px var(--red-glow);
+    }
+    .home-btn {
+      padding: 8px 18px;
+      background: var(--red);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .home-btn:hover {
+      background: var(--red-dark);
+      box-shadow: 0 4px 14px var(--red-glow);
+    }
 
-<script>
-function enviarFormulario(event) {
-  event.preventDefault();
-  document.getElementById("mensagem").innerText = "A enviar inscrição... Aguarde.";
-  var form = document.getElementById('inscricaoForm');
-  var iframe = document.getElementById('hidden_iframe');
-  form.action = 'https://script.google.com/macros/s/AKfycbwybNZ47rFFVCnYOriSG3XJW9o4tw4VJcmx4BmWiGdarfI9yLIWZiyx2dc4AgtZb3Z8/exec';
-  form.method = 'POST';
-  form.target = 'hidden_iframe';
-  iframe.onload = function() {
-    document.getElementById("mensagem").innerText = "✅ Inscrição enviada com sucesso!";
-    document.getElementById("mensagem").style.color = "#00ff00";
-    form.reset();
-    setTimeout(() => { window.location.href = "https://datofz89.github.io/thanks.html"; }, 2000);
-  };
-  form.submit();
-  return false;
-}
-</script>
+    /* ── PAGE WRAPPER ────────────────────────────── */
+    .page {
+      position: relative;
+      z-index: 1;
+      padding: 48px 24px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── HEADING ─────────────────────────────────── */
+    .page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 8vw, 80px);
+      color: var(--red);
+      letter-spacing: 6px;
+      text-shadow: 0 0 30px var(--red-glow);
+      text-align: center;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .page-sub {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+
+    /* ── FORM CARD ───────────────────────────────── */
+    .form-card {
+      background: rgba(18, 18, 18, 0.95);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 36px;
+      width: 100%;
+      max-width: 520px;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,51,102,0.08);
+      backdrop-filter: blur(6px);
+    }
+
+    /* ── FIELD GROUPS ────────────────────────────── */
+    .field-group {
+      margin-bottom: 18px;
+    }
+    .field-group label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .field-group label span.req {
+      color: var(--red);
+      margin-left: 2px;
+    }
+
+    /* All inputs, selects, textareas */
+    .field-group input,
+    .field-group select,
+    .field-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      background: var(--surface2);
+      color: var(--text);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.97rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    .field-group input::placeholder,
+    .field-group textarea::placeholder {
+      color: #555;
+    }
+    .field-group input:focus,
+    .field-group select:focus,
+    .field-group textarea:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(255,51,102,0.15);
+    }
+    .field-group select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23888' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+    .field-group select option {
+      background: var(--surface);
+      color: var(--text);
+    }
+    .field-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    /* Two-column row */
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    /* Section divider */
+    .section-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      color: var(--red);
+      margin: 28px 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── SUBMIT BUTTON ───────────────────────────── */
+    .submit-btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      margin-top: 28px;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 3px;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+      position: relative;
+      overflow: hidden;
+    }
+    .submit-btn::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      transition: left 0.5s;
+    }
+    .submit-btn:hover::after { left: 100%; }
+    .submit-btn:hover {
+      background: var(--red-dark);
+      box-shadow: 0 6px 20px var(--red-glow);
+      transform: translateY(-2px);
+    }
+    .submit-btn:active { transform: translateY(0); }
+    .submit-btn:disabled {
+      background: #444;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* ── STATUS MESSAGE ──────────────────────────── */
+    #mensagem {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      min-height: 24px;
+    }
+
+    /* ── FLATPICKR THEME ─────────────────────────── */
+    .flatpickr-calendar {
+      background: #111 !important;
+      border: 2px solid var(--red) !important;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.8) !important;
+      border-radius: 10px !important;
+    }
+    .flatpickr-months, .flatpickr-weekdays { background: #000 !important; }
+    .flatpickr-current-month,
+    .flatpickr-current-month .flatpickr-monthDropdown-months,
+    .flatpickr-current-month .flatpickr-monthDropdown-months option { color: var(--red) !important; }
+    .flatpickr-day { color: #ddd !important; border-radius: 6px !important; }
+    .flatpickr-day:hover { background: rgba(255,51,102,0.2) !important; border-color: var(--red) !important; }
+    .flatpickr-day.selected { background: var(--red) !important; border-color: var(--red) !important; color: #fff !important; }
+    .flatpickr-current-month input.cur-year { color: var(--red) !important; font-weight: bold !important; }
+    span.flatpickr-weekday { color: var(--muted) !important; }
+    .flatpickr-prev-month svg, .flatpickr-next-month svg { fill: var(--red) !important; }
+    .mobile-hint {
+      font-size: 13px;
+      padding: 7px;
+      background: #000;
+      color: var(--red);
+      border-bottom: 1px solid var(--red);
+      text-align: center;
+    }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 20px 24px;
+      background: #000;
+      border-top: 1px solid var(--surface2);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 520px) {
+      .form-card { padding: 28px 20px; }
+      .field-row { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <script>
+    function enviarFormulario(event) {
+      event.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const msg = document.getElementById('mensagem');
+      btn.disabled = true;
+      btn.textContent = 'A enviar...';
+      msg.style.color = '#aaa';
+      msg.textContent = 'A enviar inscrição... Aguarde.';
+
+      const form = document.getElementById('inscricaoForm');
+      const iframe = document.getElementById('hidden_iframe');
+      form.action = 'https://script.google.com/macros/s/AKfycbwybNZ47rFFVCnYOriSG3XJW9o4tw4VJcmx4BmWiGdarfI9yLIWZiyx2dc4AgtZb3Z8/exec';
+      form.method = 'POST';
+      form.target = 'hidden_iframe';
+      iframe.onload = function () {
+        msg.textContent = '✓ Inscrição enviada com sucesso!';
+        msg.style.color = '#4ade80';
+        form.reset();
+        setTimeout(() => { window.location.href = 'https://datofz89.github.io/thanks.html'; }, 2000);
+      };
+      form.submit();
+    }
+  </script>
 </head>
 <body>
-<header>
-  <div class="logo">NER - Nova Escola Rock</div>
-  <nav>
-    <ul>
-      <li><a href="index.html">Início</a></li>
-      <li><a href="index.html#cursos">Cursos</a></li>
-      <li><a href="index.html#professores">Professores</a></li>
-      <li><a href="index.html#contato">Contato</a></li>
-    </ul>
-  </nav>
-</header>
 
-<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+  <!-- HEADER -->
+  <header class="rock-header">
+    <div class="header-content">
+      <a href="https://datofz89.github.io/" class="logo">Nova Escola Rock</a>
+      <a href="https://datofz89.github.io/" class="home-btn">← Voltar ao Início</a>
+    </div>
+  </header>
 
-<div class="form-container">
-  <h2>Inscreve-te Aqui</h2>
-  <form id="inscricaoForm" onsubmit="enviarFormulario(event)">
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
-    <input type="text" name="nome" id="nome" placeholder="Nome completo" required>
+  <div class="page">
+    <h1 class="page-title">Inscrição</h1>
+    <p class="page-sub">Aula experimental gratuita · Sem compromisso</p>
 
-    <input type="text" id="data_nascimento" name="data_nascimento" placeholder="Data de Nascimento" readonly required>
+    <div class="form-card">
 
-    <textarea name="endereco" id="endereco" rows="3" placeholder="Endereço Completo"></textarea>
+      <form id="inscricaoForm" onsubmit="enviarFormulario(event)" novalidate>
 
-    <input type="tel" name="telefone" id="telefone" placeholder="Telefone" required>
+        <!-- Dados Pessoais -->
+        <div class="section-label">Dados Pessoais</div>
 
-    <input type="email" name="email" id="email" placeholder="E-mail" required>
+        <div class="field-group">
+          <label>Nome completo <span class="req">*</span></label>
+          <input type="text" name="nome" id="nome" placeholder="O teu nome" required>
+        </div>
 
-    <select name="curso" id="curso" required>
-      <option value="">Seleciona um curso</option>
-      <option value="guitarra_classica">Guitarra Clássica</option>
-      <option value="guitarra_eletrica">Guitarra Elétrica</option>
-      <option value="baixo">Baixo</option>
-      <option value="bateria">Bateria</option>
-      <option value="canto">Canto</option>
-      <option value="teclado">Teclado/Piano</option>
-      <option value="acordeao">Acordeão</option>
-      <option value="cavaquinho">Cavaquinho</option>
-      <option value="outros">Outros</option>
-    </select>
+        <div class="field-row">
+          <div class="field-group">
+            <label>Data de Nascimento <span class="req">*</span></label>
+            <input type="text" id="data_nascimento" name="data_nascimento" placeholder="DD-MM-AAAA" readonly required>
+          </div>
+          <div class="field-group">
+            <label>Telefone <span class="req">*</span></label>
+            <input type="tel" name="telefone" id="telefone" placeholder="9xx xxx xxx" required>
+          </div>
+        </div>
 
-    <!-- NOVO: Como nos conheceste -->
-    <select name="como_conheceu" id="como_conheceu" required>
-      <option value="">Como nos conheceste?</option>
-      <option value="google">Pesquisa no Google</option>
-      <option value="instagram">Instagram</option>
-      <option value="facebook">Facebook</option>
-      <option value="recomendacao">Recomendação de amigo/familiar</option>
-      <option value="whatsapp">WhatsApp</option>
-      <option value="passagem">Passei pela escola</option>
-      <option value="outro">Outro</option>
-    </select>
+        <div class="field-group">
+          <label>E-mail <span class="req">*</span></label>
+          <input type="email" name="email" id="email" placeholder="exemplo@email.com" required>
+        </div>
 
-    <button type="submit">Enviar Inscrição</button>
-  </form>
-  <p id="mensagem" style="color: white; margin-top: 10px;"></p>
-</div>
+        <div class="field-group">
+          <label>Morada</label>
+          <textarea name="endereco" id="endereco" placeholder="Rua, número, cidade..."></textarea>
+        </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  flatpickr("#data_nascimento", {
-    disableMobile: true,
-    dateFormat: "Y-m-d",
-    defaultDate: "2000-01-01",
-    minDate: "1920-01-01",
-    maxDate: "2040-12-31",
-    allowInput: false,
-    onReady: function(selectedDates, dateStr, instance) {
-      instance.input.value = "";
-      var hint = document.createElement("div");
-      hint.textContent = "👆 Toca no ANO para mudar rapidamente";
-      hint.className = "mobile-hint";
-      instance.calendarContainer.prepend(hint);
-    },
-    onOpen: function(selectedDates, dateStr, instance) {
-      if (window.innerWidth <= 768) {
-        instance.currentYearElement.click();
-      }
-    }
-  });
-});
-</script>
+        <!-- Inscrição -->
+        <div class="section-label">Inscrição</div>
+
+        <div class="field-group">
+          <label>Instrumento / Curso <span class="req">*</span></label>
+          <select name="curso" id="curso" required>
+            <option value="">Escolhe um instrumento…</option>
+            <option value="guitarra_classica">🎸 Guitarra Clássica</option>
+            <option value="guitarra_eletrica">⚡ Guitarra Elétrica</option>
+            <option value="baixo">🎸 Baixo</option>
+            <option value="bateria">🥁 Bateria</option>
+            <option value="canto">🎤 Canto</option>
+            <option value="teclado">🎹 Teclado / Piano</option>
+            <option value="acordeao">🪗 Acordeão</option>
+            <option value="cavaquinho">🎵 Cavaquinho</option>
+            <option value="outros">❓ Outros</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label>Como nos conheceste? <span class="req">*</span></label>
+          <select name="como_conheceu" id="como_conheceu" required>
+            <option value="">Seleciona uma opção…</option>
+            <option value="google">🔍 Pesquisa no Google</option>
+            <option value="instagram">📸 Instagram</option>
+            <option value="facebook">👥 Facebook</option>
+            <option value="recomendacao">🤝 Recomendação de amigo/familiar</option>
+            <option value="whatsapp">💬 WhatsApp</option>
+            <option value="passagem">🚶 Passei pela escola</option>
+            <option value="outro">➕ Outro</option>
+          </select>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">
+          Enviar Inscrição 🎸
+        </button>
+
+      </form>
+
+      <p id="mensagem"></p>
+
+    </div><!-- /form-card -->
+  </div><!-- /page -->
+
+  <footer>
+    <p>© 2026 NER - Nova Escola Rock — Todos os direitos reservados</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      flatpickr("#data_nascimento", {
+        disableMobile: true,
+        dateFormat: "d-m-Y",
+        defaultDate: null,
+        minDate: "01-01-1920",
+        maxDate: "today",
+        allowInput: false,
+        locale: {
+          firstDayOfWeek: 1,
+          weekdays: { shorthand: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'], longhand: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'] },
+          months: { shorthand: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'], longhand: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'] }
+        },
+        onReady: function (selectedDates, dateStr, instance) {
+          instance.input.value = "";
+          var hint = document.createElement("div");
+          hint.textContent = "Toca no ANO para mudar rapidamente";
+          hint.className = "mobile-hint";
+          instance.calendarContainer.prepend(hint);
+        },
+        onOpen: function (selectedDates, dateStr, instance) {
+          if (window.innerWidth <= 768) instance.currentYearElement.click();
+        }
+      });
+    });
+  </script>
 </body>
 </html>
