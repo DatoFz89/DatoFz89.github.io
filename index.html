@@ -315,28 +315,16 @@
     .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.06); transform: translateY(-1px); }
 
     /* Hero stats bar */
-.hero-stat {
-  flex: 1;
-  min-width: 80px;
-  max-width: 140px;
-  padding: 16px 8px;
-  text-align: center;
-  border-right: 1px solid var(--border);
-}
-
-.hero-stat-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.6rem;
-  color: var(--red);
-  line-height: 1;
-  margin-bottom: 4px;
-}
-
-.hero-stat-label {
-  font-size: 0.6rem;
-  color: var(--text-muted);
-  letter-spacing: 2px;
-  text-transform: uppercase;
+.hero-stats {
+  border-top: 1px solid var(--border);
+  background: rgba(10,10,10,0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 0;
+  margin-top: 44px;
+  width: 100%;
 }
 
 /* Mobile */
