@@ -4,1088 +4,1005 @@
 <meta charset="UTF-8">
 <title>Materiais | NER - Nova Escola Rock</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- Fonte Rock -->
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&display=swap" rel="stylesheet">
-
-<!-- Fonte Metal para o título -->
-<link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&family=Metal+Mania&display=swap" rel="stylesheet">
 <style>
-body { 
-    font-family: 'Oswald', Arial, sans-serif; 
-    margin: 0; 
+  :root {
+    --red: #e60000;
+    --red-dark: #900000;
+    --red-hover: #ff1a1a;
+    --bg: #0a0a0a;
+    --bg2: #111;
+    --bg3: #1a1a1a;
+    --bg4: #222;
+    --border: #2a2a2a;
+    --text: #f0f0f0;
+    --muted: #999;
+    --font: 'Oswald', sans-serif;
+    --font-metal: 'Metal Mania', cursive;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
     min-height: 100vh;
+  }
 
-    background: 
-    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-    url("/galeria-de-imagens/ralph_germany-ai-generated-8358785_1280.jpg");
-
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-
-    color: #f2f2f2; 
-}
-
-/* HEADER */
-header {
-    background: linear-gradient(180deg, #000, #111);
-    padding: 30px 20px;
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(180deg, #000 0%, #111 100%);
+    border-bottom: 3px solid var(--red);
+    box-shadow: 0 4px 30px rgba(230,0,0,0.2);
+    padding: 28px 20px 22px;
     text-align: center;
-    border-bottom: 3px solid #e60000;
-    box-shadow: 0 10px 30px rgba(230,0,0,0.25);
-}
-
-header h1 {
-    font-family: 'Metal Mania', cursive;
-    margin: 0;
-    font-size: 2.8em;
-    color: #e60000;
-    text-shadow:
-        0 0 10px rgba(230,0,0,0.8),
-        0 0 25px rgba(230,0,0,0.6);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  header h1 {
+    font-family: var(--font-metal);
+    font-size: clamp(1.8em, 5vw, 2.8em);
+    color: var(--red);
+    text-shadow: 0 0 20px rgba(230,0,0,0.7);
     letter-spacing: 3px;
-}
+    line-height: 1;
+  }
+  header p {
+    color: var(--muted);
+    margin-top: 4px;
+    letter-spacing: 2px;
+    font-size: 0.85em;
+    text-transform: uppercase;
+  }
+  .btn-inicio {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 8px 24px;
+    background: linear-gradient(90deg, var(--red), var(--red-dark));
+    color: #fff;
+    text-decoration: none;
+    font-family: var(--font-metal);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    border: 1px solid var(--red-hover);
+    box-shadow: 0 0 12px rgba(230,0,0,0.4);
+    transition: all 0.3s;
+  }
+  .btn-inicio:hover {
+    background: linear-gradient(90deg, var(--red-hover), #b30000);
+    box-shadow: 0 0 22px rgba(230,0,0,0.7);
+    transform: translateY(-1px);
+  }
 
-header p {
-    margin-top: 8px;
-    color: #bbb;
+  /* ── LAYOUT ── */
+  main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+  }
+
+  /* ── TAB NAV ── */
+  .tab-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 32px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 16px;
+  }
+  .tab-btn {
+    padding: 8px 18px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: var(--font);
+    font-size: 0.85rem;
+    font-weight: 500;
     letter-spacing: 1px;
-}
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.2s;
+  }
+  .tab-btn:hover { color: #fff; border-color: var(--red); }
+  .tab-btn.active {
+    background: var(--red);
+    color: #fff;
+    border-color: var(--red);
+    box-shadow: 0 0 12px rgba(230,0,0,0.4);
+  }
 
-/* MAIN */
-main {
-    max-width: 900px;
-    margin: auto;
-    padding: 40px 20px;
-}
+  /* ── PANELS ── */
+  .panel { display: none; animation: fadeUp 0.3s ease; }
+  .panel.active { display: block; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
 
-/* SEÇÕES */
-.section {
-    margin-bottom: 35px;
+  /* ── SECTION CARD ── */
+  .card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
     border-radius: 6px;
+    margin-bottom: 20px;
     overflow: hidden;
-    background: linear-gradient(180deg, #1a1a1a, #111);
-    box-shadow: 0 0 20px rgba(0,0,0,0.8);
-}
-
-/* TÍTULOS */
-.section h2 {
-    margin: 0;
-    padding: 15px 20px;
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: linear-gradient(90deg, rgba(230,0,0,0.15), transparent);
+    border-bottom: 1px solid var(--border);
     cursor: pointer;
-    background: linear-gradient(90deg, #e60000, #900000);
-    color: #fff;
+    user-select: none;
+    transition: background 0.2s;
+  }
+  .card-header:hover { background: linear-gradient(90deg, rgba(230,0,0,0.25), transparent); }
+  .card-header h2 {
+    font-size: 1.05rem;
     font-weight: 500;
-    letter-spacing: 1px;
-    text-shadow: 0 0 8px rgba(0,0,0,0.8);
-    transition: all 0.3s ease;
-}
-
-.section h2:hover {
-    background: linear-gradient(90deg, #ff1a1a, #b30000);
-    text-shadow: 0 0 15px rgba(255,0,0,0.9);
-}
-
-.conteudo {
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #fff;
+    flex: 1;
+  }
+  .card-icon { font-size: 1.2em; }
+  .chevron {
+    color: var(--red);
+    font-size: 0.9em;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  .card-header.open .chevron { transform: rotate(180deg); }
+  .card-body {
     display: none;
-    padding: 20px;
-    animation: fadeIn 0.4s ease;
-}
+    padding: 16px 20px;
+  }
+  .card-body.open { display: block; }
 
-.conteudo.ativo {
-    display: block;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-5px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* LISTAS */
-ul {
+  /* ── FILE LIST ── */
+  .file-list {
     list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-li {
-    background: linear-gradient(90deg, #1f1f1f, #141414);
-    margin-bottom: 10px;
-    padding: 14px 16px;
-    border-left: 4px solid #e60000;
-    transition: all 0.25s ease;
-}
-
-li:hover {
-    background: #222;
-    transform: translateX(5px);
-    box-shadow: 0 0 10px rgba(230,0,0,0.4);
-}
-
-/* LINKS */
-a {
-    color: #fff;
+    display: grid;
+    gap: 6px;
+  }
+  .file-list li a,
+  .file-list li button.file-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--red);
+    color: var(--text);
     text-decoration: none;
+    font-family: var(--font);
+    font-size: 0.9rem;
     letter-spacing: 0.5px;
-}
-
-a::before {
-    content: "▶ ";
-    color: #e60000;
-}
-
-a:hover {
-    color: #ff4d4d;
-}
-
-/* BOTÃO ROCK PARA SUBPASTA */
-.subfolder-btn {
-    display: block;
-    background: linear-gradient(90deg, #e60000, #900000);
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    margin: 5px 0;
+    border-radius: 0 4px 4px 0;
+    transition: all 0.2s;
+    width: 100%;
+    text-align: left;
     cursor: pointer;
+  }
+  .file-list li a:hover,
+  .file-list li button.file-item:hover {
+    background: var(--bg4);
+    border-left-color: var(--red-hover);
+    transform: translateX(4px);
+    box-shadow: -2px 0 8px rgba(230,0,0,0.3);
+    color: #fff;
+  }
+  .file-icon { font-size: 1em; opacity: 0.7; flex-shrink: 0; }
+
+  /* ── SUBFOLDER ── */
+  .subfolder-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: linear-gradient(90deg, rgba(230,0,0,0.12), var(--bg2));
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--red);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 0.9rem;
     font-weight: 500;
     letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    width: 100%;
     text-align: left;
-    width: 100%;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-}
-
-.subfolder-btn:hover {
-    background: linear-gradient(90deg, #ff1a1a, #b30000);
-    text-shadow: 0 0 10px rgba(255,0,0,0.8);
-}
-
-/* CONTEÚDO SUBPASTA */
-.subfolder-content {
+    transition: all 0.2s;
+  }
+  .subfolder-toggle:hover { background: linear-gradient(90deg, rgba(230,0,0,0.25), var(--bg4)); }
+  .subfolder-content {
     display: none;
-    padding-left: 20px;
-    margin-top: 5px;
-}
+    padding-left: 18px;
+    padding-top: 6px;
+    list-style: none;
+    display: none;
+    gap: 5px;
+  }
+  .subfolder-content.open { display: grid; }
 
-.video-grupo {
-    margin-bottom: 30px;
-}
-
-.video-grupo h3 {
-    margin-bottom: 10px;
-    color: #e60000;
-}
-
-.rock-btn {
-    display: inline-block;
-    margin: 5px 10px 5px 0;
-    padding: 10px 15px;
-    background-color: #e60000;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-.rock-btn:hover {
-    background-color: #ff1a1a;
-    transform: scale(1.05);
-}
-
-.instrumento {
-    margin-bottom: 15px;
-}
-
-.rock-btn {
-    width: 100%;
-    padding: 15px;
-    background-color: #e60000;
-    color: white;
-    border: none;
-    font-size: 16px;
-    font-weight: bold;
+  /* ── VIDEO GRID ── */
+  .instrument-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .instr-btn {
+    padding: 14px 12px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--red);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     cursor: pointer;
-    border-radius: 6px;
-    transition: 0.3s;
-}
-
-.rock-btn:hover {
-    background-color: #ff1a1a;
-    transform: scale(1.02);
-}
-
-.conteudo-instrumento {
+    border-radius: 0 0 4px 4px;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .instr-btn:hover, .instr-btn.open {
+    background: var(--bg4);
+    border-top-color: var(--red-hover);
+    color: var(--red-hover);
+  }
+  .instr-links {
     display: none;
-    background-color: #1a1a1a;
-    padding: 15px;
-    border-left: 4px solid #e60000;
-}
+    list-style: none;
+    gap: 5px;
+    margin-top: 6px;
+    grid-column: 1 / -1;
+  }
+  .instr-links.open { display: grid; }
 
-.conteudo-instrumento a {
-    display: block;
-    color: white;
-    text-decoration: none;
+  /* ── PODCAST CARDS ── */
+  .podcast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .podcast-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--red);
+    padding: 20px;
+    border-radius: 0 0 6px 6px;
+  }
+  .podcast-card h3 {
+    font-size: 0.95rem;
+    color: #fff;
     margin-bottom: 8px;
-}
-
-.conteudo-instrumento a:hover {
-    text-decoration: underline;
-}
-
-.conteudo {
-    display: none;
-}
-
-.instrumento {
-    margin-bottom: 12px;
-}
-
-.rock-btn {
-    width: 100%;
-    padding: 14px;
-    background-color: #e60000;
-    color: white;
-    border: none;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: 0.3s;
-}
-
-.rock-btn:hover {
-    background-color: #ff1a1a;
-}
-
-.conteudo-instrumento {
-    display: none;
-    background-color: #1a1a1a;
-    padding: 15px;
-    border-left: 4px solid #e60000;
-}
-
-.conteudo-instrumento a {
-    display: block;
-    color: white;
-    text-decoration: none;
-    margin-bottom: 8px;
-}
-
-.conteudo-instrumento a:hover {
-    text-decoration: underline;
-}
-
-.icon-gp {
-    width: 24px;
-    height: 24px;
-    vertical-align: middle;
-    margin-right: 8px;
-    border-radius: 50%;
-}
-
-/* BOTÃO INÍCIO */
-.btn-inicio {
-    display: inline-block;
-    margin-top: 16px;
-    padding: 10px 28px;
-    background: linear-gradient(90deg, #e60000, #900000);
+    letter-spacing: 0.5px;
+  }
+  .podcast-card p { font-size: 0.82rem; color: var(--muted); margin-bottom: 14px; }
+  .play-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: linear-gradient(90deg, var(--red), var(--red-dark));
     color: #fff;
     text-decoration: none;
-    font-family: 'Metal Mania', cursive;
-    font-size: 1rem;
-    letter-spacing: 3px;
-    border: 1px solid #ff1a1a;
-    box-shadow: 0 0 12px rgba(230,0,0,0.5);
-    transition: all 0.3s ease;
-}
+    font-family: var(--font);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+  .play-btn:hover { background: linear-gradient(90deg, var(--red-hover), #b30000); transform: scale(1.02); }
 
-.btn-inicio:hover {
-    background: linear-gradient(90deg, #ff1a1a, #b30000);
-    box-shadow: 0 0 25px rgba(230,0,0,0.8);
-    transform: translateY(-2px);
-    text-shadow: 0 0 10px rgba(255,255,255,0.5);
-}
+  /* ── MODAL PREVIEW ── */
+  #previewModal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,0.95);
+    align-items: center;
+    justify-content: center;
+  }
+  #previewModal.open { display: flex; }
+  .modal-box {
+    position: relative;
+    width: 90%;
+    max-width: 860px;
+    height: 85vh;
+    background: #111;
+    border: 1px solid var(--red);
+    border-radius: 6px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  .modal-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+  }
+  .modal-bar a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    font-family: var(--font);
+    font-size: 0.82rem;
+    border-radius: 3px;
+    transition: background 0.2s;
+  }
+  .modal-bar a:hover { background: var(--red-hover); }
+  .modal-close {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 4px;
+  }
+  #previewContent { flex: 1; overflow: hidden; border-radius: 4px; }
 
-.btn-inicio::before {
-    content: "";
-}
-    
+  /* ── PASSWORD MODAL ── */
+  #modalPassword {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: rgba(0,0,0,0.92);
+    align-items: center;
+    justify-content: center;
+  }
+  #modalPassword.open { display: flex; }
+  #modalDownload {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: rgba(0,0,0,0.92);
+    align-items: center;
+    justify-content: center;
+  }
+  #modalDownload.open { display: flex; }
+  .pass-box {
+    background: var(--bg3);
+    border: 2px solid var(--red);
+    border-radius: 8px;
+    padding: 32px 36px;
+    text-align: center;
+    min-width: 300px;
+    max-width: 380px;
+    width: 90%;
+  }
+  .pass-box h3 {
+    font-family: var(--font-metal);
+    color: var(--red);
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+  }
+  .pass-box p { color: var(--muted); margin-bottom: 14px; font-size: 0.9rem; }
+  .pass-box input {
+    width: 100%;
+    padding: 10px 12px;
+    background: var(--bg2);
+    border: 1px solid var(--red);
+    color: #fff;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-family: var(--font);
+    margin-bottom: 6px;
+  }
+  .err-pass { color: #ff4d4d; font-size: 0.85rem; margin-bottom: 10px; display: none; }
+  .pass-actions { display: flex; gap: 10px; justify-content: center; margin-top: 4px; }
+  .btn-dl {
+    padding: 9px 22px;
+    background: linear-gradient(90deg, var(--red), var(--red-dark));
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-family: var(--font);
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-dl:hover { background: linear-gradient(90deg, var(--red-hover), #b30000); }
+  .btn-cancel {
+    padding: 9px 22px;
+    background: var(--bg4);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-family: var(--font);
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+  .btn-cancel:hover { background: #333; }
+
+  /* ── YT MODAL ── */
+  #yt-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+  }
+  #yt-modal.open { display: flex; }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--muted);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+    letter-spacing: 1px;
+  }
+
+  /* ── SOUND BTN ── */
+  #btnSom {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--red);
+    color: #fff;
+    border: none;
+    padding: 9px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--font);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    z-index: 500;
+    transition: background 0.2s;
+    box-shadow: 0 0 12px rgba(230,0,0,0.4);
+  }
+  #btnSom:hover { background: var(--red-hover); }
+
+  /* ── GP ICON ── */
+  .icon-gp { width: 20px; height: 20px; border-radius: 50%; vertical-align: middle; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .tab-nav { gap: 4px; }
+    .tab-btn { font-size: 0.75rem; padding: 7px 12px; }
+    .instrument-grid { grid-template-columns: 1fr 1fr; }
+    .podcast-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
-
 <body>
 
 <header>
-    <h1>Materiais de Estudo</h1>
-    <p>NER – Nova Escola Rock</p>
-    <a href="index.html" class="btn-inicio">Início</a>
+  <h1>Materiais de Estudo</h1>
+  <p>NER – Nova Escola Rock</p>
+  <a href="index.html" class="btn-inicio">← Início</a>
 </header>
+
 <main>
 
-<div class="section">
-    <h2 class="toggle">🎸 Exercícios de Guitarra</h2>
-    
-    <ul class="conteudo">
-        <li><a href="ficheiros/guitarra/exercicios-de-pentatonica.pdf" download>Exercício de Pentatónica</a></li>
-        <li><a href="ficheiros/guitarra/as_escalas_pentatónicas_extensoes.pdf" download>Pentatónica – Extensões</a></li>
-        <li><a href="ficheiros/guitarra/aquecimento_diario_guitarristas_iniciantes.pdf" download>Aquecimento Diário</a></li>
-        <li><a href="ficheiros/guitarra/cinco_formas_escala_do_maior.rar" download>Cinco Formas da Escala do Maior</a></li>
-        <li><a href="ficheiros/guitarra/notas_no_braco_da_guitarra.pdf" download>Notas no Braço da Guitarra</a></li>
-        <li><a href="ficheiros/guitarra/os_primeiros_ritmos.pdf" download>Primeiros Ritmos - Mão Direita</a></li>
-        <li><a href="ficheiros/guitarra/lá_ré_mi_power_chords.jpg" download>Lá Ré Mi POWER CHORDS</a></li>
-        <li><a href="ficheiros/guitarra/sequencia_power_chords_a5_g5_f5.png" download>Power Chords Exercise 1</a></li>
-        <li><a href="ficheiros/guitarra/primeira_musica_queen_descricao.pdf" download>Primeira Música - We Will Rock You - E5 Power Chord</a></li>
-        <li><a href="ficheiros/guitarra/we_will_rock_you_melodia_guit1.pdf" download>We Will Rock You - Melodia - Guit 1</a></li>
-        <li><a href="ficheiros/guitarra/we_will_rock_you_melodia_guit2.pdf" download>We Will Rock You - Melodia - Guit 2</a></li>
-        <li><a href="ficheiros/guitarra/guia_aquecimento_diario_rock_completo_profissional.pdf" download>GUIA COMPLETO DE AQUECIMENTO DIÁRIO</a></li>
-        <li><a href="ficheiros/guitarra/palm_muting_exercicios.pdf" download>Palm Muting - Exercícios</a></li>
-        <li><a href="ficheiros/guitarra/single_chord_backingtrack_eminor_60bpm.pdf" download>Single Chord Palm Muting Exercise</a></li>
-        <li><a href="ficheiros/guitarra/quintas_posição_aberta.png" download>Quintas em posição aberta</a></li>
-        <li><a href="ficheiros/guitarra/cinco_desenhos_pentatonica.pdf" download>5 Desenhos da Escala Pentatónica</a></li>
-        <!-- Código para adicionar ficheiros da net -->
-        <li><a href="https://mega.nz/file/ioBXUI4I#B0IfW3zrzkuFOKs7JgM-zVXM-5G5oZCeY4sRei6D9DM" target="_blank">Padrões Melódicos 1</a></li>
-        <li><a href="https://mega.nz/file/2s4WRAxR#ZwkNiK583lXtgkNymbzvhgkK5IxAIiVeBFrxZpgt5-g" target="_blank">Liks Instantâneos - Sunshine of Your Love</a></li>
-        <li><a href="ficheiros/guitarra/afinação_standard.png" download>Afinação Standard</a></li>
-        <li><a href="ficheiros/guitarra/afinação_tab.png" download>Afinação TAB</a></li>
-        <li><a href="ficheiros/guitarra/dedilhados_simples_1.png" download>Dedilhados Simples</a></li>
-        <li><a href="ficheiros/guitarra/primeiros_3_acordes.png" download>Primeiros 3 Acordes</a></li>
-        <li><a href="ficheiros/guitarra/eric_clapton_wonderful_tonight_exercicio_bends.pdf" download>Wonderful Tonight - Eric Clapton Bend Exercise</a></li>
-        <li><a href="ficheiros/guitarra/dedilhado_com_um_so_dedo_guit1.pdf" download>Dedilhado com um só dedo - Guitarra 1</a></li>
-        <li><a href="ficheiros/guitarra/dedilhado_com_um_so_dedo_guit2.pdf" download>Dedilhado com um só dedo - Guitarra 2</a></li>
-        <li><a href="ficheiros/guitarra/figuras_ritmicas_e_seu_valor.pdf" download>Figuras Rítmicas & seu Valor</a></li>
-        <li><a href="ficheiros/guitarra/exercicios_ritmicos.pdf" download>Exercícios Rítmicos</a></li>
-        <li><a href="ficheiros/guitarra/independencia_de_dedos.pdf" download>Independência de Dedos</a></li>
-        
-        <!-- SUBPASTA GUITAR PRO -->
-        <li>
-            <button onclick="toggleSubfolder('guitarproSub')" class="subfolder-btn">
-    <img src="galeria-de-imagens/guitarpro5.png" 
-         alt="Guitar Pro 5" 
-         class="icon-gp">
-    Guitar Pro's
-</button>
-            <ul id="guitarproSub" class="subfolder-content">
-    <li>
-        <a href="ficheiros/guitarra/exercicios-escala-pentatonica-menor-de-la.gp5" download>
-            Exercícios – Escala Pentatónica Menor de Lá
-        </a>
-    </li>
-    <li>
-        <a href="ficheiros/guitarra/eric_clapton_wonderful_tonight_full.gp5" download>
-            Eric Clapton – Wonderful Tonight (Completa)
-        </a>
-    </li>
-    <li>
-        <a href="ficheiros/guitarra/eric_clapton_wonderful_tonight_exercicio_bends.gp5" download>
-            Eric Clapton – Wonderful Tonight (Exercício de Bends)
-        </a>
-    </li>
-    <li>
-        <a href="ficheiros/guitarra/independencia_de_dedos.gp5" download>
-            Independência de Dedos
-        </a>
-    </li>
-                
-</ul>
-</div>
+  <!-- TAB NAVIGATION -->
+  <nav class="tab-nav" role="tablist">
+    <button class="tab-btn active" onclick="showTab('guitarra')" role="tab">🎸 Guitarra</button>
+    <button class="tab-btn" onclick="showTab('improvisacao')" role="tab">🎵 Improvisação</button>
+    <button class="tab-btn" onclick="showTab('manuais')" role="tab">📖 Manuais</button>
+    <button class="tab-btn" onclick="showTab('piano')" role="tab">🎹 Piano / Teclado</button>
+    <button class="tab-btn" onclick="showTab('outros_inst')" role="tab">🥁 Outros</button>
+    <button class="tab-btn" onclick="showTab('backing')" role="tab">🎼 Backing Tracks</button>
+    <button class="tab-btn" onclick="showTab('videos')" role="tab">▶ Vídeos</button>
+    <button class="tab-btn" onclick="showTab('podcasts')" role="tab">🎙 Podcasts</button>
+    <button class="tab-btn" onclick="showTab('recursos')" role="tab">🔧 Recursos</button>
+  </nav>
 
-<div class="section">
-  <h2 class="toggle">🎯 Curso de Improvisação NER</h2>
-  <ul class="conteudo">
+  <!-- ===== GUITARRA ===== -->
+  <div id="tab-guitarra" class="panel active">
 
-    <!-- Adiciona aqui os teus ficheiros PDF -->
-    <li><a href="ficheiros/guitarra/curso_improvisacao_modulos_1_3.pdf" download>Módulos 1 a 3</a></li>
-    <li><a href="ficheiros/guitarra/curso_improvisacao_modulos_4_5_6.pdf" download>Módulos 4 a 6</a></li>
-    <li><a href="ficheiros/guitarra/curso_improvisacao_modulos_7_8_9.pdf" download>Módulos 7 a 9</a></li>
-    <li><a href="ficheiros/guitarra/curso_improvisacao_modulo_10.pdf" download>Módulo 10</a></li>
-    <li><a href="ficheiros/guitarra/curso_improvisacao_consideracoes_finais.pdf" download>Considerações Finais do Curso</a></li>
-    <li><a href="ficheiros/guitarra/curso_improvisacao_psicologia.pdf" download>A Psicologia na Guitarra</a></li>
-      
-    <!-- Adiciona aqui links de vídeos -->
-    <!--<li><a href="https://mega.nz/file/XXXXXX" target="_blank">Nome do Vídeo</a></li> -->
+    <div class="card">
+      <div class="card-header open" onclick="toggleCard(this)">
+        <span class="card-icon">🎸</span>
+        <h2>Exercícios de Guitarra</h2>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body open">
+        <ul class="file-list">
+          <li><a href="ficheiros/guitarra/aquecimento_diario_guitarristas_iniciantes.pdf" download><span class="file-icon">📄</span> Aquecimento Diário</a></li>
+          <li><a href="ficheiros/guitarra/cinco_desenhos_pentatonica.pdf" download><span class="file-icon">📄</span> 5 Desenhos da Escala Pentatónica</a></li>
+          <li><a href="ficheiros/guitarra/cinco_formas_escala_do_maior.rar" download><span class="file-icon">📦</span> Cinco Formas da Escala do Maior</a></li>
+          <li><a href="ficheiros/guitarra/dedilhado_com_um_so_dedo_guit1.pdf" download><span class="file-icon">📄</span> Dedilhado com um só dedo – Guitarra 1</a></li>
+          <li><a href="ficheiros/guitarra/dedilhado_com_um_so_dedo_guit2.pdf" download><span class="file-icon">📄</span> Dedilhado com um só dedo – Guitarra 2</a></li>
+          <li><a href="ficheiros/guitarra/dedilhados_simples_1.png" download><span class="file-icon">🖼</span> Dedilhados Simples</a></li>
+          <li><a href="ficheiros/guitarra/eric_clapton_wonderful_tonight_exercicio_bends.pdf" download><span class="file-icon">📄</span> Wonderful Tonight – Eric Clapton Bend Exercise</a></li>
+          <li><a href="ficheiros/guitarra/exercicios-de-pentatonica.pdf" download><span class="file-icon">📄</span> Exercício de Pentatónica</a></li>
+          <li><a href="ficheiros/guitarra/exercicios_ritmicos.pdf" download><span class="file-icon">📄</span> Exercícios Rítmicos</a></li>
+          <li><a href="ficheiros/guitarra/figuras_ritmicas_e_seu_valor.pdf" download><span class="file-icon">📄</span> Figuras Rítmicas & seu Valor</a></li>
+          <li><a href="ficheiros/guitarra/guia_aquecimento_diario_rock_completo_profissional.pdf" download><span class="file-icon">📄</span> Guia Completo de Aquecimento Diário</a></li>
+          <li><a href="ficheiros/guitarra/independencia_de_dedos.pdf" download><span class="file-icon">📄</span> Independência de Dedos</a></li>
+          <li><a href="ficheiros/guitarra/lá_ré_mi_power_chords.jpg" download><span class="file-icon">🖼</span> Lá Ré Mi – Power Chords</a></li>
+          <li><a href="ficheiros/guitarra/notas_no_braco_da_guitarra.pdf" download><span class="file-icon">📄</span> Notas no Braço da Guitarra</a></li>
+          <li><a href="ficheiros/guitarra/as_escalas_pentatónicas_extensoes.pdf" download><span class="file-icon">📄</span> Pentatónica – Extensões</a></li>
+          <li><a href="ficheiros/guitarra/palm_muting_exercicios.pdf" download><span class="file-icon">📄</span> Palm Muting – Exercícios</a></li>
+          <li><a href="ficheiros/guitarra/primeira_musica_queen_descricao.pdf" download><span class="file-icon">📄</span> Primeira Música – We Will Rock You – E5 Power Chord</a></li>
+          <li><a href="ficheiros/guitarra/primeiros_3_acordes.png" download><span class="file-icon">🖼</span> Primeiros 3 Acordes</a></li>
+          <li><a href="ficheiros/guitarra/os_primeiros_ritmos.pdf" download><span class="file-icon">📄</span> Primeiros Ritmos – Mão Direita</a></li>
+          <li><a href="ficheiros/guitarra/quintas_posição_aberta.png" download><span class="file-icon">🖼</span> Quintas em Posição Aberta</a></li>
+          <li><a href="ficheiros/guitarra/sequencia_power_chords_a5_g5_f5.png" download><span class="file-icon">🖼</span> Power Chords Exercise 1</a></li>
+          <li><a href="ficheiros/guitarra/single_chord_backingtrack_eminor_60bpm.pdf" download><span class="file-icon">📄</span> Single Chord Palm Muting Exercise</a></li>
+          <li><a href="ficheiros/guitarra/we_will_rock_you_melodia_guit1.pdf" download><span class="file-icon">📄</span> We Will Rock You – Melodia – Guit 1</a></li>
+          <li><a href="ficheiros/guitarra/we_will_rock_you_melodia_guit2.pdf" download><span class="file-icon">📄</span> We Will Rock You – Melodia – Guit 2</a></li>
+          <li><a href="ficheiros/guitarra/afinação_standard.png" download><span class="file-icon">🖼</span> Afinação Standard</a></li>
+          <li><a href="ficheiros/guitarra/afinação_tab.png" download><span class="file-icon">🖼</span> Afinação TAB</a></li>
+          <!-- Links externos -->
+          <li><a href="https://mega.nz/file/ioBXUI4I#B0IfW3zrzkuFOKs7JgM-zVXM5G5oZCeY4sRei6D9DM" target="_blank"><span class="file-icon">🔗</span> Padrões Melódicos 1</a></li>
+          <li><a href="https://mega.nz/file/2s4WRAxR#ZwkNiK583lXtgkNymbzvhgkK5IxAIiVeBFrxZpgt5-g" target="_blank"><span class="file-icon">🔗</span> Licks Instantâneos – Sunshine of Your Love</a></li>
 
-    <!-- Adiciona aqui backing tracks -->
-    <!-- <li><a href="ficheiros/improvisacao/nome-track.mp3" download>Nome da Track</a></li> -->
-
-    <!-- Subpasta Guitar Pro (opcional) -->
-    <!--
-    <li>
-      <button onclick="toggleSubfolder('improvisacaoGP')" class="subfolder-btn">
-        <img src="galeria-de-imagens/guitarpro5.png" alt="Guitar Pro 5" class="icon-gp">
-        Guitar Pro's
-      </button>
-      <ul id="improvisacaoGP" class="subfolder-content">
-        <li><a href="ficheiros/improvisacao/nome-ficheiro.gp5" download>Nome do Ficheiro GP5</a></li>
-      </ul>
-    </li>
-    -->
-
-  </ul>
-</div>
-    
-<div class="section">
-    <h2 class="toggle">📘 Manual de Guitarra</h2>
-    <ul class="conteudo">
-        <li><a href="ficheiros/guitarra/manual_guitarra_nivel1_spark_semanas_1a4.pdf" download>Nível 1 – Spark</a></li>
-        <li><a href="ficheiros/guitarra/manual_guitarra_nivel2_flame_semanas_5a8.pdf" download>Nível 2 – Flame</a></li>
-        <li><a href="ficheiros/guitarra/manual_guitarra_nivel3_blaze_semanas_9a12.pdf" download>Nível 3 – Blaze</a></li>
-        <li><a href="ficheiros/guitarra/manual_guitarra_nivel4_inferno_semanas_13a16.pdf" download>Nível 4 – Inferno</a></li>
-        <li><a href="ficheiros/guitarra/O_Arsenal_do_Guitarrista_Domínio_e_Expressão.pdf" download>O Arsenal do Guitarrista</a></li>
-    </ul>
-</div>
-
-   <div class="section">
-    <h2 class="toggle">📁 Documentos</h2>
-    
-    <ul class="conteudo">
-        <li>
-            <a href="ficheiros/guitarra/ner_psicologia_na_musica_v3.pdf" download>
-                NER – Psicologia na Música (V3)
-            </a>
-        </li>
-
-        <li><a href="ficheiros/outros/ner_inscricao_de_socio.docx" download> Ficha de Inscrição de Sócio</a></li>
-        
-    </ul>
-</div>
-
-<div class="section">
-    <h2 class="toggle">🎹 Piano / Teclado</h2>
-    <ul class="conteudo">
-        <li><a href="ficheiros/piano/believer_versão_fácil.docx" download>Beliver - Versão fácil</a></li>
-        <li><a href="ficheiros/piano/estudo_czerny_estudo_11_op599.docx" download>Estudo Czenry - Estudo nº 11</a></li>
-        <li><a href="ficheiros/piano/exercícios_de_estudo_das_notas_principais_na_pauta.docx" download>Exercícios - Estudo das Notas Principais na Pauta</a></li>
-        <li><a href="ficheiros/piano/stay_rihanna.docx" download>Stay - Rihanna</a></li>
-        <li><a href="ficheiros/piano/interstellar2.docx" download>Intersteller 2</a></li>
-        <li><a href="ficheiros/piano/para_elisa_beethoven.docx" download>Para Elisa - Beethoven</a></li>
-        <li><a href="ficheiros/piano/primavera_4_estações_vivaldi.docx" download>Primavera - 4 Estações - Vivaldi</a></li>
-    </ul>
-</div>
-
-<div class="section">
-    <h2 class="toggle">🥁 Bateria</h2>
-    <ul class="conteudo">
-        <li><a href="ficheiros/bateria/bateria.pdf" download>Bateria</a></li>
-    </ul>
-</div>
-
-<div class="section">
-    <h2 class="toggle">🎤 Canto</h2>
-    <ul class="conteudo">
-        <li><a href="ficheiros/canto/canto.pdf" download>Canto</a></li>
-    </ul>
-</div>
-
-<div class="section">
-    <h2 class="toggle">🎸 Baixo</h2>
-    <ul class="conteudo">
-        <li><a href="ficheiros/baixo/baixo.pdf" download>Baixo</a></li>
-    </ul>
-</div>
-
-<div class="section">
-    <h2 class="toggle">📄 Outros Recursos</h2>
-    <ul class="conteudo">
-        <!-- <li><a href="ficheiros/outros/plano-estudo.pdf" download> Plano de Estudo Semanal</a></li> -->
-        
-        <!-- Guitar Pro SetUp -->
-<li>
-    <a href="#" onclick="pedirPassword(event, 'https://mega.nz/file/r8BUSCKa#xzGXsmHFX32XDYNEolrMueLkLjLfEJKTTXzZ04kOkww', '713789FzNer1')">
-        Guitar Pro SetUp
-    </a>
-</li>
-<li>
-    <a href="#" onclick="pedirPassword(event, 'https://mega.nz/file/atZFxZTT#xuuJBavQPbooV4INhWT7Io1eh3zpO-UXUAzoIS2Ux-E', '713789FzNer2')">
-        Guitar Pro Serial
-    </a>
-</li>
-        <li><a href="ficheiros/outros/como_instalar_guitar_pro5.txt" download> Como Instalar Guitar Pro 5</a></li>
-        <li><a href="https://ner-testemunhos.netlify.app" target="_blank">📝 Formulário de Testemunho de Aluno</a></li>
-    </ul>
-</div>
-
-<div class="section">
-    <h2 class="toggle">🎬 Vídeos Didáticos</h2>
-    <div class="conteudo">
-        <div class="instrumento">
-            <button class="rock-btn" onclick="toggleInstrumento('eletrica')">
-                🎸 Guitarra Elétrica
+          <!-- Guitar Pro subfolder -->
+          <li>
+            <button class="subfolder-toggle" onclick="toggleSub('gpSub')">
+              <img src="galeria-de-imagens/guitarpro5.png" alt="GP5" class="icon-gp">
+              <span>Guitar Pro's</span>
+              <span style="margin-left:auto; color:var(--red);">▼</span>
             </button>
-            <div id="eletrica" class="conteudo-instrumento">
-                <a href="https://mega.nz/file/D1hHhB4K#FLKKpGoTbPyIk3DmbXdC0P9O-kf6AgAaW2PO3jThIQ8" target="_blank">Primeiro Ano de Guitarra</a>
-                <a href="https://mega.nz/file/WhICBAyB#Pzc74rPoIHPZ6Gm01SQJb90CyZ7wLBH-YlrL1qBzrIc" target="_blank">Memória Musical Duradoura</a>
-                <a href="https://mega.nz/file/qtRH3CxL#_nebi0xjrMCRlimQeNFSmsqL0UAWCfC4VRViyvSb1hY" target="_blank">Como Sobreviver à Guitarra</a>
-                <a href="https://mega.nz/file/a0hHjBZa#ddZcD8OkvhiETVvWaJjL3XJuxz_P5NfE_eTfWxmjK98" target="_blank">A Guitarra, o Cérebro e a Lição Para Além da Música</a>
-                <a href="https://mega.nz/file/Kl5iHKpA#L56ROSIUwoLGYgpWHZ60gEz5KBEcwN3MmHbLqafIfmk" target="_blank">We will rock you - Backing Vídeo</a>
-                <a href="https://mega.nz/file/6tojAbjZ#kcIiYvx058YPOGqrLb_rPQAukx9L_brLVaV4yDnJPNo" target="_blank">5 Desenhos Pentatónica com Backing Track</a>
-                <a href="https://mega.nz/file/TxRnyKSQ#FXa1fFSDjMd7bE738WdFlJFq4qWfXHcntp020efmnXo" target="_blank">A Psicologia na Música</a>
-                <a href="https://www.youtube.com/watch?v=XVpzjrxvBCM&list=RDXVpzjrxvBCM&start_radio=1" target="_blank">🎥 Wonderful Tonight - Eric Clapton Guitar Backing Track with chords and lyrics</a>
-                <a href="https://mega.nz/file/6tojAbjZ#kcIiYvx058YPOGqrLb_rPQAukx9L_brLVaV4yDnJPNo" target="_blank">A minor Pentatonic - 5 Positions</a>
-            
-            </div>
-        </div>
-
-        <div class="instrumento">
-            <button class="rock-btn" onclick="toggleInstrumento('classica')">🎼 Guitarra Clássica</button>
-            <div id="classica" class="conteudo-instrumento"></div>
-        </div>
-
-        <div class="instrumento">
-            <button class="rock-btn" onclick="toggleInstrumento('baixo')">🎸 Baixo</button>
-            <div id="baixo" class="conteudo-instrumento"></div>
-        </div>
-
-        <div class="instrumento">
-            <button class="rock-btn" onclick="toggleInstrumento('bateria')">🥁 Bateria</button>
-            <div id="bateria" class="conteudo-instrumento"></div>
-        </div>
-
-        <div class="instrumento">
-            <button class="rock-btn" onclick="toggleInstrumento('canto')">🎤 Canto</button>
-            <div id="canto" class="conteudo-instrumento"></div>
-        </div>
-
-        <div class="instrumento">
-            <button class="rock-btn" onclick="toggleInstrumento('teclado')">🎹 Teclado / Piano</button>
-            <div id="teclado" class="conteudo-instrumento"></div>
-        </div>
-
-        <div class="instrumento">
-            <button class="rock-btn" onclick="toggleInstrumento('acordeao')">🪗 Acordeão</button>
-            <div id="acordeao" class="conteudo-instrumento"></div>
-        </div>
-
-        <div class="instrumento">
-            <button class="rock-btn" onclick="toggleInstrumento('cavaquinho')">🎶 Cavaquinho</button>
-            <div id="cavaquinho" class="conteudo-instrumento"></div>
-        </div>
-
-    </div>
-</div>
-
-<div class="section">
-    <h2 class="toggle">🔥 Backing Tracks</h2>
-    <ul class="conteudo">
-        <li><a href="ficheiros/backing-tracks/Eternal Grind_BT1_60bpm.mp3" download>Eternal Grind – 60 BPM</a></li>
-        <li><a href="ficheiros/backing-tracks/Eternal Grind_bt2_60bpm.mp3" download>Eternal Grind – Alt</a></li>
-        <li><a href="ficheiros/backing-tracks/Relentless Pulse_1bpm120.mp3" download>Relentless Pulse – 120 BPM</a></li>
-        <li><a href="ficheiros/backing-tracks/Relentless Pulse_2bpm120.mp3" download>Relentless Pulse – Alt</a></li>
-        <li><a href="ficheiros/backing-tracks/palm_mute_exercicio1.mp3" download>Palm Mute - Exercício 1</a></li>
-        <li><a href="ficheiros/backing-tracks/palm_mute_exercicio2.mp3" download>Palm Mute - Exercício 2</a></li>
-        <li><a href="ficheiros/backing-tracks/palm_mute_exercicio3.mp3" download>Palm Mute - Exercício 3</a></li>
-        <li><a href="ficheiros/backing-tracks/single_chord_backingtrack_eminor_60bpm.mp3" download>Single Chord Backing Track E minor 60bpm</a></li>
-        <li><a href="ficheiros/backing-tracks/single_chord_backingtrack_aminor_60bpm.mp3" download>Single Chord Backing Track A minor 60bpm</a></li>
-        <li><a href="ficheiros/backing-tracks/sunshine_of_your_love_backing_track.mp3" download>Shunshine of Your Love - Backing track</a></li>
-        <li><a href="ficheiros/guitarra/independencia_de_dedos.mp3" download>Independência de Dedos</a></li>
-
-        <li>
-  <a href="#" onclick="abrirYT('gwtXDA7WoS0'); return false;">Atmospheric Ambient Pad Backing Track in E Minor ▶</a>
-</li>
-        
-        <!-- BOTÃO SUBPASTA ROCKEIRO -->
-        <li>
-            <button class="subfolder-btn" onclick="toggleSubfolder('subfolderSequencia')">Sequência A5 G5 F5 G5</button>
-            <ul id="subfolderSequencia" class="subfolder-content">
-                <li><a href="ficheiros/backing-tracks/Sequência-A5-G5-F5-G5/grinding_line1.mp3" download>Grinding Line 1</a></li>
-                <li><a href="ficheiros/backing-tracks/Sequência-A5-G5-F5-G5/grinding_line2.mp3" download>Grinding Line 2</a></li>
-                <li><a href="ficheiros/backing-tracks/Sequência-A5-G5-F5-G5/muted_cycle.mp3" download>Muted Cycle</a></li>
+            <ul id="gpSub" class="subfolder-content">
+              <li><a href="ficheiros/guitarra/eric_clapton_wonderful_tonight_exercicio_bends.gp5" download><span class="file-icon">🎸</span> Wonderful Tonight – Exercício de Bends</a></li>
+              <li><a href="ficheiros/guitarra/eric_clapton_wonderful_tonight_full.gp5" download><span class="file-icon">🎸</span> Wonderful Tonight – Completa</a></li>
+              <li><a href="ficheiros/guitarra/exercicios-escala-pentatonica-menor-de-la.gp5" download><span class="file-icon">🎸</span> Escala Pentatónica Menor de Lá</a></li>
+              <li><a href="ficheiros/guitarra/independencia_de_dedos.gp5" download><span class="file-icon">🎸</span> Independência de Dedos</a></li>
             </ul>
-        </li>
-
-        <li>
-        <button class="subfolder-btn" onclick="toggleSubfolder('subfolderRiffs')">Riffs Power Chords</button>
-        <ul id="subfolderRiffs" class="subfolder-content">
-                <!-- <li><a href="ficheiros/backing-tracks/Riffs-Power-Chords/riff1.mp3" download>Riff 1</a></li> -->
-                <!-- <li><a href="ficheiros/backing-tracks/Riffs-Power-Chords/riff2.mp3" download>Riff 2</a></li> -->
-                <!-- <li><a href="ficheiros/backing-tracks/Riffs-Power-Chords/riff3.mp3" download>Riff 3</a></li> -->
-            <li><a href="ficheiros/guitarra/quintas_posição_aberta.mp3" download>Quintas em posição aberta</a></li>
-
-    </ul>
-</li>
-
-
-    </ul>
-</div>
-
-<div class="section"> 
-    <h2 class="toggle">📻 Podcasts</h2> 
-    <div class="conteudo">
-        <div style="margin-bottom:30px; background:#1a1a1a; padding:20px; border-left:4px solid #e60000;">
-            <h3 style="color:#e60000;">A Ciência para não desistir da Guitarra</h3>
-            <p style="color:#ccc;">Reflexão sobre motivação, consistência e mentalidade no estudo da guitarra.</p>
-            <a href="https://mega.nz/file/29RW3CZb#npZ5BeR0uSCXI3zRxmaoBacT9DAF1Hivt-wNTt_hEGk" target="_blank" class="rock-btn">
-               ▶ Ouvir / Download
-            </a>
-        </div>
-
-        <div style="background:#1a1a1a; padding:20px; border-left:4px solid #e60000;">
-            <h3 style="color:#e60000;">🎙 Aprender Guitarra no Palco sem Teoria</h3>
-            <p style="color:#ccc;">Como desenvolver segurança e musicalidade mesmo sem base teórica profunda.</p>
-            <a href="https://mega.nz/file/PpgzQD5R#jYGJwb4py8xlemGlSip1NEBJFmSheQobdCaEbP8ixLU" target="_blank" class="rock-btn">
-               ▶ Ouvir / Download
-            </a>
-        </div>
-
-        <div style="margin-top:30px; background:#1a1a1a; padding:20px; border-left:4px solid #e60000;">
-            <h3 style="color:#e60000;">🎙 Como a Música Transforma o Cérebro</h3>
-            <p style="color:#ccc;">O impacto profundo da música na mente, na aprendizagem e na criatividade.</p>
-            <a href="https://mega.nz/file/vxZkQRhC#bAFSV9cnC0qcsPOgFJAsz27vswWJ9MoB5AWIqJ8lqhk" target="_blank" class="rock-btn">
-               ▶ Ouvir / Download
-            </a>
-        </div>
+          </li>
+        </ul>
+      </div>
     </div>
-</div>
-    
+
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <span class="card-icon">📚</span>
+        <h2>Documentos</h2>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <ul class="file-list">
+          <li><a href="ficheiros/guitarra/ner_psicologia_na_musica_v3.pdf" download><span class="file-icon">📄</span> NER – Psicologia na Música (V3)</a></li>
+          <li><a href="ficheiros/outros/ner_inscricao_de_socio.docx" download><span class="file-icon">📝</span> Ficha de Inscrição de Sócio</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div><!-- /guitarra -->
+
+  <!-- ===== IMPROVISAÇÃO ===== -->
+  <div id="tab-improvisacao" class="panel">
+    <div class="card">
+      <div class="card-header open" onclick="toggleCard(this)">
+        <span class="card-icon">🎵</span>
+        <h2>Curso de Improvisação NER</h2>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body open">
+        <ul class="file-list">
+          <li><a href="ficheiros/guitarra/curso_improvisacao_modulos_1_3.pdf" download><span class="file-icon">📄</span> Módulos 1 a 3</a></li>
+          <li><a href="ficheiros/guitarra/curso_improvisacao_modulos_4_5_6.pdf" download><span class="file-icon">📄</span> Módulos 4 a 6</a></li>
+          <li><a href="ficheiros/guitarra/curso_improvisacao_modulos_7_8_9.pdf" download><span class="file-icon">📄</span> Módulos 7 a 9</a></li>
+          <li><a href="ficheiros/guitarra/curso_improvisacao_modulo_10.pdf" download><span class="file-icon">📄</span> Módulo 10</a></li>
+          <li><a href="ficheiros/guitarra/curso_improvisacao_consideracoes_finais.pdf" download><span class="file-icon">📄</span> Considerações Finais do Curso</a></li>
+          <li><a href="ficheiros/guitarra/curso_improvisacao_psicologia.pdf" download><span class="file-icon">📄</span> A Psicologia na Guitarra</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MANUAIS ===== -->
+  <div id="tab-manuais" class="panel">
+    <div class="card">
+      <div class="card-header open" onclick="toggleCard(this)">
+        <span class="card-icon">📖</span>
+        <h2>Manual de Guitarra</h2>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body open">
+        <ul class="file-list">
+          <li><a href="ficheiros/guitarra/manual_guitarra_nivel1_spark_semanas_1a4.pdf" download><span class="file-icon">📄</span> Nível 1 – Spark (Semanas 1–4)</a></li>
+          <li><a href="ficheiros/guitarra/manual_guitarra_nivel2_flame_semanas_5a8.pdf" download><span class="file-icon">📄</span> Nível 2 – Flame (Semanas 5–8)</a></li>
+          <li><a href="ficheiros/guitarra/manual_guitarra_nivel3_blaze_semanas_9a12.pdf" download><span class="file-icon">📄</span> Nível 3 – Blaze (Semanas 9–12)</a></li>
+          <li><a href="ficheiros/guitarra/manual_guitarra_nivel4_inferno_semanas_13a16.pdf" download><span class="file-icon">📄</span> Nível 4 – Inferno (Semanas 13–16)</a></li>
+          <li><a href="ficheiros/guitarra/O_Arsenal_do_Guitarrista_Domínio_e_Expressão.pdf" download><span class="file-icon">📄</span> O Arsenal do Guitarrista</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PIANO / TECLADO ===== -->
+  <div id="tab-piano" class="panel">
+    <div class="card">
+      <div class="card-header open" onclick="toggleCard(this)">
+        <span class="card-icon">🎹</span>
+        <h2>Piano / Teclado</h2>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body open">
+        <ul class="file-list">
+          <li><a href="ficheiros/piano/believer_versão_fácil.docx" download><span class="file-icon">📝</span> Believer – Versão fácil</a></li>
+          <li><a href="ficheiros/piano/estudo_czerny_estudo_11_op599.docx" download><span class="file-icon">📝</span> Estudo Czerny – Estudo nº 11</a></li>
+          <li><a href="ficheiros/piano/exercícios_de_estudo_das_notas_principais_na_pauta.docx" download><span class="file-icon">📝</span> Exercícios – Notas Principais na Pauta</a></li>
+          <li><a href="ficheiros/piano/interstellar2.docx" download><span class="file-icon">📝</span> Interstellar 2</a></li>
+          <li><a href="ficheiros/piano/para_elisa_beethoven.docx" download><span class="file-icon">📝</span> Para Elisa – Beethoven</a></li>
+          <li><a href="ficheiros/piano/primavera_4_estações_vivaldi.docx" download><span class="file-icon">📝</span> Primavera – 4 Estações – Vivaldi</a></li>
+          <li><a href="ficheiros/piano/stay_rihanna.docx" download><span class="file-icon">📝</span> Stay – Rihanna</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== OUTROS INSTRUMENTOS ===== -->
+  <div id="tab-outros_inst" class="panel">
+    <div class="card">
+      <div class="card-header open" onclick="toggleCard(this)">
+        <span class="card-icon">🥁</span>
+        <h2>Bateria</h2>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body open">
+        <ul class="file-list">
+          <li><a href="ficheiros/bateria/bateria.pdf" download><span class="file-icon">📄</span> Bateria</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <span class="card-icon">🎤</span>
+        <h2>Canto</h2>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <ul class="file-list">
+          <li><a href="ficheiros/canto/canto.pdf" download><span class="file-icon">📄</span> Canto</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <span class="card-icon">🎸</span>
+        <h2>Baixo</h2>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body">
+        <ul class="file-list">
+          <li><a href="ficheiros/baixo/baixo.pdf" download><span class="file-icon">📄</span> Baixo</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== BACKING TRACKS ===== -->
+  <div id="tab-backing" class="panel">
+    <div class="card">
+      <div class="card-header open" onclick="toggleCard(this)">
+        <span class="card-icon">🎼</span>
+        <h2>Backing Tracks</h2>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body open">
+        <ul class="file-list">
+          <li><a href="ficheiros/backing-tracks/Eternal Grind_BT1_60bpm.mp3" download><span class="file-icon">🎵</span> Eternal Grind – 60 BPM</a></li>
+          <li><a href="ficheiros/backing-tracks/Eternal Grind_bt2_60bpm.mp3" download><span class="file-icon">🎵</span> Eternal Grind – Alt</a></li>
+          <li><a href="ficheiros/guitarra/independencia_de_dedos.mp3" download><span class="file-icon">🎵</span> Independência de Dedos</a></li>
+          <li><a href="ficheiros/backing-tracks/palm_mute_exercicio1.mp3" download><span class="file-icon">🎵</span> Palm Mute – Exercício 1</a></li>
+          <li><a href="ficheiros/backing-tracks/palm_mute_exercicio2.mp3" download><span class="file-icon">🎵</span> Palm Mute – Exercício 2</a></li>
+          <li><a href="ficheiros/backing-tracks/palm_mute_exercicio3.mp3" download><span class="file-icon">🎵</span> Palm Mute – Exercício 3</a></li>
+          <li><a href="ficheiros/backing-tracks/Relentless Pulse_1bpm120.mp3" download><span class="file-icon">🎵</span> Relentless Pulse – 120 BPM</a></li>
+          <li><a href="ficheiros/backing-tracks/Relentless Pulse_2bpm120.mp3" download><span class="file-icon">🎵</span> Relentless Pulse – Alt</a></li>
+          <li><a href="ficheiros/backingtracks/single_chord_backingtrack_aminor_60bpm.mp3" download><span class="file-icon">🎵</span> Single Chord – A minor 60 BPM</a></li>
+          <li><a href="ficheiros/backingtracks/single_chord_backingtrack_eminor_60bpm.mp3" download><span class="file-icon">🎵</span> Single Chord – E minor 60 BPM</a></li>
+          <li><a href="ficheiros/backingtracks/sunshine_of_your_love_backing_track.mp3" download><span class="file-icon">🎵</span> Sunshine of Your Love – Backing Track</a></li>
+          <li>
+            <a href="#" onclick="abrirYT('gwtXDA7WoS0'); return false;"><span class="file-icon">▶</span> Atmospheric Ambient Pad – E Minor (YouTube)</a>
+          </li>
+
+          <!-- Subfolder Sequência -->
+          <li>
+            <button class="subfolder-toggle" onclick="toggleSub('subSeq')">
+              <span>📁 Sequência A5 G5 F5 G5</span>
+              <span style="margin-left:auto; color:var(--red);">▼</span>
+            </button>
+            <ul id="subSeq" class="subfolder-content">
+              <li><a href="ficheiros/backing-tracks/Sequência-A5-G5-F5-G5/grinding_line1.mp3" download><span class="file-icon">🎵</span> Grinding Line 1</a></li>
+              <li><a href="ficheiros/backing-tracks/Sequência-A5-G5-F5-G5/grinding_line2.mp3" download><span class="file-icon">🎵</span> Grinding Line 2</a></li>
+              <li><a href="ficheiros/backing-tracks/Sequência-A5-G5-F5-G5/muted_cycle.mp3" download><span class="file-icon">🎵</span> Muted Cycle</a></li>
+            </ul>
+          </li>
+
+          <!-- Subfolder Riffs -->
+          <li>
+            <button class="subfolder-toggle" onclick="toggleSub('subRiffs')">
+              <span>📁 Riffs Power Chords</span>
+              <span style="margin-left:auto; color:var(--red);">▼</span>
+            </button>
+            <ul id="subRiffs" class="subfolder-content">
+              <li><a href="ficheiros/guitarra/quintas_posição_aberta.mp3" download><span class="file-icon">🎵</span> Quintas em Posição Aberta</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== VÍDEOS ===== -->
+  <div id="tab-videos" class="panel">
+    <p style="color:var(--muted); margin-bottom:16px; font-size:0.9rem; letter-spacing:0.5px;">Seleciona um instrumento para ver os vídeos disponíveis.</p>
+    <div class="instrument-grid" id="instrGrid">
+      <button class="instr-btn" onclick="toggleInstr('v-eletrica', this)">🎸 Guitarra Elétrica</button>
+      <button class="instr-btn" onclick="toggleInstr('v-classica', this)">🎸 Guitarra Clássica</button>
+      <button class="instr-btn" onclick="toggleInstr('v-baixo', this)">🎸 Baixo</button>
+      <button class="instr-btn" onclick="toggleInstr('v-bateria', this)">🥁 Bateria</button>
+      <button class="instr-btn" onclick="toggleInstr('v-canto', this)">🎤 Canto</button>
+      <button class="instr-btn" onclick="toggleInstr('v-teclado', this)">🎹 Teclado / Piano</button>
+      <button class="instr-btn" onclick="toggleInstr('v-acordeao', this)">🪗 Acordeão</button>
+      <button class="instr-btn" onclick="toggleInstr('v-cavaquinho', this)">🎵 Cavaquinho</button>
+    </div>
+
+    <!-- Vídeos Guitarra Elétrica -->
+    <ul id="v-eletrica" class="instr-links file-list" style="margin-top:12px;">
+      <li><a href="https://mega.nz/file/a0hHjBZa#ddZcD8OkvhiETVvWaJjL3XJuxz_P5NfE_eTfWxmjK98" target="_blank"><span class="file-icon">▶</span> A Guitarra, o Cérebro e a Lição Para Além da Música</a></li>
+      <li><a href="https://mega.nz/file/TxRnyKSQ#FXa1fFSDjMd7bE738WdFlJFq4qWfXHcntp020efmnXo" target="_blank"><span class="file-icon">▶</span> A Psicologia na Música</a></li>
+      <li><a href="https://mega.nz/file/6tojAbjZ#kcIiYvx058YPOGqrLb_rPQAukx9L_brLVaV4yDnJPNo" target="_blank"><span class="file-icon">▶</span> A minor Pentatonic – 5 Positions</a></li>
+      <li><a href="https://mega.nz/file/qtRH3CxL#_nebi0xjrMCRlimQeNFSmsqL0UAWCfC4VRViyvSb1hY" target="_blank"><span class="file-icon">▶</span> Como Sobreviver à Guitarra</a></li>
+      <li><a href="https://mega.nz/file/WhICBAyB#Pzc74rPoIHPZ6Gm01SQJb90CyZ7wLBHYlrL1qBzrIc" target="_blank"><span class="file-icon">▶</span> Memória Musical Duradoura</a></li>
+      <li><a href="https://mega.nz/file/D1hHhB4K#FLKKpGoTbPyIk3DmbXdC0P9Okf6AgAaW2PO3jThIQ8" target="_blank"><span class="file-icon">▶</span> Primeiro Ano de Guitarra</a></li>
+      <li><a href="https://mega.nz/file/Kl5iHKpA#L56ROSIUwoLGYgpWHZ60gEz5KBEcwN3MmHbLqafIfmk" target="_blank"><span class="file-icon">▶</span> We Will Rock You – Backing Vídeo</a></li>
+      <li><a href="https://www.youtube.com/watch?v=XVpzjrxvBCM" target="_blank"><span class="file-icon">▶</span> Wonderful Tonight – Backing Track com acordes</a></li>
+      <li><a href="https://mega.nz/file/6tojAbjZ#kcIiYvx058YPOGqrLb_rPQAukx9L_brLVaV4yDnJPNo" target="_blank"><span class="file-icon">▶</span> 5 Desenhos Pentatónica com Backing Track</a></li>
+    </ul>
+    <ul id="v-classica" class="instr-links file-list" style="margin-top:12px;"><li style="padding:12px; color:var(--muted);">Em breve...</li></ul>
+    <ul id="v-baixo" class="instr-links file-list" style="margin-top:12px;"><li style="padding:12px; color:var(--muted);">Em breve...</li></ul>
+    <ul id="v-bateria" class="instr-links file-list" style="margin-top:12px;"><li style="padding:12px; color:var(--muted);">Em breve...</li></ul>
+    <ul id="v-canto" class="instr-links file-list" style="margin-top:12px;"><li style="padding:12px; color:var(--muted);">Em breve...</li></ul>
+    <ul id="v-teclado" class="instr-links file-list" style="margin-top:12px;"><li style="padding:12px; color:var(--muted);">Em breve...</li></ul>
+    <ul id="v-acordeao" class="instr-links file-list" style="margin-top:12px;"><li style="padding:12px; color:var(--muted);">Em breve...</li></ul>
+    <ul id="v-cavaquinho" class="instr-links file-list" style="margin-top:12px;"><li style="padding:12px; color:var(--muted);">Em breve...</li></ul>
+  </div>
+
+  <!-- ===== PODCASTS ===== -->
+  <div id="tab-podcasts" class="panel">
+    <div class="podcast-grid">
+      <div class="podcast-card">
+        <h3>A Ciência para não desistir da Guitarra</h3>
+        <p>Reflexão sobre motivação, consistência e mentalidade no estudo da guitarra.</p>
+        <a href="https://mega.nz/file/29RW3CZb#npZ5BeR0uSCXI3zRxmaoBacT9DAF1HivtwNTt_hEGk" target="_blank" class="play-btn">▶ Ouvir / Download</a>
+      </div>
+      <div class="podcast-card">
+        <h3>Aprender Guitarra no Palco sem Teoria</h3>
+        <p>Como desenvolver segurança e musicalidade mesmo sem base teórica profunda.</p>
+        <a href="https://mega.nz/file/PpgzQD5R#jYGJwb4py8xlemGlSip1NEBJFmSheQobdCaEbP8ixLU" target="_blank" class="play-btn">▶ Ouvir / Download</a>
+      </div>
+      <div class="podcast-card">
+        <h3>Como a Música Transforma o Cérebro</h3>
+        <p>O impacto profundo da música na mente, na aprendizagem e na criatividade.</p>
+        <a href="https://mega.nz/file/vxZkQRhC#bAFSV9cnC0qcsPOgFJAsz27vswWJ9MoB5AWIqJ8lqhk" target="_blank" class="play-btn">▶ Ouvir / Download</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== RECURSOS ===== -->
+  <div id="tab-recursos" class="panel">
+    <div class="card">
+      <div class="card-header open" onclick="toggleCard(this)">
+        <span class="card-icon">🔧</span>
+        <h2>Outros Recursos</h2>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="card-body open">
+        <ul class="file-list">
+          <li>
+            <button class="file-item" onclick="pedirPassword(event, 'https://mega.nz/file/r8BUSCKa#xzGXsmHFX32XDYNEolrMueLkLjLfEJKTTXzZ04kOkww', '713789FzNer1')">
+              <span class="file-icon">🔒</span> Guitar Pro SetUp
+            </button>
+          </li>
+          <li>
+            <button class="file-item" onclick="pedirPassword(event, 'https://mega.nz/file/atZFxZTT#xuuJBavQPbooV4INhWT7Io1eh3zpOUXUAzoIS2Ux-E', '713789FzNer2')">
+              <span class="file-icon">🔒</span> Guitar Pro Serial
+            </button>
+          </li>
+          <li><a href="ficheiros/outros/como_instalar_guitar_pro5.txt" download><span class="file-icon">📄</span> Como Instalar Guitar Pro 5</a></li>
+          <li><a href="https://ner-testemunhos.netlify.app" target="_blank"><span class="file-icon">🔗</span> Formulário de Testemunho de Aluno</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
 </main>
 
-<footer>
-© 2026 – NER · Nova Escola Rock
-</footer>
+<footer>© 2026 – NER · Nova Escola Rock</footer>
 
-<script>
-document.querySelectorAll(".toggle").forEach(titulo => {
-    titulo.addEventListener("click", () => {
-        const conteudo = titulo.nextElementSibling;
-        conteudo.style.display =
-            conteudo.style.display === "block" ? "none" : "block";
-    });
-});
-
-function toggleSubfolder(id) {
-    const el = document.getElementById(id);
-    if (el.style.display === "block") {
-        el.style.display = "none";
-    } else {
-        el.style.display = "block";
-    }
-}
-</script>
-
+<!-- SOUND -->
 <audio id="bgRock" loop>
-    <source src="ficheiros/scorpions_falling_star.mp3" type="audio/mpeg">
+  <source src="ficheiros/scorpions_falling_star.mp3" type="audio/mpeg">
 </audio>
+<button id="btnSom" onclick="toggleSom()">🔇 Som OFF</button>
 
-<button id="btnSom" onclick="toggleSom()" 
-style="position: fixed; bottom: 20px; right: 20px; 
-background:#e60000; color:white; border:none; padding:10px 15px;
-border-radius:5px; cursor:pointer;">
-🔇 Som OFF
-</button>
-
-<script>
-function toggleSom() {
-    var audio = document.getElementById("bgRock");
-    var btn = document.getElementById("btnSom");
-
-    if (audio.paused) {
-        audio.play();
-        btn.innerHTML = "🔊 Som ON";
-    } else {
-        audio.pause();
-        btn.innerHTML = "🔇 Som OFF";
-    }
-}
-</script>
-
-<script>
-
-// mantém o teu sistema de toggle principal
-document.querySelectorAll(".toggle").forEach(function(titulo) {
-    titulo.addEventListener("click", function() {
-        var conteudo = this.nextElementSibling;
-
-        if (conteudo.style.display === "block") {
-            conteudo.style.display = "none";
-        } else {
-            conteudo.style.display = "block";
-        }
-    });
-});
-
-// toggle individual dos instrumentos
-function toggleInstrumento(id) {
-    var elemento = document.getElementById(id);
-
-    if (elemento.style.display === "block") {
-        elemento.style.display = "none";
-    } else {
-        elemento.style.display = "block";
-    }
-}
-
-</script>
-
-<script>
-
-document.querySelectorAll(".toggle").forEach(function(titulo) {
-
-    titulo.addEventListener("click", function() {
-
-        var conteudo = this.nextElementSibling;
-
-        if (conteudo.style.display === "block") {
-
-            conteudo.style.display = "none";
-
-        } else {
-
-            conteudo.style.display = "block";
-
-        }
-
-    });
-
-});
-
-function toggleSubfolder(id) {
-
-    var el = document.getElementById(id);
-
-    if (el.style.display === "block") {
-
-        el.style.display = "none";
-
-    } else {
-
-        el.style.display = "block";
-
-    }
-
-}
-
-</script>
-
-<script>
-function abrirPreview(link) {
-    document.getElementById("previewModal").style.display = "block";
-    document.getElementById("previewFrame").src = link;
-}
-
-function fecharPreview() {
-    document.getElementById("previewModal").style.display = "none";
-    document.getElementById("previewFrame").src = "";
-}
-</script>    
-
-<script>
-document.querySelectorAll("a[download]").forEach(function(link){
-
-    link.addEventListener("click", function(e){
-        e.preventDefault();
-
-        const file = this.getAttribute("href");
-        const previewArea = document.getElementById("previewContent");
-        const downloadBtn = document.getElementById("downloadBtn");
-
-        previewArea.innerHTML = "";
-        downloadBtn.href = file;
-        downloadBtn.setAttribute("download","");
-
-        document.getElementById("previewModal").style.display = "block";
-
-        if(file.endsWith(".pdf")){
-            previewArea.innerHTML = 
-                '<iframe src="'+file+'" style="width:100%; height:100%; border:none;"></iframe>';
-        }
-
-        else if(file.match(/\.(jpg|jpeg|png|gif)$/)){
-            previewArea.innerHTML = 
-                '<img src="'+file+'" style="max-width:100%; max-height:100%; display:block; margin:auto;">';
-        }
-
-        else if(file.endsWith(".mp3")){
-            previewArea.innerHTML = 
-                '<audio controls style="width:100%;"><source src="'+file+'"></audio>';
-        }
-
-        else{
-            previewArea.innerHTML = 
-                '<p style="color:white;">Preview não disponível para este tipo de ficheiro.</p>';
-        }
-
-    });
-
-});
-
-function fecharPreview(){
-    document.getElementById("previewModal").style.display = "none";
-    document.getElementById("previewContent").innerHTML = "";
-}
-</script>
-
-    
-<!-- MODAL UNIVERSAL PREVIEW -->
-<div id="previewModal" style="
-display:none;
-position:fixed;
-z-index:9999;
-left:0;
-top:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.95);
-">
-
-    <span onclick="fecharPreview()" style="
-    position:absolute;
-    top:20px;
-    right:40px;
-    color:white;
-    font-size:40px;
-    cursor:pointer;">&times;</span>
-
-    <div style="
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    width:85%;
-    height:85%;
-    background:#111;
-    padding:15px;
-    border-radius:8px;
-    display:flex;
-    flex-direction:column;">
-
-        <div style="text-align:right; margin-bottom:10px;">
-            <a id="downloadBtn" 
-               style="background:#e60000; padding:8px 15px; color:white; text-decoration:none; border-radius:5px;">
-               ⬇ Download
-            </a>
-        </div>
-
-        <div id="previewContent" style="flex:1;"></div>
-
+<!-- PREVIEW MODAL -->
+<div id="previewModal">
+  <div class="modal-box">
+    <div class="modal-bar">
+      <a id="downloadBtn" href="#" download>⬇ Download</a>
+      <button class="modal-close" onclick="fecharPreview()">✕</button>
     </div>
+    <div id="previewContent"></div>
+  </div>
 </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll("ul.conteudo, ul.subfolder-content").forEach(function (ul) {
-        const items = Array.from(ul.querySelectorAll(":scope > li"));
-        
-        const normais = items.filter(li => !li.querySelector(".subfolder-btn"));
-        const subpastas = items.filter(li => li.querySelector(".subfolder-btn"));
-
-        normais.sort(function (a, b) {
-            const textoA = a.innerText.trim().toLowerCase();
-            const textoB = b.innerText.trim().toLowerCase();
-            return textoA.localeCompare(textoB, "pt");
-        });
-
-        [...normais, ...subpastas].forEach(function (li) {
-            ul.appendChild(li);
-        });
-    });
-
-    // Ordena os botões de instrumentos em Vídeos Didáticos
-    const videosConteudo = document.querySelector("div.conteudo");
-    if (videosConteudo) {
-        const instrumentos = Array.from(videosConteudo.querySelectorAll(":scope > .instrumento"));
-        instrumentos.sort(function (a, b) {
-            const textoA = a.innerText.trim().toLowerCase();
-            const textoB = b.innerText.trim().toLowerCase();
-            return textoA.localeCompare(textoB, "pt");
-        });
-        instrumentos.forEach(function (div) {
-            videosConteudo.appendChild(div);
-        });
-    }
-
-    // Ordena os links dentro de cada instrumento em Vídeos Didáticos
-    document.querySelectorAll(".conteudo-instrumento").forEach(function (div) {
-        const links = Array.from(div.querySelectorAll(":scope > a"));
-        links.sort(function (a, b) {
-            const textoA = a.innerText.trim().toLowerCase();
-            const textoB = b.innerText.trim().toLowerCase();
-            return textoA.localeCompare(textoB, "pt");
-        });
-        links.forEach(function (a) {
-            div.appendChild(a);
-        });
-    });
-});
-</script>
-
-    <!-- MODAL PASSWORD -->
-<div id="modalPassword" style="
-    display:none;
-    position:fixed;
-    z-index:99999;
-    left:0; top:0;
-    width:100%; height:100%;
-    background:rgba(0,0,0,0.92);
-">
-    <div style="
-        position:absolute;
-        top:50%; left:50%;
-        transform:translate(-50%,-50%);
-        background:#1a1a1a;
-        border:2px solid #e60000;
-        border-radius:8px;
-        padding:30px 40px;
-        text-align:center;
-        min-width:300px;
-    ">
-        <h3 style="color:#e60000; font-family:'Metal Mania',cursive; margin-bottom:20px;">
-            🔒 Conteúdo Protegido
-        </h3>
-        <p style="color:#ccc; margin-bottom:15px;">Introduz a password para fazer download:</p>
-        <input id="inputPassword" type="password" placeholder="Password..." style="
-            width:100%;
-            padding:10px;
-            background:#111;
-            border:1px solid #e60000;
-            color:white;
-            border-radius:4px;
-            font-size:15px;
-            margin-bottom:15px;
-            box-sizing:border-box;
-        ">
-        <p id="erroPassword" style="color:#ff4d4d; display:none; margin-bottom:10px;">
-            ❌ Password incorreta!
-        </p>
-        <div style="display:flex; gap:10px; justify-content:center;">
-            <button onclick="confirmarPassword()" style="
-                background:linear-gradient(90deg,#e60000,#900000);
-                color:white; border:none;
-                padding:10px 25px;
-                border-radius:4px;
-                cursor:pointer;
-                font-weight:bold;
-                font-size:15px;
-            ">Download</button>
-            <button onclick="fecharModalPassword()" style="
-                background:#333;
-                color:white; border:none;
-                padding:10px 25px;
-                border-radius:4px;
-                cursor:pointer;
-                font-size:15px;
-            ">Cancelar</button>
-        </div>
+<!-- PASSWORD MODAL -->
+<div id="modalPassword">
+  <div class="pass-box">
+    <h3>Conteúdo Protegido</h3>
+    <p>Introduz a password para fazer download:</p>
+    <input id="inputPassword" type="password" placeholder="Password...">
+    <p class="err-pass" id="erroPassword">Password incorreta!</p>
+    <div class="pass-actions">
+      <button class="btn-dl" onclick="confirmarPassword()">Download</button>
+      <button class="btn-cancel" onclick="fecharModalPassword()">Cancelar</button>
     </div>
+  </div>
 </div>
 
-<!-- MODAL DOWNLOAD -->
-<div id="modalDownload" style="
-    display:none;
-    position:fixed;
-    z-index:99999;
-    left:0; top:0;
-    width:100%; height:100%;
-    background:rgba(0,0,0,0.92);
-">
-    <div style="
-        position:absolute;
-        top:50%; left:50%;
-        transform:translate(-50%,-50%);
-        background:#1a1a1a;
-        border:2px solid #e60000;
-        border-radius:8px;
-        padding:30px 40px;
-        text-align:center;
-        min-width:300px;
-    ">
-        <h3 style="color:#e60000; font-family:'Metal Mania',cursive; margin-bottom:20px;">
-            ✅ Password Correta!
-        </h3>
-        <p style="color:#ccc; margin-bottom:20px;">Clica no botão para fazer o download:</p>
-        <div style="display:flex; gap:10px; justify-content:center;">
-            <a id="linkDownload" href="#" target="_blank" onclick="document.getElementById('modalDownload').style.display='none'" style="
-                background:linear-gradient(90deg,#e60000,#900000);
-                color:white;
-                padding:10px 25px;
-                border-radius:4px;
-                font-weight:bold;
-                font-size:15px;
-                text-decoration:none;
-            ">⬇ Download</a>
-            <button onclick="document.getElementById('modalDownload').style.display='none'" style="
-                background:#333;
-                color:white; border:none;
-                padding:10px 25px;
-                border-radius:4px;
-                cursor:pointer;
-                font-size:15px;
-            ">Fechar</button>
-        </div>
+<!-- DOWNLOAD MODAL -->
+<div id="modalDownload">
+  <div class="pass-box">
+    <h3>Password Correta!</h3>
+    <p>Clica para fazer o download:</p>
+    <div class="pass-actions">
+      <a id="linkDownload" href="#" target="_blank"
+         onclick="document.getElementById('modalDownload').classList.remove('open')"
+         class="btn-dl">⬇ Download</a>
+      <button class="btn-cancel" onclick="document.getElementById('modalDownload').classList.remove('open')">Fechar</button>
     </div>
+  </div>
 </div>
 
-<script>
-let _ficheiro = "";
-let _pass = "";
-
-function pedirPassword(e, ficheiro, pass) {
-    e.preventDefault();
-    _ficheiro = ficheiro;
-    _pass = pass;
-    document.getElementById("inputPassword").value = "";
-    document.getElementById("erroPassword").style.display = "none";
-    document.getElementById("modalPassword").style.display = "block";
-    setTimeout(() => document.getElementById("inputPassword").focus(), 100);
-}
-
-function confirmarPassword() {
-    const input = document.getElementById("inputPassword").value;
-    if (input === _pass) {
-        document.getElementById("inputPassword").value = "";
-        document.getElementById("erroPassword").style.display = "none";
-        document.getElementById("modalPassword").style.display = "none";
-        document.getElementById("linkDownload").href = _ficheiro;
-        document.getElementById("modalDownload").style.display = "block";
-    } else {
-        document.getElementById("erroPassword").style.display = "block";
-        document.getElementById("inputPassword").value = "";
-        document.getElementById("inputPassword").focus();
-    }
-}
-
-document.getElementById("inputPassword").addEventListener("keydown", function(e) {
-    if (e.key === "Enter") confirmarPassword();
-});
-
-function fecharModalPassword() {
-    document.getElementById("modalPassword").style.display = "none";
-    _ficheiro = "";
-    _pass = "";
-}
-</script>
-
-<script>
-  function abrirYT(id) {
-    document.getElementById('yt-iframe').src = 'https://www.youtube.com/embed/' + id + '?autoplay=1';
-    const modal = document.getElementById('yt-modal');
-    modal.style.display = 'flex';
-  }
-  function fecharYT() {
-    document.getElementById('yt-iframe').src = '';
-    document.getElementById('yt-modal').style.display = 'none';
-  }
-  document.getElementById('yt-modal').addEventListener('click', function(e) {
-    if (e.target === this) fecharYT();
-  });
-</script>
-
-<div id="yt-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:9999; align-items:center; justify-content:center;">
+<!-- YT MODAL -->
+<div id="yt-modal">
   <div style="position:relative; width:90%; max-width:800px;">
     <button onclick="fecharYT()" style="position:absolute; top:-36px; right:0; background:none; border:none; color:white; font-size:28px; cursor:pointer;">✕</button>
     <div style="position:relative; padding-bottom:56.25%; height:0;">
       <iframe id="yt-iframe" src="" frameborder="0" allowfullscreen
-        style="position:absolute; top:0; left:0; width:100%; height:100%;">
-      </iframe>
+        style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
     </div>
   </div>
 </div>
-    
-</body>
 
-</html>
-    
+<script>
+  /* ── TABS ── */
+  function showTab(id) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+
+  /* ── ACCORDION ── */
+  function toggleCard(header) {
+    header.classList.toggle('open');
+    const body = header.nextElementSibling;
+    body.classList.toggle('open');
+  }
+
+  /* ── SUBFOLDERS ── */
+  function toggleSub(id) {
+    const el = document.getElementById(id);
+    el.classList.toggle('open');
+  }
+
+  /* ── VIDEO INSTRUMENT TOGGLE ── */
+  function toggleInstr(id, btn) {
+    const isOpen = document.getElementById(id).classList.contains('open');
+    // close all
+    document.querySelectorAll('.instr-links').forEach(l => l.classList.remove('open'));
+    document.querySelectorAll('.instr-btn').forEach(b => b.classList.remove('open'));
+    if (!isOpen) {
+      document.getElementById(id).classList.add('open');
+      btn.classList.add('open');
+    }
+  }
+
+  /* ── PREVIEW MODAL ── */
+  document.querySelectorAll("a[download]").forEach(function(link) {
+    link.addEventListener("click", function(e) {
+      e.preventDefault();
+      const file = this.getAttribute("href");
+      const previewArea = document.getElementById("previewContent");
+      const downloadBtn = document.getElementById("downloadBtn");
+      previewArea.innerHTML = "";
+      downloadBtn.href = file;
+      downloadBtn.setAttribute("download", "");
+      document.getElementById("previewModal").classList.add("open");
+      if (file.endsWith(".pdf")) {
+        previewArea.innerHTML = '<iframe src="' + file + '" style="width:100%;height:100%;border:none;border-radius:4px;"></iframe>';
+      } else if (file.match(/\.(jpg|jpeg|png|gif)$/i)) {
+        previewArea.innerHTML = '<img src="' + file + '" style="max-width:100%;max-height:100%;display:block;margin:auto;">';
+      } else if (file.endsWith(".mp3")) {
+        previewArea.innerHTML = '<div style="display:flex;align-items:center;height:100%;"><audio controls style="width:100%;"><source src="' + file + '"></audio></div>';
+      } else {
+        previewArea.innerHTML = '<p style="color:var(--muted);padding:20px;">Preview não disponível para este tipo de ficheiro.</p>';
+      }
+    });
+  });
+  function fecharPreview() {
+    document.getElementById("previewModal").classList.remove("open");
+    document.getElementById("previewContent").innerHTML = "";
+  }
+
+  /* ── PASSWORD ── */
+  let _ficheiro = "", _pass = "";
+  function pedirPassword(e, ficheiro, pass) {
+    e.preventDefault();
+    _ficheiro = ficheiro; _pass = pass;
+    document.getElementById("inputPassword").value = "";
+    document.getElementById("erroPassword").style.display = "none";
+    document.getElementById("modalPassword").classList.add("open");
+    setTimeout(() => document.getElementById("inputPassword").focus(), 100);
+  }
+  function confirmarPassword() {
+    const input = document.getElementById("inputPassword").value;
+    if (input === _pass) {
+      document.getElementById("erroPassword").style.display = "none";
+      document.getElementById("modalPassword").classList.remove("open");
+      document.getElementById("linkDownload").href = _ficheiro;
+      document.getElementById("modalDownload").classList.add("open");
+    } else {
+      document.getElementById("erroPassword").style.display = "block";
+      document.getElementById("inputPassword").value = "";
+      document.getElementById("inputPassword").focus();
+    }
+  }
+  document.getElementById("inputPassword").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") confirmarPassword();
+  });
+  function fecharModalPassword() {
+    document.getElementById("modalPassword").classList.remove("open");
+    _ficheiro = ""; _pass = "";
+  }
+
+  /* ── YOUTUBE ── */
+  function abrirYT(id) {
+    document.getElementById('yt-iframe').src = 'https://www.youtube.com/embed/' + id + '?autoplay=1';
+    document.getElementById('yt-modal').classList.add('open');
+  }
+  function fecharYT() {
+    document.getElementById('yt-iframe').src = '';
+    document.getElementById('yt-modal').classList.remove('open');
+  }
+  document.getElementById('yt-modal').addEventListener('click', function(e) {
+    if (e.target === this) fecharYT();
+  });
+
+  /* ── SOUND ── */
+  function toggleSom() {
+    const audio = document.getElementById("bgRock");
+    const btn = document.getElementById("btnSom");
+    if (audio.paused) { audio.play(); btn.innerHTML = "🔊 Som ON"; }
+    else { audio.pause(); btn.innerHTML = "🔇 Som OFF"; }
+  }
+</script>
 </body>
 </html>
