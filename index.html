@@ -316,15 +316,38 @@
 
     /* Hero stats bar */
 .hero-stats {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
   border-top: 1px solid var(--border);
   background: rgba(10,10,10,0.7);
   backdrop-filter: blur(8px);
   display: flex;
-  flex-wrap: nowrap;
   justify-content: center;
   gap: 0;
-  margin-top: 44px;
-  width: 100%;
+}
+.hero-stat {
+  flex: 1;
+  max-width: 220px;
+  padding: 24px 20px;
+  text-align: center;
+  border-right: 1px solid var(--border);
+}
+.hero-stat:last-child { border-right: none; }
+.hero-stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem;
+  color: var(--red);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hero-stat-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 /* Mobile */
@@ -1072,35 +1095,40 @@
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <span class="hero-eyebrow">Paços de Ferreira · Desde 2018</span>
-    <h1>Onde o <em>Rock</em><br>Ganha Vida</h1>
-    <p class="hero-subtitle">Guitarra · Baixo · Bateria · Canto · Piano · Acordeão · Cavaquinho<br>Aulas para todas as idades — do zero ao palco</p>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-num">2018</div>
-<div class="hero-stat-label">Fundada em Paços de Ferreira</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">Rock</div>
-        <div class="hero-stat-label">é o que ensinamos</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">Tu</div>
-        <div class="hero-stat-label">és o próximo</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">🎓</div>
-        <div class="hero-stat-label">Professores Formados</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">1</div>
-        <div class="hero-stat-label">Palco para Brilhares</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">📻</div>
-        <div class="hero-stat-label">Rádio Própria da Escola</div>
-      </div>
-    </div>
+  <span class="hero-eyebrow">Paços de Ferreira · Desde 2018</span>
+  <h1>Onde o <em>Rock</em><br>Ganha Vida</h1>
+  <p class="hero-subtitle">Guitarra · Baixo · Bateria · Canto · Piano · Acordeão · Cavaquinho<br>Aulas para todas as idades — do zero ao palco</p>
+  <div class="hero-buttons">
+    <button class="btn-primary" onclick="mostrarContacto()">Aula Experimental Grátis</button>
+    <a href="inscricao.html" target="_blank" class="btn-outline">Inscreve-te Aqui</a>
+  </div>
+</div>
+<div class="hero-stats">
+  <div class="hero-stat">
+    <div class="hero-stat-num">2018</div>
+    <div class="hero-stat-label">Fundada em Paços de Ferreira</div>
+  </div>
+  <div class="hero-stat">
+    <div class="hero-stat-num">Rock</div>
+    <div class="hero-stat-label">é o que ensinamos</div>
+  </div>
+  <div class="hero-stat">
+    <div class="hero-stat-num">Tu</div>
+    <div class="hero-stat-label">és o próximo</div>
+  </div>
+  <div class="hero-stat">
+    <div class="hero-stat-num">🎓</div>
+    <div class="hero-stat-label">Professores Formados</div>
+  </div>
+  <div class="hero-stat">
+    <div class="hero-stat-num">1</div>
+    <div class="hero-stat-label">Palco para Brilhares</div>
+  </div>
+  <div class="hero-stat">
+    <div class="hero-stat-num">📻</div>
+    <div class="hero-stat-label">Rádio Própria da Escola</div>
+  </div>
+</div>
     <div class="hero-buttons">
       <button class="btn-primary" onclick="mostrarContacto()">Aula Experimental Grátis</button>
       <a href="inscricao.html" target="_blank" class="btn-outline">Inscreve-te Aqui</a>
