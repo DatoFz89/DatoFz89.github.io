@@ -315,40 +315,47 @@
     .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.06); transform: translateY(-1px); }
 
     /* Hero stats bar */
-    .hero-stats {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 2;
-      border-top: 1px solid var(--border);
-      background: rgba(10,10,10,0.7);
-      backdrop-filter: blur(8px);
-      display: flex;
-      justify-content: center;
-      gap: 0;
-    }
-    .hero-stat {
-      flex: 1;
-      max-width: 220px;
-      padding: 24px 20px;
-      text-align: center;
-      border-right: 1px solid var(--border);
-    }
-    .hero-stat:last-child { border-right: none; }
-    .hero-stat-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.2rem;
-      color: var(--red);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-    .hero-stat-label {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
+.hero-stats {
+  border-top: 1px solid var(--border);
+  background: rgba(10,10,10,0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+  margin-top: 44px;
+}
+.hero-stat {
+  flex: 1;
+  min-width: 140px;
+  max-width: 220px;
+  padding: 24px 20px;
+  text-align: center;
+  border-right: 1px solid var(--border);
+}
+.hero-stat:last-child { border-right: none; }
+.hero-stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem;
+  color: var(--red);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hero-stat-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .hero-stat {
+    flex: 1 1 45%;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
 
     /* ===== TICKER ===== */
     .ticker-wrap {
