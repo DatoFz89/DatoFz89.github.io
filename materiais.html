@@ -497,24 +497,15 @@ transform: scale(1.02); }
 <main> 
   <!-- TAB NAVIGATION --> 
   <nav class="tab-nav" role="tablist"> 
-    <button class="tab-btn active" onclick="showTab('guitarra')" role="tab">        
-Guitarra</button> 
-    <button class="tab-btn" onclick="showTab('improvisacao')" role="tab">  
-Improvisação</button> 
-    <button class="tab-btn" onclick="showTab('manuais')" role="tab">       
-Manuais</button> 
-    <button class="tab-btn" onclick="showTab('piano')" role="tab">     Piano / 
-Teclado</button> 
-    <button class="tab-btn" onclick="showTab('outros_inst')" role="tab">        
-Outros</button> 
-    <button class="tab-btn" onclick="showTab('backing')" role="tab">    Backing 
-Tracks</button> 
-    <button class="tab-btn" onclick="showTab('videos')" role="tab">▶ 
-Vídeos</button> 
-    <button class="tab-btn" onclick="showTab('podcasts')" role="tab">🎙 
-Podcasts</button> 
-    <button class="tab-btn" onclick="showTab('recursos')" role="tab">  
-Recursos</button> 
+    <button class="tab-btn active" onclick="showTab('guitarra', this)" role="tab">Guitarra</button>
+    <button class="tab-btn" onclick="showTab('improvisacao', this)" role="tab">Improvisação</button>
+    <button class="tab-btn" onclick="showTab('manuais', this)" role="tab">Manuais</button>
+    <button class="tab-btn" onclick="showTab('piano', this)" role="tab">Piano / Teclado</button>
+    <button class="tab-btn" onclick="showTab('outros_inst', this)" role="tab">Outros</button>
+    <button class="tab-btn" onclick="showTab('backing', this)" role="tab">Backing Tracks</button>
+    <button class="tab-btn" onclick="showTab('videos', this)" role="tab">▶ Vídeos</button>
+    <button class="tab-btn" onclick="showTab('podcasts', this)" role="tab">🎙 Podcasts</button>
+    <button class="tab-btn" onclick="showTab('recursos', this)" role="tab">Recursos</button>
   </nav> 
   <!-- ===== GUITARRA ===== --> 
   <div id="tab-guitarra" class="panel active"> 
@@ -1062,12 +1053,12 @@ cursor:pointer;">✕</button>
 </div> 
 <script> 
   /* ── TABS ── */ 
-  function showTab(id) { 
-    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active')); 
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active')); 
-    document.getElementById('tab-' + id).classList.add('active'); 
-    event.currentTarget.classList.add('active'); 
-  } 
+  function showTab(id, btn) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+}
   /* ── ACCORDION ── */ 
   function toggleCard(header) { 
     header.classList.toggle('open'); 
