@@ -327,11 +327,23 @@
       const btn = document.getElementById('submitBtn');
       const msg = document.getElementById('mensagem');
 
-      // Se "outros" estiver selecionado, substitui o valor do select pelo texto escrito
+      // Se "outros" estiver selecionado, preenche o campo hidden com o texto escrito
       const selectCurso = document.getElementById('curso');
       const inputOutro = document.getElementById('curso_outro_input');
-      if (selectCurso.value === 'outros' && inputOutro.value.trim() !== '') {
-        selectCurso.value = inputOutro.value.trim();
+      const hiddenCurso = document.getElementById('curso_hidden');
+
+      if (selectCurso.value === 'outros') {
+        if (inputOutro.value.trim() === '') {
+          inputOutro.focus();
+          btn.disabled = false;
+          btn.textContent = 'Enviar Inscrição 🎸';
+          msg.style.color = 'var(--red)';
+          msg.textContent = 'Por favor indica qual o instrumento.';
+          return;
+        }
+        hiddenCurso.value = inputOutro.value.trim();
+      } else {
+        hiddenCurso.value = selectCurso.value;
       }
 
       btn.disabled = true;
@@ -409,7 +421,7 @@
 
         <div class="field-group">
           <label>Instrumento / Curso <span class="req">*</span></label>
-          <select name="curso" id="curso" required>
+          <select id="curso" required>
             <option value="">Escolhe um instrumento…</option>
             <option value="guitarra_classica">🎸 Guitarra Clássica</option>
             <option value="guitarra_eletrica">⚡ Guitarra Elétrica</option>
@@ -421,6 +433,7 @@
             <option value="cavaquinho">🎵 Cavaquinho</option>
             <option value="outros">❓ Outros</option>
           </select>
+          <input type="hidden" name="curso" id="curso_hidden">
           <div id="curso_outro_box">
             <input type="text" id="curso_outro_input" placeholder="Qual instrumento?">
           </div>
@@ -487,14 +500,18 @@
     document.getElementById('curso').addEventListener('change', function () {
       const box = document.getElementById('curso_outro_box');
       const input = document.getElementById('curso_outro_input');
+      const hidden = document.getElementById('curso_hidden');
+
       if (this.value === 'outros') {
         box.style.display = 'block';
         input.required = true;
         input.focus();
+        hidden.value = ''; // será preenchido no submit
       } else {
         box.style.display = 'none';
         input.required = false;
         input.value = '';
+        hidden.value = this.value; // valor normal do select
       }
     });
   </script>
