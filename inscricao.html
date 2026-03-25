@@ -215,6 +215,17 @@
       background: var(--border);
     }
 
+    /* ── OUTRO INSTRUMENTO ───────────────────────── */
+    #curso_outro_box {
+      display: none;
+      margin-top: 10px;
+      animation: fadeIn 0.2s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
     /* ── SUBMIT BUTTON ───────────────────────────── */
     .submit-btn {
       display: block;
@@ -315,6 +326,14 @@
       event.preventDefault();
       const btn = document.getElementById('submitBtn');
       const msg = document.getElementById('mensagem');
+
+      // Se "outros" estiver selecionado, substitui o valor do select pelo texto escrito
+      const selectCurso = document.getElementById('curso');
+      const inputOutro = document.getElementById('curso_outro_input');
+      if (selectCurso.value === 'outros' && inputOutro.value.trim() !== '') {
+        selectCurso.value = inputOutro.value.trim();
+      }
+
       btn.disabled = true;
       btn.textContent = 'A enviar...';
       msg.style.color = '#aaa';
@@ -329,6 +348,7 @@
         msg.textContent = '✓ Inscrição enviada com sucesso!';
         msg.style.color = '#4ade80';
         form.reset();
+        document.getElementById('curso_outro_box').style.display = 'none';
         setTimeout(() => { window.location.href = 'https://datofz89.github.io/thanks.html'; }, 2000);
       };
       form.submit();
@@ -401,6 +421,9 @@
             <option value="cavaquinho">🎵 Cavaquinho</option>
             <option value="outros">❓ Outros</option>
           </select>
+          <div id="curso_outro_box">
+            <input type="text" id="curso_outro_input" placeholder="Qual instrumento?">
+          </div>
         </div>
 
         <div class="field-group">
@@ -433,6 +456,7 @@
   </footer>
 
   <script>
+    // ── FLATPICKR ─────────────────────────────────
     document.addEventListener('DOMContentLoaded', function () {
       flatpickr("#data_nascimento", {
         disableMobile: true,
@@ -457,6 +481,21 @@
           if (window.innerWidth <= 768) instance.currentYearElement.click();
         }
       });
+    });
+
+    // ── CURSO OUTRO ───────────────────────────────
+    document.getElementById('curso').addEventListener('change', function () {
+      const box = document.getElementById('curso_outro_box');
+      const input = document.getElementById('curso_outro_input');
+      if (this.value === 'outros') {
+        box.style.display = 'block';
+        input.required = true;
+        input.focus();
+      } else {
+        box.style.display = 'none';
+        input.required = false;
+        input.value = '';
+      }
     });
   </script>
 </body>
