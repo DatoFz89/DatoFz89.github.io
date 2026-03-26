@@ -220,7 +220,6 @@
       overflow: hidden;
       background: #0a0a0a;
     }
-    /* Imagem de fundo via Unsplash (guitarra elétrica) */
     .hero-bg {
       position: absolute;
       inset: 0;
@@ -237,11 +236,11 @@
       z-index: 1;
     }
     .hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 860px;
-  padding: 0 24px 120px 24px;
-}
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      padding: 0 24px 120px 24px;
+    }
     .hero-eyebrow {
       display: inline-block;
       background: rgba(232,23,58,0.15);
@@ -315,58 +314,58 @@
     .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.06); transform: translateY(-1px); }
 
     /* Hero stats bar */
-.hero-stats {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  border-top: 1px solid var(--border);
-  background: rgba(10,10,10,0.7);
-  backdrop-filter: blur(8px);
-  display: flex;
-  justify-content: center;
-  gap: 0;
-}
-.hero-stat {
-  flex: 1;
-  max-width: 220px;
-  padding: 16px 20px;
-  text-align: center;
-  border-right: 1px solid var(--border);
-}
-.hero-stat:last-child { border-right: none; }
-.hero-stat-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.2rem;
-  color: var(--red);
-  line-height: 1;
-  margin-bottom: 4px;
-}
-.hero-stat-label {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
+    .hero-stats {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      border-top: 1px solid var(--border);
+      background: rgba(10,10,10,0.7);
+      backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: center;
+      gap: 0;
+    }
+    .hero-stat {
+      flex: 1;
+      max-width: 220px;
+      padding: 16px 20px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .hero-stat-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
 
-@media (max-width: 768px) {
-  .hero-stats {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    right: auto;
-  }
-  .hero-content {
-    padding: 0 24px 20px 24px;
-  }
-  .hero-stat {
-    flex: 1 1 45%;
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-    padding: 16px 8px;
-  }
-}
+    @media (max-width: 768px) {
+      .hero-stats {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        right: auto;
+      }
+      .hero-content {
+        padding: 0 24px 20px 24px;
+      }
+      .hero-stat {
+        flex: 1 1 45%;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 16px 8px;
+      }
+    }
 
     /* ===== TICKER ===== */
     .ticker-wrap {
@@ -704,6 +703,57 @@
       font-size: 0.85rem;
       color: var(--text-muted);
       line-height: 1.7;
+    }
+
+    /* ===== FAQ ===== */
+    .faq {
+      padding: var(--section-pad);
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+    }
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-align: left;
+      padding: 20px 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: color 0.2s;
+      letter-spacing: 0.3px;
+    }
+    .faq-question:hover { color: var(--red); }
+    .faq-icon {
+      color: var(--red);
+      font-size: 1.4rem;
+      font-weight: 300;
+      flex-shrink: 0;
+      transition: transform 0.25s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      display: none;
+      padding: 0 0 20px;
+    }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-answer p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.8;
     }
 
     /* ===== TESTEMUNHOS ===== */
@@ -1100,49 +1150,50 @@
   </nav>
 
   <!-- HERO -->
-<section class="hero" id="inicio">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <span class="hero-eyebrow">Paços de Ferreira · Desde 2018</span>
-    <h1>Onde o <em>Rock</em><br>Ganha Vida</h1>
-    <p class="hero-subtitle" style="text-align:center;">
-  Guitarra · Baixo · Bateria · Canto · Piano · Acordeão · Cavaquinho<br>
-  Aulas para todas as idades<br>
-  Do zero ao palco
-</p>
-    <div class="hero-buttons">
-      <a href="https://wa.me/351938066695" target="_blank" class="btn-primary">Aula Experimental Grátis</a>
-      <a href="inscricao.html" target="_blank" class="btn-outline">Inscreve-te Aqui</a>
+  <section class="hero" id="inicio">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">Paços de Ferreira · Desde 2018</span>
+      <h1>Onde o <em>Rock</em><br>Ganha Vida</h1>
+      <p class="hero-subtitle" style="text-align:center;">
+        Guitarra · Baixo · Bateria · Canto · Piano · Acordeão · Cavaquinho<br>
+        Aulas para todas as idades<br>
+        Do zero ao palco
+      </p>
+      <div class="hero-buttons">
+        <a href="https://wa.me/351938066695" target="_blank" class="btn-primary">Aula Experimental Grátis</a>
+        <a href="inscricao.html" target="_blank" class="btn-outline">Inscreve-te Aqui</a>
+      </div>
     </div>
-  </div>
-  <div class="hero-stats">
-    <div class="hero-stat">
-      <div class="hero-stat-num">2018</div>
-      <div class="hero-stat-label">Fundada em Paços de Ferreira</div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">2018</div>
+        <div class="hero-stat-label">Fundada em Paços de Ferreira</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">Rock</div>
+        <div class="hero-stat-label">é o que ensinamos</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">Tu</div>
+        <div class="hero-stat-label">és o próximo</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">🎓</div>
+        <div class="hero-stat-label">Professores Formados</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">1</div>
+        <div class="hero-stat-label">Palco para Brilhares</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">📻</div>
+        <div class="hero-stat-label">Rádio Própria da Escola</div>
+      </div>
     </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">Rock</div>
-      <div class="hero-stat-label">é o que ensinamos</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">Tu</div>
-      <div class="hero-stat-label">és o próximo</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">🎓</div>
-      <div class="hero-stat-label">Professores Formados</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">1</div>
-      <div class="hero-stat-label">Palco para Brilhares</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">📻</div>
-      <div class="hero-stat-label">Rádio Própria da Escola</div>
-    </div>
-  </div>
-</section>
+  </section>
+
   <!-- TICKER -->
   <div class="ticker-wrap">
     <span class="ticker">Ξ INSCRIÇÕES ABERTAS Ξ AULA EXPERIMENTAL GRÁTIS Ξ TODAS AS IDADES Ξ DO ZERO AO PALCO Ξ PAÇOS DE FERREIRA Ξ INSCRIÇÕES ABERTAS Ξ AULA EXPERIMENTAL GRÁTIS Ξ</span>
@@ -1349,23 +1400,23 @@
       <p class="section-subtitle">Mais do que aulas — uma experiência musical completa</p>
       <div class="servicos-grid">
         <div class="servico-card">
-  <span class="servico-icon">🎙️</span>
-  <h3>Estúdio de Gravação</h3>
-  <p>Parceria com estúdios externos especializados para que possas gravar as tuas músicas com qualidade profissional.</p>
-  <a href="https://wa.me/351938066695?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Estúdio%20de%20Gravação." target="_blank" class="btn-primary" style="display:inline-block;margin-top:16px;font-size:0.75rem;padding:10px 20px;">Saber Mais</a>
-      </div>
+          <span class="servico-icon">🎙️</span>
+          <h3>Estúdio de Gravação</h3>
+          <p>Parceria com estúdios externos especializados para que possas gravar as tuas músicas com qualidade profissional.</p>
+          <a href="https://wa.me/351938066695?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Estúdio%20de%20Gravação." target="_blank" class="btn-primary" style="display:inline-block;margin-top:16px;font-size:0.75rem;padding:10px 20px;">Saber Mais</a>
+        </div>
         <div class="servico-card">
-  <span class="servico-icon">🎛️</span>
-  <h3>Produção Musical</h3>
-  <p>Serviços de arranjo, mixagem e masterização com os nossos produtores experientes.</p>
-  <a href="https://wa.me/351938066695?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20Produção%20Musical." target="_blank" class="btn-primary" style="display:inline-block;margin-top:16px;font-size:0.75rem;padding:10px 20px;">Saber Mais</a>
-      </div>
+          <span class="servico-icon">🎛️</span>
+          <h3>Produção Musical</h3>
+          <p>Serviços de arranjo, mixagem e masterização com os nossos produtores experientes.</p>
+          <a href="https://wa.me/351938066695?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20Produção%20Musical." target="_blank" class="btn-primary" style="display:inline-block;margin-top:16px;font-size:0.75rem;padding:10px 20px;">Saber Mais</a>
+        </div>
         <div class="servico-card">
-  <span class="servico-icon">🎸</span>
-  <h3>Workshops Especializados</h3>
-  <p>Workshops intensivos sobre técnicas avançadas, teoria musical e estilos específicos do rock.</p>
-  <a href="https://wa.me/351938066695?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20Workshops." target="_blank" class="btn-primary" style="display:inline-block;margin-top:16px;font-size:0.75rem;padding:10px 20px;">Saber Mais</a>
-      </div>
+          <span class="servico-icon">🎸</span>
+          <h3>Workshops Especializados</h3>
+          <p>Workshops intensivos sobre técnicas avançadas, teoria musical e estilos específicos do rock.</p>
+          <a href="https://wa.me/351938066695?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20Workshops." target="_blank" class="btn-primary" style="display:inline-block;margin-top:16px;font-size:0.75rem;padding:10px 20px;">Saber Mais</a>
+        </div>
         <div class="servico-card">
           <a href="https://sites.google.com/view/carlosmatos-rim" target="_blank" style="text-decoration:none;">
             <span class="servico-icon">🔧</span>
@@ -1412,98 +1463,97 @@
   </section>
 
   <!-- FAQ -->
-<section class="faq" id="faq">
-  <div class="container">
-    <div class="section-title">Perguntas <span>Frequentes</span></div>
-    <p class="section-subtitle">Tudo o que precisas de saber antes de começar</p>
-    <div class="faq-list">
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-title">Perguntas <span>Frequentes</span></div>
+      <p class="section-subtitle">Tudo o que precisas de saber antes de começar</p>
+      <div class="faq-list">
 
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          Preciso de ter instrumento para começar? <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Não. A NER disponibiliza instrumentos nas instalações para as aulas. Podes começar sem ter o teu próprio instrumento.</p>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Preciso de ter instrumento para começar? <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Não. A NER disponibiliza instrumentos nas instalações para as aulas. Podes começar sem ter o teu próprio instrumento.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          Qual a idade mínima para as aulas? <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Temos aulas para todas as idades — crianças, jovens e adultos. Não há idade mínima nem máxima para aprender música.</p>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Qual a idade mínima para as aulas? <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Temos aulas para todas as idades — crianças, jovens e adultos. Não há idade mínima nem máxima para aprender música.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          As aulas são individuais ou em grupo? <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Oferecemos ambas as modalidades — aulas individuais e em grupo — adaptadas ao ritmo e objetivos de cada aluno.</p>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            As aulas são individuais ou em grupo? <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Oferecemos ambas as modalidades — aulas individuais e em grupo — adaptadas ao ritmo e objetivos de cada aluno.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          Preciso de ter conhecimentos musicais para me inscrever? <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>De forma alguma. Recebemos alunos do zero absoluto ao avançado. Os nossos professores adaptam o ensino ao nível de cada um.</p>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Preciso de ter conhecimentos musicais para me inscrever? <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>De forma alguma. Recebemos alunos do zero absoluto ao avançado. Os nossos professores adaptam o ensino ao nível de cada um.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          Como funciona a aula experimental? <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>A aula experimental é gratuita e sem compromisso. É uma oportunidade para conheceres a escola, o professor e perceberes se é o que procuras. Basta contactar-nos para agendar.</p>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Como funciona a aula experimental? <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>A aula experimental é gratuita e sem compromisso. É uma oportunidade para conheceres a escola, o professor e perceberes se é o que procuras. Basta contactar-nos para agendar.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          Qual a duração e frequência das aulas? <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>As aulas têm normalmente 45 a 60 minutos e decorrem semanalmente. A frequência pode ser ajustada consoante a disponibilidade do aluno.</p>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Qual a duração e frequência das aulas? <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>As aulas têm normalmente 45 a 60 minutos e decorrem semanalmente. A frequência pode ser ajustada consoante a disponibilidade do aluno.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          Posso mudar de instrumento depois de começar? <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Sim. Se sentires que outro instrumento é mais indicado para ti, podemos ajustar. O importante é que te sintas motivado e evoluas.</p>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Posso mudar de instrumento depois de começar? <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sim. Se sentires que outro instrumento é mais indicado para ti, podemos ajustar. O importante é que te sintas motivado e evoluas.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          Há apresentações ou concertos ao vivo? <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Sim! Preparamos os alunos para atuar ao vivo. A experiência de palco faz parte da nossa filosofia — do zero ao palco.</p>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Há apresentações ou concertos ao vivo? <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sim! Preparamos os alunos para atuar ao vivo. A experiência de palco faz parte da nossa filosofia — do zero ao palco.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          Como me inscrevo? <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Podes inscrever-te através da <a href="inscricao.html" target="_blank" style="color:var(--red);">página de inscrição</a>, contactar-nos pelo <a href="https://wa.me/351938066695" target="_blank" style="color:var(--red);">WhatsApp</a> ou enviar um email para <a href="mailto:nernovaescolarock@gmail.com" style="color:var(--red);">nernovaescolarock@gmail.com</a>.</p>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Como me inscrevo? <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Podes inscrever-te através da <a href="inscricao.html" target="_blank" style="color:var(--red);">página de inscrição</a>, contactar-nos pelo <a href="https://wa.me/351938066695" target="_blank" style="color:var(--red);">WhatsApp</a> ou enviar um email para <a href="mailto:nernovaescolarock@gmail.com" style="color:var(--red);">nernovaescolarock@gmail.com</a>.</p>
+          </div>
         </div>
-      </div>
 
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-  
   <!-- TESTEMUNHOS -->
   <section class="testemunhos">
     <div class="container">
@@ -1591,7 +1641,7 @@
               <a href="tel:+351938066695">938 066 695</a>
             </div>
           </div>
-                    <div class="contacto-item">
+          <div class="contacto-item">
             <div class="contacto-icon"><i class="fa fa-envelope"></i></div>
             <div class="contacto-item-text">
               <label>Email</label>
@@ -1668,7 +1718,12 @@
   </div>
 
   <script>
-    
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
     function toggleMenu() {
       document.getElementById('mobileMenu').classList.toggle('open');
     }
