@@ -436,20 +436,29 @@
         <p>A nossa rádio é um projeto único que envolve toda a comunidade escolar, dando voz aos músicos e à música que se faz na NER. Rock, metal, blues e muito mais — sempre a tocar.</p>
         <a href="https://nernovaescolarock.radio12345.com" target="_blank" rel="noopener noreferrer" class="btn-outline" style="font-size:0.78rem;display:inline-block;">Abrir no site da Rádio →</a>
       </div>
-      <div class="radio-player-wrap" style="overflow:hidden;">
+      <div class="radio-player-wrap">
         <div class="radio-player-header">
           <img src="galeria-de-imagens/radio_banner.png" alt="Rádio NER - Nova Escola Rock">
           <div class="radio-player-header-text"><strong>Rádio NER</strong><span>Nova Escola Rock</span></div>
         </div>
-        <iframe
-          src="https://nernovaescolarock.radio12345.com"
-          width="100%"
-          height="260"
-          frameborder="0"
-          scrolling="no"
-          allow="autoplay; encrypted-media"
-          style="display:block; background:#181818;">
-        </iframe>
+        <div class="radio-controls">
+          <div class="radio-visualizer paused" id="radioVisualizer" aria-hidden="true">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+          </div>
+          <div class="radio-btn-row">
+            <button class="radio-play-btn" id="radioPlayBtn" onclick="toggleRadio()" aria-label="Play / Pause rádio NER">
+              <i class="fa fa-play" id="radioPlayIcon"></i>
+            </button>
+            <div class="radio-volume-wrap">
+              <i class="fa fa-volume-down" aria-hidden="true"></i>
+              <input type="range" class="radio-volume" id="radioVolume" min="0" max="1" step="0.05" value="0.8" aria-label="Volume">
+              <i class="fa fa-volume-up" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="radio-status" id="radioStatus">Clica em play para ouvir</div>
+        </div>
         <a href="https://nernovaescolarock.radio12345.com" target="_blank" rel="noopener noreferrer" class="radio-external-link">
           <i class="fa fa-external-link" aria-hidden="true"></i> &nbsp;Abrir em nova janela
         </a>
@@ -572,8 +581,6 @@
     <img class="lightbox-content" id="lightbox-img" src="" alt="">
   </div>
 
-  <audio id="radioAudio" preload="none"></audio>
-
   <script>
     /* ===== FAQ ===== */
     function toggleFaq(btn) {
@@ -600,69 +607,52 @@
       document.getElementById('lightbox').classList.remove('open');
     }
 
-    /* ===== RÁDIO PLAYER ===== */
+    /* ===== RÁDIO PLAYER (popup) ===== */
     /*
-     * O servidor é Shoutcast em http:// (sem SSL).
-     * O site está em https://, por isso os browsers modernos bloqueiam
-     * mixed-content por defeito. Tentamos na mesma — alguns browsers
-     * mais antigos ou com a restrição desativada vão conseguir ouvir.
-     * Se falhar, mostramos um aviso elegante dentro do player,
-     * sem abrir nenhuma janela nova automaticamente.
-     *
-     * URLs a tentar por ordem:
-     *  1. http://uk26freenew.listen2myradio.com:14358/stream  (direto, Shoutcast)
-     *  2. http://nernovaescolarock.radiostream321.com/stream   (alias 1)
-     *  3. http://nernovaescolarock.radio12345.com/stream       (alias 2)
+     * O stream é HTTP num site HTTPS — os browsers bloqueiam mixed-content.
+     * Solução: ao clicar em play abre uma popup pequena (420×180px) com
+     * o player oficial da rádio. A música toca nessa janela enquanto o
+     * utilizador navega normalmente no site. Ao clicar em pause/stop a
+     * popup é fechada.
      */
-    const RADIO_STREAMS = [
-      'http://uk26freenew.listen2myradio.com:14358/stream',
-      'http://nernovaescolarock.radiostream321.com/stream',
-      'http://nernovaescolarock.radio12345.com/stream'
-    ];
+    const RADIO_URL  = 'https://nernovaescolarock.radio12345.com';
+    let radioPlaying = false;
+    let radioPopup   = null;
 
-    let radioPlaying  = false;
-    let streamIndex   = 0;
-    const audioEl     = document.getElementById('radioAudio');
-    const playIcon    = document.getElementById('radioPlayIcon');
-    const statusEl    = document.getElementById('radioStatus');
-    const visualizer  = document.getElementById('radioVisualizer');
-    const noticeEl    = document.getElementById('radioNotice');
-
-    function tryNextStream() {
-      if (streamIndex >= RADIO_STREAMS.length) {
-        /* Todos os streams falharam — mostrar aviso no player */
-        setPlayingState(false);
-        statusEl.textContent = 'Stream não disponível neste browser';
-        noticeEl.style.display = 'block';
-        return;
-      }
-      const url = RADIO_STREAMS[streamIndex];
-      streamIndex++;
-      statusEl.textContent = 'A ligar…';
-      audioEl.src = url;
-      audioEl.volume = parseFloat(document.getElementById('radioVolume').value);
-      const p = audioEl.play();
-      if (p !== undefined) {
-        p.then(() => {
-          setPlayingState(true);
-          noticeEl.style.display = 'none';
-        }).catch(() => {
-          /* Falhou — tentar próximo URL */
-          audioEl.pause();
-          audioEl.src = '';
-          tryNextStream();
-        });
-      }
-    }
+    const playIcon   = document.getElementById('radioPlayIcon');
+    const statusEl   = document.getElementById('radioStatus');
+    const visualizer = document.getElementById('radioVisualizer');
 
     function toggleRadio() {
       if (!radioPlaying) {
-        streamIndex = 0;          /* recomeça pela primeira URL */
-        noticeEl.style.display = 'none';
-        tryNextStream();
+        /* Abrir popup pequena centrada no ecrã */
+        const pw = 420, ph = 200;
+        const pl = Math.round(window.screen.width  / 2 - pw / 2);
+        const pt = Math.round(window.screen.height / 2 - ph / 2);
+        radioPopup = window.open(
+          RADIO_URL,
+          'RadioNER',
+          `width=${pw},height=${ph},left=${pl},top=${pt},resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,status=no`
+        );
+        if (radioPopup) {
+          setPlayingState(true);
+          /* Detectar se o utilizador fecha a popup manualmente */
+          const monitor = setInterval(() => {
+            if (radioPopup && radioPopup.closed) {
+              clearInterval(monitor);
+              setPlayingState(false);
+            }
+          }, 800);
+        } else {
+          /* Popup bloqueada pelo browser */
+          statusEl.textContent = 'Permite popups para ouvir a rádio';
+        }
       } else {
-        audioEl.pause();
-        audioEl.src = '';
+        /* Fechar a popup = parar a rádio */
+        if (radioPopup && !radioPopup.closed) {
+          radioPopup.close();
+        }
+        radioPopup = null;
         setPlayingState(false);
       }
     }
@@ -678,23 +668,13 @@
         playIcon.className = 'fa fa-play';
         visualizer.classList.remove('playing');
         visualizer.classList.add('paused');
-        if (statusEl.textContent === 'A ligar…') {
-          statusEl.textContent = 'Clica em play para ouvir';
-        }
+        statusEl.textContent = 'Clica em play para ouvir';
       }
     }
 
     function setVolume(val) {
-      audioEl.volume = parseFloat(val);
+      /* Volume não é controlável numa popup cross-origin — botão mantido por UX */
     }
-
-    /* Erro de rede durante a reprodução (ex: stream cai) */
-    audioEl.addEventListener('error', () => {
-      if (radioPlaying) {
-        setPlayingState(false);
-        statusEl.textContent = 'Ligação perdida — tenta de novo';
-      }
-    });
 
     /* ===== SMOOTH SCROLL ===== */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
