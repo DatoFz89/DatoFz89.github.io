@@ -523,6 +523,7 @@ href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&famil
     <button class="tab-btn" onclick="showTab('improvisacao', this)" role="tab">Improvisação</button>
     <button class="tab-btn" onclick="showTab('manuais', this)" role="tab">Manuais</button>
     <button class="tab-btn" onclick="showTab('documentos', this)" role="tab">Documentos</button>
+    <button class="tab-btn" onclick="showTab('guitarpro', this)" role="tab">Guitar Pro</button>
     <button class="tab-btn" onclick="showTab('piano', this)" role="tab">Piano / Teclado</button>
     <button class="tab-btn" onclick="showTab('outros_inst', this)" role="tab">Outros</button>
     <button class="tab-btn" onclick="showTab('backing', this)" role="tab">Backing Tracks</button>
@@ -569,20 +570,7 @@ href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&famil
           <!-- Links externos --> 
           <li><a href="https://mega.nz/file/ioBXUI4I#B0IfW3zrzkuFOKs7JgM-zVXM5G5oZCeY4sRei6D9DM" target="_blank"><span class="file-icon">  </span> Padrões Melódicos 1</a></li> 
           <li><a href="https://mega.nz/file/2s4WRAxR#ZwkNiK583lXtgkNymbzvhgkK5IxAIiVeBFrxZpgt5-g" target="_blank"><span class="file-icon">  </span> Licks Instantâneos – Sunshine of Your Love</a></li> 
-          <!-- Guitar Pro subfolder --> 
-          <li> 
-            <button class="subfolder-toggle" onclick="toggleSub('gpSub')"> 
-              <img src="galeria-de-imagens/guitarpro5.png" alt="GP5" class="icon-gp"> 
-              <span>Guitar Pro's</span> 
-              <span style="margin-left:auto; color:var(--red);">▼</span> 
-            </button> 
-            <ul id="gpSub" class="subfolder-content"> 
-              <li><a href="ficheiros/guitarra/eric_clapton_wonderful_tonight_exercicio_bends.gp5" download><span class="file-icon">       </span> Wonderful Tonight – Exercício de Bends</a></li> 
-              <li><a href="ficheiros/guitarra/eric_clapton_wonderful_tonight_full.gp5" download><span class="file-icon">       </span> Wonderful Tonight – Completa</a></li> 
-              <li><a href="ficheiros/guitarra/exercicios-escala-pentatonica-menor-de-la.gp5" download><span class="file-icon">       </span> Escala Pentatónica Menor de Lá</a></li> 
-              <li><a href="ficheiros/guitarra/independencia_de_dedos.gp5" download><span class="file-icon">       </span> Independência de Dedos</a></li> 
-            </ul> 
-          </li> 
+
         </ul> 
       </div> 
     </div> 
@@ -600,10 +588,30 @@ href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&famil
         <ul class="file-list"> 
           <li><a href="ficheiros/guitarra/ner_psicologia_na_musica_v3.pdf" download><span class="file-icon">    </span> NER – Psicologia na Música (V3)</a></li> 
           <li><a href="ficheiros/outros/ner_inscricao_de_socio.docx" download><span class="file-icon">         </span> Ficha de Inscrição de Sócio</a></li> 
+          <li><a href="https://ner-testemunhos.netlify.app" target="_blank"><span class="file-icon">  </span> Formulário de Testemunho de Aluno</a></li> 
         </ul> 
       </div> 
     </div> 
   </div><!-- /documentos --> 
+
+  <!-- ===== GUITAR PRO ===== --> 
+  <div id="tab-guitarpro" class="panel"> 
+    <div class="card"> 
+      <div class="card-header open" onclick="toggleCard(this)"> 
+        <span class="card-icon"><img src="galeria-de-imagens/guitarpro5.png" alt="GP5" class="icon-gp"></span> 
+        <h2>Guitar Pro's</h2> 
+        <span class="chevron">▼</span> 
+      </div> 
+      <div class="card-body open"> 
+        <ul class="file-list"> 
+          <li><a href="ficheiros/guitarra/eric_clapton_wonderful_tonight_exercicio_bends.gp5" download><span class="file-icon">       </span> Wonderful Tonight – Exercício de Bends</a></li> 
+          <li><a href="ficheiros/guitarra/eric_clapton_wonderful_tonight_full.gp5" download><span class="file-icon">       </span> Wonderful Tonight – Completa</a></li> 
+          <li><a href="ficheiros/guitarra/exercicios-escala-pentatonica-menor-de-la.gp5" download><span class="file-icon">       </span> Escala Pentatónica Menor de Lá</a></li> 
+          <li><a href="ficheiros/guitarra/independencia_de_dedos.gp5" download><span class="file-icon">       </span> Independência de Dedos</a></li> 
+        </ul> 
+      </div> 
+    </div> 
+  </div><!-- /guitarpro --> 
 
   <!-- ===== IMPROVISAÇÃO ===== --> 
   <div id="tab-improvisacao" class="panel"> 
@@ -828,7 +836,7 @@ href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&famil
             </button> 
           </li> 
           <li><a href="ficheiros/outros/como_instalar_guitar_pro5.txt" download><span class="file-icon">    </span> Como Instalar Guitar Pro 5</a></li> 
-          <li><a href="https://ner-testemunhos.netlify.app" target="_blank"><span class="file-icon">  </span> Formulário de Testemunho de Aluno</a></li> 
+ 
         </ul> 
       </div> 
     </div> 
