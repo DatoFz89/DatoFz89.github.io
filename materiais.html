@@ -793,17 +793,17 @@ href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&famil
       <div class="podcast-card"> 
         <h3>A Ciência para não desistir da Guitarra</h3> 
         <p>Reflexão sobre motivação, consistência e mentalidade no estudo da guitarra.</p> 
-        <a href="https://mega.nz/file/29RW3CZb#npZ5BeR0uSCXI3zRxmaoBacT9DAF1HivtwNTt_hEGk" target="_blank" class="play-btn">▶ Ouvir / Download</a> 
+        <a href="javascript:void(0)" onclick="abrirMega('https://mega.nz/file/29RW3CZb#npZ5BeR0uSCXI3zRxmaoBacT9DAF1HivtwNTt_hEGk')" class="play-btn">▶ Ouvir / Download</a> 
       </div> 
       <div class="podcast-card"> 
         <h3>Aprender Guitarra no Palco sem Teoria</h3> 
         <p>Como desenvolver segurança e musicalidade mesmo sem base teórica profunda.</p> 
-        <a href="https://mega.nz/file/PpgzQD5R#jYGJwb4py8xlemGlSip1NEBJFmSheQobdCaEbP8ixLU" target="_blank" class="play-btn">▶ Ouvir / Download</a> 
+        <a href="javascript:void(0)" onclick="abrirMega('https://mega.nz/file/PpgzQD5R#jYGJwb4py8xlemGlSip1NEBJFmSheQobdCaEbP8ixLU')" class="play-btn">▶ Ouvir / Download</a> 
       </div> 
       <div class="podcast-card"> 
         <h3>Como a Música Transforma o Cérebro</h3> 
         <p>O impacto profundo da música na mente, na aprendizagem e na criatividade.</p> 
-        <a href="https://mega.nz/file/vxZkQRhC#bAFSV9cnC0qcsPOgFJAsz27vswWJ9MoB5AWIqJ8lqhk" target="_blank" class="play-btn">▶ Ouvir / Download</a> 
+        <a href="javascript:void(0)" onclick="abrirMega('https://mega.nz/file/vxZkQRhC#bAFSV9cnC0qcsPOgFJAsz27vswWJ9MoB5AWIqJ8lqhk')" class="play-btn">▶ Ouvir / Download</a> 
       </div> 
     </div> 
   </div> 
@@ -997,6 +997,10 @@ href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&famil
     document.getElementById("modalPassword").classList.remove("open"); 
     _ficheiro = ""; _pass = ""; 
   } 
+  /* ── MEGA LINKS ── */
+  function abrirMega(url) {
+    window.open(url, '_blank');
+  }
   /* ── YOUTUBE ── */ 
   function abrirYT(id) { 
     document.getElementById('yt-iframe').src = 'https://www.youtube.com/embed/' + id + '?autoplay=1'; 
