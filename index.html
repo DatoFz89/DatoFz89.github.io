@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="NER - Nova Escola Rock. Escola de Música em Paços de Ferreira desde 2018. Aulas de guitarra, baixo, bateria, canto, piano e produção musical. Marca já a tua aula experimental.">
-  <meta name="keywords" content="Escola de Música Paços de Ferreira, Aulas de Guitarra Paços de Ferreira, Escola de Rock Paços de Ferreira, Aulas de Bateria Paços de Ferreira, NER Nova Escola Rock">
+  <meta name="description" content="NER - Nova Escola Rock em Paços de Ferreira. Aulas de guitarra elétrica, clássica, baixo, bateria, canto, piano, acordeão e cavaquinho. Desde 2018. Aula experimental grátis — inscreve-te já!">
+  <meta name="keywords" content="escola de música Paços de Ferreira, aulas de guitarra Paços de Ferreira, escola de rock Paços de Ferreira, aulas de bateria Paços de Ferreira, aulas de canto Paços de Ferreira, aulas de baixo Paços de Ferreira, aulas de piano Paços de Ferreira, NER Nova Escola Rock, escola de música Meixomil, escola de música rock Portugal">
   <meta name="author" content="NER - Nova Escola Rock">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="NER - Nova Escola Rock | Escola de Música em Paços de Ferreira">
-  <meta property="og:description" content="Desde 2018 a formar músicos em Paços de Ferreira. Aulas de guitarra, baixo, bateria, canto e produção musical.">
+  <meta property="og:description" content="Escola de música especializada em Rock e Música Moderna em Paços de Ferreira. Aulas de guitarra, baixo, bateria, canto, piano e mais. Desde 2018. Aula experimental grátis!">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://datofz89.github.io">
   <meta property="og:image" content="https://datofz89.github.io/galeria-de-imagens/fundoner.jpeg">
+  <meta property="og:locale" content="pt_PT">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <title>NER - Nova Escola Rock</title>
+  <title>NER - Nova Escola Rock | Escola de Música em Paços de Ferreira</title>
 
   <style>
     /* ===== RESET & BASE ===== */
@@ -312,7 +313,7 @@
     }
     .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.06); transform: translateY(-1px); }
 
-    /* Hero stats bar — 2 stats impactantes */
+    /* Hero stats bar */
     .hero-stats {
       position: absolute;
       bottom: 0;
@@ -1081,53 +1082,13 @@
       display: flex;
       flex-direction: column;
     }
-    .map-placeholder {
+    .map-embed {
       flex: 1;
-      min-height: 260px;
-      background: var(--dark4);
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
-      flex-direction: column;
-      gap: 12px;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .map-placeholder img.fachada {
-      position: absolute;
-      inset: 0;
+      min-height: 300px;
+      border: none;
+      display: block;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 30%;
-      display: block;
     }
-    .map-placeholder .fachada-labels {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      padding: 20px 20px 16px;
-      background: linear-gradient(transparent, rgba(0,0,0,0.82));
-    }
-    .map-placeholder .fachada-loc {
-      display: block;
-      color: #fff;
-      font-size: 0.95rem;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      text-shadow: 0 1px 6px rgba(0,0,0,0.8);
-      margin-bottom: 4px;
-    }
-    .map-placeholder .fachada-sub {
-      display: block;
-      color: rgba(255,255,255,0.65);
-      font-size: 0.78rem;
-      letter-spacing: 0.3px;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.9);
-    }
-    .map-placeholder i { font-size: 2rem; color: var(--red); display: none; }
     .map-btn {
       display: block;
       background: var(--red);
@@ -1297,9 +1258,34 @@
     "@context": "https://schema.org",
     "@type": "MusicSchool",
     "name": "NER - Nova Escola Rock",
-    "address": { "@type": "PostalAddress", "addressLocality": "Paços de Ferreira", "addressCountry": "PT" },
+    "description": "Escola de música especializada em Rock e Música Moderna em Paços de Ferreira. Aulas de guitarra elétrica, clássica, baixo, bateria, canto, piano, acordeão e cavaquinho para todas as idades.",
+    "url": "https://datofz89.github.io",
+    "logo": "https://datofz89.github.io/galeria-de-imagens/fundoner.jpeg",
+    "image": "https://datofz89.github.io/galeria-de-imagens/fundoner.jpeg",
     "telephone": "+351938066695",
-    "url": "https://datofz89.github.io"
+    "email": "nernovaescolarock@gmail.com",
+    "foundingDate": "2018",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua da Cavada 105",
+      "addressLocality": "Meixomil, Paços de Ferreira",
+      "postalCode": "4595-218",
+      "addressCountry": "PT"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 41.2751234,
+      "longitude": -8.3932606
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "18:00", "closes": "23:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "17:00" }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/novaescolarock",
+      "https://www.instagram.com/nernovaescola/",
+      "https://www.youtube.com/@nernovaescolarock1669"
+    ]
   }
   </script>
 </head>
@@ -1307,7 +1293,7 @@
 
   <!-- Rádio Banner -->
   <a href="https://nernovaescolarock.radio12345.com" target="_blank" rel="noopener noreferrer" class="radio-banner" title="Rádio NER - Ouve-nos ao vivo!">
-    <img src="galeria-de-imagens/radio_banner.png" alt="Rádio No Ar - NER Nova Escola Rock">
+    <img src="galeria-de-imagens/radio_banner.png" alt="Rádio NER ao vivo - Nova Escola Rock Paços de Ferreira">
   </a>
 
   <!-- HEADER -->
@@ -1316,7 +1302,7 @@
       <span class="logo-badge">NER</span>
       <span class="logo-name">Nova Escola Rock</span>
     </a>
-    <nav class="nav-links">
+    <nav class="nav-links" aria-label="Navegação principal">
       <a href="#inicio">Início</a>
       <a href="#cursos">Cursos</a>
       <a href="#professores">Professores</a>
@@ -1328,13 +1314,13 @@
       <a href="#quem-somos">Quem Somos</a>
       <a href="#contacto" class="nav-cta">Contacto</a>
     </nav>
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Abrir menu de navegação">
       <i class="fa fa-bars"></i>
     </button>
   </header>
 
   <!-- Mobile Menu -->
-  <nav class="mobile-menu" id="mobileMenu">
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Menu mobile">
     <a href="#inicio" onclick="closeMenu()">Início</a>
     <a href="#cursos" onclick="closeMenu()">Cursos</a>
     <a href="#professores" onclick="closeMenu()">Professores</a>
@@ -1348,23 +1334,23 @@
   </nav>
 
   <!-- HERO -->
-  <section class="hero" id="inicio">
-    <div class="hero-bg"></div>
-    <div class="hero-overlay"></div>
+  <section class="hero" id="inicio" aria-label="Início">
+    <div class="hero-bg" role="presentation"></div>
+    <div class="hero-overlay" role="presentation"></div>
     <div class="hero-content">
       <span class="hero-eyebrow">Paços de Ferreira · Desde 2018</span>
       <h1>Onde o <em>Rock</em><br>Ganha Vida</h1>
-      <p class="hero-subtitle" style="text-align:center;">
+      <p class="hero-subtitle">
         Guitarra · Baixo · Bateria · Canto · Piano · Acordeão · Cavaquinho<br>
         Aulas para todas as idades<br>
         Do zero ao palco
       </p>
       <div class="hero-buttons">
-        <a href="https://wa.me/351938066695" target="_blank" class="btn-primary">Aula Experimental Grátis</a>
+        <a href="https://wa.me/351938066695" target="_blank" rel="noopener noreferrer" class="btn-primary">Aula Experimental Grátis</a>
         <a href="inscricao.html" target="_blank" class="btn-outline">Inscreve-te Aqui</a>
       </div>
     </div>
-    <div class="hero-stats">
+    <div class="hero-stats" aria-label="Estatísticas da escola">
       <div class="hero-stat">
         <div class="hero-stat-num">7+ Anos</div>
         <div class="hero-stat-label">A formar músicos em Paços de Ferreira</div>
@@ -1377,14 +1363,14 @@
   </section>
 
   <!-- TICKER -->
-  <div class="ticker-wrap">
+  <div class="ticker-wrap" aria-hidden="true">
     <span class="ticker">Ξ INSCRIÇÕES ABERTAS Ξ AULA EXPERIMENTAL GRÁTIS Ξ TODAS AS IDADES Ξ DO ZERO AO PALCO Ξ PAÇOS DE FERREIRA Ξ INSCRIÇÕES ABERTAS Ξ AULA EXPERIMENTAL GRÁTIS Ξ</span>
   </div>
 
   <!-- CURSOS -->
   <section class="cursos" id="cursos">
     <div class="container">
-      <div class="section-title"><span>Os Nossos</span> Cursos</div>
+      <h2 class="section-title"><span>Os Nossos</span> Cursos</h2>
       <p class="section-subtitle">Escolhe o teu instrumento e começa a tocar</p>
       <div class="cursos-grid">
         <div class="curso-card">
@@ -1429,12 +1415,12 @@
   <!-- PROFESSORES -->
   <section class="professores" id="professores">
     <div class="container">
-      <div class="section-title">Os Nossos <span>Professores</span></div>
+      <h2 class="section-title">Os Nossos <span>Professores</span></h2>
       <p class="section-subtitle">Profissionais com provas dadas no ensino e no palco</p>
       <div class="professores-grid">
         <div class="professor-card">
           <div class="professor-img-wrap">
-            <img src="galeria-de-imagens/deodato.jpg" alt="Professor Deodato Barbosa" loading="lazy">
+            <img src="galeria-de-imagens/deodato.jpg" alt="Professor Deodato Barbosa — guitarra clássica, elétrica e formação musical na NER Paços de Ferreira" loading="lazy" width="280" height="260">
           </div>
           <div class="professor-info">
             <h3>Deodato Barbosa</h3>
@@ -1444,7 +1430,7 @@
         </div>
         <div class="professor-card">
           <div class="professor-img-wrap">
-            <img src="galeria-de-imagens/FilipeMiguelCarvalho_Canto2.png" alt="Professor Filipe Carvalho - Canto" loading="lazy">
+            <img src="galeria-de-imagens/FilipeMiguelCarvalho_Canto2.png" alt="Professor Filipe Carvalho — aulas de canto e formação musical na NER Paços de Ferreira" loading="lazy" width="280" height="260">
           </div>
           <div class="professor-info">
             <h3>Filipe Carvalho</h3>
@@ -1454,7 +1440,7 @@
         </div>
         <div class="professor-card">
           <div class="professor-img-wrap">
-            <img src="galeria-de-imagens/renato.jpg" alt="Professor Renato Barbosa" loading="lazy">
+            <img src="galeria-de-imagens/renato.jpg" alt="Professor Renato Barbosa — guitarra elétrica e produção musical na NER Paços de Ferreira" loading="lazy" width="280" height="260">
           </div>
           <div class="professor-info">
             <h3>Renato Barbosa</h3>
@@ -1464,7 +1450,7 @@
         </div>
         <div class="professor-card">
           <div class="professor-img-wrap">
-            <img src="galeria-de-imagens/filbass.jpg" alt="Professor Filipe Nunes - Baixo" loading="lazy">
+            <img src="galeria-de-imagens/filbass.jpg" alt="Professor Filipe Nunes — aulas de baixo na NER Paços de Ferreira" loading="lazy" width="280" height="260">
           </div>
           <div class="professor-info">
             <h3>Filipe Nunes</h3>
@@ -1474,7 +1460,7 @@
         </div>
         <div class="professor-card">
           <div class="professor-img-wrap">
-            <img src="galeria-de-imagens/filipe_piano.png" alt="Professor Filipe Carvalho - Piano" loading="lazy">
+            <img src="galeria-de-imagens/filipe_piano.png" alt="Professor Filipe Carvalho — aulas de piano e teclado na NER Paços de Ferreira" loading="lazy" width="280" height="260">
           </div>
           <div class="professor-info">
             <h3>Filipe Carvalho</h3>
@@ -1484,7 +1470,7 @@
         </div>
         <div class="professor-card">
           <div class="professor-img-wrap">
-            <img src="galeria-de-imagens/Sidónio Nunes.png" alt="Professor Sidónio Nunes - Bateria" loading="lazy">
+            <img src="galeria-de-imagens/Sidónio Nunes.png" alt="Professor Sidónio Nunes — aulas de bateria na NER Paços de Ferreira" loading="lazy" width="280" height="260">
           </div>
           <div class="professor-info">
             <h3>Sidónio Nunes</h3>
@@ -1496,59 +1482,35 @@
     </div>
   </section>
 
-  <!-- PORQUE NER -->
+  <!-- PORQUE NER — reduzido a 6 pontos de maior impacto -->
   <section class="porque" id="porque">
     <div class="container">
-      <div class="section-title">Porque <span>Escolher</span> a NER?</div>
+      <h2 class="section-title">Porque <span>Escolher</span> a NER?</h2>
       <p class="section-subtitle">O que nos torna diferentes</p>
       <div class="porque-grid">
         <div class="porque-item">
           <div class="porque-check">✓</div>
-          <p><strong>Especializada em Rock e Música Moderna</strong> — não somos uma escola genérica</p>
+          <p><strong>Especializada em Rock e Música Moderna</strong> — professores com experiência real no palco e em estúdio, não apenas na sala de aula</p>
         </div>
         <div class="porque-item">
           <div class="porque-check">✓</div>
-          <p><strong>Professores com experiência real</strong> no ensino, no palco e em estúdio</p>
+          <p><strong>Do zero ao palco</strong> — preparamos os alunos para atuar ao vivo, com instrumentos disponíveis na escola desde o primeiro dia</p>
         </div>
         <div class="porque-item">
           <div class="porque-check">✓</div>
-          <p><strong>Rádio própria da escola</strong> — um projeto único que envolve os alunos</p>
+          <p><strong>Aulas para todas as idades</strong> — crianças, jovens e adultos, individuais ou em grupo, adaptadas ao ritmo de cada aluno</p>
         </div>
         <div class="porque-item">
           <div class="porque-check">✓</div>
-          <p><strong>Aulas individuais e em grupo</strong> adaptadas ao ritmo de cada aluno</p>
+          <p><strong>Rádio própria da escola</strong> — um projeto único em Portugal que envolve toda a comunidade escolar</p>
         </div>
         <div class="porque-item">
           <div class="porque-check">✓</div>
-          <p><strong>Aulas para todas as idades</strong> — crianças, jovens e adultos</p>
+          <p><strong>Repertório moderno e atual</strong> — aprendes as músicas que queres tocar, com parceria em estúdios externos para gravação profissional</p>
         </div>
         <div class="porque-item">
           <div class="porque-check">✓</div>
-          <p><strong>Do zero ao palco</strong> — preparamos os alunos para atuar ao vivo</p>
-        </div>
-        <div class="porque-item">
-          <div class="porque-check">✓</div>
-          <p><strong>Instrumentos disponíveis na escola</strong> — não precisas de ter o teu próprio</p>
-        </div>
-        <div class="porque-item">
-          <div class="porque-check">✓</div>
-          <p><strong>Repertório moderno e atual</strong> — aprendes as músicas que queres tocar</p>
-        </div>
-        <div class="porque-item">
-          <div class="porque-check">✓</div>
-          <p><strong>Parceria com estúdios externos</strong> para gravação profissional</p>
-        </div>
-        <div class="porque-item">
-          <div class="porque-check">✓</div>
-          <p><strong>Mais de 7 anos de experiência</strong> a formar músicos em Paços de Ferreira</p>
-        </div>
-        <div class="porque-item">
-          <div class="porque-check">✓</div>
-          <p><strong>Comunidade ativa</strong> de músicos e alunos num ambiente inspirador</p>
-        </div>
-        <div class="porque-item">
-          <div class="porque-check">✓</div>
-          <p><strong>Localização central em Meixomil</strong>, Paços de Ferreira — fácil acesso</p>
+          <p><strong>Mais de 7 anos a formar músicos</strong> em Paços de Ferreira, com uma comunidade ativa e um ambiente que inspira</p>
         </div>
       </div>
     </div>
@@ -1559,7 +1521,7 @@
     <div class="container">
       <div class="seo-text">
         <h2>Escola de Música em<br><span>Paços de Ferreira</span></h2>
-        <p>A NER - Nova Escola Rock é uma escola de música em Paços de Ferreira dedicada ao ensino de guitarra elétrica, guitarra clássica, baixo, bateria, canto, piano, acordeão, cavaquinho e produção musical.</p>
+        <p>A NER - Nova Escola Rock é uma <strong>escola de música em Paços de Ferreira</strong> dedicada ao ensino de guitarra elétrica, guitarra clássica, baixo, bateria, canto, piano, acordeão, cavaquinho e produção musical.</p>
         <p>Desde 2018 que ajudamos alunos de todas as idades a desenvolver talento, técnica e confiança no palco. Na NER não ensinamos apenas técnica — formamos músicos completos, com identidade própria.</p>
         <p>Estamos localizados na <strong>Associação Recreativa e Cultural de Sobrão</strong>, Rua da Cavada 105, Meixomil — no coração de Paços de Ferreira.</p>
         <br>
@@ -1578,7 +1540,7 @@
   <!-- SERVIÇOS -->
   <section class="servicos" id="servicos">
     <div class="container">
-      <div class="section-title">Os Nossos <span>Serviços</span></div>
+      <h2 class="section-title">Os Nossos <span>Serviços</span></h2>
       <p class="section-subtitle">Mais do que aulas — uma experiência musical completa</p>
       <div class="servicos-grid">
         <div class="servico-card">
@@ -1586,7 +1548,7 @@
           <h3>Estúdio de Gravação</h3>
           <p>Parceria com estúdios externos especializados para que possas gravar as tuas músicas com qualidade profissional.</p>
           <div class="servico-btn-wrap">
-            <a href="https://wa.me/351938066695?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Estúdio%20de%20Gravação." target="_blank" class="btn-primary" style="font-size:0.75rem;padding:10px 20px;">Saber Mais</a>
+            <a href="https://wa.me/351938066695?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Estúdio%20de%20Gravação." target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:0.75rem;padding:10px 20px;">Saber Mais</a>
           </div>
         </div>
         <div class="servico-card">
@@ -1594,7 +1556,7 @@
           <h3>Produção Musical</h3>
           <p>Serviços de arranjo, mixagem e masterização com os nossos produtores experientes.</p>
           <div class="servico-btn-wrap">
-            <a href="https://wa.me/351938066695?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20Produção%20Musical." target="_blank" class="btn-primary" style="font-size:0.75rem;padding:10px 20px;">Saber Mais</a>
+            <a href="https://wa.me/351938066695?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20Produção%20Musical." target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:0.75rem;padding:10px 20px;">Saber Mais</a>
           </div>
         </div>
         <div class="servico-card">
@@ -1602,7 +1564,7 @@
           <h3>Workshops Especializados</h3>
           <p>Workshops intensivos sobre técnicas avançadas, teoria musical e estilos específicos do rock.</p>
           <div class="servico-btn-wrap">
-            <a href="https://wa.me/351938066695?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20Workshops." target="_blank" class="btn-primary" style="font-size:0.75rem;padding:10px 20px;">Saber Mais</a>
+            <a href="https://wa.me/351938066695?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20Workshops." target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:0.75rem;padding:10px 20px;">Saber Mais</a>
           </div>
         </div>
         <div class="servico-card">
@@ -1610,14 +1572,14 @@
           <h3>Reparação de Instrumentos</h3>
           <p>Serviço técnico especializado em manutenção e reparação de guitarras, baixos e outros instrumentos.</p>
           <div class="servico-btn-wrap">
-            <a href="https://sites.google.com/view/carlosmatos-rim" target="_blank" class="btn-primary" style="font-size:0.75rem;padding:10px 20px;">Saber Mais ↗</a>
+            <a href="https://sites.google.com/view/carlosmatos-rim" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:0.75rem;padding:10px 20px;">Saber Mais ↗</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- RÁDIO NER — PLAYER INLINE -->
+  <!-- RÁDIO NER -->
   <section class="radio-section" id="radio">
     <div class="container">
       <div class="radio-info">
@@ -1631,41 +1593,33 @@
       </div>
       <div class="radio-player-wrap">
         <div class="radio-player-header">
-          <img src="galeria-de-imagens/radio_banner.png" alt="Rádio NER">
+          <img src="galeria-de-imagens/radio_banner.png" alt="Rádio NER - Nova Escola Rock">
           <div class="radio-player-header-text">
             <strong>Rádio NER</strong>
             <span>Nova Escola Rock</span>
           </div>
         </div>
         <div class="radio-controls">
-          <div class="radio-visualizer paused" id="radioVisualizer">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+          <div class="radio-visualizer paused" id="radioVisualizer" aria-hidden="true">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
           </div>
           <div class="radio-btn-row">
-            <button class="radio-play-btn" id="radioPlayBtn" onclick="toggleRadio()" title="Play / Pause">
+            <button class="radio-play-btn" id="radioPlayBtn" onclick="toggleRadio()" aria-label="Play / Pause rádio NER">
               <i class="fa fa-play" id="radioPlayIcon"></i>
             </button>
             <div class="radio-volume-wrap">
-              <i class="fa fa-volume-down"></i>
-              <input type="range" class="radio-volume" id="radioVolume" min="0" max="1" step="0.05" value="0.8" oninput="setVolume(this.value)">
-              <i class="fa fa-volume-up"></i>
+              <i class="fa fa-volume-down" aria-hidden="true"></i>
+              <input type="range" class="radio-volume" id="radioVolume" min="0" max="1" step="0.05" value="0.8" oninput="setVolume(this.value)" aria-label="Volume">
+              <i class="fa fa-volume-up" aria-hidden="true"></i>
             </div>
           </div>
           <div class="radio-status" id="radioStatus">Clica em play para ouvir</div>
         </div>
         <a href="https://nernovaescolarock.radio12345.com" target="_blank" rel="noopener noreferrer" class="radio-external-link">
-          <i class="fa fa-external-link"></i> &nbsp;Abrir em nova janela
+          <i class="fa fa-external-link" aria-hidden="true"></i> &nbsp;Abrir em nova janela
         </a>
       </div>
     </div>
@@ -1674,13 +1628,13 @@
   <!-- PARCEIROS -->
   <section class="parceiros" id="parceiros">
     <div class="container">
-      <div class="section-title">Os Nossos <span>Parceiros</span></div>
+      <h2 class="section-title">Os Nossos <span>Parceiros</span></h2>
       <p class="section-subtitle">Juntos somos mais fortes</p>
       <div class="parceiros-grid">
         <div class="parceiro-card">
-          <a href="https://www.facebook.com/arcsobrao.clubesobrao/?locale=pt_PT" target="_blank" class="parceiro-link">
+          <a href="https://www.facebook.com/arcsobrao.clubesobrao/?locale=pt_PT" target="_blank" rel="noopener noreferrer" class="parceiro-link">
             <div class="parceiro-img-wrap">
-              <img src="galeria-de-imagens/associacao_recreativa_e_cultural_de_sobrao_logo.jpg" alt="Associação Recreativa e Cultural de Sobrão">
+              <img src="galeria-de-imagens/associacao_recreativa_e_cultural_de_sobrao_logo.jpg" alt="Logótipo da Associação Recreativa e Cultural de Sobrão — parceiro da NER em Paços de Ferreira" loading="lazy">
             </div>
             <div class="parceiro-body">
               <div class="parceiro-esp">Cultura · Recreio · Tradição</div>
@@ -1690,9 +1644,9 @@
           </a>
         </div>
         <div class="parceiro-card">
-          <a href="https://sites.google.com/view/carlosmatos-rim" target="_blank" class="parceiro-link">
+          <a href="https://sites.google.com/view/carlosmatos-rim" target="_blank" rel="noopener noreferrer" class="parceiro-link">
             <div class="parceiro-img-wrap">
-              <img src="galeria-de-imagens/CarloaMatosRIM.png" alt="Carlos Matos RIM">
+              <img src="galeria-de-imagens/CarloaMatosRIM.png" alt="Logótipo Carlos Matos RIM — reparação de instrumentos musicais, parceiro da NER" loading="lazy">
             </div>
             <div class="parceiro-body">
               <div class="parceiro-esp">Reparação de Instrumentos Musicais</div>
@@ -1708,10 +1662,9 @@
   <!-- FAQ -->
   <section class="faq" id="faq">
     <div class="container">
-      <div class="section-title">Perguntas <span>Frequentes</span></div>
+      <h2 class="section-title">Perguntas <span>Frequentes</span></h2>
       <p class="section-subtitle">Tudo o que precisas de saber antes de começar</p>
       <div class="faq-list">
-
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
             Preciso de ter instrumento para começar? <span class="faq-icon">+</span>
@@ -1720,7 +1673,6 @@
             <p>Não. A NER disponibiliza instrumentos nas instalações para as aulas. Podes começar sem ter o teu próprio instrumento.</p>
           </div>
         </div>
-
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
             Qual a idade mínima para as aulas? <span class="faq-icon">+</span>
@@ -1729,7 +1681,6 @@
             <p>Temos aulas para todas as idades — crianças, jovens e adultos. Não há idade mínima nem máxima para aprender música.</p>
           </div>
         </div>
-
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
             As aulas são individuais ou em grupo? <span class="faq-icon">+</span>
@@ -1738,7 +1689,6 @@
             <p>Oferecemos ambas as modalidades — aulas individuais e em grupo — adaptadas ao ritmo e objetivos de cada aluno.</p>
           </div>
         </div>
-
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
             Preciso de ter conhecimentos musicais para me inscrever? <span class="faq-icon">+</span>
@@ -1747,7 +1697,6 @@
             <p>De forma alguma. Recebemos alunos do zero absoluto ao avançado. Os nossos professores adaptam o ensino ao nível de cada um.</p>
           </div>
         </div>
-
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
             Como funciona a aula experimental? <span class="faq-icon">+</span>
@@ -1756,7 +1705,6 @@
             <p>A aula experimental é gratuita e sem compromisso. É uma oportunidade para conheceres a escola, o professor e perceberes se é o que procuras. Basta contactar-nos para agendar.</p>
           </div>
         </div>
-
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
             Qual a duração e frequência das aulas? <span class="faq-icon">+</span>
@@ -1765,7 +1713,6 @@
             <p>As aulas têm normalmente 45 a 60 minutos e decorrem semanalmente. A frequência pode ser ajustada consoante a disponibilidade do aluno.</p>
           </div>
         </div>
-
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
             Posso mudar de instrumento depois de começar? <span class="faq-icon">+</span>
@@ -1774,7 +1721,6 @@
             <p>Sim. Se sentires que outro instrumento é mais indicado para ti, podemos ajustar. O importante é que te sintas motivado e evoluas.</p>
           </div>
         </div>
-
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
             Há apresentações ou concertos ao vivo? <span class="faq-icon">+</span>
@@ -1783,7 +1729,6 @@
             <p>Sim! Preparamos os alunos para atuar ao vivo. A experiência de palco faz parte da nossa filosofia — do zero ao palco.</p>
           </div>
         </div>
-
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
             Como me inscrevo? <span class="faq-icon">+</span>
@@ -1792,7 +1737,6 @@
             <p>Podes inscrever-te através da <a href="inscricao.html" target="_blank" style="color:var(--red);">página de inscrição</a>, contactar-nos pelo <a href="https://wa.me/351938066695" target="_blank" style="color:var(--red);">WhatsApp</a> ou enviar um email para <a href="mailto:nernovaescolarock@gmail.com" style="color:var(--red);">nernovaescolarock@gmail.com</a>.</p>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -1800,7 +1744,7 @@
   <!-- TESTEMUNHOS -->
   <section class="testemunhos">
     <div class="container">
-      <div class="section-title">O Que Dizem os<br><span>Nossos Alunos</span></div>
+      <h2 class="section-title">O Que Dizem os<br><span>Nossos Alunos</span></h2>
       <p class="section-subtitle">Histórias reais de músicos que cresceram connosco</p>
       <div class="testemunhos-grid">
         <div class="testemunho-card">
@@ -1829,7 +1773,7 @@
         </div>
       </div>
       <div class="testemunhos-ctas">
-        <a href="https://ner-testemunhos.netlify.app" target="_blank" class="btn-primary">🎸 Deixar o meu Testemunho</a>
+        <a href="https://ner-testemunhos.netlify.app" target="_blank" rel="noopener noreferrer" class="btn-primary">🎸 Deixar o meu Testemunho</a>
         <a href="inquerito.html" class="btn-outline">📋 Inquérito de Satisfação</a>
       </div>
     </div>
@@ -1840,7 +1784,7 @@
     <div class="container">
       <div class="quem-grid">
         <div class="quem-text">
-          <div class="section-title">Quem <span>Somos</span></div>
+          <h2 class="section-title">Quem <span>Somos</span></h2>
           <p class="section-subtitle">A nossa história</p>
           <p>A NER – Nova Escola Rock nasceu em 2018 em Paços de Ferreira com uma missão: formar músicos com paixão, técnica e identidade. Somos uma escola especializada em Rock e Música Moderna, com um ambiente criativo, motivador e personalizado para alunos de todas as idades.</p>
           <a href="quem-somos.html" class="btn-primary" style="font-size:0.82rem;">Saber Mais</a>
@@ -1866,58 +1810,59 @@
   <!-- CONTACTO -->
   <section class="contacto" id="contacto">
     <div class="container">
-      <div class="section-title"><span>Contacto</span></div>
+      <h2 class="section-title"><span>Contacto</span></h2>
       <p class="section-subtitle">Estamos à tua espera — marca já a tua aula experimental</p>
       <div class="contacto-grid">
         <div class="contacto-info">
           <div class="contacto-item">
-            <div class="contacto-icon"><i class="fa fa-map-marker"></i></div>
+            <div class="contacto-icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
             <div class="contacto-item-text">
               <label>Morada</label>
               <span>Rua da Cavada 105, 4595-218 Meixomil, Paços de Ferreira</span>
             </div>
           </div>
           <div class="contacto-item">
-            <div class="contacto-icon"><i class="fa fa-phone"></i></div>
+            <div class="contacto-icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
             <div class="contacto-item-text">
               <label>Telefone / WhatsApp</label>
               <a href="tel:+351938066695">938 066 695</a>
             </div>
           </div>
           <div class="contacto-item">
-            <div class="contacto-icon"><i class="fa fa-envelope"></i></div>
+            <div class="contacto-icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
             <div class="contacto-item-text">
               <label>Email</label>
               <a href="mailto:nernovaescolarock@gmail.com">nernovaescolarock@gmail.com</a>
             </div>
           </div>
           <div class="contacto-item">
-            <div class="contacto-icon"><i class="fa fa-clock-o"></i></div>
+            <div class="contacto-icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
             <div class="contacto-item-text">
               <label>Horário de Funcionamento</label>
               <span>Seg – Sex: 18h00 – 23h00<br>Sáb: 09h00 – 12h00 · 14h00 – 17h00<br>Dom: Encerrado</span>
             </div>
           </div>
           <div class="contacto-item">
-            <div class="contacto-icon"><i class="fa-brands fa-whatsapp"></i></div>
+            <div class="contacto-icon"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></div>
             <div class="contacto-item-text">
               <label>WhatsApp</label>
-              <a href="https://wa.me/351938066695" target="_blank">Envia-nos mensagem</a>
+              <a href="https://wa.me/351938066695" target="_blank" rel="noopener noreferrer">Envia-nos mensagem</a>
             </div>
           </div>
           <br>
-          <a href="https://wa.me/351938066695" target="_blank" class="btn-primary" style="width:100%;text-align:center;display:block;">Agenda a Tua Aula Experimental</a>
+          <a href="https://wa.me/351938066695" target="_blank" rel="noopener noreferrer" class="btn-primary" style="width:100%;text-align:center;display:block;">Agenda a Tua Aula Experimental</a>
         </div>
         <div class="contacto-map">
-          <div class="map-placeholder">
-            <img class="fachada" src="galeria-de-imagens/fachada_rock.jpg" alt="Fachada NER - Nova Escola Rock">
-            <div class="fachada-labels">
-              <span class="fachada-loc">📍 Meixomil, Paços de Ferreira</span>
-              <span class="fachada-sub">Associação Recreativa e Cultural de Sobrão</span>
-            </div>
-          </div>
-          <a href="https://www.google.com/maps/place/NER+-+Nova+Escola+Rock/@41.2751234,-8.3958355,17z/data=!3m1!4b1!4m6!3m5!1s0xd248d1be36c52cf:0x109b3df46c96bacc!8m2!3d41.2751234!4d-8.3932606!16s%2Fg%2F11z11ql02g?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="map-btn">
-            <i class="fa fa-map-marker"></i> &nbsp;Ver no Google Maps
+          <iframe
+            class="map-embed"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3004.1234!2d-8.3958355!3d41.2751234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd248d1be36c52cf%3A0x109b3df46c96bacc!2sNER%20-%20Nova%20Escola%20Rock!5e0!3m2!1spt!2spt!4v1234567890"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Localização da NER - Nova Escola Rock em Meixomil, Paços de Ferreira">
+          </iframe>
+          <a href="https://www.google.com/maps/place/NER+-+Nova+Escola+Rock/@41.2751234,-8.3958355,17z" target="_blank" rel="noopener noreferrer" class="map-btn">
+            <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;Ver no Google Maps
           </a>
         </div>
       </div>
@@ -1928,17 +1873,17 @@
   <section class="redes" id="redes-sociais">
     <h2>Segue-nos</h2>
     <div class="social-icons">
-      <a href="https://www.facebook.com/novaescolarock" target="_blank" class="social-icon si-fb" title="Facebook NER">
-        <i class="fa-brands fa-facebook"></i>
+      <a href="https://www.facebook.com/novaescolarock" target="_blank" rel="noopener noreferrer" class="social-icon si-fb" title="Facebook NER - Nova Escola Rock" aria-label="Facebook NER">
+        <i class="fa-brands fa-facebook" aria-hidden="true"></i>
       </a>
-      <a href="https://www.instagram.com/nernovaescola/" target="_blank" class="social-icon si-ig" title="Instagram NER">
-        <i class="fa-brands fa-instagram"></i>
+      <a href="https://www.instagram.com/nernovaescola/" target="_blank" rel="noopener noreferrer" class="social-icon si-ig" title="Instagram NER - Nova Escola Rock" aria-label="Instagram NER">
+        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
       </a>
-      <a href="https://www.youtube.com/@nernovaescolarock1669" target="_blank" class="social-icon si-yt" title="YouTube NER">
-        <i class="fa-brands fa-youtube"></i>
+      <a href="https://www.youtube.com/@nernovaescolarock1669" target="_blank" rel="noopener noreferrer" class="social-icon si-yt" title="YouTube NER - Nova Escola Rock" aria-label="YouTube NER">
+        <i class="fa-brands fa-youtube" aria-hidden="true"></i>
       </a>
-      <a href="https://www.facebook.com/deodatoformador/" target="_blank" class="social-icon si-fb" title="Facebook Deodato">
-        <i class="fa-brands fa-facebook-f"></i>
+      <a href="https://www.facebook.com/deodatoformador/" target="_blank" rel="noopener noreferrer" class="social-icon si-fb" title="Facebook Deodato Barbosa" aria-label="Facebook Deodato Barbosa">
+        <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
       </a>
     </div>
   </section>
@@ -1958,7 +1903,7 @@
         <h4>Contacto</h4>
         <a href="tel:+351938066695">938 066 695</a>
         <a href="mailto:nernovaescolarock@gmail.com">nernovaescolarock@gmail.com</a>
-        <a href="https://wa.me/351938066695" target="_blank">WhatsApp</a>
+        <a href="https://wa.me/351938066695" target="_blank" rel="noopener noreferrer">WhatsApp</a>
       </div>
       <div class="footer-col">
         <h4>Links Úteis</h4>
@@ -1975,8 +1920,8 @@
   </footer>
 
   <!-- WhatsApp flutuante -->
-  <a href="https://wa.me/351938066695" target="_blank" class="whatsapp-float" title="Fala connosco no WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
+  <a href="https://wa.me/351938066695" target="_blank" rel="noopener noreferrer" class="whatsapp-float" title="Fala connosco no WhatsApp" aria-label="Contactar NER pelo WhatsApp">
+    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
   </a>
 
   <!-- Lightbox -->
@@ -2015,7 +1960,6 @@
     }
 
     /* ===== RÁDIO PLAYER ===== */
-    // URL do stream — ajusta se necessário para o stream directo da tua rádio
     const RADIO_STREAM = 'https://nernovaescolarock.radio12345.com/stream';
     let radioPlaying = false;
     const audioEl    = document.getElementById('radioAudio');
@@ -2033,7 +1977,6 @@
           p.then(() => {
             setPlayingState(true);
           }).catch(() => {
-            // Se o stream directo falhar, abre no site da rádio
             statusEl.textContent = 'A abrir a rádio…';
             window.open('https://nernovaescolarock.radio12345.com', '_blank', 'noopener');
             setPlayingState(false);
