@@ -436,34 +436,20 @@
         <p>A nossa rádio é um projeto único que envolve toda a comunidade escolar, dando voz aos músicos e à música que se faz na NER. Rock, metal, blues e muito mais — sempre a tocar.</p>
         <a href="https://nernovaescolarock.radio12345.com" target="_blank" rel="noopener noreferrer" class="btn-outline" style="font-size:0.78rem;display:inline-block;">Abrir no site da Rádio →</a>
       </div>
-      <div class="radio-player-wrap">
+      <div class="radio-player-wrap" style="overflow:hidden;">
         <div class="radio-player-header">
           <img src="galeria-de-imagens/radio_banner.png" alt="Rádio NER - Nova Escola Rock">
           <div class="radio-player-header-text"><strong>Rádio NER</strong><span>Nova Escola Rock</span></div>
         </div>
-        <div class="radio-controls">
-          <div class="radio-visualizer paused" id="radioVisualizer" aria-hidden="true">
-            <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
-            <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
-            <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
-          </div>
-          <div class="radio-btn-row">
-            <button class="radio-play-btn" id="radioPlayBtn" onclick="toggleRadio()" aria-label="Play / Pause rádio NER">
-              <i class="fa fa-play" id="radioPlayIcon"></i>
-            </button>
-            <div class="radio-volume-wrap">
-              <i class="fa fa-volume-down" aria-hidden="true"></i>
-              <input type="range" class="radio-volume" id="radioVolume" min="0" max="1" step="0.05" value="0.8" oninput="setVolume(this.value)" aria-label="Volume">
-              <i class="fa fa-volume-up" aria-hidden="true"></i>
-            </div>
-          </div>
-          <div class="radio-status" id="radioStatus">Clica em play para ouvir</div>
-          <!-- Aviso mixed-content — só aparece se necessário -->
-          <div class="radio-notice" id="radioNotice">
-            ⚠️ O teu browser bloqueou o stream por segurança (HTTP vs HTTPS).<br>
-            <a href="https://nernovaescolarock.radio12345.com" target="_blank" rel="noopener noreferrer">Clica aqui para ouvir no site da rádio →</a>
-          </div>
-        </div>
+        <iframe
+          src="https://nernovaescolarock.radio12345.com"
+          width="100%"
+          height="260"
+          frameborder="0"
+          scrolling="no"
+          allow="autoplay; encrypted-media"
+          style="display:block; background:#181818;">
+        </iframe>
         <a href="https://nernovaescolarock.radio12345.com" target="_blank" rel="noopener noreferrer" class="radio-external-link">
           <i class="fa fa-external-link" aria-hidden="true"></i> &nbsp;Abrir em nova janela
         </a>
