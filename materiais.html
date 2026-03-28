@@ -471,8 +471,40 @@ href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&famil
   .icon-gp { width: 20px; height: 20px; border-radius: 50%; vertical-align: middle; } 
   /* ── RESPONSIVE ── */ 
   @media (max-width: 600px) { 
-    .tab-nav { gap: 4px; } 
-    .tab-btn { font-size: 0.75rem; padding: 7px 12px; } 
+    /* Tabs: scroll horizontal */ 
+    .tab-nav { 
+      flex-wrap: nowrap; 
+      overflow-x: auto; 
+      -webkit-overflow-scrolling: touch; 
+      scrollbar-width: none; 
+      gap: 4px; 
+      padding-bottom: 12px; 
+    } 
+    .tab-nav::-webkit-scrollbar { display: none; } 
+    .tab-btn { 
+      font-size: 0.75rem; 
+      padding: 7px 12px; 
+      white-space: nowrap; 
+      flex-shrink: 0; 
+    } 
+    /* Modal: sobe como sheet do fundo */ 
+    #previewModal { 
+      align-items: flex-end; 
+    } 
+    .modal-box { 
+      width: 100%; 
+      height: 92vh; 
+      max-width: 100%; 
+      border-radius: 10px 10px 0 0; 
+      padding: 12px; 
+    } 
+    /* Botão Som: mais pequeno */ 
+    #btnSom { 
+      padding: 6px 10px; 
+      font-size: 0.7rem; 
+      bottom: 12px; 
+      right: 12px; 
+    } 
     .instrument-grid { grid-template-columns: 1fr 1fr; } 
     .podcast-grid { grid-template-columns: 1fr; } 
   } 
@@ -812,7 +844,7 @@ href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&famil
 <div id="previewModal"> 
   <div class="modal-box"> 
     <div class="modal-bar"> 
-      <a id="downloadBtn" href="#" download>⬇ Download</a> 
+      <a id="downloadBtn" href="#" onclick="forcarDownload(event)">⬇ Download</a> 
       <button class="modal-close" onclick="fecharPreview()">✕</button> 
     </div> 
     <div id="previewContent"></div> 
@@ -891,11 +923,12 @@ href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&famil
     link.addEventListener("click", function(e) { 
       e.preventDefault(); 
       const file = this.getAttribute("href"); 
+      const filename = file.split("/").pop(); 
       const previewArea = document.getElementById("previewContent"); 
       const downloadBtn = document.getElementById("downloadBtn"); 
       previewArea.innerHTML = ""; 
       downloadBtn.href = file; 
-      downloadBtn.setAttribute("download", ""); 
+      downloadBtn.setAttribute("data-filename", filename); 
       document.getElementById("previewModal").classList.add("open"); 
       if (file.match(/\.pdf$/i)) { 
         previewArea.innerHTML = '<iframe src="' + file + '" style="width:100%;height:100%;border:none;border-radius:4px;"></iframe>'; 
@@ -908,6 +941,28 @@ href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&famil
       } 
     }); 
   }); 
+  function forcarDownload(e) {
+    e.preventDefault();
+    const btn = document.getElementById("downloadBtn");
+    const url = btn.href;
+    const filename = btn.getAttribute("data-filename") || url.split("/").pop();
+    fetch(url)
+      .then(function(res) { return res.blob(); })
+      .then(function(blob) {
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function() {
+          URL.revokeObjectURL(a.href);
+          document.body.removeChild(a);
+        }, 1000);
+      })
+      .catch(function() {
+        window.open(url, "_blank");
+      });
+  }
   function fecharPreview() { 
     document.getElementById("previewModal").classList.remove("open"); 
     document.getElementById("previewContent").innerHTML = ""; 
