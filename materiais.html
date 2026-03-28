@@ -497,6 +497,9 @@ href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&famil
       max-width: 100%; 
       border-radius: 10px 10px 0 0; 
       padding: 12px; 
+    }
+    #previewContent {
+      overflow: visible;
     } 
     /* Botão Som: mais pequeno */ 
     #btnSom { 
@@ -943,7 +946,7 @@ href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&famil
       } else if (file.match(/\.(jpg|jpeg|png|gif|webp)$/i)) { 
         previewArea.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;"><img src="' + file + '" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:4px;"></div>'; 
       } else if (file.match(/\.mp3$/i)) { 
-        previewArea.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;"><audio controls style="width:90%;"><source src="' + file + '" type="audio/mpeg"></audio></div>'; 
+        previewArea.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;padding:20px;"><audio controls style="width:100%;min-width:280px;height:54px;"><source src="' + file + '" type="audio/mpeg"></audio></div>'; 
       } else { 
         previewArea.innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:12px;"><span style="font-size:2.5em;">⬇</span><p style="color:var(--muted);font-family:var(--font);letter-spacing:1px;text-transform:uppercase;font-size:0.9rem;">Preview não disponível — clica em Download para guardar o ficheiro.</p></div>'; 
       } 
