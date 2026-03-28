@@ -153,6 +153,14 @@
       margin-left: 8px;
     }
     .nav-cta:hover { background: var(--red-dark) !important; }
+    .nav-radio {
+      background: rgba(232,23,58,0.12) !important;
+      border: 1px solid rgba(232,23,58,0.35) !important;
+      color: var(--red) !important;
+      padding: 6px 12px !important;
+      border-radius: 4px !important;
+    }
+    .nav-radio:hover { background: rgba(232,23,58,0.22) !important; color: #fff !important; }
 
     /* Mobile nav */
     .hamburger {
@@ -202,6 +210,9 @@
       padding: 14px;
       border-radius: 4px;
       border: none;
+    }
+    .mobile-menu a.m-radio {
+      color: var(--red);
     }
 
     @media (max-width: 900px) {
@@ -512,6 +523,20 @@
       font-size: 0.85rem;
       line-height: 1.7;
     }
+    .professor-bio-link {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--red);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(232,23,58,0.3);
+      padding-bottom: 1px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .professor-bio-link:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
 
     /* ===== PORQUÊ NER ===== */
     .porque {
@@ -858,7 +883,7 @@
     }
     .parceiros-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 24px;
     }
     .parceiro-card {
@@ -1306,12 +1331,12 @@
       <a href="#inicio">Início</a>
       <a href="#cursos">Cursos</a>
       <a href="#professores">Professores</a>
-      <a href="biografias.html" target="_blank">Biografias</a>
       <a href="galeria.html">Galeria</a>
       <a href="#servicos">Serviços</a>
       <a href="materiais.html" target="_blank">Materiais</a>
       <a href="#parceiros">Parceiros</a>
       <a href="#quem-somos">Quem Somos</a>
+      <a href="#radio" class="nav-radio">📻 Rádio</a>
       <a href="#contacto" class="nav-cta">Contacto</a>
     </nav>
     <button class="hamburger" onclick="toggleMenu()" aria-label="Abrir menu de navegação">
@@ -1324,12 +1349,12 @@
     <a href="#inicio" onclick="closeMenu()">Início</a>
     <a href="#cursos" onclick="closeMenu()">Cursos</a>
     <a href="#professores" onclick="closeMenu()">Professores</a>
-    <a href="biografias.html" target="_blank">Biografias</a>
     <a href="galeria.html" onclick="closeMenu()">Galeria</a>
     <a href="#servicos" onclick="closeMenu()">Serviços</a>
     <a href="materiais.html" target="_blank">Materiais</a>
     <a href="#parceiros" onclick="closeMenu()">Parceiros</a>
     <a href="#quem-somos" onclick="closeMenu()">Quem Somos</a>
+    <a href="#radio" class="m-radio" onclick="closeMenu()">📻 Rádio</a>
     <a href="#contacto" class="m-cta" onclick="closeMenu()">Contacto</a>
   </nav>
 
@@ -1416,7 +1441,7 @@
   <section class="professores" id="professores">
     <div class="container">
       <h2 class="section-title">Os Nossos <span>Professores</span></h2>
-      <p class="section-subtitle">Profissionais com provas dadas no ensino e no palco</p>
+      <p class="section-subtitle">Profissionais com provas dadas no ensino e no palco · <a href="biografias.html" target="_blank" style="color:var(--red);text-decoration:none;letter-spacing:inherit;">Ver biografias completas →</a></p>
       <div class="professores-grid">
         <div class="professor-card">
           <div class="professor-img-wrap">
@@ -1425,7 +1450,7 @@
           <div class="professor-info">
             <h3>Deodato Barbosa</h3>
             <div class="professor-esp">Guitarra Clássica · Elétrica · Formação Musical</div>
-            <p>30 anos de experiência em guitarra. Especializado em rock clássico e heavy metal.</p>
+            <p>Trinta anos a construir pontes entre cordas e almas — do rock clássico ao heavy metal, onde cada acorde tem a força de uma história.</p>
           </div>
         </div>
         <div class="professor-card">
@@ -1435,7 +1460,7 @@
           <div class="professor-info">
             <h3>Filipe Carvalho</h3>
             <div class="professor-esp">Canto · Formação Musical</div>
-            <p>Formado em música com especialização em técnica vocal. A tua voz não vai só brilhar — vai conquistar.</p>
+            <p>A voz é o instrumento mais íntimo que existe — e ele sabe como libertá-la. A tua voz não vai só brilhar, vai conquistar.</p>
           </div>
         </div>
         <div class="professor-card">
@@ -1445,7 +1470,7 @@
           <div class="professor-info">
             <h3>Renato Barbosa</h3>
             <div class="professor-esp">Guitarra Elétrica · Produtor</div>
-            <p>O mestre das cordas e da produção, onde o talento encontra a perfeição.</p>
+            <p>Das cordas ao estúdio, transforma ideias em som e som em arte. O talento tem um mestre — e a perfeição, um caminho.</p>
           </div>
         </div>
         <div class="professor-card">
@@ -1455,7 +1480,7 @@
           <div class="professor-info">
             <h3>Filipe Nunes</h3>
             <div class="professor-esp">Baixo</div>
-            <p>O baixo não é apenas um instrumento — é a força invisível que move a música.</p>
+            <p>A força invisível que move a música — o baixo pulsa onde os outros não chegam, e ele ensina-te a senti-lo na alma.</p>
           </div>
         </div>
         <div class="professor-card">
@@ -1465,7 +1490,7 @@
           <div class="professor-info">
             <h3>Filipe Carvalho</h3>
             <div class="professor-esp">Piano · Teclado · Formação Musical</div>
-            <p>Mais do que ensinar notas, guia mãos e corações para a verdadeira magia da música.</p>
+            <p>Cada tecla é uma porta. Ele guia as tuas mãos até que a música flua como se sempre tivesse vivido dentro de ti.</p>
           </div>
         </div>
         <div class="professor-card">
@@ -1475,14 +1500,14 @@
           <div class="professor-info">
             <h3>Sidónio Nunes</h3>
             <div class="professor-esp">Bateria</div>
-            <p>Com cada batida, transforma o som em arte e a arte em emoção pura.</p>
+            <p>Com cada batida, o caos transforma-se em ritmo e o ritmo em paixão. A arte não se aprende — desperta-se.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PORQUE NER — reduzido a 6 pontos de maior impacto -->
+  <!-- PORQUE NER -->
   <section class="porque" id="porque">
     <div class="container">
       <h2 class="section-title">Porque <span>Escolher</span> a NER?</h2>
@@ -1567,14 +1592,6 @@
             <a href="https://wa.me/351938066695?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20Workshops." target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:0.75rem;padding:10px 20px;">Saber Mais</a>
           </div>
         </div>
-        <div class="servico-card">
-          <span class="servico-icon">🔧</span>
-          <h3>Reparação de Instrumentos</h3>
-          <p>Serviço técnico especializado em manutenção e reparação de guitarras, baixos e outros instrumentos.</p>
-          <div class="servico-btn-wrap">
-            <a href="https://sites.google.com/view/carlosmatos-rim" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:0.75rem;padding:10px 20px;">Saber Mais ↗</a>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -1651,7 +1668,7 @@
             <div class="parceiro-body">
               <div class="parceiro-esp">Reparação de Instrumentos Musicais</div>
               <h3>Carlos Matos RIM</h3>
-              <p>Serviços especializados em reparação, manutenção e melhoramento de instrumentos eletrónicos.</p>
+              <p>Serviços especializados em reparação, manutenção e melhoramento de instrumentos eletrónicos. O parceiro de confiança da NER para cuidar dos teus instrumentos.</p>
             </div>
           </a>
         </div>
@@ -1839,7 +1856,7 @@
             <div class="contacto-icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
             <div class="contacto-item-text">
               <label>Horário de Funcionamento</label>
-              <span>Seg – Sex: 18h00 – 23h00<br>Sáb: 09h00 – 12h00 · 14h00 – 17h00<br>Dom: Encerrado</span>
+              <span>Seg – Sex: 18h00 – 23h00<br>Sáb: 09h00 – 12h00 · 14h00 – 17h00<br>Domingos: encerrado para descanso merecido 🤘</span>
             </div>
           </div>
           <div class="contacto-item">
