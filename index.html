@@ -624,22 +624,8 @@
     const visualizer = document.getElementById('radioVisualizer');
 
     function toggleRadio() {
-      if (!radioPlaying) {
-        statusEl.textContent = 'A ligar…';
-        audioEl.src = RADIO_STREAM;
-        audioEl.volume = parseFloat(document.getElementById('radioVolume').value);
-        audioEl.play()
-          .then(() => setPlayingState(true))
-          .catch(() => {
-            statusEl.textContent = 'Erro ao ligar — tenta de novo';
-            setPlayingState(false);
-          });
-      } else {
-        audioEl.pause();
-        audioEl.src = '';
-        setPlayingState(false);
-      }
-    }
+  window.open('https://nernovaescolarock.radio12345.com', '_blank');
+}
 
     function setPlayingState(playing) {
       radioPlaying = playing;
