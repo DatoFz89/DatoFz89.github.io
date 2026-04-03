@@ -277,7 +277,7 @@
     "sameAs": ["https://www.facebook.com/novaescolarock","https://www.instagram.com/nernovaescola/","https://www.youtube.com/@nernovaescolarock1669"]
   }
 
-  /* ===== DRAG FLUTUANTES ===== */
+/* ===== DRAG FLUTUANTES ===== */
 function makeDraggable(el) {
   let isDragging = false;
   let startX, startY, startLeft, startTop;
@@ -302,7 +302,6 @@ function makeDraggable(el) {
     el.style.left = startLeft + 'px';
     el.style.top = startTop + 'px';
     el.style.bottom = 'auto';
-    e.preventDefault();
   }
 
   function onMove(e) {
@@ -319,17 +318,23 @@ function makeDraggable(el) {
   }
 
   function onEnd(e) {
-    if (!isDragging) return;
     isDragging = false;
-    if (!moved) el.click();
+    if (moved) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
   }
 
   el.addEventListener('mousedown', onStart);
-  el.addEventListener('touchstart', onStart, { passive: false });
+  el.addEventListener('touchstart', onStart, { passive: true });
   window.addEventListener('mousemove', onMove);
   window.addEventListener('touchmove', onMove, { passive: false });
   window.addEventListener('mouseup', onEnd);
   window.addEventListener('touchend', onEnd);
+
+  el.addEventListener('click', function(e) {
+    if (moved) e.preventDefault();
+  });
 }
 
 makeDraggable(document.querySelector('.radio-banner'));
