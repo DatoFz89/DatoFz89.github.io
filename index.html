@@ -241,11 +241,13 @@
     .footer-bottom { max-width: var(--max-w); margin: 0 auto; padding-top: 20px; border-top: 1px solid var(--border); text-align: center; }
     .footer-bottom p { font-size: 0.78rem; color: var(--text-muted); letter-spacing: 1px; }
     @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-    .radio-banner { position: fixed; bottom: 20px; left: 20px; z-index: 999; display: block; width: 100px; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 20px rgba(229,9,9,0.4); transition: transform 0.3s; border: 1px solid rgba(204,0,0,0.6); }
-    .radio-banner:hover { transform: scale(1.05); }
-    .radio-banner img { width: 100%; height: auto; display: block; }
-    .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: #fff; border-radius: 50%; width: 54px; height: 54px; font-size: 1.6rem; box-shadow: 0 4px 16px rgba(0,0,0,0.4); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.25s, background 0.2s; }
-    .whatsapp-float:hover { transform: scale(1.1); background: #1ebe5d; }
+    
+    .radio-banner { position: fixed; bottom: 20px; left: 20px; z-index: 999; display: block; width: 100px; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 20px rgba(229,9,9,0.4); border: 1px solid rgba(204,0,0,0.6); cursor: grab; user-select: none; touch-action: none; }
+    .radio-banner:active { cursor: grabbing; }
+    .radio-banner img { width: 100%; height: auto; display: block; pointer-events: none; }
+    .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: #fff; border-radius: 50%; width: 54px; height: 54px; font-size: 1.6rem; box-shadow: 0 4px 16px rgba(0,0,0,0.4); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; cursor: grab; user-select: none; touch-action: none; }
+    .whatsapp-float:active { cursor: grabbing; }
+    
     @media screen and (max-width: 768px) { .radio-banner { width: 64px; border-radius: 8px; } .hero-stats { display: none; } :root { --section-pad: 70px 20px; } }
     .lightbox { display: none; position: fixed; z-index: 2000; inset: 0; background: rgba(0,0,0,0.92); align-items: center; justify-content: center; }
     .lightbox.open { display: flex; }
@@ -274,6 +276,65 @@
     ],
     "sameAs": ["https://www.facebook.com/novaescolarock","https://www.instagram.com/nernovaescola/","https://www.youtube.com/@nernovaescolarock1669"]
   }
+
+  /* ===== DRAG FLUTUANTES ===== */
+function makeDraggable(el) {
+  let isDragging = false;
+  let startX, startY, startLeft, startTop;
+  let moved = false;
+
+  function getPos(e) {
+    return e.touches ? { x: e.touches[0].clientX, y: e.touches[0].clientY }
+                     : { x: e.clientX, y: e.clientY };
+  }
+
+  function onStart(e) {
+    const pos = getPos(e);
+    isDragging = true;
+    moved = false;
+    const rect = el.getBoundingClientRect();
+    startX = pos.x;
+    startY = pos.y;
+    startLeft = rect.left;
+    startTop = rect.top;
+    el.style.transition = 'none';
+    el.style.right = 'auto';
+    el.style.left = startLeft + 'px';
+    el.style.top = startTop + 'px';
+    el.style.bottom = 'auto';
+    e.preventDefault();
+  }
+
+  function onMove(e) {
+    if (!isDragging) return;
+    const pos = getPos(e);
+    const dx = pos.x - startX;
+    const dy = pos.y - startY;
+    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) moved = true;
+    const newLeft = Math.max(0, Math.min(window.innerWidth - el.offsetWidth, startLeft + dx));
+    const newTop = Math.max(0, Math.min(window.innerHeight - el.offsetHeight, startTop + dy));
+    el.style.left = newLeft + 'px';
+    el.style.top = newTop + 'px';
+    e.preventDefault();
+  }
+
+  function onEnd(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    if (!moved) el.click();
+  }
+
+  el.addEventListener('mousedown', onStart);
+  el.addEventListener('touchstart', onStart, { passive: false });
+  window.addEventListener('mousemove', onMove);
+  window.addEventListener('touchmove', onMove, { passive: false });
+  window.addEventListener('mouseup', onEnd);
+  window.addEventListener('touchend', onEnd);
+}
+
+makeDraggable(document.querySelector('.radio-banner'));
+makeDraggable(document.querySelector('.whatsapp-float'));
+    
   </script>
 </head>
 <body>
