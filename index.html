@@ -279,62 +279,53 @@
 
 /* ===== DRAG FLUTUANTES ===== */
 function makeDraggable(el) {
-  let isDragging = false;
-  let startX, startY, startLeft, startTop;
-  let moved = false;
+  let startX, startY, startLeft, startTop, moved;
 
-  function getPos(e) {
-    return e.touches ? { x: e.touches[0].clientX, y: e.touches[0].clientY }
-                     : { x: e.clientX, y: e.clientY };
-  }
+  el.addEventListener('mousedown', start);
+  el.addEventListener('touchstart', start, {passive: true});
 
-  function onStart(e) {
-    const pos = getPos(e);
-    isDragging = true;
+  function start(e) {
     moved = false;
-    const rect = el.getBoundingClientRect();
-    startX = pos.x;
-    startY = pos.y;
-    startLeft = rect.left;
-    startTop = rect.top;
-    el.style.transition = 'none';
-    el.style.right = 'auto';
+    const t = e.touches ? e.touches[0] : e;
+    startX = t.clientX;
+    startY = t.clientY;
+    const r = el.getBoundingClientRect();
+    startLeft = r.left;
+    startTop = r.top;
     el.style.left = startLeft + 'px';
     el.style.top = startTop + 'px';
+    el.style.right = 'auto';
     el.style.bottom = 'auto';
+    el.style.transition = 'none';
+    document.addEventListener('mousemove', move);
+    document.addEventListener('touchmove', move, {passive: false});
+    document.addEventListener('mouseup', end);
+    document.addEventListener('touchend', end);
   }
 
-  function onMove(e) {
-    if (!isDragging) return;
-    const pos = getPos(e);
-    const dx = pos.x - startX;
-    const dy = pos.y - startY;
-    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) moved = true;
-    const newLeft = Math.max(0, Math.min(window.innerWidth - el.offsetWidth, startLeft + dx));
-    const newTop = Math.max(0, Math.min(window.innerHeight - el.offsetHeight, startTop + dy));
-    el.style.left = newLeft + 'px';
-    el.style.top = newTop + 'px';
+  function move(e) {
     e.preventDefault();
+    const t = e.touches ? e.touches[0] : e;
+    const dx = t.clientX - startX;
+    const dy = t.clientY - startY;
+    if (Math.abs(dx) > 2 || Math.abs(dy) > 2) moved = true;
+    el.style.left = Math.max(0, Math.min(window.innerWidth - el.offsetWidth, startLeft + dx)) + 'px';
+    el.style.top = Math.max(0, Math.min(window.innerHeight - el.offsetHeight, startTop + dy)) + 'px';
+    document.removeEventListener('mousemove', move);
+    document.removeEventListener('touchmove', move);
+    document.addEventListener('mousemove', move);
+    document.addEventListener('touchmove', move, {passive: false});
   }
 
-  function onEnd(e) {
-    isDragging = false;
-    if (moved) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-  }
-
-  el.addEventListener('mousedown', onStart);
-  el.addEventListener('touchstart', onStart, { passive: true });
-  window.addEventListener('mousemove', onMove);
-  window.addEventListener('touchmove', onMove, { passive: false });
-  window.addEventListener('mouseup', onEnd);
-  window.addEventListener('touchend', onEnd);
-
-  el.addEventListener('click', function(e) {
+  function end(e) {
+    document.removeEventListener('mousemove', move);
+    document.removeEventListener('touchmove', move);
+    document.removeEventListener('mouseup', end);
+    document.removeEventListener('touchend', end);
     if (moved) e.preventDefault();
-  });
+  }
+
+  el.addEventListener('click', e => { if (moved) e.preventDefault(); });
 }
 
 makeDraggable(document.querySelector('.radio-banner'));
