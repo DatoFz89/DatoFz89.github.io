@@ -328,9 +328,6 @@ function makeDraggable(el) {
   el.addEventListener('click', e => { if (moved) e.preventDefault(); });
 }
 
-makeDraggable(document.querySelector('.radio-banner'));
-makeDraggable(document.querySelector('.whatsapp-float'));
-    
   </script>
 </head>
 <body>
@@ -723,11 +720,14 @@ makeDraggable(document.querySelector('.whatsapp-float'));
       });
     });
 
-    /* ===== HEADER SCROLL ===== */
+        /* ===== HEADER SCROLL ===== */
     window.addEventListener('scroll', () => {
       document.querySelector('header').style.borderBottomColor =
         window.scrollY > 10 ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.04)';
     });
+
+    makeDraggable(document.querySelector('.radio-banner'));
+    makeDraggable(document.querySelector('.whatsapp-float'));
   </script>
 </body>
 </html>
