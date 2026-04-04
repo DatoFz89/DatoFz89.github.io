@@ -277,56 +277,7 @@
     "sameAs": ["https://www.facebook.com/novaescolarock","https://www.instagram.com/nernovaescola/","https://www.youtube.com/@nernovaescolarock1669"]
   }
 
-/* ===== DRAG FLUTUANTES ===== */
-function makeDraggable(el) {
-  let startX, startY, startLeft, startTop, moved;
 
-  el.addEventListener('mousedown', start);
-  el.addEventListener('touchstart', start, {passive: true});
-
-  function start(e) {
-    moved = false;
-    const t = e.touches ? e.touches[0] : e;
-    startX = t.clientX;
-    startY = t.clientY;
-    const r = el.getBoundingClientRect();
-    startLeft = r.left;
-    startTop = r.top;
-    el.style.left = startLeft + 'px';
-    el.style.top = startTop + 'px';
-    el.style.right = 'auto';
-    el.style.bottom = 'auto';
-    el.style.transition = 'none';
-    document.addEventListener('mousemove', move);
-    document.addEventListener('touchmove', move, {passive: false});
-    document.addEventListener('mouseup', end);
-    document.addEventListener('touchend', end);
-  }
-
-  function move(e) {
-    e.preventDefault();
-    const t = e.touches ? e.touches[0] : e;
-    const dx = t.clientX - startX;
-    const dy = t.clientY - startY;
-    if (Math.abs(dx) > 2 || Math.abs(dy) > 2) moved = true;
-    el.style.left = Math.max(0, Math.min(window.innerWidth - el.offsetWidth, startLeft + dx)) + 'px';
-    el.style.top = Math.max(0, Math.min(window.innerHeight - el.offsetHeight, startTop + dy)) + 'px';
-    document.removeEventListener('mousemove', move);
-    document.removeEventListener('touchmove', move);
-    document.addEventListener('mousemove', move);
-    document.addEventListener('touchmove', move, {passive: false});
-  }
-
-  function end(e) {
-    document.removeEventListener('mousemove', move);
-    document.removeEventListener('touchmove', move);
-    document.removeEventListener('mouseup', end);
-    document.removeEventListener('touchend', end);
-    if (moved) e.preventDefault();
-  }
-
-  el.addEventListener('click', e => { if (moved) e.preventDefault(); });
-}
 
   </script>
 </head>
@@ -726,8 +677,51 @@ function makeDraggable(el) {
         window.scrollY > 10 ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.04)';
     });
 
+  /* ===== DRAG FLUTUANTES ===== */
+    function makeDraggable(el) {
+      let startX, startY, startLeft, startTop, moved;
+      el.addEventListener('mousedown', start);
+      el.addEventListener('touchstart', start, {passive: true});
+      function start(e) {
+        moved = false;
+        const t = e.touches ? e.touches[0] : e;
+        startX = t.clientX;
+        startY = t.clientY;
+        const r = el.getBoundingClientRect();
+        startLeft = r.left;
+        startTop = r.top;
+        el.style.left = startLeft + 'px';
+        el.style.top = startTop + 'px';
+        el.style.right = 'auto';
+        el.style.bottom = 'auto';
+        el.style.transition = 'none';
+        document.addEventListener('mousemove', move);
+        document.addEventListener('touchmove', move, {passive: false});
+        document.addEventListener('mouseup', end);
+        document.addEventListener('touchend', end);
+      }
+      function move(e) {
+        e.preventDefault();
+        const t = e.touches ? e.touches[0] : e;
+        const dx = t.clientX - startX;
+        const dy = t.clientY - startY;
+        if (Math.abs(dx) > 2 || Math.abs(dy) > 2) moved = true;
+        el.style.left = Math.max(0, Math.min(window.innerWidth - el.offsetWidth, startLeft + dx)) + 'px';
+        el.style.top = Math.max(0, Math.min(window.innerHeight - el.offsetHeight, startTop + dy)) + 'px';
+      }
+      function end(e) {
+        document.removeEventListener('mousemove', move);
+        document.removeEventListener('touchmove', move);
+        document.removeEventListener('mouseup', end);
+        document.removeEventListener('touchend', end);
+        if (moved) e.preventDefault();
+      }
+      el.addEventListener('click', e => { if (moved) e.preventDefault(); });
+    }
+
     makeDraggable(document.querySelector('.radio-banner'));
-    makeDraggable(document.querySelector('.whatsapp-float'));
+    makeDraggable(document.querySelector('.whatsapp-float'));    
+
   </script>
 </body>
 </html>
