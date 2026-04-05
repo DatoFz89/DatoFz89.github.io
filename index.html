@@ -161,22 +161,9 @@
     .radio-status { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 1px; text-align: center; }
     .radio-external-link { display: block; text-align: center; font-size: 0.72rem; color: var(--text-muted); text-decoration: none; letter-spacing: 1px; padding: 12px 20px; border-top: 1px solid var(--border); transition: color 0.2s; }
     .radio-external-link:hover { color: var(--red); }
-
-    /* Aviso mixed-content */
-    .radio-notice {
-      display: none;
-      background: rgba(232,23,58,0.08);
-      border: 1px solid rgba(232,23,58,0.25);
-      border-radius: 6px;
-      padding: 12px 16px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      text-align: center;
-    }
+    .radio-notice { display: none; background: rgba(232,23,58,0.08); border: 1px solid rgba(232,23,58,0.25); border-radius: 6px; padding: 12px 16px; font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; text-align: center; }
     .radio-notice a { color: var(--red); text-decoration: none; font-weight: 600; }
     .radio-notice a:hover { text-decoration: underline; }
-
     @media (max-width: 768px) { .radio-section .container { grid-template-columns: 1fr; gap: 32px; } }
     .parceiros { padding: var(--section-pad); background: var(--dark); border-top: 1px solid var(--border); }
     .parceiros-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
@@ -241,13 +228,11 @@
     .footer-bottom { max-width: var(--max-w); margin: 0 auto; padding-top: 20px; border-top: 1px solid var(--border); text-align: center; }
     .footer-bottom p { font-size: 0.78rem; color: var(--text-muted); letter-spacing: 1px; }
     @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-    
     .radio-banner { position: fixed; bottom: 20px; left: 20px; z-index: 999; display: block; width: 100px; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 20px rgba(229,9,9,0.4); border: 1px solid rgba(204,0,0,0.6); cursor: grab; user-select: none; touch-action: none; }
     .radio-banner:active { cursor: grabbing; }
     .radio-banner img { width: 100%; height: auto; display: block; pointer-events: none; }
     .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: #fff; border-radius: 50%; width: 54px; height: 54px; font-size: 1.6rem; box-shadow: 0 4px 16px rgba(0,0,0,0.4); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; cursor: grab; user-select: none; touch-action: none; }
     .whatsapp-float:active { cursor: grabbing; }
-    
     @media screen and (max-width: 768px) { .radio-banner { width: 64px; border-radius: 8px; } .hero-stats { display: none; } :root { --section-pad: 70px 20px; } }
     .lightbox { display: none; position: fixed; z-index: 2000; inset: 0; background: rgba(0,0,0,0.92); align-items: center; justify-content: center; }
     .lightbox.open { display: flex; }
@@ -276,9 +261,6 @@
     ],
     "sameAs": ["https://www.facebook.com/novaescolarock","https://www.instagram.com/nernovaescola/","https://www.youtube.com/@nernovaescolarock1669"]
   }
-
-
-
   </script>
 </head>
 <body>
@@ -298,6 +280,7 @@
       <a href="#professores">Professores</a>
       <a href="galeria.html">Galeria</a>
       <a href="#servicos">Serviços</a>
+      <a href="feedback-gravacao.html">Feedback</a>
       <a href="materiais.html" target="_blank">Materiais</a>
       <a href="#parceiros">Parceiros</a>
       <a href="#quem-somos">Quem Somos</a>
@@ -315,6 +298,7 @@
     <a href="#professores" onclick="closeMenu()">Professores</a>
     <a href="galeria.html" onclick="closeMenu()">Galeria</a>
     <a href="#servicos" onclick="closeMenu()">Serviços</a>
+    <a href="feedback-gravacao.html" onclick="closeMenu()">Feedback</a>
     <a href="materiais.html" target="_blank">Materiais</a>
     <a href="#parceiros" onclick="closeMenu()">Parceiros</a>
     <a href="#quem-somos" onclick="closeMenu()">Quem Somos</a>
@@ -428,18 +412,17 @@
         <div class="servico-card"><span class="servico-icon">🎙️</span><h3>Estúdio de Gravação</h3><p>Parceria com estúdios externos especializados para que possas gravar as tuas músicas com qualidade profissional.</p><div class="servico-btn-wrap"><a href="https://wa.me/351938066695?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Estúdio%20de%20Gravação." target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:0.75rem;padding:10px 20px;">Saber Mais</a></div></div>
         <div class="servico-card"><span class="servico-icon">🎛️</span><h3>Produção Musical</h3><p>Serviços de arranjo, mixagem e masterização com os nossos produtores experientes.</p><div class="servico-btn-wrap"><a href="https://wa.me/351938066695?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20Produção%20Musical." target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:0.75rem;padding:10px 20px;">Saber Mais</a></div></div>
         <div class="servico-card"><span class="servico-icon">🎸</span><h3>Workshops Especializados</h3><p>Workshops intensivos sobre técnicas avançadas, teoria musical e estilos específicos do rock.</p><div class="servico-btn-wrap"><a href="https://wa.me/351938066695?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20Workshops." target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:0.75rem;padding:10px 20px;">Saber Mais</a></div></div>
+        <div class="servico-card"><span class="servico-icon">🎙️</span><h3>Feedback à Tua Gravação</h3><p>Toca em casa e envia-nos a gravação. Analisamos a tua performance e damos-te sugestões de melhoria personalizadas — grátis para todos, alunos ou não.</p><div class="servico-btn-wrap"><a href="feedback-gravacao.html" class="btn-primary" style="font-size:0.75rem;padding:10px 20px;">Enviar Gravação</a></div></div>
       </div>
     </div>
   </section>
 
-  <!-- ===== SECÇÃO RÁDIO ===== -->
   <section class="radio-section" id="radio">
     <div class="container">
       <div class="radio-info">
         <div class="radio-live-badge"><span class="live-dot"></span>No Ar 24h</div>
         <h2>Rádio <span>NER</span></h2>
         <p>A nossa rádio é um projeto único que envolve toda a comunidade escolar, dando voz aos músicos e à música que se faz na NER. Rock, metal, blues e muito mais — sempre a tocar.</p>
-        
       </div>
       <div class="radio-player-wrap">
         <div class="radio-player-header">
@@ -464,7 +447,6 @@
           </div>
           <div class="radio-status" id="radioStatus">Clica em play e depois clica no play na página da rádio</div>
         </div>
-        
       </div>
     </div>
   </section>
@@ -572,7 +554,7 @@
       <div class="footer-col"><h4>NER · Nova Escola Rock</h4><p>Escola de música especializada<br>em Rock e Música Moderna.<br>Paços de Ferreira · Desde 2018.</p></div>
       <div class="footer-col"><h4>Morada</h4><p>Rua da Cavada 105<br>4595-218 Meixomil<br>Paços de Ferreira</p></div>
       <div class="footer-col"><h4>Contacto</h4><a href="tel:+351938066695">938 066 695</a><a href="mailto:nernovaescolarock@gmail.com">nernovaescolarock@gmail.com</a><a href="https://wa.me/351938066695" target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
-      <div class="footer-col"><h4>Links Úteis</h4><a href="inscricao.html">Inscrição</a><a href="materiais.html">Materiais</a><a href="biografias.html">Professores</a><a href="quem-somos.html">Quem Somos</a><a href="inquerito.html">Inquérito de Satisfação</a></div>
+      <div class="footer-col"><h4>Links Úteis</h4><a href="inscricao.html">Inscrição</a><a href="materiais.html">Materiais</a><a href="biografias.html">Professores</a><a href="quem-somos.html">Quem Somos</a><a href="feedback-gravacao.html">Feedback Gravação</a><a href="inquerito.html">Inquérito de Satisfação</a></div>
     </div>
     <div class="footer-bottom"><p>&copy; 2026 NER - Nova Escola Rock. Todos os direitos reservados.</p></div>
   </footer>
@@ -587,7 +569,6 @@
   <audio id="radioAudio" preload="none"></audio>
 
   <script>
-    /* ===== FAQ ===== */
     function toggleFaq(btn) {
       const item = btn.parentElement;
       const isOpen = item.classList.contains('open');
@@ -595,7 +576,6 @@
       if (!isOpen) item.classList.add('open');
     }
 
-    /* ===== MENU ===== */
     function toggleMenu() {
       document.getElementById('mobileMenu').classList.toggle('open');
     }
@@ -603,7 +583,6 @@
       document.getElementById('mobileMenu').classList.remove('open');
     }
 
-    /* ===== LIGHTBOX ===== */
     function openLightbox(src) {
       document.getElementById('lightbox').classList.add('open');
       document.getElementById('lightbox-img').src = src;
@@ -612,14 +591,7 @@
       document.getElementById('lightbox').classList.remove('open');
     }
 
-    /* ===== RÁDIO PLAYER (proxy HTTPS via Cloudflare Worker) ===== */
-    /*
-     * O stream original é HTTP. O Cloudflare Worker faz proxy em HTTPS,
-     * resolvendo o bloqueio de mixed-content dos browsers modernos.
-     * Proxy: https://radio-ner-proxy.nernovaescolarock.workers.dev/
-     */
     const RADIO_STREAM = 'https://fdsfdsfdsf.radio12345.com/intro.mp3';
-
     let radioPlaying = false;
     const audioEl    = document.getElementById('radioAudio');
     const playIcon   = document.getElementById('radioPlayIcon');
@@ -627,8 +599,8 @@
     const visualizer = document.getElementById('radioVisualizer');
 
     function toggleRadio() {
-  window.open('https://nernovaescolarock.radio12345.com', '_blank');
-}
+      window.open('https://nernovaescolarock.radio12345.com', '_blank');
+    }
 
     function setPlayingState(playing) {
       radioPlaying = playing;
@@ -658,7 +630,6 @@
       }
     });
 
-    /* ===== SMOOTH SCROLL ===== */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', function(e) {
         const id = this.getAttribute('href');
@@ -671,13 +642,11 @@
       });
     });
 
-        /* ===== HEADER SCROLL ===== */
     window.addEventListener('scroll', () => {
       document.querySelector('header').style.borderBottomColor =
         window.scrollY > 10 ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.04)';
     });
 
-  /* ===== DRAG FLUTUANTES ===== */
     function makeDraggable(el) {
       let startX, startY, startLeft, startTop, moved;
       el.addEventListener('mousedown', start);
@@ -720,8 +689,7 @@
     }
 
     makeDraggable(document.querySelector('.radio-banner'));
-    makeDraggable(document.querySelector('.whatsapp-float'));    
-
+    makeDraggable(document.querySelector('.whatsapp-float'));
   </script>
 </body>
 </html>
