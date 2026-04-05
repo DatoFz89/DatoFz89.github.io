@@ -930,15 +930,14 @@ href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&famil
       btn.classList.add('open'); 
     } 
   } 
-  document.querySelectorAll("a[download]").forEach(function(link) {
-  link.addEventListener("click", function(e) {
-    const file = this.getAttribute("href");
-    if (file.match(/\.(gp4|gp5|rar|docx|txt)$/i)) {
-      return true;
-    }
-    e.preventDefault();
-      
+  document.querySelectorAll("a[download]").forEach(function(link) { 
+    link.addEventListener("click", function(e) { 
       const file = this.getAttribute("href"); 
+      if (file.match(/\.(gp4|gp5|rar|docx|txt)$/i)) {
+        e.stopPropagation();
+        return true;
+      }
+      e.preventDefault(); 
       const filename = file.split("/").pop(); 
       const previewArea = document.getElementById("previewContent"); 
       const downloadBtn = document.getElementById("downloadBtn"); 
@@ -1025,6 +1024,6 @@ href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&famil
     if (audio.paused) { audio.play(); btn.innerHTML = "🎵 Som ON"; } 
     else { audio.pause(); btn.innerHTML = "🎵 Som OFF"; } 
   } 
-</script> 
+</script>
 </body> 
 </html>
