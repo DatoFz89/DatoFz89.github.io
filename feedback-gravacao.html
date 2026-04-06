@@ -291,17 +291,20 @@
   </section>
 
   <!--
-    ===== FORMULÁRIO =====
-    Usa o Web3Forms — gratuito, suporta uploads até 25MB, funciona com GitHub Pages.
+    ===== FORMULÁRIO — Formspree =====
+    O Web3Forms não suporta upload de ficheiros no plano gratuito.
+    Migrámos para o Formspree que suporta anexos gratuitamente (50 submissões/mês).
 
     PASSO ÚNICO OBRIGATÓRIO:
-    1. Vai a https://web3forms.com
-    2. Introduz o email nernovaescolarock@gmail.com e clica em "Create Access Key"
-    3. Recebes a chave no email — copia-a
-    4. Substitui YOUR_ACCESS_KEY_HERE abaixo pela chave recebida
-    5. Faz upload deste ficheiro para o GitHub e está feito!
+    1. Vai a https://formspree.io e cria uma conta gratuita
+    2. Clica em "New Form" e dá-lhe o nome "NER - Feedback Gravação"
+    3. Copia o "Form Endpoint" que tem o formato: https://formspree.io/f/XXXXXXXX
+    4. Substitui YOUR_FORMSPREE_ID abaixo pelo ID (a parte após /f/)
+       Exemplo: se o endpoint for https://formspree.io/f/xpwzgkla → usa xpwzgkla
+    5. Confirma o email nernovaescolarock@gmail.com quando o Formspree enviar a verificação
+    6. Faz upload deste ficheiro para o GitHub — pronto!
 
-    Plano gratuito: 250 submissões/mês — mais do que suficiente.
+    Plano gratuito: 50 submissões/mês, suporta ficheiros até 25MB.
     Os ficheiros chegam como anexo no email da escola.
   -->
   <section class="formulario" id="formulario">
@@ -315,15 +318,21 @@
           <p><strong>Como funciona?</strong> Preenche os teus dados e descreve o que tocaste. Podes fazer upload direto da gravação (até 25MB) ou indicar um link externo do WeTransfer, Google Drive ou YouTube. Recebes o feedback no email que indicares.</p>
         </div>
 
-        <form id="feedbackForm" enctype="multipart/form-data" novalidate>
+        <!--
+          ATENÇÃO: Substitui YOUR_FORMSPREE_ID pelo teu ID do Formspree.
+          Exemplo: action="https://formspree.io/f/xpwzgkla"
+        -->
+        <form id="feedbackForm" action="https://formspree.io/f/mqegwweq" method="POST" enctype="multipart/form-data" novalidate>
 
-          <!-- Web3Forms: configuração -->
-          <input type="hidden" name="access_key" value="6421cc92-c426-4ece-a2e1-6ef022dd7284">
-          <input type="hidden" name="subject" value="Nova Gravação para Feedback — NER">
-          <input type="hidden" name="from_name" value="NER - Nova Escola Rock">
-          <input type="hidden" name="replyto" id="replyto-hidden">
-          <!-- Honeypot anti-spam (não remover) -->
-          <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
+          <!-- Campo oculto para o email de destino (Formspree usa o email da conta) -->
+          <!-- Honeypot anti-spam do Formspree (não remover) -->
+          <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off">
+
+          <!-- Assunto do email recebido -->
+          <input type="hidden" name="_subject" value="Nova Gravação para Feedback — NER">
+
+          <!-- Redirecionar para página de obrigado personalizada (opcional) -->
+          <!-- <input type="hidden" name="_next" value="https://datofz89.github.io/obrigado.html"> -->
 
           <div class="form-row">
             <div class="form-group" style="margin-bottom:0;">
@@ -544,10 +553,6 @@
       }
     });
 
-    document.getElementById('email').addEventListener('input', function() {
-      document.getElementById('replyto-hidden').value = this.value;
-    });
-
     function showError(msg) {
       const el = document.getElementById('errorMsg');
       document.getElementById('errorText').textContent = msg;
@@ -579,26 +584,27 @@
       if (!ficheiro && !link)                     { showError('Faz upload da gravação ou indica um link externo.'); return; }
       if (!consentimento)                         { showError('Precisas de aceitar os termos para prosseguir.'); return; }
 
-      document.getElementById('replyto-hidden').value = email;
-
       const btn = document.getElementById('submitBtn');
       btn.disabled = true;
       btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i>&nbsp; A enviar…';
 
       try {
-        const res = await fetch('https://api.web3forms.com/submit', {
+        const formData = new FormData(this);
+        const res = await fetch(this.action, {
           method: 'POST',
-          body: new FormData(this)
+          body: formData,
+          headers: { 'Accept': 'application/json' }
         });
         const data = await res.json();
 
-        if (data.success) {
+        if (res.ok) {
           this.style.display = 'none';
           const ok = document.getElementById('successMsg');
           ok.classList.add('visible');
           ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
-          showError(data.message || 'Erro ao enviar. Tenta novamente ou contacta-nos pelo WhatsApp.');
+          const msg = (data.errors && data.errors.map(e => e.message).join(', ')) || 'Erro ao enviar. Tenta novamente ou contacta-nos pelo WhatsApp.';
+          showError(msg);
           btn.disabled = false;
           btn.innerHTML = '<i class="fa fa-paper-plane"></i>&nbsp; Enviar Gravação';
         }
