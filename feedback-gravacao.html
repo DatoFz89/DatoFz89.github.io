@@ -29,7 +29,6 @@
     :root {
       --red: #e8173a;
       --red-dark: #b50e28;
-      --red-glow: rgba(232,23,58,0.25);
       --dark: #0a0a0a;
       --dark2: #111111;
       --dark3: #181818;
@@ -46,7 +45,7 @@
     .section-subtitle { color: var(--text-muted); font-weight: 300; margin-bottom: 60px; letter-spacing: 1px; text-transform: uppercase; font-size: 0.8rem; }
 
     /* ===== HEADER ===== */
-    header { background: rgba(10,10,10,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 0 32px; height: 72px; display: flex; align-items: center; justify-content: space-between; }
+    header { background: rgba(10,10,10,0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 0 32px; height: 72px; display: flex; align-items: center; justify-content: space-between; }
     .logo-wrap { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .logo-badge { background: var(--red); color: #fff; font-family: 'Hard Rock', 'Bebas Neue', sans-serif; font-size: 1.1rem; padding: 4px 10px; letter-spacing: 1px; border-radius: 3px; }
     .logo-name { color: #fff; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; opacity: 0.85; }
@@ -73,7 +72,7 @@
     .step-text span { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
     @media (max-width: 768px) { .page-hero .container { grid-template-columns: 1fr; gap: 40px; } }
 
-    /* ===== SECÇÃO DESCRIÇÃO ===== */
+    /* ===== DESCRIÇÃO ===== */
     .descricao { padding: 80px 20px; background: var(--dark); border-bottom: 1px solid var(--border); }
     .descricao .container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
     .descricao h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 4vw, 2.8rem); color: #fff; letter-spacing: 2px; margin-bottom: 20px; }
@@ -132,6 +131,11 @@
     select option { background: var(--dark3); color: #e8e8e8; }
     textarea { resize: vertical; min-height: 120px; }
 
+    /* Separador OU */
+    .ou-separador { display: flex; align-items: center; gap: 12px; margin: 20px 0; }
+    .ou-separador::before, .ou-separador::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .ou-separador span { font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
+
     /* Upload */
     .upload-zone {
       position: relative;
@@ -163,6 +167,9 @@
     .upload-title { font-size: 0.95rem; font-weight: 600; color: #fff; margin-bottom: 6px; }
     .upload-sub { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
     .upload-sub span { color: var(--red); }
+    .upload-aviso { font-size: 0.74rem; color: var(--text-muted); margin-top: 10px; background: var(--dark4); border: 1px solid var(--border); border-radius: 4px; padding: 8px 12px; line-height: 1.6; }
+    .upload-aviso a { color: var(--red); text-decoration: none; }
+    .upload-aviso a:hover { text-decoration: underline; }
     .upload-preview { display: none; align-items: center; gap: 14px; background: rgba(232,23,58,0.08); border: 1px solid rgba(232,23,58,0.25); border-radius: 6px; padding: 14px 18px; margin-top: 14px; }
     .upload-preview.visible { display: flex; }
     .upload-preview i { color: var(--red); font-size: 1.2rem; flex-shrink: 0; }
@@ -174,12 +181,10 @@
 
     /* Checkbox */
     .checkbox-group { display: flex; align-items: flex-start; gap: 12px; }
-    .checkbox-group input[type="checkbox"] { flex-shrink: 0; width: 18px; height: 18px; margin-top: 1px; accent-color: var(--red); cursor: pointer; border-radius: 3px; }
+    .checkbox-group input[type="checkbox"] { flex-shrink: 0; width: 18px; height: 18px; margin-top: 1px; accent-color: var(--red); cursor: pointer; }
     .checkbox-group label { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; text-transform: none; letter-spacing: 0; font-weight: 400; cursor: pointer; }
-    .checkbox-group label a { color: var(--red); text-decoration: none; }
-    .checkbox-group label a:hover { text-decoration: underline; }
 
-    /* Submit */
+    /* Botões */
     .btn-primary { background: var(--red); color: #fff; padding: 15px 36px; border: none; border-radius: 4px; font-size: 0.85rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s, transform 0.15s; font-family: 'Inter', sans-serif; }
     .btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
     .btn-primary:disabled { background: #444; cursor: not-allowed; transform: none; }
@@ -189,22 +194,14 @@
     .form-note { font-size: 0.75rem; color: var(--text-muted); line-height: 1.6; }
     .form-note i { color: var(--red); margin-right: 4px; }
 
-    /* Mensagem de sucesso */
-    .success-msg {
-      display: none;
-      background: rgba(34,197,94,0.08);
-      border: 1px solid rgba(34,197,94,0.3);
-      border-radius: 8px;
-      padding: 32px;
-      text-align: center;
-      margin-top: 32px;
-    }
+    /* Sucesso */
+    .success-msg { display: none; background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.3); border-radius: 8px; padding: 40px 32px; text-align: center; margin-top: 32px; }
     .success-msg.visible { display: block; }
     .success-msg i { font-size: 2.5rem; color: #22c55e; margin-bottom: 16px; display: block; }
     .success-msg h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     .success-msg p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
 
-    /* Mensagem de erro */
+    /* Erro */
     .error-msg { display: none; background: rgba(232,23,58,0.08); border: 1px solid rgba(232,23,58,0.3); border-radius: 6px; padding: 14px 18px; margin-top: 16px; font-size: 0.83rem; color: #e8e8e8; }
     .error-msg.visible { display: block; }
 
@@ -228,9 +225,13 @@
     .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
     /* ===== FOOTER ===== */
-    footer { background: #050505; border-top: 1px solid var(--border); padding: 28px 20px; text-align: center; }
-    footer p { font-size: 0.78rem; color: var(--text-muted); letter-spacing: 1px; }
-    footer a { color: var(--red); text-decoration: none; }
+    footer { background: #050505; border-top: 1px solid var(--border); padding: 40px 20px 24px; }
+    .footer-grid { max-width: var(--max-w); margin: 0 auto 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; }
+    .footer-col h4 { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 2px; color: #fff; margin-bottom: 14px; }
+    .footer-col p, .footer-col a { font-size: 0.78rem; color: var(--text-muted); line-height: 1.9; text-decoration: none; display: block; transition: color 0.2s; letter-spacing: 0.3px; }
+    .footer-col a:hover { color: var(--red); }
+    .footer-bottom { max-width: var(--max-w); margin: 0 auto; padding-top: 20px; border-top: 1px solid var(--border); text-align: center; }
+    .footer-bottom p { font-size: 0.78rem; color: var(--text-muted); letter-spacing: 1px; }
 
     /* WhatsApp float */
     .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: #fff; border-radius: 50%; width: 54px; height: 54px; font-size: 1.6rem; box-shadow: 0 4px 16px rgba(0,0,0,0.4); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; }
@@ -239,17 +240,18 @@
       .form-row { grid-template-columns: 1fr; }
       .form-actions { flex-direction: column; align-items: stretch; }
       .form-actions .btn-primary { text-align: center; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <a href="https://datofz89.github.io" class="logo-wrap">
+    <a href="index.html" class="logo-wrap">
       <span class="logo-badge">NER</span>
       <span class="logo-name">Nova Escola Rock</span>
     </a>
-    <a href="https://datofz89.github.io" class="back-link"><i class="fa fa-arrow-left"></i> Voltar ao Site</a>
+    <a href="index.html" class="back-link"><i class="fa fa-arrow-left"></i> Voltar ao Site</a>
   </header>
 
   <!-- ===== HERO ===== -->
@@ -272,7 +274,7 @@
           <div class="step-num">1</div>
           <div class="step-text">
             <strong>Envia a tua gravação</strong>
-            <span>Áudio ou vídeo — grava em casa, no telemóvel, como quiseres. Não precisa de ser perfeito.</span>
+            <span>Faz upload direto no formulário ou partilha um link do WeTransfer, Google Drive ou YouTube.</span>
           </div>
         </div>
         <div class="step-item">
@@ -285,8 +287,8 @@
         <div class="step-item">
           <div class="step-num">3</div>
           <div class="step-text">
-            <strong>Recebes o teu feedback</strong>
-            <span>Sugestões práticas e concretas para evoluíres — por email ou WhatsApp, à tua escolha.</span>
+            <strong>Recebes o feedback por email</strong>
+            <span>Sugestões práticas e concretas para evoluíres, diretamente na tua caixa de entrada.</span>
           </div>
         </div>
       </div>
@@ -299,13 +301,10 @@
       <div>
         <h2>O Que É Este <span>Serviço?</span></h2>
         <p>
-          Este serviço foi criado para <strong>qualquer músico que queira evoluir</strong>, seja aluno da NER ou não. Muitas vezes tocamos em casa sem saber se estamos a desenvolver maus hábitos, a ignorar erros de postura, de tempo ou de técnica. Um olhar externo de alguém com experiência faz toda a diferença.
+          Este serviço foi criado para <strong>qualquer músico que queira evoluir</strong>, seja aluno da NER ou não. Muitas vezes tocamos em casa sem saber se estamos a desenvolver maus hábitos ou a ignorar erros de postura, de tempo ou de técnica. Um olhar externo de alguém com experiência faz toda a diferença.
         </p>
         <p>
-          Podes enviar uma gravação a tocar qualquer <strong>música que gostes</strong>, um exercício técnico, uma improvisação ou até uma composição tua. Não há julgamentos — há apenas análise séria e sugestões úteis para te ajudar a melhorar.
-        </p>
-        <p>
-          O feedback é feito por <strong>professores da NER com anos de experiência</strong> no ensino e no palco. Não é automático, não é genérico — é personalizado para ti.
+          Podes enviar uma gravação a tocar qualquer <strong>música que gostes</strong>, um exercício técnico, uma improvisação ou uma composição tua. O feedback é dado por professores da NER com anos de experiência no ensino e no palco — personalizado para ti, não genérico.
         </p>
         <div class="instrumentos-list">
           <div class="instrumento-item"><i class="fa fa-guitar"></i> Guitarra Clássica</div>
@@ -313,7 +312,7 @@
           <div class="instrumento-item"><i class="fa fa-music"></i> Baixo</div>
           <div class="instrumento-item"><i class="fa fa-drum"></i> Bateria</div>
           <div class="instrumento-item"><i class="fa fa-microphone"></i> Canto</div>
-          <div class="instrumento-item"><i class="fa fa-piano-keyboard fa-solid"></i> Piano / Teclado</div>
+          <div class="instrumento-item"><i class="fa fa-music"></i> Piano / Teclado</div>
           <div class="instrumento-item"><i class="fa fa-music"></i> Acordeão</div>
           <div class="instrumento-item"><i class="fa fa-music"></i> Cavaquinho</div>
         </div>
@@ -354,29 +353,31 @@
     </div>
   </section>
 
-  <!-- ===== FORMULÁRIO ===== -->
+  <!-- ===== FORMULÁRIO =====
+       Usa o Formspree para envio real por email.
+       PASSO OBRIGATÓRIO:
+       1. Vai a https://formspree.io e cria uma conta gratuita
+       2. Cria um novo formulário e copia o teu ID (ex: xpwzabcd)
+       3. Substitui YOUR_FORM_ID abaixo pelo teu ID real
+  -->
   <section class="formulario" id="formulario">
     <div class="container">
       <div class="form-wrap">
         <h2 class="section-title" style="text-align:center;">Envia a Tua <span>Gravação</span></h2>
-        <p class="section-subtitle" style="text-align:center;">Preenche o formulário abaixo — é rápido</p>
+        <p class="section-subtitle" style="text-align:center;">Preenche o formulário — respondemos em até 72h por email</p>
 
         <div class="form-intro">
           <i class="fa fa-circle-info"></i>
-          <p><strong>Como funciona o envio?</strong> Preenche os teus dados, faz o upload do ficheiro de áudio ou vídeo (máx. 50MB), ou indica-nos um link externo (WeTransfer, Google Drive, YouTube, etc.). Respondemos por email ou WhatsApp em até 72 horas.</p>
+          <p><strong>Como funciona?</strong> Preenche os teus dados e descreve o que tocaste. Para a gravação, podes fazer upload direto (máx. 10MB) ou indicar um link externo do WeTransfer, Google Drive ou YouTube. Recebes o feedback no email que indicares.</p>
         </div>
 
-        <form
-  id="feedbackForm"
-  name="feedback-gravacao"
-  method="POST"
-  enctype="multipart/form-data"
-  data-netlify="true"
-  data-netlify-honeypot="bot-field"
-  novalidate
->
-  <input type="hidden" name="form-name" value="feedback-gravacao">
-  <div style="display:none;"><input name="bot-field"></div>
+        <form id="feedbackForm" action="https://formspree.io/f/mqegwweq" method="POST" enctype="multipart/form-data" novalidate>
+
+          <!-- Campo oculto: garante que o Formspree usa o email do utilizador como Reply-To -->
+          <input type="hidden" name="_replyto" id="replyto-hidden">
+          <!-- Assunto do email recebido pela NER -->
+          <input type="hidden" name="_subject" value="Nova Gravação para Feedback — NER">
+
           <div class="form-row">
             <div class="form-group" style="margin-bottom:0;">
               <label for="nome">Nome <span class="req">*</span></label>
@@ -404,25 +405,25 @@
               <label for="instrumento">Instrumento <span class="req">*</span></label>
               <select id="instrumento" name="instrumento" required>
                 <option value="" disabled selected>Seleciona o instrumento</option>
-                <option value="guitarra-classica">Guitarra Clássica</option>
-                <option value="guitarra-eletrica">Guitarra Elétrica</option>
-                <option value="baixo">Baixo</option>
-                <option value="bateria">Bateria</option>
-                <option value="canto">Canto</option>
-                <option value="piano-teclado">Piano / Teclado</option>
-                <option value="acordeao">Acordeão</option>
-                <option value="cavaquinho">Cavaquinho</option>
-                <option value="outro">Outro</option>
+                <option value="Guitarra Clássica">Guitarra Clássica</option>
+                <option value="Guitarra Elétrica">Guitarra Elétrica</option>
+                <option value="Baixo">Baixo</option>
+                <option value="Bateria">Bateria</option>
+                <option value="Canto">Canto</option>
+                <option value="Piano / Teclado">Piano / Teclado</option>
+                <option value="Acordeão">Acordeão</option>
+                <option value="Cavaquinho">Cavaquinho</option>
+                <option value="Outro">Outro</option>
               </select>
             </div>
             <div class="form-group" style="margin-bottom:0;">
               <label for="nivel">Nível <span class="req">*</span></label>
               <select id="nivel" name="nivel" required>
                 <option value="" disabled selected>Seleciona o teu nível</option>
-                <option value="iniciante">Iniciante (menos de 1 ano)</option>
-                <option value="basico">Básico (1 a 3 anos)</option>
-                <option value="intermedio">Intermédio (3 a 7 anos)</option>
-                <option value="avancado">Avançado (mais de 7 anos)</option>
+                <option value="Iniciante (menos de 1 ano)">Iniciante (menos de 1 ano)</option>
+                <option value="Básico (1 a 3 anos)">Básico (1 a 3 anos)</option>
+                <option value="Intermédio (3 a 7 anos)">Intermédio (3 a 7 anos)</option>
+                <option value="Avançado (mais de 7 anos)">Avançado (mais de 7 anos)</option>
               </select>
             </div>
           </div>
@@ -432,16 +433,19 @@
             <textarea id="descricao" name="descricao" placeholder="Ex: Estou a tentar aprender o solo de Comfortably Numb mas tenho dificuldade no bending. Gostava de saber se estou a fazer bem as posições de mão..." required></textarea>
           </div>
 
+          <!-- UPLOAD DIRETO -->
           <div class="form-group">
-            <label>Upload da Gravação <span class="req">*</span></label>
+            <label>Upload da Gravação</label>
             <div class="upload-zone" id="uploadZone">
               <input type="file" id="ficheiro" name="ficheiro" accept="audio/*,video/*,.mp3,.mp4,.wav,.m4a,.aac,.ogg,.webm,.mov" onchange="handleFileSelect(this)">
               <i class="fa fa-cloud-arrow-up upload-icon"></i>
               <div class="upload-title">Arrasta o ficheiro aqui ou clica para escolher</div>
               <div class="upload-sub">
-                Formatos aceites: <span>MP3, MP4, WAV, M4A, MOV, OGG</span><br>
-                Tamanho máximo: <span>50MB</span>
+                Formatos: <span>MP3, MP4, WAV, M4A, MOV, OGG</span> · Máx. <span>10MB</span>
               </div>
+            </div>
+            <div class="upload-aviso">
+              ⚠️ O upload direto está limitado a 10MB. Para ficheiros maiores usa o <a href="https://wetransfer.com" target="_blank" rel="noopener">WeTransfer</a> (gratuito, sem conta) e cola o link abaixo.
             </div>
             <div class="upload-preview" id="uploadPreview">
               <i class="fa fa-file-audio"></i>
@@ -453,24 +457,19 @@
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="link">Ou indica um link externo (WeTransfer, Drive, YouTube, etc.)</label>
-            <input type="text" id="link" name="link" placeholder="https://...">
-          </div>
+          <!-- SEPARADOR -->
+          <div class="ou-separador"><span>ou indica um link externo</span></div>
 
+          <!-- LINK EXTERNO -->
           <div class="form-group">
-            <label for="resposta">Preferes receber o feedback por:</label>
-            <select id="resposta" name="resposta">
-              <option value="email">Email</option>
-              <option value="whatsapp">WhatsApp</option>
-              <option value="qualquer">Tanto faz</option>
-            </select>
+            <label for="link">Link da gravação (WeTransfer, Google Drive, YouTube…)</label>
+            <input type="text" id="link" name="link_gravacao" placeholder="https://wetransfer.com/... ou drive.google.com/... ou youtube.com/...">
           </div>
 
           <div class="form-group">
             <div class="checkbox-group">
-              <input type="checkbox" id="consentimento" name="consentimento" required>
-              <label for="consentimento">Autorizo a NER a utilizar a minha gravação internamente para fins de análise. Os dados não serão partilhados com terceiros sem o meu consentimento. <a href="https://wa.me/351938066695" target="_blank">Política de privacidade →</a></label>
+              <input type="checkbox" id="consentimento" name="consentimento" value="Aceito" required>
+              <label for="consentimento">Autorizo a NER a utilizar a minha gravação internamente para fins de análise. Os dados não serão partilhados com terceiros sem o meu consentimento.</label>
             </div>
           </div>
 
@@ -483,15 +482,15 @@
               <i class="fa fa-paper-plane"></i>&nbsp; Enviar Gravação
             </button>
             <div class="form-note">
-              <i class="fa fa-lock"></i> Os teus dados estão seguros. Respondemos em até 72h.
+              <i class="fa fa-lock"></i> Os teus dados estão seguros. O feedback será enviado para o teu email em até 72h.
             </div>
           </div>
         </form>
 
         <div class="success-msg" id="successMsg">
           <i class="fa fa-circle-check"></i>
-          <h3>Gravação Recebida!</h3>
-          <p>Obrigado por confiares na NER. Um professor vai analisar a tua gravação e entrar em contacto em breve — no máximo 72 horas. 🤘</p>
+          <h3>Pedido Enviado!</h3>
+          <p>Obrigado por confiares na NER. Um professor vai analisar a tua gravação e enviar-te o feedback por email em até 72 horas. 🤘</p>
         </div>
       </div>
     </div>
@@ -509,15 +508,15 @@
         </div>
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">A minha gravação tem de ter boa qualidade? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Não. Podes gravar com o telemóvel, sem equipamento especial. O importante é que o som seja audível — não precisa de ser gravação de estúdio. Somos músicos práticos, não perfeccionistas de estúdio.</p></div>
+          <div class="faq-answer"><p>Não. Podes gravar com o telemóvel, sem equipamento especial. O importante é que o som seja audível — não precisa de ser gravação de estúdio.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">Em quanto tempo recebo o feedback? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Fazemos o possível para responder em até 72 horas úteis. Em períodos de maior volume de pedidos pode demorar um pouco mais, mas garantimos que todos os envios têm resposta.</p></div>
+          <div class="faq-answer"><p>Fazemos o possível para responder em até 72 horas úteis. Em períodos de maior volume de pedidos pode demorar um pouco mais, mas garantimos que todos os envios têm resposta no email indicado.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">O ficheiro é demasiado grande. O que faço? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Podes usar o WeTransfer (wetransfer.com) ou o Google Drive para fazer upload do ficheiro e depois colar o link no campo correspondente do formulário. Também podes enviar um vídeo privado do YouTube ou do Instagram.</p></div>
+          <button class="faq-question" onclick="toggleFaq(this)">O meu ficheiro tem mais de 10MB. O que faço? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>Usa o <a href="https://wetransfer.com" target="_blank" rel="noopener" style="color:var(--red);">WeTransfer</a> — é gratuito, não precisa de conta e aceita até 2GB. Faz upload lá, copia o link gerado e cola no campo de link do formulário.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">Posso enviar mais do que uma gravação? <span class="faq-icon">+</span></button>
@@ -542,13 +541,19 @@
   </section>
 
   <footer>
-    <p>&copy; 2026 <a href="index.html">NER - Nova Escola Rock</a>. Todos os direitos reservados.</p>
+    <div class="footer-grid">
+      <div class="footer-col"><h4>NER · Nova Escola Rock</h4><p>Escola de música especializada<br>em Rock e Música Moderna.<br>Paços de Ferreira · Desde 2018.</p></div>
+      <div class="footer-col"><h4>Morada</h4><p>Rua da Cavada 105<br>4595-218 Meixomil<br>Paços de Ferreira</p></div>
+      <div class="footer-col"><h4>Contacto</h4><a href="tel:+351938066695">938 066 695</a><a href="mailto:nernovaescolarock@gmail.com">nernovaescolarock@gmail.com</a><a href="https://wa.me/351938066695" target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
+      <div class="footer-col"><h4>Links Úteis</h4><a href="index.html">Início</a><a href="inscricao.html">Inscrição</a><a href="materiais.html">Materiais</a><a href="biografias.html">Professores</a><a href="inquerito.html">Inquérito de Satisfação</a></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 NER - Nova Escola Rock. Todos os direitos reservados.</p></div>
   </footer>
 
   <a href="https://wa.me/351938066695" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Contactar NER pelo WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
 
   <script>
-    /* FAQ */
+    /* ===== FAQ ===== */
     function toggleFaq(btn) {
       const item = btn.parentElement;
       const isOpen = item.classList.contains('open');
@@ -556,19 +561,20 @@
       if (!isOpen) item.classList.add('open');
     }
 
-    /* Upload */
+    /* ===== UPLOAD ===== */
     function handleFileSelect(input) {
       const file = input.files[0];
       if (!file) return;
-      const maxSize = 50 * 1024 * 1024; // 50MB
+      const maxSize = 10 * 1024 * 1024; // 10MB (limite Formspree plano gratuito)
       if (file.size > maxSize) {
-        showError('O ficheiro é demasiado grande (máx. 50MB). Usa um link externo.');
+        showError('O ficheiro é demasiado grande (máx. 10MB). Usa o WeTransfer e cola o link abaixo.');
         input.value = '';
         return;
       }
       document.getElementById('uploadFileName').textContent = file.name;
       document.getElementById('uploadFileSize').textContent = formatSize(file.size);
       document.getElementById('uploadPreview').classList.add('visible');
+      hideError();
     }
 
     function removeFile() {
@@ -581,9 +587,9 @@
       return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
     }
 
-    /* Drag & Drop */
+    /* ===== DRAG & DROP ===== */
     const zone = document.getElementById('uploadZone');
-    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+    zone.addEventListener('dragover',  e => { e.preventDefault(); zone.classList.add('drag-over'); });
     zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
     zone.addEventListener('drop', e => {
       e.preventDefault();
@@ -598,7 +604,12 @@
       }
     });
 
-    /* Erros */
+    /* ===== SINCRONIZA _replyto com o email ===== */
+    document.getElementById('email').addEventListener('input', function() {
+      document.getElementById('replyto-hidden').value = this.value;
+    });
+
+    /* ===== ERROS ===== */
     function showError(msg) {
       const el = document.getElementById('errorMsg');
       document.getElementById('errorText').textContent = msg;
@@ -609,54 +620,60 @@
       document.getElementById('errorMsg').classList.remove('visible');
     }
 
-    /* Submissão — envia por WhatsApp (fallback simples sem backend) */
+    /* ===== SUBMISSÃO via Formspree ===== */
     document.getElementById('feedbackForm').addEventListener('submit', function(e) {
       e.preventDefault();
       hideError();
 
-      const nome = document.getElementById('nome').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const instrumento = document.getElementById('instrumento').value;
-      const nivel = document.getElementById('nivel').value;
-      const descricao = document.getElementById('descricao').value.trim();
+      const nome          = document.getElementById('nome').value.trim();
+      const email         = document.getElementById('email').value.trim();
+      const instrumento   = document.getElementById('instrumento').value;
+      const nivel         = document.getElementById('nivel').value;
+      const descricao     = document.getElementById('descricao').value.trim();
       const consentimento = document.getElementById('consentimento').checked;
-      const ficheiro = document.getElementById('ficheiro').files[0];
-      const link = document.getElementById('link').value.trim();
+      const ficheiro      = document.getElementById('ficheiro').files[0];
+      const link          = document.getElementById('link').value.trim();
 
-      if (!nome) { showError('Por favor indica o teu nome.'); return; }
-      if (!email || !/\S+@\S+\.\S+/.test(email)) { showError('Por favor indica um email válido.'); return; }
-      if (!instrumento) { showError('Seleciona o instrumento.'); return; }
-      if (!nivel) { showError('Seleciona o teu nível.'); return; }
-      if (!descricao) { showError('Descreve o que tocaste e o que gostavas de melhorar.'); return; }
-      if (!ficheiro && !link) { showError('Faz o upload de uma gravação ou indica um link externo.'); return; }
-      if (!consentimento) { showError('Precisas de aceitar os termos para prosseguir.'); return; }
+      /* Validações */
+      if (!nome)                                   { showError('Por favor indica o teu nome.'); return; }
+      if (!email || !/\S+@\S+\.\S+/.test(email))   { showError('Por favor indica um email válido.'); return; }
+      if (!instrumento)                             { showError('Seleciona o instrumento.'); return; }
+      if (!nivel)                                   { showError('Seleciona o teu nível.'); return; }
+      if (!descricao)                               { showError('Descreve o que tocaste e o que gostavas de melhorar.'); return; }
+      if (!ficheiro && !link)                       { showError('Faz upload da gravação ou indica um link externo.'); return; }
+      if (!consentimento)                           { showError('Precisas de aceitar os termos para prosseguir.'); return; }
 
-      /* Monta mensagem WhatsApp */
-      const resposta = document.getElementById('resposta').value;
-      const tel = document.getElementById('telefone').value.trim();
-      const linkExterno = link ? '\n🔗 Link: ' + link : '';
-      const msg = encodeURIComponent(
-        '🎸 *Pedido de Feedback — NER*\n\n' +
-        '👤 Nome: ' + nome + '\n' +
-        '📧 Email: ' + email + (tel ? '\n📱 Tel: ' + tel : '') + '\n' +
-        '🎵 Instrumento: ' + instrumento + '\n' +
-        '📊 Nível: ' + nivel + '\n' +
-        '📝 Descrição: ' + descricao + linkExterno + '\n' +
-        '📨 Prefere resposta por: ' + resposta +
-        (ficheiro ? '\n\n⚠️ Tem ficheiro para enviar: ' + ficheiro.name : '')
-      );
+      /* Atualiza _replyto com o email introduzido */
+      document.getElementById('replyto-hidden').value = email;
 
       const btn = document.getElementById('submitBtn');
       btn.disabled = true;
-      btn.textContent = 'A enviar…';
+      btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i>&nbsp; A enviar…';
 
-      setTimeout(() => {
-        /* Mostra sucesso */
-        document.getElementById('feedbackForm').style.display = 'none';
-        document.getElementById('successMsg').classList.add('visible');
-        /* Abre WhatsApp com os dados */
-        window.open('https://wa.me/351938066695?text=' + msg, '_blank');
-      }, 600);
+      fetch(this.action, {
+        method: 'POST',
+        body: new FormData(this),
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(res => {
+        if (res.ok) {
+          this.style.display = 'none';
+          document.getElementById('successMsg').classList.add('visible');
+          document.getElementById('successMsg').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          res.json().then(data => {
+            const msg = (data.errors || []).map(e => e.message).join(', ') || 'Erro ao enviar. Tenta novamente ou contacta-nos pelo WhatsApp.';
+            showError(msg);
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fa fa-paper-plane"></i>&nbsp; Enviar Gravação';
+          });
+        }
+      })
+      .catch(() => {
+        showError('Sem ligação à internet. Verifica a ligação e tenta novamente.');
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa fa-paper-plane"></i>&nbsp; Enviar Gravação';
+      });
     });
   </script>
 </body>
