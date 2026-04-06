@@ -366,7 +366,17 @@
           <p><strong>Como funciona o envio?</strong> Preenche os teus dados, faz o upload do ficheiro de áudio ou vídeo (máx. 50MB), ou indica-nos um link externo (WeTransfer, Google Drive, YouTube, etc.). Respondemos por email ou WhatsApp em até 72 horas.</p>
         </div>
 
-        <form id="feedbackForm" novalidate>
+        <form
+  id="feedbackForm"
+  name="feedback-gravacao"
+  method="POST"
+  enctype="multipart/form-data"
+  data-netlify="true"
+  data-netlify-honeypot="bot-field"
+  novalidate
+>
+  <input type="hidden" name="form-name" value="feedback-gravacao">
+  <div style="display:none;"><input name="bot-field"></div>
           <div class="form-row">
             <div class="form-group" style="margin-bottom:0;">
               <label for="nome">Nome <span class="req">*</span></label>
