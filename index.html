@@ -248,12 +248,20 @@
       .close-lb:hover { opacity: 1; color: var(--red); }
 
     @media (max-width: 600px) {
-      .hero-buttons .btn-primary,
-      .hero-buttons .btn-outline {
-        width: 100%;
-        text-align: center;
-      }
-    }
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-outline {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (min-width: 601px) {
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-outline {
+    min-width: 220px;
+    text-align: center;
+  }
+}
   </style>
 
   <script type="application/ld+json">
