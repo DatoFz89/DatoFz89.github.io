@@ -256,10 +256,10 @@
 }
 
 @media (min-width: 601px) {
-  .hero-buttons .btn-primary,
-  .hero-buttons .btn-outline {
-    min-width: 220px;
-    text-align: center;
+  .hero-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: center;
   }
 }
   </style>
