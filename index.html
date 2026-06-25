@@ -170,8 +170,9 @@
     .parceiro-card { background: var(--dark3); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: transform 0.25s, border-color 0.25s; }
     .parceiro-card:hover { transform: translateY(-4px); border-color: rgba(232,23,58,0.35); }
     .parceiro-link { text-decoration: none; color: inherit; display: block; }
-    .parceiro-img-wrap { background: #fff; padding: 28px; display: flex; align-items: center; justify-content: center; min-height: 140px; }
-    .parceiro-img-wrap img { max-height: 90px; max-width: 100%; object-fit: contain; }
+    .parceiro-img-wrap { background: #111; padding: 28px; display: flex; align-items: center; justify-content: center; min-height: 140px; position: relative; overflow: hidden; border-bottom: 2px solid var(--red); }
+    .parceiro-img-wrap::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, rgba(232,23,58,0.03) 0px, rgba(232,23,58,0.03) 1px, transparent 1px, transparent 12px); }
+    .parceiro-img-wrap img { max-height: 90px; max-width: 100%; object-fit: contain; position: relative; z-index: 1; filter: drop-shadow(0 0 8px rgba(232,23,58,0.2)); }
     .parceiro-body { padding: 20px 24px 24px; }
     .parceiro-body h3 { font-size: 1rem; font-weight: 600; color: #fff; margin-bottom: 4px; }
     .parceiro-esp { font-size: 0.72rem; font-weight: 600; color: var(--red); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }
