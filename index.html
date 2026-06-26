@@ -85,8 +85,21 @@
     .professores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
     .professor-card { background: var(--dark3); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: transform 0.25s, border-color 0.25s; }
     .professor-card:hover { transform: translateY(-4px); border-color: rgba(232,23,58,0.35); }
-    .professor-img-wrap { position: relative; overflow: hidden; height: 260px; }
-    .professor-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; display: block; }
+    .professor-img-wrap {
+width: 280px;
+height: 260px;
+background: #000000;
+overflow: hidden;
+border-radius: 12px;
+}
+
+.professor-img-wrap img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+object-position: center top;
+display: block;
+}
     .professor-card:hover .professor-img-wrap img { transform: scale(1.04); }
     .professor-img-wrap::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 80px; background: linear-gradient(transparent, var(--dark3)); }
     .professor-info { padding: 20px 24px 24px; }
@@ -384,7 +397,16 @@
       <h2 class="section-title">Os Nossos <span>Professores</span></h2>
       <p class="section-subtitle">Profissionais com provas dadas no ensino e no palco · <a href="biografias.html" target="_blank" style="color:var(--red);text-decoration:none;letter-spacing:inherit;">Ver biografias completas →</a></p>
       <div class="professores-grid">
-        <div class="professor-card"><div class="professor-img-wrap"><img src="galeria-de-imagens/dato_esp_explorer2.png" alt="Professor Deodato Barbosa" loading="lazy" width="280" height="260"></div><div class="professor-info"><h3>Deodato Barbosa</h3><div class="professor-esp">Guitarra Clássica · Elétrica · Formação Musical</div><p>Trinta anos a construir pontes entre cordas e almas — do rock clássico ao heavy metal, onde cada acorde tem a força de uma história.</p></div></div>
+        <div class="professor-card">
+<div class="professor-img-wrap">
+<img src="galeria-de-imagens/dato_esp_explorer2.png?v=3" alt="Professor Deodato Barbosa" loading="lazy" width="280" height="260">
+</div>
+<div class="professor-info">
+<h3>Deodato Barbosa</h3>
+<div class="professor-esp">Guitarra Clássica · Elétrica · Formação Musical</div>
+<p>Trinta anos a construir pontes entre cordas e almas — do rock clássico ao heavy metal, onde cada acorde tem a força de uma história.</p>
+</div>
+</div>
         <div class="professor-card"><div class="professor-img-wrap"><img src="galeria-de-imagens/FilipeMiguelCarvalho_Canto2.png" alt="Professor Filipe Carvalho — Canto" loading="lazy" width="280" height="260"></div><div class="professor-info"><h3>Filipe Carvalho</h3><div class="professor-esp">Canto · Formação Musical</div><p>A voz é o instrumento mais íntimo que existe — e ele sabe como libertá-la. A tua voz não vai só brilhar, vai conquistar.</p></div></div>
 
         <div class="professor-card">
