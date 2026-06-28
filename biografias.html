@@ -27,12 +27,10 @@
       font-family: 'Barlow', sans-serif;
       line-height: 1.6;
       padding-top: 70px;
-      /* Subtle noise texture */
       background-image:
         url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ff3366' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     }
 
-    /* ── HEADER ──────────────────────────────────── */
     .rock-header {
       position: fixed;
       top: 0; left: 0; width: 100%;
@@ -75,7 +73,6 @@
       box-shadow: 0 4px 14px var(--red-glow);
     }
 
-    /* ── HERO ────────────────────────────────────── */
     .hero {
       position: relative;
       text-align: center;
@@ -113,7 +110,6 @@
       line-height: 1.75;
     }
 
-    /* ── GRID ────────────────────────────────────── */
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -126,7 +122,6 @@
       gap: 28px;
     }
 
-    /* ── CARD ────────────────────────────────────── */
     .prof-card {
       background: var(--surface);
       border-radius: 12px;
@@ -143,8 +138,6 @@
       box-shadow: 0 16px 40px rgba(0,0,0,0.6), 0 0 24px var(--red-glow);
       border-color: var(--red);
     }
-
-    /* Red accent line that sweeps on hover */
     .prof-card::after {
       content: '';
       position: absolute;
@@ -160,7 +153,6 @@
       transform-origin: left;
     }
 
-    /* Photo */
     .prof-photo-wrap {
       position: relative;
       height: 270px;
@@ -178,7 +170,13 @@
       transform: scale(1.04);
     }
 
-    /* Instrument badge over photo */
+    /* SVG placeholder para cards Em Recrutamento */
+    .prof-photo-wrap svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
     .instr-badge {
       position: absolute;
       top: 14px; right: 14px;
@@ -194,7 +192,6 @@
       backdrop-filter: blur(4px);
     }
 
-    /* Body */
     .prof-body {
       padding: 22px;
       flex: 1;
@@ -246,7 +243,6 @@
       border-left: 2px solid var(--red);
     }
 
-    /* Social + CTA row */
     .prof-footer {
       display: flex;
       align-items: center;
@@ -301,7 +297,6 @@
       box-shadow: 0 4px 14px var(--red-glow);
     }
 
-    /* ── JOIN SECTION ─────────────────────────────── */
     .join-section {
       margin-top: 60px;
       background: var(--surface);
@@ -356,7 +351,6 @@
       box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
     }
 
-    /* ── POPUP ────────────────────────────────────── */
     .popup-overlay {
       position: fixed;
       inset: 0;
@@ -435,7 +429,6 @@
       color: var(--text);
     }
 
-    /* ── FOOTER ───────────────────────────────────── */
     footer {
       text-align: center;
       padding: 24px;
@@ -445,7 +438,6 @@
       font-size: 0.85rem;
     }
 
-    /* ── RESPONSIVE ───────────────────────────────── */
     @media (max-width: 600px) {
       .professors-grid { grid-template-columns: 1fr; }
       .join-section { padding: 36px 20px; }
@@ -476,7 +468,7 @@
       <!-- ── Deodato Barbosa ── -->
       <div class="prof-card">
         <div class="prof-photo-wrap">
-          <img src="/galeria-de-imagens/DatoFz2.jpg" alt="Deodato Barbosa">
+          <img src="/galeria-de-imagens/datofz_estudio.png" alt="Deodato Barbosa">
           <span class="instr-badge">🎸 Guitarra</span>
         </div>
         <div class="prof-body">
@@ -492,28 +484,6 @@
               <a href="https://www.facebook.com/deodatoformador/" class="social-link" target="_blank" title="Facebook Pessoal">fb</a>
             </div>
             <a href="https://aprender-guitarra-2018.webnode.pt/quem-somos/" target="_blank" class="info-btn">+ Info</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── Renato Barbosa ── -->
-      <div class="prof-card">
-        <div class="prof-photo-wrap">
-          <img src="/galeria-de-imagens/renato.jpg" alt="Renato Barbosa">
-          <span class="instr-badge">🎸 Guitarra · Produção</span>
-        </div>
-        <div class="prof-body">
-          <h3 class="prof-name">Renato Barbosa</h3>
-          <p class="prof-xp">10 anos de experiência</p>
-          <p class="prof-bio">Virtuoso da guitarra e produtor musical, com experiência em bandas de rock e metal. Especializado em técnicas de heavy metal e improvisação — o mestre das cordas onde o talento encontra a perfeição.</p>
-          <p class="prof-style">Rock Clássico · Heavy Metal · Blues</p>
-          <div class="prof-footer">
-            <div class="social-links">
-              <a href="#" class="social-link" title="Facebook">f</a>
-              <a href="#" class="social-link" title="Instagram">ig</a>
-              <a href="#" class="social-link" title="YouTube">yt</a>
-            </div>
-            <button class="info-btn">+ Info</button>
           </div>
         </div>
       </div>
@@ -540,46 +510,56 @@
         </div>
       </div>
 
-      <!-- ── Filipe Nunes (Baixo) ── -->
+      <!-- ── Em Recrutamento (Baixo) ── -->
       <div class="prof-card">
         <div class="prof-photo-wrap">
-          <img src="/galeria-de-imagens/filbass.jpg" alt="Filipe Nunes - Baixo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 270" style="background:#111;">
+            <rect width="300" height="270" fill="#111"/>
+            <circle cx="150" cy="100" r="50" fill="#1e1e1e" stroke="#ff3366" stroke-width="2"/>
+            <circle cx="150" cy="85" r="24" fill="#2a2a2a"/>
+            <ellipse cx="150" cy="125" rx="35" ry="20" fill="#2a2a2a"/>
+            <rect x="60" y="155" width="180" height="80" rx="10" fill="#1e1e1e" stroke="#ff3366" stroke-width="1.5"/>
+            <text x="150" y="183" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#ff3366" letter-spacing="2" font-weight="700">EM RECRUTAMENTO</text>
+            <text x="150" y="205" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#aaa">Professor de Baixo</text>
+            <text x="150" y="223" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#555">NER · Nova Escola Rock</text>
+          </svg>
           <span class="instr-badge">🎸 Baixo</span>
         </div>
         <div class="prof-body">
-          <h3 class="prof-name">Filipe Nunes</h3>
-          <p class="prof-xp">20 anos de experiência</p>
-          <p class="prof-bio">Baixista versátil que já tocou em diversos estilos e bandas. Especialista em técnicas de slap e tapping, enfatiza a importância da ligação entre baixo e bateria para criar uma base sólida. O baixo não é apenas um instrumento — é a força invisível que move a música.</p>
+          <h3 class="prof-name" style="color: var(--red);">Em Recrutamento</h3>
+          <p class="prof-xp">Professor de Baixo</p>
+          <p class="prof-bio">A força invisível que move a música — o baixo pulsa onde os outros não chegam. Estamos à procura do professor certo para guiar os nossos alunos nesta jornada.</p>
           <p class="prof-style">Funk · Rock · Punk · Metal</p>
           <div class="prof-footer">
-            <div class="social-links">
-              <a href="#" class="social-link" title="Facebook">f</a>
-              <a href="#" class="social-link" title="Instagram">ig</a>
-              <a href="#" class="social-link" title="YouTube">yt</a>
-            </div>
-            <button class="info-btn">+ Info</button>
+            <div class="social-links"></div>
+            <button class="info-btn" id="openPopupBtn2">Candidatar</button>
           </div>
         </div>
       </div>
 
-      <!-- ── Sidónio Nunes (Bateria) ── -->
+      <!-- ── Em Recrutamento (Bateria) ── -->
       <div class="prof-card">
         <div class="prof-photo-wrap">
-          <img src="/galeria-de-imagens/Sidónio Nunes.png" alt="Sidónio Nunes - Bateria">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 270" style="background:#111;">
+            <rect width="300" height="270" fill="#111"/>
+            <circle cx="150" cy="100" r="50" fill="#1e1e1e" stroke="#ff3366" stroke-width="2"/>
+            <circle cx="150" cy="85" r="24" fill="#2a2a2a"/>
+            <ellipse cx="150" cy="125" rx="35" ry="20" fill="#2a2a2a"/>
+            <rect x="60" y="155" width="180" height="80" rx="10" fill="#1e1e1e" stroke="#ff3366" stroke-width="1.5"/>
+            <text x="150" y="183" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#ff3366" letter-spacing="2" font-weight="700">EM RECRUTAMENTO</text>
+            <text x="150" y="205" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#aaa">Professor de Bateria</text>
+            <text x="150" y="223" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#555">NER · Nova Escola Rock</text>
+          </svg>
           <span class="instr-badge">🥁 Bateria</span>
         </div>
         <div class="prof-body">
-          <h3 class="prof-name">Sidónio Nunes</h3>
-          <p class="prof-xp">18 anos de experiência</p>
-          <p class="prof-bio">Baterista experiente com passagens por diversas bandas. Com forte domínio técnico e criativo, ensina desde rudimentos básicos até padrões complexos. Com cada batida, transforma o som em arte e a arte em emoção pura.</p>
+          <h3 class="prof-name" style="color: var(--red);">Em Recrutamento</h3>
+          <p class="prof-xp">Professor de Bateria</p>
+          <p class="prof-bio">Com cada batida, o caos transforma-se em ritmo e o ritmo em paixão. Estamos à procura do baterista certo para despertar este talento nos nossos alunos.</p>
           <p class="prof-style">Heavy Metal · Hard Rock · Progressive</p>
           <div class="prof-footer">
-            <div class="social-links">
-              <a href="#" class="social-link" title="Facebook">f</a>
-              <a href="#" class="social-link" title="Instagram">ig</a>
-              <a href="#" class="social-link" title="YouTube">yt</a>
-            </div>
-            <button class="info-btn">+ Info</button>
+            <div class="social-links"></div>
+            <button class="info-btn" id="openPopupBtn3">Candidatar</button>
           </div>
         </div>
       </div>
@@ -637,7 +617,10 @@
 
   <script>
     const popup = document.getElementById('popup');
-    document.getElementById('openPopupBtn').addEventListener('click', () => popup.classList.add('open'));
+    function openPopup() { popup.classList.add('open'); }
+    document.getElementById('openPopupBtn').addEventListener('click', openPopup);
+    if (document.getElementById('openPopupBtn2')) document.getElementById('openPopupBtn2').addEventListener('click', openPopup);
+    if (document.getElementById('openPopupBtn3')) document.getElementById('openPopupBtn3').addEventListener('click', openPopup);
     document.getElementById('closePopup').addEventListener('click', () => popup.classList.remove('open'));
     popup.addEventListener('click', e => { if (e.target === popup) popup.classList.remove('open'); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') popup.classList.remove('open'); });
