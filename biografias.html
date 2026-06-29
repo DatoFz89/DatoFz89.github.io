@@ -170,11 +170,14 @@
       transform: scale(1.04);
     }
 
-    /* SVG placeholder para cards Em Recrutamento */
-    .prof-photo-wrap svg {
-      width: 100%;
-      height: 100%;
-      display: block;
+    /* Fundo escuro para fotos com fundo branco (ex: cavaquinho) */
+    .prof-photo-wrap.dark-bg {
+      background: #111;
+    }
+    .prof-photo-wrap.dark-bg img {
+      mix-blend-mode: multiply;
+      object-fit: contain;
+      padding: 16px;
     }
 
     .instr-badge {
@@ -564,6 +567,42 @@
         </div>
       </div>
 
+      <!-- ── Em Recrutamento (Acordeão) ── -->
+      <div class="prof-card">
+        <div class="prof-photo-wrap">
+          <img src="/galeria-de-imagens/acordeao.jpg" alt="Acordeão - Em Recrutamento">
+          <span class="instr-badge">🪗 Acordeão</span>
+        </div>
+        <div class="prof-body">
+          <h3 class="prof-name" style="color: var(--red);">Em Recrutamento</h3>
+          <p class="prof-xp">Professor de Acordeão</p>
+          <p class="prof-bio">Onde a tradição respira fundo e explode em som — o acordeão carrega séculos de alma num único fole. Procuramos quem saiba transmitir essa magia, nota a nota, geração a geração.</p>
+          <p class="prof-style">Folk · Tradicional · World Music</p>
+          <div class="prof-footer">
+            <div class="social-links"></div>
+            <button class="info-btn" id="openPopupBtn4">Candidatar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Em Recrutamento (Cavaquinho) ── -->
+      <div class="prof-card">
+        <div class="prof-photo-wrap dark-bg">
+          <img src="/galeria-de-imagens/cavaquinho.jpg" alt="Cavaquinho - Em Recrutamento">
+          <span class="instr-badge">🎸 Cavaquinho</span>
+        </div>
+        <div class="prof-body">
+          <h3 class="prof-name" style="color: var(--red);">Em Recrutamento</h3>
+          <p class="prof-xp">Professor de Cavaquinho</p>
+          <p class="prof-bio">Pequeno na forma, imenso na alma — o cavaquinho é pura identidade portuguesa transformada em melodia. Queremos alguém que ensine não só a tocar, mas a sentir cada acorde como se fosse o primeiro.</p>
+          <p class="prof-style">Tradicional · Folk · Fado · Popular</p>
+          <div class="prof-footer">
+            <div class="social-links"></div>
+            <button class="info-btn" id="openPopupBtn5">Candidatar</button>
+          </div>
+        </div>
+      </div>
+
       <!-- ── Filipe Carvalho (Piano) ── -->
       <div class="prof-card">
         <div class="prof-photo-wrap">
@@ -621,6 +660,8 @@
     document.getElementById('openPopupBtn').addEventListener('click', openPopup);
     if (document.getElementById('openPopupBtn2')) document.getElementById('openPopupBtn2').addEventListener('click', openPopup);
     if (document.getElementById('openPopupBtn3')) document.getElementById('openPopupBtn3').addEventListener('click', openPopup);
+    if (document.getElementById('openPopupBtn4')) document.getElementById('openPopupBtn4').addEventListener('click', openPopup);
+    if (document.getElementById('openPopupBtn5')) document.getElementById('openPopupBtn5').addEventListener('click', openPopup);
     document.getElementById('closePopup').addEventListener('click', () => popup.classList.remove('open'));
     popup.addEventListener('click', e => { if (e.target === popup) popup.classList.remove('open'); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') popup.classList.remove('open'); });
