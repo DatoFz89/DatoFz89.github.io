@@ -154,17 +154,23 @@
     }
 
     .prof-photo-wrap {
-      position: relative;
-      height: 270px;
-      overflow: hidden;
-    }
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+    
     .prof-photo-wrap img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      filter: grayscale(30%) brightness(0.9);
-      transition: filter 0.4s, transform 0.5s;
-    }
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  filter: grayscale(10%) brightness(0.95);
+  transition: filter 0.4s, transform 0.5s;
+}
     .prof-card:hover .prof-photo-wrap img {
       filter: grayscale(0%) brightness(1);
       transform: scale(1.04);
@@ -540,32 +546,37 @@
         </div>
       </div>
 
-      <!-- ── Em Recrutamento (Bateria) ── -->
-      <div class="prof-card">
-        <div class="prof-photo-wrap">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 270" style="background:#111;">
-            <rect width="300" height="270" fill="#111"/>
-            <circle cx="150" cy="100" r="50" fill="#1e1e1e" stroke="#ff3366" stroke-width="2"/>
-            <circle cx="150" cy="85" r="24" fill="#2a2a2a"/>
-            <ellipse cx="150" cy="125" rx="35" ry="20" fill="#2a2a2a"/>
-            <rect x="60" y="155" width="180" height="80" rx="10" fill="#1e1e1e" stroke="#ff3366" stroke-width="1.5"/>
-            <text x="150" y="183" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#ff3366" letter-spacing="2" font-weight="700">EM RECRUTAMENTO</text>
-            <text x="150" y="205" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#aaa">Professor de Bateria</text>
-            <text x="150" y="223" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#555">NER · Nova Escola Rock</text>
-          </svg>
-          <span class="instr-badge">🥁 Bateria</span>
-        </div>
-        <div class="prof-body">
-          <h3 class="prof-name" style="color: var(--red);">Em Recrutamento</h3>
-          <p class="prof-xp">Professor de Bateria</p>
-          <p class="prof-bio">Com cada batida, o caos transforma-se em ritmo e o ritmo em paixão. Estamos à procura do baterista certo para despertar este talento nos nossos alunos.</p>
-          <p class="prof-style">Heavy Metal · Hard Rock · Progressive</p>
-          <div class="prof-footer">
-            <div class="social-links"></div>
-            <button class="info-btn" id="openPopupBtn3">Candidatar</button>
-          </div>
-        </div>
+      <!-- ── Ben (Bateria) ── -->
+<div class="prof-card">
+  <div class="prof-photo-wrap">
+    <img src="/galeria-de-imagens/ben2.png" alt="Ben - Professor de Bateria">
+    <span class="instr-badge">🥁 Bateria</span>
+  </div>
+
+  <div class="prof-body">
+    <h3 class="prof-name">Ben</h3>
+    <p class="prof-xp">Professor de Bateria</p>
+
+    <p class="prof-bio">
+      A bateria é mais do que tempo e técnica — é atitude, energia e alma.
+      Porque o verdadeiro ritmo não se aprende apenas, vive-se.
+    </p>
+
+    <p class="prof-style">
+      Heavy Metal · Hard Rock · Progressive Rock
+    </p>
+
+    <div class="prof-footer">
+      <div class="social-links">
+        <a href="https://www.facebook.com/novaescolarock" class="social-link" target="_blank" title="Facebook NER">f</a>
+        <a href="https://www.instagram.com/novaescolarock/" class="social-link" target="_blank" title="Instagram NER">ig</a>
+        <a href="https://www.youtube.com/@nernovaescolarock1669" class="social-link" target="_blank" title="YouTube NER">yt</a>
       </div>
+
+      <a href="#" class="info-btn">+ Info</a>
+    </div>
+  </div>
+</div>
 
       <!-- ── Em Recrutamento (Acordeão) ── -->
       <div class="prof-card">
